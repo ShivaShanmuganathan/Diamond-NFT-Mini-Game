@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for contracts/libraries/LibERC721.sol</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">contracts/libraries/</a> LibERC721.sol
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">40.74% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>11/27</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">20% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>2/10</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">57.14% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>4/7</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">40.74% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>11/27</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">    // SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+&nbsp;
+import "./LibAppStorage.sol";
+import {CharacterAttributes, BigBoss} from "../libraries/LibAppStorage.sol";
+&nbsp;
+library LibERC721 {
+<span class="fstat-no" title="function not covered" >    function _tokenOfOwnerByIndex(address owner, uint256 index) internal view returns (uint256) {</span>
+<span class="cstat-no" title="statement not covered" >        AppStorage storage s = LibAppStorage.diamondStorage();</span>
+<span class="cstat-no" title="statement not covered" >        require(index &lt; _balanceOf(owner), "ERC721Enumerable: owner index out of bounds")</span>;
+<span class="cstat-no" title="statement not covered" >        return s._ownedTokens[owner][index];</span>
+    }
+&nbsp;
+    function _balanceOf(address owner) internal view returns (uint256) {
+        AppStorage storage s = LibAppStorage.diamondStorage();
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(owner != address(0), "ERC721: balance query for the zero address");
+        return s._balances[owner];
+    }
+&nbsp;
+    function _ownerOf(uint256 tokenId) internal view returns (address) {
+        AppStorage storage s = LibAppStorage.diamondStorage();
+        address owner = s._owners[tokenId];
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(owner != address(0), "ERC721: owner query for nonexistent token");
+        return owner;
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function _tokensOfOwner(address _owner) internal view returns(uint256[] memory ) {</span>
+<span class="cstat-no" title="statement not covered" >        uint256 tokenCount = _balanceOf(_owner);</span>
+<span class="cstat-no" title="statement not covered" >        if (tokenCount == 0) {</span>
+            // Return an empty array
+<span class="cstat-no" title="statement not covered" >            return new uint256[](0);</span>
+        } else {
+<span class="cstat-no" title="statement not covered" >            uint256[] memory result = new uint256[](tokenCount);</span>
+<span class="cstat-no" title="statement not covered" >            uint256 index;</span>
+<span class="cstat-no" title="statement not covered" >            for (index = 0; index &lt; tokenCount; index++) {</span>
+<span class="cstat-no" title="statement not covered" >                result[index] = _tokenOfOwnerByIndex(_owner, index)</span>;
+            }
+<span class="cstat-no" title="statement not covered" >            return result;</span>
+        }
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function isReserved(uint256 tokenId) internal pure returns(uint16){</span>
+<span class="cstat-no" title="statement not covered" >        uint256 x = (tokenId - 1) % 100;</span>
+<span class="cstat-no" title="statement not covered" >        uint256 y = (tokenId - 1 - x) / 100;</span>
+<span class="cstat-no" title="statement not covered" >        if((x &gt;= 11 &amp;&amp; x &lt; 21 &amp;&amp; y &gt;= 13 &amp;&amp; y &lt; 20 )</span>
+            || (x &gt;= 10 &amp;&amp; x &lt; 25 &amp;&amp; y &gt;= 43 &amp;&amp; y &lt; 49 )
+            || (x &gt;= 14 &amp;&amp; x &lt; 19 &amp;&amp; y &gt;= 67 &amp;&amp; y &lt; 82 )
+            || (x &gt;= 3 &amp;&amp; x &lt; 18 &amp;&amp; y &gt;= 90 &amp;&amp; y &lt; 96 )
+            || (x &gt;= 32 &amp;&amp; x &lt; 38 &amp;&amp; y &gt;= 7 &amp;&amp; y &lt; 19 )
+            || (x &gt;= 89 &amp;&amp; x &lt; 95 &amp;&amp; y &gt;= 14 &amp;&amp; y &lt; 36 )
+            || (x &gt;= 26 &amp;&amp; x &lt; 39 &amp;&amp; y &gt;= 83 &amp;&amp; y &lt; 89 )
+            || (x &gt;= 46 &amp;&amp; x &lt; 59 &amp;&amp; y &gt;= 83 &amp;&amp; y &lt; 89 )
+            || (x &gt;= 65 &amp;&amp; x &lt; 73 &amp;&amp; y &gt;= 13 &amp;&amp; y &lt; 20 )
+            || (x &gt;= 63 &amp;&amp; x &lt; 70 &amp;&amp; y &gt;= 53 &amp;&amp; y &lt; 65 )
+            || (x &gt;= 82 &amp;&amp; x &lt; 92 &amp;&amp; y &gt;= 85 &amp;&amp; y &lt; 95 )
+            || (x &gt;= 92 &amp;&amp; x &lt; 97 &amp;&amp; y &gt;= 43 &amp;&amp; y &lt; 58 )){
+<span class="cstat-no" title="statement not covered" >            return 1;</span>
+        }
+<span class="cstat-no" title="statement not covered" >        return 0;</span>
+    }
+&nbsp;
+&nbsp;
+    function getNFTHolders(address user) internal view returns(uint256 val) {
+        
+        AppStorage storage s = LibAppStorage.diamondStorage();
+        val = s.nftHolders[user];
+&nbsp;
+    }
+&nbsp;
+    function getNFTHolderAttributes(uint256 tokenID) internal view returns(CharacterAttributes memory) {
+        
+        AppStorage storage s = LibAppStorage.diamondStorage();
+        return s.nftHolderAttributes[tokenID];
+&nbsp;
+    }
+&nbsp;
+    
+}</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Apr 20 2022 22:56:43 GMT+0530 (India Standard Time)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>
