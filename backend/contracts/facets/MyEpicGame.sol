@@ -31,7 +31,11 @@ contract MyEpicGame is ERC721, Ownable{
     uint hp;
     uint maxHp;
     uint attackDamage;
-    
+    string levels;
+  }
+
+  struct stakeAttributes {
+    uint startTime; 
   }
 
   // The tokenId is the NFTs unique identifier, it's just a number that goes
@@ -46,6 +50,9 @@ contract MyEpicGame is ERC721, Ownable{
   
   // We create a mapping from the nft's tokenId => that NFTs attributes.
   mapping(uint256 => CharacterAttributes) public nftHolderAttributes;
+
+  // We create a mapping from the nft's tokenId => that NFTs attributes.
+  mapping(uint256 => stakeAttributes) public stakeInfo;
 
   // We create a struct to keep track of bigBoss's attributes
   struct BigBoss {
@@ -66,6 +73,8 @@ contract MyEpicGame is ERC721, Ownable{
   // Events to show that a Minting & Attacking action has been completed 
   event CharacterNFTMinted(address sender, uint256 tokenId, uint256 characterIndex);
   event AttackComplete(uint newBossHp, uint newPlayerHp);
+  event AssetStaked(uint tokenId, uint stakeStartTime);
+  event AssetUnstaked(uint tokenId, uint stakeStartTime, uint stakeEndTime);
 
   // A fee to mint the Characterrs. 
   uint256 fee = 0.1 ether;
@@ -89,6 +98,7 @@ contract MyEpicGame is ERC721, Ownable{
     string[] memory characterImageURIs,
     uint[] memory characterHp,
     uint[] memory characterAttackDmg,
+    string[] memory characterLevels,
     string memory bossName, 
     string memory bossImageURI,
     uint bossHp,
@@ -118,7 +128,8 @@ contract MyEpicGame is ERC721, Ownable{
         imageURI: characterImageURIs[i],
         hp: characterHp[i],
         maxHp: characterHp[i],
-        attackDamage: characterAttackDmg[i]
+        attackDamage: characterAttackDmg[i],
+        levels: characterLevels[i]
       }));
 
     }
@@ -164,7 +175,8 @@ contract MyEpicGame is ERC721, Ownable{
       imageURI: defaultCharacters[_characterIndex].imageURI,
       hp: defaultCharacters[_characterIndex].hp,
       maxHp: defaultCharacters[_characterIndex].hp,
-      attackDamage: defaultCharacters[_characterIndex].attackDamage
+      attackDamage: defaultCharacters[_characterIndex].attackDamage,
+      levels: defaultCharacters[_characterIndex].levels
       
     });
 
@@ -195,8 +207,6 @@ contract MyEpicGame is ERC721, Ownable{
     
 
     string memory json = Base64.encode(
-      bytes(
-        string(
           abi.encodePacked(
             '{"name": "',
             charAttributes.name,
@@ -204,11 +214,8 @@ contract MyEpicGame is ERC721, Ownable{
             Strings.toString(_tokenId),
             '", "description": "An epic NFT", "image": "ipfs://',
             charAttributes.imageURI,
-            '", "attributes": [ { "trait_type": "Health Points", "value": ',strHp,', "max_value":',strMaxHp,'}, { "trait_type": "Attack Damage", "value": ', strAttackDamage,'} ]}'
-            
+            '", "attributes": [ { "trait_type": "Health Points", "value": ',strHp,', "max_value":',strMaxHp,'}, { "trait_type": "Attack Damage", "value": ', strAttackDamage,'}, { "trait_type": "Levels", "value": "',charAttributes.levels,'"} ]}'
           )
-        )
-      )
     );
 
     string memory output = string(
@@ -260,6 +267,54 @@ contract MyEpicGame is ERC721, Ownable{
     console.log("%s attacked Boss. Boss hp: %s\n", player.name, bigBoss.hp);
     console.log("Boss attacked %s. %s hp: %s\n", player.name, player.name ,player.hp);
     emit AttackComplete(bigBoss.hp, player.hp);
+  }
+
+  /// @notice User with NFT can stake their character [Metadata Of NFT Changes Here]
+  /// @dev The Health of User's NFT is increased becuase of staking. [Metadata Of NFT Changes Here]
+  /// The user's address is used to get the NFT the user owns
+  /// Health of Hero is increased due to staking  
+  function stakeCharacter(uint _index) public {
+    // Get the state of the player's NFT.
+    uint256 nftTokenIdOfPlayer = nftHolders[msg.sender][_index];
+    stakeAttributes storage staked_asset = stakeInfo[nftTokenIdOfPlayer];
+    require(staked_asset.startTime == 0, "NFT Already Staked.");
+    CharacterAttributes storage player = nftHolderAttributes[nftTokenIdOfPlayer];
+    require(player.hp < player.maxHp, "Player Already Has Enough Hp");
+
+    staked_asset.startTime = block.timestamp;
+    // nftHolders[msg.sender][_index] = nftHolders[msg.sender][nftHolders[msg.sender].length - 1];
+    // nftHolders[msg.sender].pop();
+    
+    transferFrom(msg.sender, address(this), nftTokenIdOfPlayer);
+    emit AssetStaked(nftTokenIdOfPlayer, staked_asset.startTime);
+
+  }
+
+  /// @notice User with NFT can stake their character [Metadata Of NFT Changes Here]
+  /// @dev The Health of User's NFT is increased becuase of staking. [Metadata Of NFT Changes Here]
+  /// The user's address is used to get the NFT the user owns
+  /// Health of Hero is increased due to staking  
+  function unStakeCharacter(uint _index) public {
+    // Get the state of the player's NFT.
+    uint256 nftTokenIdOfPlayer = nftHolders[msg.sender][_index];
+    stakeAttributes storage staked_asset = stakeInfo[nftTokenIdOfPlayer];
+    require(staked_asset.startTime != 0, "NFT Is Not Staked.");
+    CharacterAttributes storage player = nftHolderAttributes[nftTokenIdOfPlayer];
+    
+    uint stakedTime = block.timestamp - staked_asset.startTime;
+    
+    player.hp = player.hp + (stakedTime/60);
+
+    if(player.hp >= player.maxHp){
+      player.hp = player.maxHp;
+    }
+
+    staked_asset.startTime = 0;
+
+    ERC721(address(this)).transferFrom(address(this), msg.sender, nftTokenIdOfPlayer);
+
+    emit AssetUnstaked(nftTokenIdOfPlayer, staked_asset.startTime, block.timestamp);
+
   }
 
 
