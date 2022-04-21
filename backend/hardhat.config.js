@@ -17,20 +17,31 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
   
 });
 
-function filterDuplicateFunctions(abiElement, index, fullAbi, fullyQualifiedName) {
+function filterDuplicateFunctions(abiElement, index, fullAbiL, fullyQualifiedName) {
+  if (["function", "event"].includes(abiElement.type)) {
+    const funcSignature = genSignature(abiElement.name, abiElement.inputs, abiElement.type);
+    if (elementSeenSet.has(funcSignature)) {
+      return false;
+    }
+    elementSeenSet.add(funcSignature);
+  } else if (abiElement.type === 'event') {
 
-  
-  if(abiElement.type !== "event") {
-    return false
   }
 
-  if(abiElement.name !== "approve") {
-    return false
-  }
-  
   return true;
 
 }
+
+const elementSeenSet = new Set();
+// filter out duplicate function signatures
+function genSignature(name, inputs, type) {
+  return `${type} ${name}(${inputs.reduce((previous, key) => 
+    {
+      const comma = previous.length ? ',' : '';
+      return previous + comma + key.internalType;
+    }, '' )})`;
+}
+
 
 // You need to export an object to set up your config
 // Go to https://hardhat.org/config/ to learn more
@@ -46,73 +57,74 @@ function filterDuplicateFunctions(abiElement, index, fullAbi, fullyQualifiedName
     name: "awesomeGame",
     include: ['Facet'],
     strict: true,
-    filter: function (abiElement, index, fullAbi, fullyQualifiedName) {
+    filter: filterDuplicateFunctions,
+    // filter: function (abiElement, index, fullAbi, fullyQualifiedName) {
 
-      if(abiElement.name === "Approval"){
-        return false;
-      }
+    //   if(abiElement.name === "Approval"){
+    //     return false;
+    //   }
 
-      if(abiElement.name === "ApprovalForAll"){
-        return false;
-      }
+    //   if(abiElement.name === "ApprovalForAll"){
+    //     return false;
+    //   }
 
-      if(abiElement.name === "Transfer"){
-        return false;
-      }
+    //   if(abiElement.name === "Transfer"){
+    //     return false;
+    //   }
 
-      if(abiElement.name === "approve"){
-        return false;
-      }
+    //   if(abiElement.name === "approve"){
+    //     return false;
+    //   }
 
-      if(abiElement.name === "getApproved"){
-        return false;
-      }
+    //   if(abiElement.name === "getApproved"){
+    //     return false;
+    //   }
 
-      if(abiElement.name === "isApprovedForAll"){
-        return false;
-      }
+    //   if(abiElement.name === "isApprovedForAll"){
+    //     return false;
+    //   }
 
-      if(abiElement.name === "setApprovalForAll"){
-        return false;
-      }
+    //   if(abiElement.name === "setApprovalForAll"){
+    //     return false;
+    //   }
 
-      if(abiElement.name === "supportsInterface"){
-        return false;
-      }
+    //   if(abiElement.name === "supportsInterface"){
+    //     return false;
+    //   }
 
-      if(abiElement.name === "balanceOf"){
-        return false;
-      }
+    //   if(abiElement.name === "balanceOf"){
+    //     return false;
+    //   }
 
-      if(abiElement.name === "ownerOf"){
-        return false;
-      }
+    //   if(abiElement.name === "ownerOf"){
+    //     return false;
+    //   }
 
-      if(abiElement.name === "safeTransferFrom"){
-        return false;
-      }
+    //   if(abiElement.name === "safeTransferFrom"){
+    //     return false;
+    //   }
 
-      if(abiElement.name === "transferFrom"){
-        return false;
-      }
+    //   if(abiElement.name === "transferFrom"){
+    //     return false;
+    //   }
 
-      if(abiElement.name === "name"){
-        return false;
-      }
+    //   if(abiElement.name === "name"){
+    //     return false;
+    //   }
 
-      if(abiElement.name === "symbol"){
-        return false;
-      }
+    //   if(abiElement.name === "symbol"){
+    //     return false;
+    //   }
 
-      if(abiElement.name === "tokenURI"){
-        return false;
-      }
+    //   if(abiElement.name === "tokenURI"){
+    //     return false;
+    //   }
 
-      console.log(abiElement);
+    //   console.log(abiElement);
 
-      return true;
+    //   return true;
       
-    },
+    // },
     
   },
 
