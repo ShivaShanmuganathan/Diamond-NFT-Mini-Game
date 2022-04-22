@@ -20,7 +20,7 @@ const transformCharacterData = (characterData) => {
     hp: characterData.hp.toNumber(),
     maxHp: characterData.maxHp.toNumber(),
     attackDamage: characterData.attackDamage.toNumber(),
-    
+    levels: characterData.levels    
   };
 };
 
@@ -109,35 +109,51 @@ describe('DiamondTest', async function () {
       let bossTxn = await dynamicGameFacet.getBigBoss();
       let result = transformCharacterData(bossTxn);
   
-      expect(result.name).to.equal("Thanos: The Mad Titan");
-      expect((result.hp).toString()).to.equal("10000");
-      expect((result.maxHp).toString()).to.equal("10000");
-      expect((result.attackDamage).toString()).to.equal("50");
+      expect(result.name).to.equal("THANOS");
+      expect((result.hp).toString()).to.equal("100000");
+      expect((result.maxHp).toString()).to.equal("100000");
+      expect((result.attackDamage).toString()).to.equal("150");
   
       const charactersTxn = await dynamicGameFacet.getAllDefaultCharacters();
       const characters = charactersTxn.map((characterData) => transformCharacterData(characterData));
       characters.forEach((character, index) => {
-      
+        // ["Jett", "Phoenix", "Neon", "Raze", "Reyna", "Yoru", "Breach", "KAY/O", "Skye", "Sova", "Astra", "Brimstone", "Omen", "Viper", "Cypher", "Sage"]
+        // [1000, 1250, 1100, 1400, 1500, 1450, 1700, 1800, 1950, 2000, 2100, 2500, 2400, 3000, 3500, 4000],
+        // [45, 30, 35, 25, 15, 20, 60, 55, 50, 45, 80, 75, 70, 65, 100, 90],
+
         if(index == 0){
-            expect(character.name).to.equal("Raze");
-            expect((character.hp).toString()).to.equal("100");
-            expect((character.maxHp).toString()).to.equal("100");
-            expect((character.attackDamage).toString()).to.equal("100");
+            expect(character.name).to.equal("Jett");
+            expect((character.hp).toString()).to.equal("1000");
+            expect((character.maxHp).toString()).to.equal("1000");
+            expect((character.attackDamage).toString()).to.equal("45");
+            expect(character.levels).to.equal("Duelists");
         }
         
         else if(index == 1){
             expect(character.name).to.equal("Phoenix");
-            expect((character.hp).toString()).to.equal("200");
-            expect((character.maxHp).toString()).to.equal("200");
-            expect((character.attackDamage).toString()).to.equal("50");
+            expect((character.hp).toString()).to.equal("1250");
+            expect((character.maxHp).toString()).to.equal("1250");
+            expect((character.attackDamage).toString()).to.equal("30");
+            expect(character.levels).to.equal("Duelists");
         }
   
         else if(index == 2){
-            expect(character.name).to.equal("Sage");
-            expect((character.hp).toString()).to.equal("400");
-            expect((character.maxHp).toString()).to.equal("400");
-            expect((character.attackDamage).toString()).to.equal("25");
+            expect(character.name).to.equal("Neon");
+            expect((character.hp).toString()).to.equal("1100");
+            expect((character.maxHp).toString()).to.equal("1100");
+            expect((character.attackDamage).toString()).to.equal("35");
+            expect(character.levels).to.equal("Duelists");
         }
+
+        else if(index == 3){
+          expect(character.name).to.equal("Raze");
+          expect((character.hp).toString()).to.equal("1400");
+          expect((character.maxHp).toString()).to.equal("1400");
+          expect((character.attackDamage).toString()).to.equal("25");
+          expect(character.levels).to.equal("Duelists");
+        }
+
+        
       });
   
       
@@ -158,13 +174,13 @@ describe('DiamondTest', async function () {
     // Minting Characters
     it('Should Mint Characters', async function () {
         
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < 16; i++) {
           await expect(dynamicGameFacet.connect(owner).mintCharacterNFT(i, {value: ethers.utils.parseEther("0.01")})).to.not.be.reverted; 
         }
 
     });
 
-    it('Should Fail To Mint If Amount Is Not Exact', async function () {
+    it('Should Fail To Mint If Amount Is Low', async function () {
       
       await expect(dynamicGameFacet.connect(addr1).mintCharacterNFT(0, {value: ethers.utils.parseEther("0.005")})).to.be.reverted; 
       await expect(dynamicGameFacet.connect(addr1).mintCharacterNFT(0, {value: ethers.utils.parseEther("0.002")})).to.be.reverted; 
@@ -261,7 +277,7 @@ describe('DiamondTest', async function () {
     // fail since account has not an NFT
     it('should fail to attack boss since account does not have an NFT  ', async function() {
       
-      await expect(dynamicGameFacet.connect(addr2).attackBoss()).to.be.reverted;
+      await expect(dynamicGameFacet.connect(addr2).attackBoss(0)).to.be.reverted;
 
     });
 
@@ -269,7 +285,7 @@ describe('DiamondTest', async function () {
     it('should attack boss', async function() {
 
       // await expect(myEpicContract.connect(owner).mintCharacterNFT(0, {value: ethers.utils.parseEther("0.1")})).to.not.be.reverted; 
-      await expect(dynamicGameFacet.connect(owner).attackBoss()).to.not.be.reverted;
+      await expect(dynamicGameFacet.connect(owner).attackBoss(0)).to.not.be.reverted;
 
     });
 
@@ -280,7 +296,7 @@ describe('DiamondTest', async function () {
 
       // Player1 Stats before Attack
       let player1_token = await dynamicGameFacet.connect(addr1).nftHolders(addr1.address);
-      let player1_char_beforeAttack = await dynamicGameFacet.connect(addr1).nftHolderAttributes(player1_token);
+      let player1_char_beforeAttack = await dynamicGameFacet.connect(addr1).nftHolderAttributes(player1_token[0]);
       let player1_hp = transformCharacterData(player1_char_beforeAttack).hp;
       let player1_attack = transformCharacterData(player1_char_beforeAttack).attackDamage;
       
@@ -291,10 +307,10 @@ describe('DiamondTest', async function () {
       let boss_attack = beforeAttackResult.attackDamage;
 
       // ATTACK NOW!
-      await expect(dynamicGameFacet.connect(addr1).attackBoss()).to.not.be.reverted;
+      await expect(dynamicGameFacet.connect(addr1).attackBoss(0)).to.not.be.reverted;
 
       //Check Player Hp After Attack
-      let player1_char_afterAttack = await dynamicGameFacet.connect(addr1).nftHolderAttributes(player1_token);
+      let player1_char_afterAttack = await dynamicGameFacet.connect(addr1).nftHolderAttributes(player1_token[0]);
       let player1_hp_afterAttack = transformCharacterData(player1_char_afterAttack).hp;
       expect(player1_hp_afterAttack).to.equal(player1_hp - boss_attack);
 
@@ -319,17 +335,18 @@ describe('DiamondTest', async function () {
     // checkIfUserHasNFT
     it('should check if user has NFT', async function() {
         
-        let result = await dynamicGameFacet.connect(owner).checkIfUserHasNFT();
-        expect((result.name).toString()).to.not.be.equal('');
+        let result = await dynamicGameFacet.connect(owner).checkIfUserHasNFT();        
+        expect(result.length).to.not.be.equal(0);
+        expect((transformCharacterData(result[0]).name).toString()).to.not.be.equal('');
 
     });
 
     // checkIfUserHasNFT
     it('should fail since user does not have NFT', async function() {
 
-      let result = await dynamicGameFacet.connect(addr2).checkIfUserHasNFT();
-      expect((result.name).toString()).to.be.equal('');
-
+      let result = await dynamicGameFacet.connect(addr2).checkIfUserHasNFT();      
+      expect(result.length).to.be.equal(0);
+      
     });
 
   });
@@ -353,14 +370,14 @@ describe('DiamondTest', async function () {
           ownersList.push(await dynamicGameFacet.ownerOf(i)); 
         }
         
-        ownersList.forEach((element) => {
-          console.log(element);
+        ownersList.forEach((element, index) => {
+          console.log("TokenID", index+1 ,"Owner Address", element);
         });
         
     });
 
 
   });
-
+  
 
 })
