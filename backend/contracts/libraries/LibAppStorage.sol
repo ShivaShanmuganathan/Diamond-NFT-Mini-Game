@@ -19,6 +19,7 @@ library AppConstants{
         uint hp;
         uint maxHp;
         uint attackDamage;
+        string levels;
     }
 
     // We create a struct to keep track of bigBoss's attributes
@@ -65,17 +66,11 @@ struct AppStorage {
     BigBoss bigBoss;
     // A mapping from an address => the NFTs tokenId. Gives me an ez way
     // to store the owner of the NFT and reference it later.
-    mapping(address => uint256) nftHolders;
+    mapping(address => uint256[]) nftHolders;
     // A fee to mint the Characterrs. 
     uint256 fee;
     uint256 _status;
-
-    uint256 isSaleStarted;
     string baseUri;
-
-    // mapping(uint256 => IRentablePixel.RentData[]) RentStorage;
-    mapping(address => uint256) totalLockedValueByAddress;
-    uint256 totalLockedValue;
 
 }
 

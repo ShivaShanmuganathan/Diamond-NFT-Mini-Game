@@ -30,9 +30,9 @@ contract DynamicGameFacet is ERC721Diamond {
   // Data is passed in to the contract when it's first created initializing the characters.
   // We're going to actually pass these values in from from run.js.
   
-//     /// @notice Update Fee to mint the NFTs
-//     /// @dev Only the contract owner will be able to update the minting fee
-//     /// @param _fee The updated fee is passed by contract owner
+    /// @notice Update Fee to mint the NFTs
+    /// @dev Only the contract owner will be able to update the minting fee
+    /// @param _fee The updated fee is passed by contract owner
     function updateFee(uint256 _fee) external {
 
         LibDiamond.enforceIsContractOwner();
