@@ -52,6 +52,7 @@ describe('DiamondTest', async function () {
   })
 
   it('facets should have the right function selectors -- call to facetFunctionSelectors function', async () => {
+    
     let selectors = getSelectors(diamondCutFacet)
     result = await diamondLoupeFacet.facetFunctionSelectors(addresses[0])
     assert.sameMembers(result, selectors)
@@ -61,6 +62,7 @@ describe('DiamondTest', async function () {
     selectors = getSelectors(ownershipFacet)
     result = await diamondLoupeFacet.facetFunctionSelectors(addresses[2])
     assert.sameMembers(result, selectors)
+
   })
 
   it('selectors should be associated to facets correctly -- multiple calls to facetAddress function', async () => {
@@ -289,6 +291,14 @@ describe('DiamondTest', async function () {
 
     });
 
+    // attackBoss after minting NFT
+    it('should attack boss with another character', async function() {
+
+      // await expect(myEpicContract.connect(owner).mintCharacterNFT(0, {value: ethers.utils.parseEther("0.1")})).to.not.be.reverted; 
+      await expect(dynamicGameFacet.connect(owner).attackBoss(5)).to.not.be.reverted;
+
+    });
+
     // attackBoss & check Stats
     it('should mint NFT & Attacks Boss, Both Boss & Player incur damages', async function() {
       
@@ -378,6 +388,132 @@ describe('DiamondTest', async function () {
 
 
   });
+
+  describe('Test StakeNFTFacet Facet()', function () { 
+
+    it('should deploy StakeNFTFacet & add functions to facets', async () => {
+      const StakeNFTFacet = await ethers.getContractFactory('StakeNFTFacet')
+      const stakeNFTFacet = await StakeNFTFacet.deploy()
+      await stakeNFTFacet.deployed()
+      addresses.push(stakeNFTFacet.address)
+      const selectors = getSelectors(stakeNFTFacet)
+      tx = await diamondCutFacet.diamondCut(
+        [{
+          facetAddress: stakeNFTFacet.address,
+          action: FacetCutAction.Add,
+          functionSelectors: selectors
+        }],
+        ethers.constants.AddressZero, '0x', { gasLimit: 800000 })
+      receipt = await tx.wait()
+      if (!receipt.status) {
+        throw Error(`Diamond upgrade failed: ${tx.hash}`)
+      }
+      result = await diamondLoupeFacet.facetFunctionSelectors(stakeNFTFacet.address)
+      assert.sameMembers(result, selectors)
+    })
+
+    // Fetch stakeNFTFacet
+    it('Should Fetch stakeNFTFacet', async function () {
+
+      stakeNFTFacet = await ethers.getContractAt('StakeNFTFacet', diamondAddress)
+
+    });
+
+    it('Should test staking NFT index 5', async () => {
+      // const stakeNFTFacet = await ethers.getContractAt('StakeNFTFacet', diamondAddress)
+      console.log("Address of Token Owner", owner.address)
+      const tokenID = (await dynamicGameFacet.nftHolders(owner.address))[5];
+      await dynamicGameFacet.approve(stakeNFTFacet.address, tokenID);      
+      await stakeNFTFacet.connect(owner).stakeCharacter(5, dynamicGameFacet.address)
+    })
+
+    it('Should test staking NFT index 0', async () => {
+      // const stakeNFTFacet = await ethers.getContractAt('StakeNFTFacet', diamondAddress)
+      console.log("Address of Token Owner", owner.address)
+      const tokenID = (await dynamicGameFacet.nftHolders(owner.address))[0];
+      await dynamicGameFacet.approve(stakeNFTFacet.address, tokenID);      
+      await stakeNFTFacet.connect(owner).stakeCharacter(0, dynamicGameFacet.address)
+    })
+
+    it("Increase Time By 30 Mins", async function() {
+    
+      await ethers.provider.send('evm_increaseTime', [1800]);
+      await ethers.provider.send('evm_mine');
+      console.log("~~~~~~~~~~~~~~~~~~~~~~~ TIME INCREASED ~~~~~~~~~~~~~~~~~~~~~~~")
+      console.log();
+      
+    })
+
+    it('Should test startTime NFT index 5', async () => {
+      
+      console.log("Staking Start Time", (await stakeNFTFacet.connect(owner).getStartTime(5, dynamicGameFacet.address)).toString() )
+      
+    })
+
+    it('Should test unstaking NFT index 5', async () => {
+      
+      let tokenID = (await dynamicGameFacet.nftHolders(owner.address))[5];
+
+      let result = await dynamicGameFacet.nftHolderAttributes(tokenID);
+      result = transformCharacterData(result);
+      console.log("Hp of character",result.hp)
+
+
+      console.log("Owner of Token ID during staking",await dynamicGameFacet.ownerOf(tokenID)); 
+      
+      await stakeNFTFacet.connect(owner).unStakeCharacter(5, dynamicGameFacet.address)
+      console.log("Owner of Token ID after staking",await dynamicGameFacet.ownerOf(tokenID));      
+
+      let result2 = await dynamicGameFacet.nftHolderAttributes(tokenID);
+      result2 = transformCharacterData(result2);
+      console.log("Hp of character after staking",result2.hp)
+
+    })
+
+    it('Should test startTime NFT index 5', async () => {
+      
+      console.log("Staking Start Time After Staking Complete", (await stakeNFTFacet.connect(owner).getStartTime(5, dynamicGameFacet.address)).toString() )
+      
+    })
+
+    it("Increase Time By 150 mins", async function() {
+    
+      await ethers.provider.send('evm_increaseTime', [150*60]);
+      await ethers.provider.send('evm_mine');
+      console.log("~~~~~~~~~~~~~~~~~~~~~~~ TIME INCREASED ~~~~~~~~~~~~~~~~~~~~~~~")
   
+      
+      console.log();
+      
+    })
+
+    it('Should test unstaking NFT index 0', async () => {
+      
+      let tokenID = (await dynamicGameFacet.nftHolders(owner.address))[0];
+
+      let result = await dynamicGameFacet.nftHolderAttributes(tokenID);
+      result = transformCharacterData(result);
+      console.log("Hp of character",result.hp)
+
+
+      console.log("Owner of Token ID during staking",await dynamicGameFacet.ownerOf(tokenID)); 
+      
+      await stakeNFTFacet.connect(owner).unStakeCharacter(0, dynamicGameFacet.address)
+      console.log("Owner of Token ID after staking",await dynamicGameFacet.ownerOf(tokenID));      
+
+      let result2 = await dynamicGameFacet.nftHolderAttributes(tokenID);
+      result2 = transformCharacterData(result2);
+      console.log("Hp of character after staking",result2.hp)
+
+    })
+
+    
+
+
+
+
+
+
+  });  
 
 })
