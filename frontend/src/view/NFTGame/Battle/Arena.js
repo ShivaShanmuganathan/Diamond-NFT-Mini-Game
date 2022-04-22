@@ -6,7 +6,8 @@ import { Button } from "../../../components/CommonComponents";
 import BossCard from "./BossCard";
 import useMediaQuery from "use-mediaquery";
 import { NFTGAME_CONTRACT_ADDRESS, transformCharacterData } from "../../../utils/constants";
-import myEpicGame from '../../../utils/MyEpicGame.json'
+import myEpicGame from '../../../utils/MyEpicGame.json';
+import awesomeGame from '../../../utils/awesomeGame.json';
 import CharacterCard from "./CharacterCard";
 
 const Arena = ({ characterNFT, setCharacterNFT, setAttackCharacter, attackCharacter }) => {
@@ -42,7 +43,7 @@ const Arena = ({ characterNFT, setCharacterNFT, setAttackCharacter, attackCharac
             const signer = provider.getSigner()
             const gameContract = new ethers.Contract(
                 NFTGAME_CONTRACT_ADDRESS,
-                myEpicGame.abi,
+                awesomeGame.abi,
                 signer
             )
             setGameContract(gameContract)

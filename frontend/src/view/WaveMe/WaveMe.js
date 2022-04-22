@@ -131,7 +131,7 @@ function WaveMe(props) {
             ) : (
                 <Flex flexDirection={isMobile && 'column'} justifyContent='center' alignItems='center' mt={isMobile ? 30 : -50}>
                     <Flex justifyContent='center' flexDirection='column' alignItems='center' className="container-n wave-interface" mr={isMobile ? 0 : 30}>
-                        <Text fontSize="30px" bold>👋 Wave to Adan</Text>
+                        <Text fontSize="30px" bold>👋 Wave to Shiva</Text>
                         <lottie-player
                             autoplay
                             loop

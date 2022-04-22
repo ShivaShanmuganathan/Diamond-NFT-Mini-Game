@@ -23,7 +23,7 @@ function Sidebar(props) {
                 <Menu iconShape='circle'>
                     <MenuItem icon={<Icon icon="flat-color-icons:home" fontSize='20px' />} onClick={() => { navigate("/") }}>Home</MenuItem>
                     <MenuItem icon={<Icon icon="noto:water-wave" fontSize='20px' />} onClick={() => { navigate("/wave") }}>WaveMe</MenuItem>
-                    <MenuItem icon={<Icon icon="flat-color-icons:picture" fontSize='20px' />} onClick={() => { navigate("/mint") }}>MintNFT</MenuItem>
+                    {/* <MenuItem icon={<Icon icon="flat-color-icons:picture" fontSize='20px' />} onClick={() => { navigate("/mint") }}>MintNFT</MenuItem> */}
                     <SubMenu title="NFT Game" icon={<Icon icon="noto:video-game" fontSize='20px' />} className="react-slidedown pro-inner-list-item">
                         <MenuItem icon={<Icon icon="noto:joystick" fontSize='20px' />} onClick={() => { navigate("/nftch") }}>Choose Character</MenuItem>
                         <MenuItem icon={<Icon icon="twemoji:crossed-swords" fontSize='20px' />} onClick={() => { navigate("/nftbattle") }}>Battle</MenuItem>

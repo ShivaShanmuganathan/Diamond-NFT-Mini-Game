@@ -12,7 +12,7 @@ import "../libraries/LibDiamond.sol";
 // Structs imported from AppStorage
 import {CharacterAttributes, BigBoss} from "../libraries/LibAppStorage.sol";
 // Hardhat Console Debugging Easy
-// import "hardhat/console.sol";
+import "hardhat/console.sol";
 
 
 // @title NFT Based Mini Game

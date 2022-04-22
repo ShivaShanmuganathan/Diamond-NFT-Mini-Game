@@ -6,7 +6,8 @@ import useMediaQuery from "use-mediaquery";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Autoplay } from "swiper";
 import Card from './Card';
-import myEpicGame from '../../../utils/MyEpicGame.json'
+import myEpicGame from '../../../utils/MyEpicGame.json';
+import awesomeGame from '../../../utils/awesomeGame.json';
 import { NFTGAME_CONTRACT_ADDRESS, transformCharacterData } from '../../../utils/constants';
 import "swiper/swiper.min.css";
 import "swiper/components/navigation/navigation.min.css";
@@ -25,7 +26,7 @@ const SelectCharacter = ({ setCharacterNFT }) => {
             const signer = provider.getSigner();
             const gameContract = new ethers.Contract(
                 NFTGAME_CONTRACT_ADDRESS,
-                myEpicGame.abi,
+                awesomeGame.abi,
                 signer
             );
             setGameContract(gameContract);

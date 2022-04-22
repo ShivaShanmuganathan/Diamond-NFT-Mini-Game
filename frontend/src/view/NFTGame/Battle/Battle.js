@@ -6,7 +6,8 @@ import useMediaQuery from "use-mediaquery";
 import Arena from "./Arena";
 import { WalletConnect } from "../../../components/Gadget";
 import { NFTGAME_CONTRACT_ADDRESS, transformCharacterData } from "../../../utils/constants";
-import myEpicGame from '../../../utils/MyEpicGame.json'
+import myEpicGame from '../../../utils/MyEpicGame.json';
+import awesomeGame from '../../../utils/awesomeGame.json';
 import Empty from '../../../components/Gadget/Empty'
 import './battle.scss'
 
@@ -25,7 +26,7 @@ function Battle(props) {
             const signer = provider.getSigner();
             const gameContract = new ethers.Contract(
                 NFTGAME_CONTRACT_ADDRESS,
-                myEpicGame.abi,
+                awesomeGame.abi,
                 signer
             );
 

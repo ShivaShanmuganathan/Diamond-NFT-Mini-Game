@@ -1,4 +1,4 @@
-const NFTGAME_CONTRACT_ADDRESS = "0x2B085765C520Fea6F8D3f65D37ae203C66C23868"
+const NFTGAME_CONTRACT_ADDRESS = "0xc50B8E1a9114D0DDCbefEB0BcA6729E922E06ba0"
 
 const transformCharacterData = (characterData) => {
     return {

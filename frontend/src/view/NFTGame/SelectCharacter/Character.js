@@ -6,7 +6,8 @@ import useMediaQuery from "use-mediaquery";
 import { WalletConnect } from "../../../components/Gadget";
 import { NFTGAME_CONTRACT_ADDRESS, transformCharacterData } from "../../../utils/constants";
 import SelectCharacter from "./SelectCharacter";
-import myEpicGame from '../../../utils/MyEpicGame.json'
+import myEpicGame from '../../../utils/MyEpicGame.json';
+import awesomeGame from '../../../utils/awesomeGame.json';
 import './selectcharacter.scss'
 
 function Character(props) {
@@ -23,7 +24,7 @@ function Character(props) {
             const signer = provider.getSigner();
             const gameContract = new ethers.Contract(
                 NFTGAME_CONTRACT_ADDRESS,
-                myEpicGame.abi,
+                awesomeGame.abi,
                 signer
             );
 

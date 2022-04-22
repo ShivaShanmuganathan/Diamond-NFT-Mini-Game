@@ -19,8 +19,8 @@ function Home(props) {
             <Flex justifyContent='center' alignItems='center' flexDirection={isMobile ? 'column' : 'row'}>
                 <WaveMe />
                 <Flex m={10} />
-                <MintNFT />
-                <Flex m={10} />
+                {/* <MintNFT /> */}
+                {/* <Flex m={10} /> */}
                 <NFTGame />
             </Flex>
         </Flex >

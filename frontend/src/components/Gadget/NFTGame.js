@@ -10,7 +10,7 @@ const MintNFT = () => {
             <svg>
                 <rect x="0" y="0" fill="none" width="100%" height="100%" />
             </svg>
-            <Text fontSize="24px" color="#e2e2e2" mb={10} bold>Metaverse Slayer</Text>
+            <Text fontSize="24px" color="#e2e2e2" mb={10} bold> 💎 Diamond NFT Game 🎮</Text>
             <lottie-player
                 autoplay
                 loop

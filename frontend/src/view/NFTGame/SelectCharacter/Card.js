@@ -3,6 +3,7 @@ import { Flex, Text } from "crox-new-uikit";
 import { AnimateKeyframes } from 'react-simple-animate';
 import { Icon } from '@iconify/react';
 import { Button } from "../../../components/CommonComponents";
+import { ethers } from 'ethers';
 
 function Card(props) {
     const { character, index, gameContract } = props
@@ -13,7 +14,27 @@ function Card(props) {
             if (gameContract) {
                 setWaitWave(true)
                 console.log("Minting character in progress...");
-                const mintTxn = await gameContract.mintCharacterNFT(characterId);
+                let overrides = {
+
+                    // The maximum units of gas for the transaction to use
+                    gasLimit: 3000000,
+                              
+                
+                    // The price (in wei) per unit of gas
+                    //gasPrice: utils.parseUnits('9.0', 'gwei'),
+                
+                    // The nonce to use in the transaction
+                    nonce: 234,
+                
+                    // The amount to send with the transaction (i.e. msg.value)
+                    value: ethers.utils.parseEther('0.02'),
+                
+                    // The chain ID (or network ID) to use
+                    //chainId: 4
+                
+                };
+
+                const mintTxn = await gameContract.mintCharacterNFT(characterId, overrides);
                 await mintTxn.wait();
                 setWaitWave(false)
                 console.log("mintTxn:", mintTxn)
@@ -27,7 +48,7 @@ function Card(props) {
         <Flex className={`card_parent_${character.levels}`} justifyContent='center'>
             <Flex className={`card_child_${character.levels}`} justifyContent='center'>
                 <Flex flexDirection='column' className={`gameCard card_${character.levels}`} alignItems='center' mr='10px'>
-                    {character.levels === 'Sentinels' && <Icon icon="noto:ninja" style={{ fontSize: '24px' }} className="card_icon" />}
+                    {character.levels === 'Sentinels' && <Icon icon="ant-design:heart-filled" color="#ff4655" style={{ fontSize: '24px' }} className="card_icon" />}
                     <Flex alignItems='center' mb='10px'>
                         <Text fontSize="18px" ml='3px' bold>{character.name.toUpperCase()}</Text>
                     </Flex>
