@@ -27,6 +27,7 @@ contract DiamondInit {
       string[] memory characterImageURIs,
       uint[] memory characterHp,
       uint[] memory characterAttackDmg,
+      string[] memory characterLevels,
       string memory bossName, 
       string memory bossImageURI,
       uint bossHp,
@@ -65,7 +66,8 @@ contract DiamondInit {
             imageURI: characterImageURIs[i],
             hp: characterHp[i],
             maxHp: characterHp[i],
-            attackDamage: characterAttackDmg[i]
+            attackDamage: characterAttackDmg[i],
+            levels: characterLevels[i]
           }));
 
         }
