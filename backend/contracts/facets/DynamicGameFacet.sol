@@ -58,15 +58,15 @@ contract DynamicGameFacet is ERC721Diamond {
       imageURI: s.defaultCharacters[_characterIndex].imageURI,
       hp: s.defaultCharacters[_characterIndex].hp,
       maxHp: s.defaultCharacters[_characterIndex].hp,
-      attackDamage: s.defaultCharacters[_characterIndex].attackDamage
+      attackDamage: s.defaultCharacters[_characterIndex].attackDamage,
+      levels: s.defaultCharacters[_characterIndex].levels
       
     });
 
     console.log("Minted NFT w/ tokenId %s and characterIndex %s", newItemId, _characterIndex);  
 
-    s.nftHolders[msg.sender] = newItemId;
+    s.nftHolders[msg.sender].push(newItemId);
     s.totalTokens = newItemId;
-
     s._tokenIds += 1;
     
     emit CharacterNFTMinted(msg.sender, newItemId, _characterIndex);
@@ -86,24 +86,18 @@ contract DynamicGameFacet is ERC721Diamond {
     string memory strHp = Strings.toString(charAttributes.hp);
     string memory strMaxHp = Strings.toString(charAttributes.maxHp);
     string memory strAttackDamage = Strings.toString(charAttributes.attackDamage);
-    
-    
 
     string memory json = Base64.encode(
-      bytes(
-        string(
-          abi.encodePacked(
-            '{"name": "',
-            charAttributes.name,
-            ' -- NFT #: ',
-            Strings.toString(_tokenId),
-            '", "description": "An epic NFT", "image": "ipfs://',
-            charAttributes.imageURI,
-            '", "attributes": [ { "trait_type": "Health Points", "value": ',strHp,', "max_value":',strMaxHp,'}, { "trait_type": "Attack Damage", "value": ', strAttackDamage,'} ]}'
-            
-          )
+
+        abi.encodePacked(
+          '{"name": "',
+          charAttributes.name,
+          ' -- NFT #: ',
+          Strings.toString(_tokenId),
+          '", "description": "An epic NFT", "image": "ipfs://',
+          charAttributes.imageURI,
+          '", "attributes": [ { "trait_type": "Health Points", "value": ',strHp,', "max_value":',strMaxHp,'}, { "trait_type": "Attack Damage", "value": ', strAttackDamage,'}, { "trait_type": "Levels", "value": "',charAttributes.levels,'"} ]}'          
         )
-      )
     );
 
     string memory output = string(
@@ -118,10 +112,12 @@ contract DynamicGameFacet is ERC721Diamond {
   /// @dev The Health of Boss & User's NFT is reduced becuase of attack. [Metadata Of NFT Changes Here]
   /// The user's address is used to get the NFT the user owns
   /// Health of Boss & Hero is reduced due to fight  
-  function attackBoss() public {
+  function attackBoss(uint _index) public {
     // Get the state of the player's NFT.
-    uint256 nftTokenIdOfPlayer = s.nftHolders[msg.sender];
+    
+    uint256 nftTokenIdOfPlayer = s.nftHolders[msg.sender][_index];
     CharacterAttributes storage player = s.nftHolderAttributes[nftTokenIdOfPlayer];
+
     console.log("\nPlayer w/ character %s about to attack. Has %s HP and %s AD", player.name, player.hp, player.attackDamage);
     console.log("Boss %s has %s HP and %s AD", s.bigBoss.name, s.bigBoss.hp, s.bigBoss.attackDamage);
     // Make sure the player has more than 0 HP.
@@ -163,19 +159,24 @@ contract DynamicGameFacet is ERC721Diamond {
   /// @return A struct containing the Token's Attributes are returned 
   /// The address of message sender is used to get the tokenId
   //// The tokenId is then used to get the attributes of NFT 
-  function checkIfUserHasNFT() public view returns (CharacterAttributes memory) {
+  function checkIfUserHasNFT() public view returns (CharacterAttributes[] memory) {
+    
+    uint[] memory nftArray = s.nftHolders[msg.sender];
 
-    // Get the tokenId of the user's character NFT
-    uint256 nftTokenIdOfPlayer = s.nftHolders[msg.sender];
-
-    // Using tokenId to get Token Attributes
-    if (nftTokenIdOfPlayer > 0) {
-      return s.nftHolderAttributes[nftTokenIdOfPlayer];
-    }
-    else{
-      CharacterAttributes memory emptyStruct;
+    if(nftArray.length == 0){
+      CharacterAttributes[] memory emptyStruct;
       return emptyStruct;
     }
+
+    CharacterAttributes[] memory charArray = new CharacterAttributes[](nftArray.length);
+
+    for(uint i=0; i<nftArray.length; i++){
+
+        charArray[i] = s.nftHolderAttributes[nftArray[i]];
+
+    }
+
+    return charArray;
 
   }
   
@@ -209,10 +210,10 @@ contract DynamicGameFacet is ERC721Diamond {
 
   }
 
-  /// @notice View function to get tokenID of user
-  /// @dev external view function that returns tokenID
-  /// @return val is a tokenID of the user as uint
-  function nftHolders(address user) external view returns(uint256 val) {
+  /// @notice View function to get tokenIDs of user
+  /// @dev external view function that returns all tokenIDs of user
+  /// @return val is an array of tokenIDs owner by the user
+  function nftHolders(address user) external view returns(uint256[] memory val) {
 
     return LibERC721.getNFTHolders(user);
 

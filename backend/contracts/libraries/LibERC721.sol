@@ -60,7 +60,7 @@ library LibERC721 {
     }
 
 
-    function getNFTHolders(address user) internal view returns(uint256 val) {
+    function getNFTHolders(address user) internal view returns(uint256[] memory val) {
         
         AppStorage storage s = LibAppStorage.diamondStorage();
         val = s.nftHolders[user];
