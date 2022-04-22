@@ -1,0 +1,130 @@
+.card_group {
+    margin-top: 30px;
+    max-height: 80vh;
+    padding: 50px;
+    border-radius: 20px;
+    overflow: auto;
+    background-color: rgba(255, 255, 255, 0.03);
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+.gameCard {
+    width: 180px;
+    height: auto;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+    position: relative;
+    img {
+        width: 130px;
+    }
+}
+
+.card_parent_Controllers {
+    border: 1px solid #2f80ed;
+    padding: 1px;
+    margin-right: 10px;
+    border-radius: 10px;
+    width: fit-content;
+}
+
+.card_child_Controllers {
+    border: 1px solid #2f80ed;
+    padding: 2px;
+    border-radius: 10px;
+}
+
+.card_parent_Sentinels {
+    border: 1px solid #8e2de2;
+    padding: 1px;
+    margin-right: 10px;
+    border-radius: 10px;
+}
+
+.card_child_Sentinels {
+    border: 1px solid #8e2de2;
+    background-color: transparent !important;
+    padding: 2px;
+    border-radius: 10px;
+}
+
+.card_Duelists {
+    background-color: #ffe9e9;
+    color: #382b22;
+    border: 3px solid pink;
+}
+
+.card_Initiators {
+    background: #f12711;
+    background: -webkit-linear-gradient(to left, #f5af19, #f12711);
+    background: linear-gradient(to left, #f5af19, #f12711);
+    border: 2px solid orange;
+}
+
+.card_Controllers {
+    background: #56ccf2;
+    background: -webkit-linear-gradient(to bottom, #2f80ed, #56ccf2);
+    background: linear-gradient(to bottom, #2f80ed, #56ccf2);
+    border: solid 2px transparent;
+    position: relative;
+    background-clip: padding-box;
+    margin-right: 0 !important;
+    color: aqua;
+    text-shadow: 0px 0px 10px #00bbff, 0px 0px 15px #00bbff, 0px 0px 30px #00bbff99;
+}
+
+.card_Controllers::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    margin: -2px;
+    border-radius: 10px;
+}
+
+.card_Sentinels {
+    background: #8e2de2;
+    background: -webkit-linear-gradient(to left, #4a00e0, #8e2de2);
+    background: linear-gradient(to left, #4a00e0, #8e2de2);
+    border: solid 2px transparent;
+    position: relative;
+    background-clip: padding-box;
+    margin-right: 0 !important;
+    color: white;
+    text-shadow: 0px 0px 10px #ffffff, 0px 0px 15px #ffffff, 0px 0px 30px #cbb1ff;
+}
+
+.card_Sentinels::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    margin: -2px;
+    border-radius: 10px;
+}
+
+.card_icon {
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    border-radius: 50%;
+}
+
+@media screen and (max-width: 600px) {
+    .card_group {
+        padding: 20px 30px;
+        margin: 30px 10px 10px;
+    }
+    .gameCard {
+        width: 250px;
+    }
+    .card_parent_Controllers {
+        margin-left: 10px;
+    }
+}

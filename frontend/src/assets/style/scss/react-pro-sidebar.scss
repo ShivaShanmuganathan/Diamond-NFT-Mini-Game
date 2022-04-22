@@ -1,0 +1,31 @@
+.proSidebar {
+    height: 100vh !important;
+    &__header {
+        padding: 10px 0;
+        display: flex;
+        justify-content: center;
+        &__logo {
+            width: 100px;
+            transition: 0.3s;
+        }
+    }
+    &__collapseBtn {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        right: 0px;
+        bottom: 13px;
+        background-color: transparent;
+    }
+    .relative {
+        position: inherit;
+    }
+}
+
+.img-size-75 {
+    width: 75px;
+}
+
+.pro-sidebar .pro-menu > ul > .pro-sub-menu > .pro-inner-list-item {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}

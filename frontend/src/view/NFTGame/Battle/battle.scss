@@ -1,0 +1,75 @@
+.bossCard {
+    width: 330px;
+    border-radius: 50%;
+    background-color: #ffffff08;
+    height: 330px;
+    position: relative;
+    cursor: pointer;
+    &__img {
+        box-shadow: none;
+        z-index: 10;
+        img {
+            width: 190px !important;
+            height: auto;
+        }
+    }
+    .waveify {
+        position: absolute;
+        border-radius: 50%;
+        z-index: -5;
+    }
+}
+
+.bossName {
+    color: grey;
+    position: absolute;
+    opacity: 0.2;
+    z-index: 12;
+    text-transform: uppercase;
+}
+
+.bossCard_border {
+    border: 1px solid rgba(255, 255, 255, 0.075);
+    padding: 2px;
+    border-radius: 50%;
+    width: fit-content;
+}
+
+.progressBar {
+    width: 390px;
+}
+
+.progressBarCharacter {
+    width: 300px;
+}
+
+.CharacterCard {
+    width: 245px;
+    border-radius: 50%;
+    background-color: #ffffff08;
+    height: 245px;
+    position: relative;
+    cursor: pointer;
+    &__img {
+        box-shadow: none;
+        z-index: 10;
+        img {
+            width: 140px !important;
+            height: auto;
+        }
+    }
+    .waveify {
+        position: absolute;
+        border-radius: 50%;
+        z-index: -5;
+    }
+}
+
+.sword_battle {
+    cursor: pointer;
+    transition: transform 1s;
+}
+
+.sword_battle:hover {
+    transform: scale3d(1.1, 1.1, 1.1);
+}

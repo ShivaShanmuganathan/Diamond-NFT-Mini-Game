@@ -1,0 +1,5 @@
+@media screen and (max-width: 600px) {
+    .mobile-home {
+        margin-top: 100px !important;
+    }
+}
