@@ -112,11 +112,12 @@ contract DynamicGameFacet is ERC721Diamond {
   /// @dev The Health of Boss & User's NFT is reduced becuase of attack. [Metadata Of NFT Changes Here]
   /// The user's address is used to get the NFT the user owns
   /// Health of Boss & Hero is reduced due to fight  
-  function attackBoss(uint _index) public {
+  function attackBoss(uint tokenID) public {
     // Get the state of the player's NFT.
     
-    uint256 nftTokenIdOfPlayer = s.nftHolders[msg.sender][_index];
-    CharacterAttributes storage player = s.nftHolderAttributes[nftTokenIdOfPlayer];
+    // uint256 nftTokenIdOfPlayer = s.nftHolders[msg.sender][_index];
+    require(s._owners[tokenID] == msg.sender, "Not NFT Owner");
+    CharacterAttributes storage player = s.nftHolderAttributes[tokenID];
 
     console.log("\nPlayer w/ character %s about to attack. Has %s HP and %s AD", player.name, player.hp, player.attackDamage);
     console.log("Boss %s has %s HP and %s AD", s.bigBoss.name, s.bigBoss.hp, s.bigBoss.attackDamage);

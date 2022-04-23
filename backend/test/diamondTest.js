@@ -287,15 +287,16 @@ describe('DiamondTest', async function () {
     it('should attack boss', async function() {
 
       // await expect(myEpicContract.connect(owner).mintCharacterNFT(0, {value: ethers.utils.parseEther("0.1")})).to.not.be.reverted; 
-      await expect(dynamicGameFacet.connect(owner).attackBoss(0)).to.not.be.reverted;
+      let tokenID = (await dynamicGameFacet.connect(owner).nftHolders(owner.address))[0];
+      await expect(dynamicGameFacet.connect(owner).attackBoss(tokenID)).to.not.be.reverted;
 
     });
 
     // attackBoss after minting NFT
     it('should attack boss with another character', async function() {
 
-      // await expect(myEpicContract.connect(owner).mintCharacterNFT(0, {value: ethers.utils.parseEther("0.1")})).to.not.be.reverted; 
-      await expect(dynamicGameFacet.connect(owner).attackBoss(5)).to.not.be.reverted;
+      let tokenID = (await dynamicGameFacet.connect(owner).nftHolders(owner.address))[5];
+      await expect(dynamicGameFacet.connect(owner).attackBoss(tokenID)).to.not.be.reverted;
 
     });
 
@@ -317,7 +318,8 @@ describe('DiamondTest', async function () {
       let boss_attack = beforeAttackResult.attackDamage;
 
       // ATTACK NOW!
-      await expect(dynamicGameFacet.connect(addr1).attackBoss(0)).to.not.be.reverted;
+      let tokenID = (await dynamicGameFacet.connect(addr1).nftHolders(addr1.address))[0];
+      await expect(dynamicGameFacet.connect(addr1).attackBoss(tokenID)).to.not.be.reverted;
 
       //Check Player Hp After Attack
       let player1_char_afterAttack = await dynamicGameFacet.connect(addr1).nftHolderAttributes(player1_token[0]);
@@ -424,7 +426,7 @@ describe('DiamondTest', async function () {
       console.log("Address of Token Owner", owner.address)
       const tokenID = (await dynamicGameFacet.nftHolders(owner.address))[5];
       await dynamicGameFacet.approve(stakeNFTFacet.address, tokenID);      
-      await stakeNFTFacet.connect(owner).stakeCharacter(5, dynamicGameFacet.address)
+      await stakeNFTFacet.connect(owner).stakeCharacter(tokenID, dynamicGameFacet.address)
     })
 
     it('Should test staking NFT index 0', async () => {
@@ -432,7 +434,7 @@ describe('DiamondTest', async function () {
       console.log("Address of Token Owner", owner.address)
       const tokenID = (await dynamicGameFacet.nftHolders(owner.address))[0];
       await dynamicGameFacet.approve(stakeNFTFacet.address, tokenID);      
-      await stakeNFTFacet.connect(owner).stakeCharacter(0, dynamicGameFacet.address)
+      await stakeNFTFacet.connect(owner).stakeCharacter(tokenID, dynamicGameFacet.address)
     })
 
     it("Increase Time By 30 Mins", async function() {
@@ -461,7 +463,7 @@ describe('DiamondTest', async function () {
 
       console.log("Owner of Token ID during staking",await dynamicGameFacet.ownerOf(tokenID)); 
       
-      await stakeNFTFacet.connect(owner).unStakeCharacter(5, dynamicGameFacet.address)
+      await stakeNFTFacet.connect(owner).unStakeCharacter(tokenID, dynamicGameFacet.address)
       console.log("Owner of Token ID after staking",await dynamicGameFacet.ownerOf(tokenID));      
 
       let result2 = await dynamicGameFacet.nftHolderAttributes(tokenID);
@@ -498,7 +500,7 @@ describe('DiamondTest', async function () {
 
       console.log("Owner of Token ID during staking",await dynamicGameFacet.ownerOf(tokenID)); 
       
-      await stakeNFTFacet.connect(owner).unStakeCharacter(0, dynamicGameFacet.address)
+      await stakeNFTFacet.connect(owner).unStakeCharacter(tokenID, dynamicGameFacet.address)
       console.log("Owner of Token ID after staking",await dynamicGameFacet.ownerOf(tokenID));      
 
       let result2 = await dynamicGameFacet.nftHolderAttributes(tokenID);

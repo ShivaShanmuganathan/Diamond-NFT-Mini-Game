@@ -44,24 +44,31 @@ contract StakeNFTFacet {
     /// @dev The Health of User's NFT is increased becuase of staking. [Metadata Of NFT Changes Here]
     /// The user's address & index is used to get the NFT the user owns
     /// Health of Hero is increased due to staking  
-    function stakeCharacter(uint _index, address contractAddress) external {
+    function stakeCharacter(uint tokenID, address contractAddress) external {
         
-        LibStakeStorage.StakeStorage storage ds = LibStakeStorage.diamondStorage();
+        LibStakeStorage.StakeStorage storage lss = LibStakeStorage.diamondStorage();
         // Get the state of the player's NFT.
-        uint256 nftTokenIdOfPlayer = s.nftHolders[msg.sender][_index];
-        require(s._owners[nftTokenIdOfPlayer] == msg.sender, "Not NFT Owner");        
-        LibStakeStorage.StakeInfo storage staked_asset = ds.stakingInfo[contractAddress][nftTokenIdOfPlayer];
+        // uint256 nftTokenIdOfPlayer = s.nftHolders[msg.sender][_index];
+        require(s._owners[tokenID] == msg.sender, "Not NFT Owner");        
+        LibStakeStorage.StakeInfo storage staked_asset = lss.stakingInfo[contractAddress][tokenID];
 
         require(staked_asset.startTime == 0, "NFT Already Staked.");
-        CharacterAttributes memory player = s.nftHolderAttributes[nftTokenIdOfPlayer];
+        CharacterAttributes memory player = s.nftHolderAttributes[tokenID];
         require(player.hp < player.maxHp, "Player Already Has Enough Hp");
 
         staked_asset.startTime = block.timestamp;
         staked_asset.staker = msg.sender;
         
-        IERC721Diamond(contractAddress).transferFrom(msg.sender, address(this), nftTokenIdOfPlayer);
-        // console.log("Address of TokenID ",nftTokenIdOfPlayer, " :", IERC721Diamond(contractAddress).ownerOf(nftTokenIdOfPlayer));
-        emit AssetStaked(nftTokenIdOfPlayer, staked_asset.startTime);
+
+        LibDiamond.DiamondStorage storage ds = LibDiamond.diamondStorage();
+        bytes4 functionSelector = bytes4(keccak256("transferFrom(address,address,uint256)"));
+        // get facet address of function 
+        address facet = ds.facetAddressAndSelectorPosition[functionSelector].facetAddress; 
+
+        (bool success, bytes memory data) = facet.delegatecall(abi.encodeWithSignature("transferFrom(address,address,uint256)", msg.sender, address(this), tokenID));
+        require(success, "transfer failed"); 
+
+        emit AssetStaked(tokenID, staked_asset.startTime);
 
     }
 
@@ -69,16 +76,16 @@ contract StakeNFTFacet {
     /// @dev The Health of User's NFT is increased becuase of staking. [Metadata Of NFT Changes Here]
     /// The user's address & index is used to get the NFT the user owns
     /// Health of Hero is increased due to staking  
-    function unStakeCharacter(uint _index, address contractAddress) external {
-        LibStakeStorage.StakeStorage storage ds = LibStakeStorage.diamondStorage();
+    function unStakeCharacter(uint tokenID, address contractAddress) external {
+        LibStakeStorage.StakeStorage storage lss = LibStakeStorage.diamondStorage();
         // Get the state of the player's NFT.
-        uint256 nftTokenIdOfPlayer = s.nftHolders[msg.sender][_index];
+        // uint256 nftTokenIdOfPlayer = s.nftHolders[msg.sender][_index];
         
-        LibStakeStorage.StakeInfo storage staked_asset = ds.stakingInfo[contractAddress][nftTokenIdOfPlayer];
+        LibStakeStorage.StakeInfo storage staked_asset = lss.stakingInfo[contractAddress][tokenID];
         require(staked_asset.startTime != 0, "NFT Is Not Staked.");
         require(staked_asset.staker == msg.sender, "Not NFT Staker");
 
-        CharacterAttributes storage player = s.nftHolderAttributes[nftTokenIdOfPlayer];
+        CharacterAttributes storage player = s.nftHolderAttributes[tokenID];
 
         uint stakedTime = block.timestamp - staked_asset.startTime;
         
@@ -90,19 +97,17 @@ contract StakeNFTFacet {
 
         staked_asset.startTime = 0;
 
-        IERC721Diamond(contractAddress).transferFrom(address(this), msg.sender, nftTokenIdOfPlayer);
+        IERC721Diamond(contractAddress).transferFrom(address(this), msg.sender, tokenID);
 
-        emit AssetUnstaked(nftTokenIdOfPlayer, staked_asset.startTime, block.timestamp);
+        emit AssetUnstaked(tokenID, staked_asset.startTime, block.timestamp);
 
     }
 
 
-    function getStartTime(uint _index, address contractAddress) external view returns(uint256){
-        LibStakeStorage.StakeStorage storage ds = LibStakeStorage.diamondStorage();
-        // Get the state of the player's NFT.
-        uint256 nftTokenIdOfPlayer = s.nftHolders[msg.sender][_index];
+    function getStartTime(uint tokenID, address contractAddress) external view returns(uint256){
         
-        LibStakeStorage.StakeInfo memory staked_asset = ds.stakingInfo[contractAddress][nftTokenIdOfPlayer];
+        LibStakeStorage.StakeStorage storage lss = LibStakeStorage.diamondStorage();        
+        LibStakeStorage.StakeInfo memory staked_asset = lss.stakingInfo[contractAddress][tokenID];
         return staked_asset.startTime;
         
     }
