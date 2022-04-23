@@ -9,7 +9,7 @@ const { getSelectors, FacetCutAction } = require('./libraries/diamond.js')
 async function deployStakeFacet () {
     // diamondAddress = await deployDiamond()
     
-    diamondAddress = "0xc50B8E1a9114D0DDCbefEB0BcA6729E922E06ba0";
+    diamondAddress = "0xE1c16fefCc4AdF4C27e31f60A257a54938Fcde17";
     console.log("diamondAddress", diamondAddress);
 
     const StakeNFTFacet = await ethers.getContractFactory('StakeNFTFacet')
