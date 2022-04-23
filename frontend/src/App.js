@@ -11,6 +11,7 @@ import Home from "./view/Home"
 import WaveMe from "./view/WaveMe";
 import MintNFT from "./view/MintNFT";
 import { NFTCharacter, NFTBattle } from "./view/NFTGame";
+import { NFTStake } from "./view/Stake";
 import GlobalStyle from './assets/style/css/GlobalStyle'
 import { Flex } from "crox-new-uikit";
 
@@ -32,6 +33,7 @@ function App() {
                 <Route path="/mint" element={<MintNFT collapse={collapse} />} />
                 <Route path="/nftch" element={<NFTCharacter collapse={collapse} />} />
                 <Route path="/nftbattle" element={<NFTBattle collapse={collapse} />} />
+                <Route path="/nftstake" element={<NFTStake collapse={collapse} />} />
               </Routes>
             </Suspense>
           </Flex>

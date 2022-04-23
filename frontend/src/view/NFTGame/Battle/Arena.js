@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useWeb3React } from "@web3-react/core";
 import { ethers } from "ethers";
 import { Flex, Text } from "crox-new-uikit";
 import { Icon } from '@iconify/react';
@@ -10,12 +11,14 @@ import myEpicGame from '../../../utils/MyEpicGame.json';
 import awesomeGame from '../../../utils/awesomeGame.json';
 import CharacterCard from "./CharacterCard";
 
+
 const Arena = ({ characterNFT, setCharacterNFT, setAttackCharacter, attackCharacter }) => {
     const [gameContract, setGameContract] = useState(null);
     const [boss, setBoss] = useState(null);
     const [attackState, setAttackState] = useState('');
     const isMobile = useMediaQuery("(max-width: 600px)");
     const [animation, setAnimation] = useState(true)
+    const { account } = useWeb3React();
 
     const runAttackAction = async () => {
         try {
@@ -23,7 +26,9 @@ const Arena = ({ characterNFT, setCharacterNFT, setAttackCharacter, attackCharac
                 setAnimation(false)
                 setAttackState('attacking');
                 console.log('Attacking boss...')
-                const attackTxn = await gameContract.attackBoss(attackCharacter);
+                
+                let tokenID = (await gameContract.nftHolders(account))[attackCharacter];
+                const attackTxn = await gameContract.attackBoss(tokenID);
                 await attackTxn.wait();
                 console.log('attackTxn:', attackTxn);
                 setAttackState('');

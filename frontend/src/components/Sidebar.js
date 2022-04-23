@@ -27,6 +27,7 @@ function Sidebar(props) {
                     <SubMenu title="NFT Game" icon={<Icon icon="noto:video-game" fontSize='20px' />} className="react-slidedown pro-inner-list-item">
                         <MenuItem icon={<Icon icon="noto:joystick" fontSize='20px' />} onClick={() => { navigate("/nftch") }}>Choose Character</MenuItem>
                         <MenuItem icon={<Icon icon="twemoji:crossed-swords" fontSize='20px' />} onClick={() => { navigate("/nftbattle") }}>Battle</MenuItem>
+                        <MenuItem icon={<Icon icon="noto:bank" fontSize='20px' />} onClick={() => { navigate("/nftstake") }}>Stake</MenuItem>
                     </SubMenu>
                 </Menu>
             </SidebarContent>
