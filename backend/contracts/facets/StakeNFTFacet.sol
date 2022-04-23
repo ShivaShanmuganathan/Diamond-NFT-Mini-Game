@@ -18,6 +18,8 @@ import {CharacterAttributes, BigBoss} from "../libraries/LibAppStorage.sol";
 // Hardhat Console Debugging Easy
 import "hardhat/console.sol";
 
+import "./DynamicGameFacet.sol";
+
 
 interface IERC721Diamond {
     function transferFrom(address from, address to, uint256 tokenId) external;
@@ -65,6 +67,8 @@ contract StakeNFTFacet {
         // get facet address of function 
         address facet = ds.facetAddressAndSelectorPosition[functionSelector].facetAddress; 
 
+        console.log("Address of THIS CONTRACT", address(this));
+
         (bool success, bytes memory data) = facet.delegatecall(abi.encodeWithSignature("transferFrom(address,address,uint256)", msg.sender, address(this), tokenID));
         require(success, "transfer failed"); 
 
@@ -96,8 +100,23 @@ contract StakeNFTFacet {
         }
 
         staked_asset.startTime = 0;
+        
+        DynamicGameFacet(address(this)).transferFrom(address(this), msg.sender, tokenID);
+        // LibDiamond.DiamondStorage storage ds = LibDiamond.diamondStorage();
+        // bytes4 functionSelector = bytes4(keccak256("transferFrom(address,address,uint256)"));
+        
+        // address facet = ds.facetAddressAndSelectorPosition[functionSelector].facetAddress; 
 
-        IERC721Diamond(contractAddress).transferFrom(address(this), msg.sender, tokenID);
+        // console.log("Address of THIS CONTRACT", address(this));
+        // console.log("USER Address ", msg.sender);
+
+
+        // (bool approval_success, bytes memory approval_data) = facet.delegatecall(abi.encodeWithSignature("approve(address,uint256)", msg.sender, tokenID));
+        // require(approval_success, "approval failed"); 
+
+        // (bool success, bytes memory data) = facet.delegatecall(abi.encodeWithSignature("transferFrom(address,address,uint256)", address(this), msg.sender, tokenID));
+        
+        // require(success, "transfer failed"); 
 
         emit AssetUnstaked(tokenID, staked_asset.startTime, block.timestamp);
 

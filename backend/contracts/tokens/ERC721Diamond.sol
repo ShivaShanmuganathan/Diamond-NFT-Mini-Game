@@ -18,6 +18,9 @@ import { IDiamondLoupe } from "../interfaces/IDiamondLoupe.sol";
 import { IDiamondCut } from "../interfaces/IDiamondCut.sol";
 import { IERC173 } from "../interfaces/IERC173.sol";
 
+// Hardhat Console Debugging Easy
+import "hardhat/console.sol";
+
 abstract contract ERC721Diamond is Context, ERC165, IERC721Enumerable {
     AppStorage internal s;
     using Address for address;
@@ -68,12 +71,15 @@ abstract contract ERC721Diamond is Context, ERC165, IERC721Enumerable {
 
     function approve(address to, uint256 tokenId) public virtual override {
         address owner = ownerOf(tokenId);
+        
         require(to != owner, "ERC721: approval to current owner");
-
+        
+        
         require(
             LibMeta.msgSender() == owner || isApprovedForAll(owner, LibMeta.msgSender()),
             "ERC721: approve caller is not owner nor approved for all"
         );
+        
 
         _approve(to, tokenId);
     }
@@ -100,6 +106,7 @@ abstract contract ERC721Diamond is Context, ERC165, IERC721Enumerable {
         address to,
         uint256 tokenId
     ) public virtual override {
+        
         //solhint-disable-next-line max-line-length
         require(_isApprovedOrOwner(LibMeta.msgSender(), tokenId), "ERC721: transfer caller is not owner nor approved");
 
@@ -135,12 +142,24 @@ abstract contract ERC721Diamond is Context, ERC165, IERC721Enumerable {
     }
 
     function _exists(uint256 tokenId) internal view virtual returns (bool) {
+        // console.log("owner address: ",s._owners[tokenId]);
         return s._owners[tokenId] != address(0);
     }
 
+    function exists(uint256 tokenId) public view returns (bool) {
+        return _exists(tokenId);
+    }
+
     function _isApprovedOrOwner(address spender, uint256 tokenId) internal view virtual returns (bool) {
+        // console.log("Checkpoint Reached");
+        console.log(tokenId);
+        console.log(exists(tokenId));
         require(_exists(tokenId), "ERC721: operator query for nonexistent token");
+        // console.log("Checkpoint Reached 2");
         address owner = ownerOf(tokenId);
+        // console.log("owner address: ",owner);
+        // console.log("user address: ",LibMeta.msgSender());
+        // console.log("Checkpoint Reached 2");
         return (spender == owner || getApproved(tokenId) == spender || isApprovedForAll(owner, spender));
     }
 

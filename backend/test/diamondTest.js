@@ -411,6 +411,7 @@ describe('DiamondTest', async function () {
         throw Error(`Diamond upgrade failed: ${tx.hash}`)
       }
       result = await diamondLoupeFacet.facetFunctionSelectors(stakeNFTFacet.address)
+      console.log("Stake NFT Facet Address: ", stakeNFTFacet.address)
       assert.sameMembers(result, selectors)
     })
 
@@ -463,7 +464,7 @@ describe('DiamondTest', async function () {
 
       console.log("Owner of Token ID during staking",await dynamicGameFacet.ownerOf(tokenID)); 
       
-      await stakeNFTFacet.connect(owner).unStakeCharacter(tokenID, dynamicGameFacet.address)
+      await stakeNFTFacet.connect(owner).unStakeCharacter(tokenID.toString(), dynamicGameFacet.address)
       console.log("Owner of Token ID after staking",await dynamicGameFacet.ownerOf(tokenID));      
 
       let result2 = await dynamicGameFacet.nftHolderAttributes(tokenID);
@@ -493,14 +494,19 @@ describe('DiamondTest', async function () {
       
       let tokenID = (await dynamicGameFacet.nftHolders(owner.address))[0];
 
+      console.log("tokenID to be unstaked", tokenID.toString());
+      console.log("Owner of Token ID during staking",await dynamicGameFacet.ownerOf(tokenID)); 
+      console.log("Token Exists? ", (await dynamicGameFacet.exists(tokenID)).toString()); 
+      
+
       let result = await dynamicGameFacet.nftHolderAttributes(tokenID);
       result = transformCharacterData(result);
       console.log("Hp of character",result.hp)
 
 
-      console.log("Owner of Token ID during staking",await dynamicGameFacet.ownerOf(tokenID)); 
       
-      await stakeNFTFacet.connect(owner).unStakeCharacter(tokenID, dynamicGameFacet.address)
+      
+      await stakeNFTFacet.connect(owner).unStakeCharacter(tokenID.toString(), dynamicGameFacet.address)
       console.log("Owner of Token ID after staking",await dynamicGameFacet.ownerOf(tokenID));      
 
       let result2 = await dynamicGameFacet.nftHolderAttributes(tokenID);
