@@ -52,8 +52,8 @@ const Arena = ({ characterNFT, setCharacterNFT, setStakeCharacter, stakeCharacte
                 // let approveTxn = await gameContract.attackBoss(stakeCharacter);
                 // await approveTxn.wait();
 
-                let approveTxn = await gameContract.approve(STAKE_FACET_ADDRESS, tokenIDTxn.toString());
-                await approveTxn.wait();
+                // let approveTxn = await gameContract.approve(STAKE_FACET_ADDRESS, tokenIDTxn.toString());
+                // await approveTxn.wait();
 
                 let ownerTxn = await gameContract.ownerOf(tokenIDTxn.toString());
                 console.log('Address of owner of tokenID', tokenIDTxn.toString(), ": ", ownerTxn.toString());
@@ -66,7 +66,7 @@ const Arena = ({ characterNFT, setCharacterNFT, setStakeCharacter, stakeCharacte
                 // console.log("list of tokensIDs ",await gameContract.nftHolders(account));
                 let tokenID = (await gameContract.nftHolders(account))[stakeCharacter];
 
-                const stakeTxn = await gameContract.stakeCharacter(tokenID, DYNAMIC_GAME_FACET_ADDRESS, overrides);
+                const stakeTxn = await gameContract.unStakeCharacter(tokenID, DYNAMIC_GAME_FACET_ADDRESS, overrides);
                 await stakeTxn.wait();
                 // console.log('Staking NFT 4...')
 
