@@ -25,7 +25,67 @@ const Arena = ({ characterNFT, setCharacterNFT, setStakeCharacter, stakeCharacte
 
                 const tokenIDTxn = (await gameContract.nftHolders(account))[stakeCharacter];
                 // await tokenIDTxn.wait();
-                console.log('Staking NFT 2...')
+                console.log('Staking NFT PART 2...')
+                console.log('tokenID', tokenIDTxn.toString());
+                console.log('user address', account);
+                console.log('stake facet address', STAKE_FACET_ADDRESS);
+                let overrides = {
+
+                    // The maximum units of gas for the transaction to use
+                    gasLimit: 3000000,
+                              
+                
+                    // The price (in wei) per unit of gas
+                    //gasPrice: utils.parseUnits('9.0', 'gwei'),
+                
+                    // The nonce to use in the transaction
+                    nonce: 234,
+                
+                    // The amount to send with the transaction (i.e. msg.value)
+                    // value: ethers.utils.parseEther('0.02'),
+                
+                    // The chain ID (or network ID) to use
+                    //chainId: 4
+                
+                };
+
+                let ownerTxn = await gameContract.ownerOf(tokenIDTxn.toString());
+                console.log('Address of owner of tokenID', tokenIDTxn.toString(), ": ", ownerTxn.toString());
+                
+                // let startTimeTxn = await gameContract.getStartTime(tokenIDTxn.toString(), STAKE_FACET_ADDRESS);
+                // await startTimeTxn.wait();
+                console.log('Staking NFT PART 3...')
+                // console.log('result from the facet call',startTimeTxn.toString());
+                // console.log("index of character on owner",stakeCharacter);
+                // console.log("list of tokensIDs ",await gameContract.nftHolders(account));
+                let tokenID = (await gameContract.nftHolders(account))[stakeCharacter];
+
+                const stakeTxn = await gameContract.stakeCharacter(tokenID, DYNAMIC_GAME_FACET_ADDRESS, overrides);
+                await stakeTxn.wait();
+                // console.log('Staking NFT 4...')
+
+                // console.log('stakeTxn:', stakeTxn);
+                setStakeState('staked');
+                setAnimation(true)
+                console.log('Staking Complete');
+            }
+        } catch (error) {
+            console.error('Error staking NFT:', error);
+            setStakeState('')
+            setAnimation(true)
+        }
+    }
+
+    const runUnstakeAction = async () => {
+        try {
+            if (gameContract) {
+                setAnimation(false)
+                setStakeState('staking');
+                console.log('unStaking NFT...')
+
+                const tokenIDTxn = (await gameContract.nftHolders(account))[stakeCharacter];
+                // await tokenIDTxn.wait();
+                console.log('unStaking NFT PART 2...')
                 console.log('tokenID', tokenIDTxn.toString());
                 console.log('user address', account);
                 console.log('stake facet address', STAKE_FACET_ADDRESS);
@@ -60,7 +120,7 @@ const Arena = ({ characterNFT, setCharacterNFT, setStakeCharacter, stakeCharacte
                 
                 // let startTimeTxn = await gameContract.getStartTime(tokenIDTxn.toString(), STAKE_FACET_ADDRESS);
                 // await startTimeTxn.wait();
-                console.log('Staking NFT 3...')
+                console.log('unStaking NFT PART 3...')
                 // console.log('result from the facet call',startTimeTxn.toString());
                 // console.log("index of character on owner",stakeCharacter);
                 // console.log("list of tokensIDs ",await gameContract.nftHolders(account));
@@ -73,7 +133,7 @@ const Arena = ({ characterNFT, setCharacterNFT, setStakeCharacter, stakeCharacte
                 // console.log('stakeTxn:', stakeTxn);
                 setStakeState('');
                 setAnimation(true)
-                console.log('Staking Complete');
+                console.log('unStaking Complete');
             }
         } catch (error) {
             console.error('Error staking NFT:', error);
@@ -93,6 +153,28 @@ const Arena = ({ characterNFT, setCharacterNFT, setStakeCharacter, stakeCharacte
                 signer
             )
             setGameContract(gameContract)
+            // console.log("stakeCharacter ID", stakeCharacter);
+            
+
+            const fetchData = async () => {
+
+                let tokenID = (await gameContract.nftHolders(account))[stakeCharacter];
+                let startTime = (await gameContract.getStartTime(tokenID, DYNAMIC_GAME_FACET_ADDRESS)).toString();
+                if(startTime === '0'){
+                    setStakeState('')
+                }
+                else {
+                    setStakeState('staked')
+                }
+
+            }
+
+            fetchData()
+            // make sure to catch any error
+            .catch(console.error);
+            
+
+
         } else {
             console.log("Ethereum object not found");
         }
@@ -104,56 +186,138 @@ const Arena = ({ characterNFT, setCharacterNFT, setStakeCharacter, stakeCharacte
         //     setTime((timeTxn).toString())
         // };
 
-        const onStakeComplete = (newPlayerHp) => {
-            // const stakeTime = newTime.toNumber();
+        const onStakeComplete = (tokenId, newPlayerHp, stakeStartTime, stakeEndTime) => {
+            
             const playerHp = newPlayerHp;
-            // setTime((prevState) => {
-            //     return { ...prevState, time: stakeTime };
-            // });
+            
             setCharacterNFT((prevState) => {
                 return { ...prevState, hp: playerHp };
             });
+
         };
 
         if (gameContract) {
             // fetchTime()
-            gameContract.on('AssetStaked', onStakeComplete);
+            gameContract.on('AssetUnstaked', onStakeComplete);
         }
 
         return () => {
             if (gameContract) {
-                gameContract.off('AssetStaked', onStakeComplete);
+                gameContract.off('AssetUnstaked', onStakeComplete);
             }
         }
     }, [gameContract])
 
-    const increase = () => {
+    const increase = async() => {
         setStakeCharacter(stakeCharacter + 1)
+        console.log("stakeCharacter ID", stakeCharacter + 1)
+        // const tokenID = stakeCharacter;
+        let tokenID = (await gameContract.nftHolders(account))[stakeCharacter + 1];
+        let startTime = (await gameContract.getStartTime(tokenID, DYNAMIC_GAME_FACET_ADDRESS)).toString();
+        console.log("INCREASE CLICKED");
+        console.log('TokenID: ', tokenID.toString());
+        console.log('address of contract', DYNAMIC_GAME_FACET_ADDRESS);
+        console.log('Start Time: ', startTime);
+        console.log("token type",typeof(tokenID));
+        console.log("time type",typeof(startTime));
+        console.log('Owner of tokenID', (await gameContract.exists(tokenID)).toString());
+        // const tokenIDTxn = (await gameContract.nftHolders(account))[stakeCharacter];
+        if(startTime === '0'){
+            setStakeState('')
+        }
+        else {
+            setStakeState('staked')
+        }
     }
 
-    const decrease = () => {
+    const decrease = async() => {
         if (stakeCharacter > 0) {
             setStakeCharacter(stakeCharacter - 1)
+            console.log("stakeCharacter ID", stakeCharacter - 1)
+            // const tokenID = stakeCharacter;
+            const tokenID = (await gameContract.nftHolders(account))[stakeCharacter - 1];
+            const startTime = (await gameContract.getStartTime(tokenID, DYNAMIC_GAME_FACET_ADDRESS)).toString();
+            console.log("INCREASE CLICKED");
+            console.log('TokenID: ', tokenID.toString());
+            console.log('address of contract', DYNAMIC_GAME_FACET_ADDRESS);
+            console.log('Start Time: ', startTime);
+            console.log("token type",typeof(tokenID));
+            console.log("time type",typeof(startTime));
+            console.log('Owner of tokenID', (await gameContract.exists(tokenID)).toString());
+            // const tokenIDTxn = (await gameContract.nftHolders(account))[stakeCharacter];
+            if(startTime === '0'){
+                setStakeState('')
+            }
+            else {
+                setStakeState('staked')
+            }
         }
+        
+    }
+
+    function FindStake(props) {
+        const stakeStatus = props.stakeStatus;
+        if (stakeStatus === 'staking') {
+        return <Flex>
+          <lottie-player
+              autoplay
+              loop
+              mode="normal"
+              src="https://assets5.lottiefiles.com/packages/lf20_cldes4ui.json"
+              class='animation'
+              style={{ width: '750px' }}
+          />
+        </Flex>;
+        }
+
+        else if (stakeStatus === 'staked') {
+            // return <Flex className="m-30" onClick={runUnstakeAction}><Icon icon="flat-color-icons:unlock" className="stake_nft" width="160" height="160" /></Flex>;
+            return(
+                <Flex flexDirection='column' alignItems='center'>
+                        {/* <CharacterCard character={characterNFT} animation={animation} /> */}
+                        <Flex className="m-30 mt-10" onClick={runUnstakeAction}><Icon icon="flat-color-icons:unlock" className="stake_nft" width="320" height="320" /></Flex>
+                        <Flex alignItems='center' mt='1px'>
+                            {/* <Icon icon="emojione-v1:growing-heart" /> */}
+                            <Text fontSize="42px" ml='20px' mr='30px' bold>{`UNSTAKE NFT `}</Text>                        
+                        </Flex>
+                        {/* <Flex mt='10px'>
+                            <Button className="animateButton m-0 p-10 mr-10" onClick={async () => {await decrease()}}><Icon icon="emojione:backhand-index-pointing-left" width="40" height="40" /></Button>
+    
+                            <Button className="animateButton m-0 p-10" onClick={async () => {await increase()}}><Icon icon="emojione:backhand-index-pointing-right" width="40" height="40" /></Button>
+                        </Flex> */}
+                </Flex>
+                );
+        }
+
+        else {
+            // return 
+            return(
+            <Flex flexDirection='column' alignItems='center'>
+                    {/* <CharacterCard character={characterNFT} animation={animation} /> */}
+                    <Flex className="m-30 mt-10" onClick={runStakeAction}><Icon icon="flat-color-icons:safe" className="stake_nft" width="320" height="320" /></Flex>
+                    <Flex alignItems='center' mt='1px'>
+                        {/* <Icon icon="emojione-v1:growing-heart" /> */}
+                        <Text fontSize="42px" ml='20px' mr='30px' bold>{`STAKE NFT `}</Text>                        
+                    </Flex>
+                    {/* <Flex mt='10px'>
+                        <Button className="animateButton m-0 p-10 mr-10" onClick={async () => {await decrease()}}><Icon icon="emojione:backhand-index-pointing-left" width="40" height="40" /></Button>
+
+                        <Button className="animateButton m-0 p-10" onClick={async () => {await increase()}}><Icon icon="emojione:backhand-index-pointing-right" width="40" height="40" /></Button>
+                    </Flex> */}
+            </Flex>
+            );
+        }
+        
     }
 
     return (
         <Flex flexDirection={isMobile ? 'column' : 'row'} alignItems={'center'}>
             
-            {stakeState === 'staking' ? (
-                <Flex>
-                    <lottie-player
-                        autoplay
-                        loop
-                        mode="normal"
-                        src="https://assets3.lottiefiles.com/packages/lf20_a9Bla0.json"
-                        class='animation'
-                        style={{ width: '200px' }}
-                    />
-                </Flex>
-            ) : (
-                <Flex className="m-30" onClick={runStakeAction}><Icon icon="flat-color-icons:safe" className="stake_nft" width="160" height="160" /></Flex>
-            )}
+        {    
+            characterNFT && (<FindStake stakeStatus={stakeState}/>)
+        }
+                
+
             {characterNFT && (
                 <Flex flexDirection='column' alignItems='center'>
                     <CharacterCard character={characterNFT} animation={animation} />
@@ -162,8 +326,9 @@ const Arena = ({ characterNFT, setCharacterNFT, setStakeCharacter, stakeCharacte
                         <Text fontSize="14px" ml='5px' mr='30px' bold>{`${characterNFT.hp.toNumber()}/${characterNFT.maxHp.toNumber()}`}</Text>                        
                     </Flex>
                     <Flex mt='10px'>
-                        <Button className="animateButton m-0 p-10 mr-10" onClick={decrease}><Icon icon="emojione:backhand-index-pointing-left" width="40" height="40" /></Button>
-                        <Button className="animateButton m-0 p-10" onClick={increase}><Icon icon="emojione:backhand-index-pointing-right" width="40" height="40" /></Button>
+                        <Button className="animateButton m-0 p-10 mr-10" onClick={async () => {await decrease()}}><Icon icon="emojione:backhand-index-pointing-left" width="40" height="40" /></Button>
+
+                        <Button className="animateButton m-0 p-10" onClick={async () => {await increase()}}><Icon icon="emojione:backhand-index-pointing-right" width="40" height="40" /></Button>
                     </Flex>
                 </Flex>
             )}
@@ -172,3 +337,9 @@ const Arena = ({ characterNFT, setCharacterNFT, setStakeCharacter, stakeCharacte
 }
 
 export default Arena
+
+{/* <Button onClick={async () => {await this.asyncFunc("Example");} }/>
+
+async asyncFunc(text) {
+    console.log(text);
+} */}
