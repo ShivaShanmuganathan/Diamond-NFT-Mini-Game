@@ -4,10 +4,14 @@ import { useWeb3React } from "@web3-react/core";
 import { Flex, Text } from "crox-new-uikit";
 import { Icon } from '@iconify/react';
 import { Button } from "../../components/CommonComponents";
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import useMediaQuery from "use-mediaquery";
 import { NFTGAME_CONTRACT_ADDRESS, transformCharacterData, DYNAMIC_GAME_FACET_ADDRESS, STAKE_FACET_ADDRESS} from "../../utils/constants";
 import myEpicGame from '../../utils/MyEpicGame.json'
 import CharacterCard from "./CharacterCard";
+
+toast.configure();
 
 const Arena = ({ characterNFT, setCharacterNFT, setStakeCharacter, stakeCharacter }) => {
     const [gameContract, setGameContract] = useState(null);
@@ -67,6 +71,17 @@ const Arena = ({ characterNFT, setCharacterNFT, setStakeCharacter, stakeCharacte
                 // console.log('stakeTxn:', stakeTxn);
                 setStakeState('staked');
                 setAnimation(true)
+                toast.success(" STAKING COMPLETE! 🔥", {
+                    position: toast.POSITION.BOTTOM_RIGHT,
+                    autoClose: 4000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                });
+
                 console.log('Staking Complete');
             }
         } catch (error) {
@@ -133,6 +148,16 @@ const Arena = ({ characterNFT, setCharacterNFT, setStakeCharacter, stakeCharacte
                 // console.log('stakeTxn:', stakeTxn);
                 setStakeState('');
                 setAnimation(true)
+                toast.success(" UNSTAKING COMPLETE! 🔥", {
+                    position: toast.POSITION.BOTTOM_RIGHT,
+                    autoClose: 4000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                });
                 console.log('unStaking Complete');
             }
         } catch (error) {

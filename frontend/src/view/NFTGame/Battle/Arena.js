@@ -6,10 +6,14 @@ import { Icon } from '@iconify/react';
 import { Button } from "../../../components/CommonComponents";
 import BossCard from "./BossCard";
 import useMediaQuery from "use-mediaquery";
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { NFTGAME_CONTRACT_ADDRESS, transformCharacterData } from "../../../utils/constants";
 import myEpicGame from '../../../utils/MyEpicGame.json';
 import awesomeGame from '../../../utils/awesomeGame.json';
 import CharacterCard from "./CharacterCard";
+
+toast.configure();
 
 
 const Arena = ({ characterNFT, setCharacterNFT, setAttackCharacter, attackCharacter }) => {
@@ -33,6 +37,16 @@ const Arena = ({ characterNFT, setCharacterNFT, setAttackCharacter, attackCharac
                 console.log('attackTxn:', attackTxn);
                 setAttackState('');
                 setAnimation(true)
+                toast.success("🔥THANOS WAS ATTACKED🔥", {
+                    position: toast.POSITION.BOTTOM_RIGHT,
+                    autoClose: 4000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                });
             }
         } catch (error) {
             console.error('Error attacking boss:', error);
