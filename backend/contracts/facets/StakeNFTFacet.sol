@@ -37,7 +37,7 @@ contract StakeNFTFacet {
 
     // Events to show that a Minting & Attacking action has been completed 
     event AssetStaked(uint tokenId, uint stakeStartTime);
-    event AssetUnstaked(uint tokenId, uint stakeStartTime, uint stakeEndTime);
+    event AssetUnstaked(uint tokenId, uint newPlayerHp, uint stakeStartTime, uint stakeEndTime);
 
     // Data is passed in to the contract when it's first created initializing the characters.
     // We're going to actually pass these values in from from run.js.
@@ -118,7 +118,7 @@ contract StakeNFTFacet {
         
         // require(success, "transfer failed"); 
 
-        emit AssetUnstaked(tokenID, staked_asset.startTime, block.timestamp);
+        emit AssetUnstaked(tokenID, player.hp, staked_asset.startTime, block.timestamp);
 
     }
 
