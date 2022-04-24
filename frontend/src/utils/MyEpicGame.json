@@ -934,6 +934,12 @@
         {
           "indexed": false,
           "internalType": "uint256",
+          "name": "newPlayerHp",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
           "name": "stakeStartTime",
           "type": "uint256"
         },
