@@ -8,7 +8,7 @@ import BossCard from "./BossCard";
 import useMediaQuery from "use-mediaquery";
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { NFTGAME_CONTRACT_ADDRESS, transformCharacterData } from "../../../utils/constants";
+import { NFTGAME_CONTRACT_ADDRESS, DYNAMIC_GAME_FACET_ADDRESS, transformCharacterData } from "../../../utils/constants";
 import myEpicGame from '../../../utils/MyEpicGame.json';
 import awesomeGame from '../../../utils/awesomeGame.json';
 import CharacterCard from "./CharacterCard";
@@ -20,6 +20,7 @@ const Arena = ({ characterNFT, setCharacterNFT, setAttackCharacter, attackCharac
     const [gameContract, setGameContract] = useState(null);
     const [boss, setBoss] = useState(null);
     const [attackState, setAttackState] = useState('');
+    const [stakeState, setStakeState] = useState('');
     const isMobile = useMediaQuery("(max-width: 600px)");
     const [animation, setAnimation] = useState(true)
     const { account } = useWeb3React();
@@ -66,9 +67,30 @@ const Arena = ({ characterNFT, setCharacterNFT, setAttackCharacter, attackCharac
                 signer
             )
             setGameContract(gameContract)
+            const fetchData = async () => {
+
+                let tokenID = (await gameContract.nftHolders(account))[attackCharacter];
+                let startTime = (await gameContract.getStartTime(tokenID, DYNAMIC_GAME_FACET_ADDRESS)).toNumber();
+                if(startTime === 0){
+                    setStakeState('')
+                    // setStartingTime(0);
+                }
+                else {
+                    setStakeState('staked')
+                    // setStartingTime(startTime);
+                }
+
+            }
+
+            fetchData()
+            // make sure to catch any error
+            .catch(console.error);
+
+
         } else {
             console.log("Ethereum object not found");
         }
+
     }, [])
 
     useEffect(() => {
@@ -100,15 +122,37 @@ const Arena = ({ characterNFT, setCharacterNFT, setAttackCharacter, attackCharac
         }
     }, [gameContract])
 
-    const increase = () => {
+    const increase = async() => {
         setAttackCharacter(attackCharacter + 1)
-    }
-
-    const decrease = () => {
-        if (attackCharacter > 0) {
-            setAttackCharacter(attackCharacter - 1)
+        let tokenID = (await gameContract.nftHolders(account))[attackCharacter + 1];
+        let startTime = (await gameContract.getStartTime(tokenID, DYNAMIC_GAME_FACET_ADDRESS)).toNumber();
+        if(startTime === 0){
+            setStakeState('')
+            
+        }
+        else {
+            setStakeState('staked')
+      
         }
     }
+
+    const decrease = async() => {
+
+        if (attackCharacter > 0) {
+            
+            setAttackCharacter(attackCharacter - 1)
+            let tokenID = (await gameContract.nftHolders(account))[attackCharacter - 1];
+            let startTime = (await gameContract.getStartTime(tokenID, DYNAMIC_GAME_FACET_ADDRESS)).toNumber();
+            if(startTime === 0){
+                setStakeState('')
+      
+            }
+            else {
+                setStakeState('staked')
+      
+            }
+
+    }}
 
     return (
         <Flex flexDirection={isMobile ? 'column' : 'row'} alignItems={'center'}>
@@ -139,7 +183,7 @@ const Arena = ({ characterNFT, setCharacterNFT, setAttackCharacter, attackCharac
             )}
             {characterNFT && (
                 <Flex flexDirection='column' alignItems='center'>
-                    <CharacterCard character={characterNFT} animation={animation} />
+                    <CharacterCard character={characterNFT} animation={animation} stakeState={stakeState}/>
                     <Flex alignItems='center' mt='10px'>
                         <Icon icon="emojione-v1:growing-heart" />
                         <Text fontSize="14px" ml='5px' mr='30px' bold>{`${characterNFT.hp.toNumber()}/${characterNFT.maxHp.toNumber()}`}</Text>
@@ -147,8 +191,8 @@ const Arena = ({ characterNFT, setCharacterNFT, setAttackCharacter, attackCharac
                         <Text fontSize="14px" ml='5px' bold>{characterNFT.attackDamage.toNumber()}</Text>
                     </Flex>
                     <Flex mt='10px'>
-                        <Button className="animateButton m-0 p-10 mr-10" onClick={decrease}><Icon icon="emojione:backhand-index-pointing-left" width="40" height="40" /></Button>
-                        <Button className="animateButton m-0 p-10" onClick={increase}><Icon icon="emojione:backhand-index-pointing-right" width="40" height="40" /></Button>
+                        <Button className="animateButton m-0 p-10 mr-10" onClick={async () => {await decrease()}}><Icon icon="emojione:backhand-index-pointing-left" width="40" height="40" /></Button>
+                        <Button className="animateButton m-0 p-10" onClick={async () => {await increase()}}><Icon icon="emojione:backhand-index-pointing-right" width="40" height="40" /></Button>
                     </Flex>
                 </Flex>
             )}
