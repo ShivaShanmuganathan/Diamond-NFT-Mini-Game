@@ -16,6 +16,7 @@ toast.configure();
 const Arena = ({ characterNFT, setCharacterNFT, setStakeCharacter, stakeCharacter }) => {
     const [gameContract, setGameContract] = useState(null);
     const [stakeState, setStakeState] = useState('');
+    const [startingTime, setStartingTime] = useState(0);
     const isMobile = useMediaQuery("(max-width: 600px)");
     const [animation, setAnimation] = useState(true)
     const { account } = useWeb3React()
@@ -66,10 +67,13 @@ const Arena = ({ characterNFT, setCharacterNFT, setStakeCharacter, stakeCharacte
 
                 const stakeTxn = await gameContract.stakeCharacter(tokenID, DYNAMIC_GAME_FACET_ADDRESS, overrides);
                 await stakeTxn.wait();
+
+                let startTime = (await gameContract.getStartTime(tokenID, DYNAMIC_GAME_FACET_ADDRESS)).toNumber();
                 // console.log('Staking NFT 4...')
 
                 // console.log('stakeTxn:', stakeTxn);
                 setStakeState('staked');
+                setStartingTime(startTime);
                 setAnimation(true)
                 toast.success(" STAKING COMPLETE! 🔥", {
                     position: toast.POSITION.BOTTOM_RIGHT,
@@ -184,12 +188,14 @@ const Arena = ({ characterNFT, setCharacterNFT, setStakeCharacter, stakeCharacte
             const fetchData = async () => {
 
                 let tokenID = (await gameContract.nftHolders(account))[stakeCharacter];
-                let startTime = (await gameContract.getStartTime(tokenID, DYNAMIC_GAME_FACET_ADDRESS)).toString();
+                let startTime = (await gameContract.getStartTime(tokenID, DYNAMIC_GAME_FACET_ADDRESS)).toNumber();
                 if(startTime === '0'){
                     setStakeState('')
+                    setStartingTime(0);
                 }
                 else {
                     setStakeState('staked')
+                    setStartingTime(startTime);
                 }
 
             }
@@ -238,7 +244,7 @@ const Arena = ({ characterNFT, setCharacterNFT, setStakeCharacter, stakeCharacte
         console.log("stakeCharacter ID", stakeCharacter + 1)
         // const tokenID = stakeCharacter;
         let tokenID = (await gameContract.nftHolders(account))[stakeCharacter + 1];
-        let startTime = (await gameContract.getStartTime(tokenID, DYNAMIC_GAME_FACET_ADDRESS)).toString();
+        let startTime = (await gameContract.getStartTime(tokenID, DYNAMIC_GAME_FACET_ADDRESS)).toNumber();
         console.log("INCREASE CLICKED");
         console.log('TokenID: ', tokenID.toString());
         console.log('address of contract', DYNAMIC_GAME_FACET_ADDRESS);
@@ -247,11 +253,13 @@ const Arena = ({ characterNFT, setCharacterNFT, setStakeCharacter, stakeCharacte
         console.log("time type",typeof(startTime));
         console.log('Owner of tokenID', (await gameContract.exists(tokenID)).toString());
         // const tokenIDTxn = (await gameContract.nftHolders(account))[stakeCharacter];
-        if(startTime === '0'){
+        if(startTime === 0){
             setStakeState('')
+            setStartingTime(0);
         }
         else {
             setStakeState('staked')
+            setStartingTime(startTime);
         }
     }
 
@@ -261,7 +269,7 @@ const Arena = ({ characterNFT, setCharacterNFT, setStakeCharacter, stakeCharacte
             console.log("stakeCharacter ID", stakeCharacter - 1)
             // const tokenID = stakeCharacter;
             const tokenID = (await gameContract.nftHolders(account))[stakeCharacter - 1];
-            const startTime = (await gameContract.getStartTime(tokenID, DYNAMIC_GAME_FACET_ADDRESS)).toString();
+            const startTime = (await gameContract.getStartTime(tokenID, DYNAMIC_GAME_FACET_ADDRESS)).toNumber();
             console.log("INCREASE CLICKED");
             console.log('TokenID: ', tokenID.toString());
             console.log('address of contract', DYNAMIC_GAME_FACET_ADDRESS);
@@ -270,11 +278,13 @@ const Arena = ({ characterNFT, setCharacterNFT, setStakeCharacter, stakeCharacte
             console.log("time type",typeof(startTime));
             console.log('Owner of tokenID', (await gameContract.exists(tokenID)).toString());
             // const tokenIDTxn = (await gameContract.nftHolders(account))[stakeCharacter];
-            if(startTime === '0'){
+            if(startTime === 0){
                 setStakeState('')
+                setStartingTime(0);
             }
             else {
                 setStakeState('staked')
+                setStartingTime(startTime);
             }
         }
         
@@ -282,6 +292,8 @@ const Arena = ({ characterNFT, setCharacterNFT, setStakeCharacter, stakeCharacte
 
     function FindStake(props) {
         const stakeStatus = props.stakeStatus;
+        
+
         if (stakeStatus === 'staking') {
         return <Flex>
           <lottie-player
@@ -303,13 +315,16 @@ const Arena = ({ characterNFT, setCharacterNFT, setStakeCharacter, stakeCharacte
                         <Flex className="m-30 mt-10" onClick={runUnstakeAction}><Icon icon="flat-color-icons:unlock" className="stake_nft" width="320" height="320" /></Flex>
                         <Flex alignItems='center' mt='1px'>
                             {/* <Icon icon="emojione-v1:growing-heart" /> */}
-                            <Text fontSize="42px" ml='20px' mr='30px' bold>{`UNSTAKE NFT `}</Text>                        
+                            <Text fontSize="42px" ml='20px' mr='30px' bold>{`UNSTAKE NFT `}</Text>
+                            
                         </Flex>
-                        {/* <Flex mt='10px'>
-                            <Button className="animateButton m-0 p-10 mr-10" onClick={async () => {await decrease()}}><Icon icon="emojione:backhand-index-pointing-left" width="40" height="40" /></Button>
-    
-                            <Button className="animateButton m-0 p-10" onClick={async () => {await increase()}}><Icon icon="emojione:backhand-index-pointing-right" width="40" height="40" /></Button>
-                        </Flex> */}
+
+                        <Flex mt='10px'>
+
+                            {/* <Text fontSize="21px" ml='20px' mr='30px' bold >{` NFT STAKED ${((Math.floor(Date.now() / 1000) - startingTime) / 60)} MINUTES AGO`}</Text> */}
+                            <Text fontSize="21px" ml='20px' mr='30px' bold >{` NFT STAKED ${Math.floor((Math.floor(Date.now() / 1000) - startingTime) / 60)} MINUTES AGO`}</Text>
+
+                        </Flex>
                 </Flex>
                 );
         }
@@ -335,11 +350,22 @@ const Arena = ({ characterNFT, setCharacterNFT, setStakeCharacter, stakeCharacte
         
     }
 
+    
+
+    // const findStartTime = async() => {
+
+    //     let tokenID = (await gameContract.nftHolders(account))[stakeCharacter];
+    //     startTime = (await gameContract.getStartTime(tokenID, DYNAMIC_GAME_FACET_ADDRESS)).toString();
+
+    // }
+
+    
+
     return (
         <Flex flexDirection={isMobile ? 'column' : 'row'} alignItems={'center'}>
             
         {    
-            characterNFT && (<FindStake stakeStatus={stakeState}/>)
+            characterNFT && (<FindStake stakeStatus={stakeState} />)
         }
                 
 
