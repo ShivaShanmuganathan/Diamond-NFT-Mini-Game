@@ -21,11 +21,6 @@ import "hardhat/console.sol";
 import "./DynamicGameFacet.sol";
 
 
-interface IERC721Diamond {
-    function transferFrom(address from, address to, uint256 tokenId) external;
-    function ownerOf(uint256 tokenId) external view returns (address);
-}
-
 
 // @title NFT Based Mini Game
 /// @author Shiva Shanmuganathan
