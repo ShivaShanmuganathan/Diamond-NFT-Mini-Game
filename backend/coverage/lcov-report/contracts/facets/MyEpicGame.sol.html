@@ -1,0 +1,1175 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for contracts/facets/MyEpicGame.sol</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">contracts/facets/</a> MyEpicGame.sol
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>0/0</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// // SPDX-License-Identifier: MIT
+// pragma solidity ^0.8.0;
+&nbsp;
+// // Helper we wrote to encode in Base64
+// import "./libraries/Base64.sol";
+&nbsp;
+// // NFT contract to inherit from.
+// import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+// // Helper functions OpenZeppelin provides.
+// import "@openzeppelin/contracts/utils/Counters.sol";
+// import "@openzeppelin/contracts/utils/Strings.sol";
+&nbsp;
+// // Access Control Function
+// import "@openzeppelin/contracts/access/Ownable.sol";
+&nbsp;
+// // Makes Debugging Easy
+// import "hardhat/console.sol";
+&nbsp;
+&nbsp;
+// // @title NFT Based Mini Game
+// /// @author Shiva Shanmuganathan
+// /// @notice You can use this contract for implementing a simple NFT based game to change NFT Metadata
+// /// @dev All function calls are currently implemented without side effects
+// contract MyEpicGame is ERC721, Ownable{
+&nbsp;
+//   // We'll hold our character's attributes in a struct.   
+//   struct CharacterAttributes {
+//     uint characterIndex;
+//     string name;
+//     string imageURI;        
+//     uint hp;
+//     uint maxHp;
+//     uint attackDamage;
+//     string levels;
+//   }
+&nbsp;
+//   struct stakeAttributes {
+//     uint startTime; 
+//   }
+&nbsp;
+//   // The tokenId is the NFTs unique identifier, it's just a number that goes
+//   // 0, 1, 2, 3, etc.
+//   using Counters for Counters.Counter;
+//   Counters.Counter private _tokenIds;
+//   uint256 public totalTokens;
+&nbsp;
+//   // This array help us hold the default data for our characters.
+//   // This will be helpful when we mint new characters and need to know things like their HP, AD, etc.
+//   CharacterAttributes[] defaultCharacters;
+  
+//   // We create a mapping from the nft's tokenId =&gt; that NFTs attributes.
+//   mapping(uint256 =&gt; CharacterAttributes) public nftHolderAttributes;
+&nbsp;
+//   // We create a mapping from the nft's tokenId =&gt; that NFTs attributes.
+//   mapping(uint256 =&gt; stakeAttributes) public stakeInfo;
+&nbsp;
+//   // We create a struct to keep track of bigBoss's attributes
+//   struct BigBoss {
+//     string name;
+//     string imageURI;
+//     uint hp;
+//     uint maxHp;
+//     uint attackDamage;
+//   }
+&nbsp;
+//   // bigBoss is the Bad Guy that our Heroes Fight against
+//   BigBoss public bigBoss;
+&nbsp;
+//   // A mapping from an address =&gt; the NFT tokenIds. Gives me an easy way
+//   // to store the owner of the NFT and reference it later.
+//   mapping(address =&gt; uint256[]) public nftHolders;
+  
+//   // Events to show that a Minting &amp; Attacking action has been completed 
+//   event CharacterNFTMinted(address sender, uint256 tokenId, uint256 characterIndex);
+//   event AttackComplete(uint newBossHp, uint newPlayerHp);
+//   event AssetStaked(uint tokenId, uint stakeStartTime);
+//   event AssetUnstaked(uint tokenId, uint stakeStartTime, uint stakeEndTime);
+&nbsp;
+//   // A fee to mint the Characterrs. 
+//   uint256 fee = 0.1 ether;
+&nbsp;
+//   // Data is passed in to the contract when it's first created initializing the characters.
+//   // We're going to actually pass these values in from from run.js.
+  
+//   /// @notice Constructor function initializes the Boss &amp; DefaultCharacter's Attributes
+//   /// @dev TokenId is incremented to 1, so that 0th Token can be assigned for users that sell their Token
+//   /// @param characterNames -&gt; Gets All Default Character's Names as string array
+//   /// @param characterImageURIs -&gt; Gets All Default Character's ImageURI as string array
+//   /// @param characterHp -&gt; Gets All Default Character's Health as uint array. 
+//   /// @param characterAttackDmg-&gt; Gets All Default Character's Attack Damage as uint array. 
+//   /// @param bossName -&gt; Gets Boss name as string
+//   /// @param bossImageURI -&gt; Gets Boss imageURI as string
+//   /// @param bossHp -&gt; Gets Boss Hp as uint
+//   /// @param bossAttackDamage -&gt; Gets Boss AttackDamage as uint
+//   constructor(
+//     // These new variables would be passed in via run.js or deploy.js.
+//     string[] memory characterNames,
+//     string[] memory characterImageURIs,
+//     uint[] memory characterHp,
+//     uint[] memory characterAttackDmg,
+//     string[] memory characterLevels,
+//     string memory bossName, 
+//     string memory bossImageURI,
+//     uint bossHp,
+//     uint bossAttackDamage
+//   )
+//   ERC721("Heroes", "HERO")
+//   {
+&nbsp;
+//     // Initialize the boss as our "bigBoss" state variable.
+//     bigBoss = BigBoss({
+//       name: bossName,
+//       imageURI: bossImageURI,
+//       hp: bossHp,
+//       maxHp: bossHp,
+//       attackDamage: bossAttackDamage
+//     });
+&nbsp;
+//     // console.log("Done initializing BOSS %s w/ HP %s, img %s", bigBoss.name, bigBoss.hp, bigBoss.imageURI);
+&nbsp;
+//     // Loop through all the characters, and save their values in our contract so
+//     // we can use them later when we mint our NFTs.
+//     for(uint i = 0; i &lt; characterNames.length; i += 1) {
+&nbsp;
+//       defaultCharacters.push(CharacterAttributes({
+//         characterIndex: i,
+//         name: characterNames[i],
+//         imageURI: characterImageURIs[i],
+//         hp: characterHp[i],
+//         maxHp: characterHp[i],
+//         attackDamage: characterAttackDmg[i],
+//         levels: characterLevels[i]
+//       }));
+&nbsp;
+//     }
+    
+//     _tokenIds.increment();
+//   }
+  
+//   /// @notice Update Fee to mint the NFTs
+//   /// @dev Only the contract owner will be able to update the minting fee
+//   /// @param _fee The updated fee is passed by contract owner
+//   /// Ownable is used to verify the contract owner
+&nbsp;
+//   function updateFee(uint256 _fee) external onlyOwner {
+&nbsp;
+//     fee = _fee;
+&nbsp;
+//   }
+&nbsp;
+//   /// @notice Withdraw function for contract owner to withdraw the funds
+//   /// @dev call function is used to transfer balance over transfer function due to security reasons
+//   /// Ownable is used to verify the contract owner
+//   function withdraw() external onlyOwner {
+&nbsp;
+//     (bool success, ) = msg.sender.call{value: address(this).balance}("");
+//     require(success, "Transfer failed.");
+&nbsp;
+//   }
+&nbsp;
+&nbsp;
+//   /// @notice Mints the NFT of the selected character
+//   /// @dev The payable function requires users to pay the fee amount to mint the NFT. 
+//   /// @param _characterIndex The index of the character the user chooses to Mint
+//   function mintCharacterNFT(uint _characterIndex) external payable{
+//     // require(msg.value == fee);
+//     uint256 newItemId = _tokenIds.current();
+&nbsp;
+//     _safeMint (msg.sender, newItemId);
+&nbsp;
+//     nftHolderAttributes[newItemId] = CharacterAttributes({
+      
+//       characterIndex: _characterIndex,
+//       name: defaultCharacters[_characterIndex].name,
+//       imageURI: defaultCharacters[_characterIndex].imageURI,
+//       hp: defaultCharacters[_characterIndex].hp,
+//       maxHp: defaultCharacters[_characterIndex].hp,
+//       attackDamage: defaultCharacters[_characterIndex].attackDamage,
+//       levels: defaultCharacters[_characterIndex].levels
+      
+//     });
+&nbsp;
+//     console.log("Minted NFT w/ tokenId %s and characterIndex %s", newItemId, _characterIndex);  
+&nbsp;
+//     nftHolders[msg.sender].push(newItemId);
+//     totalTokens = newItemId;
+&nbsp;
+//     _tokenIds.increment();
+    
+//     emit CharacterNFTMinted(msg.sender, newItemId, _characterIndex);
+&nbsp;
+//   }
+&nbsp;
+//   /// @notice View Function that returns NFT Metadata of token as a string 
+//   /// @dev The tokenURI function is overridden to get character attributes and return the  json object as string
+//   /// @param _tokenId It is used to uniquely identify NFTs
+//   /// @return Returns the encoded json object as string
+//   /// @inheritdoc ERC721
+//   function tokenURI(uint256 _tokenId) public view override returns (string memory) 
+//   {
+//     CharacterAttributes memory charAttributes = nftHolderAttributes[_tokenId];
+&nbsp;
+//     string memory strHp = Strings.toString(charAttributes.hp);
+//     string memory strMaxHp = Strings.toString(charAttributes.maxHp);
+//     string memory strAttackDamage = Strings.toString(charAttributes.attackDamage);
+    
+    
+&nbsp;
+//     string memory json = Base64.encode(
+//           abi.encodePacked(
+//             '{"name": "',
+//             charAttributes.name,
+//             ' -- NFT #: ',
+//             Strings.toString(_tokenId),
+//             '", "description": "An epic NFT", "image": "ipfs://',
+//             charAttributes.imageURI,
+//             '", "attributes": [ { "trait_type": "Health Points", "value": ',strHp,', "max_value":',strMaxHp,'}, { "trait_type": "Attack Damage", "value": ', strAttackDamage,'}, { "trait_type": "Levels", "value": "',charAttributes.levels,'"} ]}'
+//           )
+//     );
+&nbsp;
+//     string memory output = string(
+//       abi.encodePacked("data:application/json;base64,", json)
+//     );
+    
+//     return output;
+//   }
+&nbsp;
+&nbsp;
+  
+//   /// @notice User with NFT can attack the Boss [Metadata Of NFT Changes Here]
+//   /// @dev The Health of Boss &amp; User's NFT is reduced becuase of attack. [Metadata Of NFT Changes Here]
+//   /// The user's address is used to get the NFT the user owns
+//   /// Health of Boss &amp; Hero is reduced due to fight  
+//   function attackBoss(uint _index) public {
+//     // Get the state of the player's NFT.
+//     uint256 nftTokenIdOfPlayer = nftHolders[msg.sender][_index];
+//     CharacterAttributes storage player = nftHolderAttributes[nftTokenIdOfPlayer];
+//     console.log("\nPlayer w/ character %s about to attack. Has %s HP and %s AD", player.name, player.hp, player.attackDamage);
+//     console.log("Boss %s has %s HP and %s AD", bigBoss.name, bigBoss.hp, bigBoss.attackDamage);
+//     // Make sure the player has more than 0 HP.
+//     require (
+//       player.hp &gt; 0,
+//       "Error: character must have HP to attack boss."
+//     );
+&nbsp;
+//     // Make sure the boss has more than 0 HP.
+//     require (
+//       bigBoss.hp &gt; 0,
+//       "Error: boss must have HP to attack boss."
+//     );
+&nbsp;
+//     // Allow player to attack boss.
+//     if (bigBoss.hp &lt; player.attackDamage) {
+//       bigBoss.hp = 0;
+//     } else {
+//       bigBoss.hp = bigBoss.hp - player.attackDamage;
+//     }
+&nbsp;
+//     // Allow boss to attack player.
+//     if (player.hp &lt; bigBoss.attackDamage) {
+//       player.hp = 0;
+//     } else {
+//       player.hp = player.hp - bigBoss.attackDamage;
+//     }
+&nbsp;
+//     // Console for ease.
+//     console.log("%s attacked Boss. Boss hp: %s\n", player.name, bigBoss.hp);
+//     console.log("Boss attacked %s. %s hp: %s\n", player.name, player.name ,player.hp);
+//     emit AttackComplete(bigBoss.hp, player.hp);
+//   }
+&nbsp;
+//   /// @notice User with NFT can stake their character [Metadata Of NFT Changes Here]
+//   /// @dev The Health of User's NFT is increased becuase of staking. [Metadata Of NFT Changes Here]
+//   /// The user's address is used to get the NFT the user owns
+//   /// Health of Hero is increased due to staking  
+//   function stakeCharacter(uint _index) public {
+//     // Get the state of the player's NFT.
+//     uint256 nftTokenIdOfPlayer = nftHolders[msg.sender][_index];
+//     stakeAttributes storage staked_asset = stakeInfo[nftTokenIdOfPlayer];
+//     require(staked_asset.startTime == 0, "NFT Already Staked.");
+//     CharacterAttributes storage player = nftHolderAttributes[nftTokenIdOfPlayer];
+//     require(player.hp &lt; player.maxHp, "Player Already Has Enough Hp");
+&nbsp;
+//     staked_asset.startTime = block.timestamp;
+//     // nftHolders[msg.sender][_index] = nftHolders[msg.sender][nftHolders[msg.sender].length - 1];
+//     // nftHolders[msg.sender].pop();
+    
+//     transferFrom(msg.sender, address(this), nftTokenIdOfPlayer);
+//     emit AssetStaked(nftTokenIdOfPlayer, staked_asset.startTime);
+&nbsp;
+//   }
+&nbsp;
+//   /// @notice User with NFT can stake their character [Metadata Of NFT Changes Here]
+//   /// @dev The Health of User's NFT is increased becuase of staking. [Metadata Of NFT Changes Here]
+//   /// The user's address is used to get the NFT the user owns
+//   /// Health of Hero is increased due to staking  
+//   function unStakeCharacter(uint _index) public {
+//     // Get the state of the player's NFT.
+//     uint256 nftTokenIdOfPlayer = nftHolders[msg.sender][_index];
+//     stakeAttributes storage staked_asset = stakeInfo[nftTokenIdOfPlayer];
+//     require(staked_asset.startTime != 0, "NFT Is Not Staked.");
+//     CharacterAttributes storage player = nftHolderAttributes[nftTokenIdOfPlayer];
+    
+//     uint stakedTime = block.timestamp - staked_asset.startTime;
+    
+//     player.hp = player.hp + (stakedTime/60);
+&nbsp;
+//     if(player.hp &gt;= player.maxHp){
+//       player.hp = player.maxHp;
+//     }
+&nbsp;
+//     staked_asset.startTime = 0;
+&nbsp;
+//     ERC721(address(this)).transferFrom(address(this), msg.sender, nftTokenIdOfPlayer);
+&nbsp;
+//     emit AssetUnstaked(nftTokenIdOfPlayer, staked_asset.startTime, block.timestamp);
+&nbsp;
+//   }
+&nbsp;
+&nbsp;
+//   /// @notice Function to check whether user owns an NFT
+//   /// @dev If the user has NFTs, Struct with Attributes of NFTs is returned 
+//   /// @dev If not, empty struct is returned when user does not have any NFTs
+//   /// @return A struct containing the Token's Attributes are returned 
+//   /// The address of message sender is used to get the tokenId
+//   //// The tokenId is then used to get the attributes of NFT 
+//   function checkIfUserHasNFT() public view returns (CharacterAttributes[] memory) {
+&nbsp;
+//     // Get the tokenId of the user's character NFT
+//     // uint256 nftTokenIdOfPlayer = nftHolders[msg.sender];
+&nbsp;
+//     uint[] memory nftArray = nftHolders[msg.sender];
+    
+//     if(nftArray.length == 0){
+//       CharacterAttributes[] memory emptyStruct;
+//       return emptyStruct;
+//     }
+    
+//     CharacterAttributes[] memory charArray = new CharacterAttributes[](nftArray.length);
+&nbsp;
+//     for(uint i=0; i&lt;nftArray.length; i++){
+&nbsp;
+//         charArray[i] = nftHolderAttributes[nftArray[i]];
+&nbsp;
+//     }
+&nbsp;
+//     return charArray;
+&nbsp;
+//   }
+  
+//   /// @notice View function to check the attributes of Boss
+//   /// @dev public view function that returns attributes of boss as struct
+//   /// @return A struct containing the attributes of Boss is returned
+//   function getBigBoss() public view returns (BigBoss memory) {
+    
+//     return bigBoss;
+&nbsp;
+//   }
+&nbsp;
+//   /// @notice View function to get attributes of all default characters
+//   /// @dev public view function that returns attributes of all default characters as struct
+//   /// @return A struct containing the attributes of all default characters is returned
+//   function getAllDefaultCharacters() public view returns (CharacterAttributes[] memory) {
+&nbsp;
+//     return defaultCharacters;
+&nbsp;
+//   }
+&nbsp;
+// }
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Apr 25 2022 14:08:51 GMT+0530 (India Standard Time)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

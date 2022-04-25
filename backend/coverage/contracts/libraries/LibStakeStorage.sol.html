@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for contracts/facets/DiamondCutFacet.sol</title>
+    <title>Code coverage report for contracts/libraries/LibStakeStorage.sol</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -16,13 +16,13 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../index.html">all files</a> / <a href="index.html">contracts/facets/</a> DiamondCutFacet.sol
+      <a href="../../index.html">all files</a> / <a href="index.html">contracts/libraries/</a> LibStakeStorage.sol
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>2/2</span>
+        <span class='fraction'>1/1</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -68,9 +68,7 @@
 23
 24
 25
-26
-27
-28</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+26</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -89,42 +87,38 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3×</span>
-<span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
+library LibStakeStorage {
 &nbsp;
-/******************************************************************************\
-* Author: Nick Mudge &lt;nick@perfectabstractions.com&gt; (https://twitter.com/mudgen)
-* EIP-2535 Diamonds: https://eips.ethereum.org/EIPS/eip-2535
-/******************************************************************************/
+        struct StakeInfo {
+            address staker;     
+            uint256 startTime;
+        }
 &nbsp;
-import { IDiamondCut } from "../interfaces/IDiamondCut.sol";
-import { LibDiamond } from "../libraries/LibDiamond.sol";
+        // This struct contains a mapping from TokenID to struct.
+        struct StakeStorage {
+            // mapping of nftAddress to token id to StakeInfo   
+            mapping(address =&gt; mapping(uint256 =&gt; StakeInfo)) stakingInfo;
+        }
 &nbsp;
-contract DiamondCutFacet is IDiamondCut {
-    /// @notice Add/replace/remove any number of functions and optionally execute
-    ///         a function with delegatecall
-    /// @param _diamondCut Contains the facet addresses and function selectors
-    /// @param _init The address of the contract or facet to execute _calldata
-    /// @param _calldata A function call, including function selector and arguments
-    ///                  _calldata is executed with delegatecall on _init
-    function diamondCut(
-        FacetCut[] calldata _diamondCut,
-        address _init,
-        bytes calldata _calldata
-    ) external override {
-        LibDiamond.enforceIsContractOwner();
-        LibDiamond.diamondCut(_diamondCut, _init, _calldata);
-    }
-}
-&nbsp;</pre></td></tr>
+        // Returns the struct from a specified position in contract storage
+        // ds is short for DiamondStorage
+        function diamondStorage() internal pure returns(StakeStorage storage ds) {
+            // Specifies a random position from a hash of a string
+            bytes32 storagePosition = keccak256("diamond.storage.LibStakeStorage");
+            // Set the position of our struct in contract storage
+            assembly {
+                ds.slot := storagePosition
+            }
+        }
+}</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
