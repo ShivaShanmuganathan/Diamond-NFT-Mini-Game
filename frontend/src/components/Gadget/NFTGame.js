@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Flex, Text } from "crox-new-uikit";
 import './gadget.css'
 
-const MintNFT = () => {
+const NFTGame = () => {
     const navigate = useNavigate();
     return (
         <Flex flexDirection='column' alignItems='center' className="container-n cursor btnfos-1 btnfos-4" onClick={() => navigate('/nftch')}>
@@ -15,7 +15,7 @@ const MintNFT = () => {
                 autoplay
                 loop
                 mode="normal"
-                src="https://assets10.lottiefiles.com/packages/lf20_sg3zxa.json"
+                src="https://assets2.lottiefiles.com/packages/lf20_ZCjq5s.json"
                 class='animation'
                 style={{ width: '200px' }}
             />
@@ -23,4 +23,4 @@ const MintNFT = () => {
     )
 }
 
-export default MintNFT
+export default NFTGame

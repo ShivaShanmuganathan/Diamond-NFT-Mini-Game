@@ -130,7 +130,7 @@ function Header(props) {
                                 src="https://assets7.lottiefiles.com/packages/lf20_yZpLO2.json"
                                 style={{ width: "60px", margin: '-20px -10px -10px' }}
                             />
-                            <p className='m-0 ml-5 mr-10 bold color-white'>{account.slice(0, 4)}...{account.slice(-4)}</p>
+                            <Text ml="5px" mr="10px" bold>{account.slice(0, 4)}...{account.slice(-4)}</Text>
                             <Icon icon="ant-design:caret-down-filled" color="#00B5AD" width="15" height="15" />
                         </Flex>
                     } size="large" color="teal" onClick={() => setIsNetworkSelectModalOpen(true)} outline rounded shadow />
@@ -147,7 +147,7 @@ function Header(props) {
                             </Flex>
                             <Flex alignItems='center' mt="20px">
                                 <Icon icon="et:wallet" color="#00B5AD" width="30" height="30" />
-                                <Text m="0 10px" bold>{account.slice(0, 10)}...{account.slice(-10)}</Text>
+                                <Text m="0 10px" bold>{account.slice(0, 7)}...{account.slice(-7)}</Text>
                                 <div onClick={() => {
                                     navigator.clipboard.writeText(account)
                                     copyToClipBoard()

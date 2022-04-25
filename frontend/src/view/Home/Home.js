@@ -1,5 +1,5 @@
 import React from "react";
-import { WalletConnect, WaveMe, MintNFT, NFTGame } from "../../components/Gadget";
+import { WalletConnect, WaveMe, StakeNFT, NFTGame } from "../../components/Gadget";
 import { useWeb3React } from "@web3-react/core";
 import { Flex } from "crox-new-uikit";
 import useMediaQuery from "use-mediaquery";
@@ -19,9 +19,9 @@ function Home(props) {
             <Flex justifyContent='center' alignItems='center' flexDirection={isMobile ? 'column' : 'row'}>
                 <WaveMe />
                 <Flex m={10} />
-                {/* <MintNFT /> */}
-                {/* <Flex m={10} /> */}
                 <NFTGame />
+                <Flex m={10} />
+                <StakeNFT />
             </Flex>
         </Flex >
     )
