@@ -13,6 +13,9 @@
 - Players can heal their heroes by staking their Hero NFT in the dapp
 - Staking NFTs increase the HP (On-Chain Metadata) of Hero NFT.
 
+## Project Demo GIF 🎥
+![Demo](./Demo.gif)
+
 ## Directory Structure 📂
 - `backend/contracts` ⏩ Smart Contract Code [Deployed @ Rinkeby Test Network]
 - `frontend` ⏩ Project's React frontend.
@@ -109,12 +112,12 @@ PRIVATE_KEY=
 ## Test Coverage Report 🛸
 ![testReport](./test-coverage-report.JPG)
 
-## [Project Walkthrough Video - WIP 🚧](https://www.loom.com/share/8f68f312c12046acb23962dca11fbd8a) 
+## [ Project Walkthrough Video 📽](https://www.loom.com/share/ef601829b2394f9db4989463d434c537) 
 
-[Video Link - WIP 🚧](https://www.loom.com/share/8f68f312c12046acb23962dca11fbd8a)
+[Video Link ](https://www.loom.com/share/ef601829b2394f9db4989463d434c537)
 
 
-## 💎 Diamond Proxy Contract Address
+## 💎 Diamond Proxy Contract Address 💎
 
 `0xA5518dEFdbF7B55bf073f42ef3DB7f39bcecA6FF`
 
