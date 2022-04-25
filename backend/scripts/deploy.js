@@ -93,10 +93,28 @@ async function deployDiamond () {
     throw Error(`Diamond upgrade failed: ${tx.hash}`)
   }
   console.log('Completed diamond cut')
+
+  const DynamicGameFacet = await ethers.getContractFactory('DynamicGameFacet')
+  const dynamicGameFacet = await DynamicGameFacet.deploy()
+
+  console.log('Deployed dynamicGameFacet to ', dynamicGameFacet.address)
+
+
+  let selectors = getSelectors(dynamicGameFacet);
+  selectors = selectors.remove(['supportsInterface'])
+  let addresses = [];
+  addresses.push(dynamicGameFacet.address);
+
+  await diamondCut.diamondCut([[dynamicGameFacet.address, FacetCutAction.Add, selectors]], ethers.constants.AddressZero, '0x');
+  console.log('Added dynamicGameFacet to Diamond ', dynamicGameFacet.address)
+
+  const diamondLoupeFacet = await ethers.getContractAt('DiamondLoupeFacet', diamond.address);
+  result = await diamondLoupeFacet.facetFunctionSelectors(addresses[0]);
+
   return diamond.address
 }
 
-// We recommend this pattern to be able to use async/await everywhere
+// We recommend this pattern to be able to use async/await every where
 // and properly handle errors.
 if (require.main === module) {
   deployDiamond()
