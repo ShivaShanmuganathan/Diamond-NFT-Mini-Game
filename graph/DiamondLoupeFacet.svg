@@ -1,0 +1,119 @@
+<?xml version="1.0" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="424pt" height="454pt" viewBox="0.00 0.00 423.72 454.00">
+<g id="graph0" class="graph" transform="translate(4,450) scale(1)" data-name="G">
+
+<polygon fill="#2e3e56" stroke="transparent" points="-4,4 -4,-450 419.72,-450 419.72,4 -4,4" style=""/>
+<g id="clust1" class="cluster" data-name="clusterDiamondLoupeFacet">
+
+<path fill="#445773" stroke="#445773" d="M20,-8C20,-8 211.06,-8 211.06,-8 217.06,-8 223.06,-14 223.06,-20 223.06,-20 223.06,-289 223.06,-289 223.06,-295 217.06,-301 211.06,-301 211.06,-301 20,-301 20,-301 14,-301 8,-295 8,-289 8,-289 8,-20 8,-20 8,-14 14,-8 20,-8" style=""/>
+<text text-anchor="middle" x="115.53" y="-284.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">DiamondLoupeFacet</text>
+</g>
+<g id="clust2" class="cluster" data-name="clusterLibDiamond">
+
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M255.06,-116C255.06,-116 395.72,-116 395.72,-116 401.72,-116 407.72,-122 407.72,-128 407.72,-128 407.72,-181 407.72,-181 407.72,-187 401.72,-193 395.72,-193 395.72,-193 255.06,-193 255.06,-193 249.06,-193 243.06,-187 243.06,-181 243.06,-181 243.06,-128 243.06,-128 243.06,-122 249.06,-116 255.06,-116" style=""/>
+<text text-anchor="middle" x="325.39" y="-176.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">LibDiamond</text>
+</g>
+<g id="clust3" class="cluster" data-name="cluster_01">
+
+<polygon fill="#2e3e56" stroke="black" points="42.53,-309 42.53,-438 360.39,-438 360.39,-309 42.53,-309" style=""/>
+<text text-anchor="middle" x="201.46" y="-421.4" font-family="Times,serif" font-size="14.00" style="">Legend</text>
+</g>
+<!-- DiamondLoupeFacet.facets -->
+<g id="node1" class="node" pointer-events="visible" data-name="DiamondLoupeFacet.facets">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="115.53" cy="-250" rx="33.6" ry="18" style=""/>
+<text text-anchor="middle" x="115.53" y="-245.8" font-family="Times,serif" font-size="14.00" style="">facets</text>
+</g>
+<!-- LibDiamond.diamondStorage -->
+<g id="node6" class="node" pointer-events="visible" data-name="LibDiamond.diamondStorage">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="325.39" cy="-142" rx="74.16" ry="18" style=""/>
+<text text-anchor="middle" x="325.39" y="-137.8" font-family="Times,serif" font-size="14.00" style="">diamondStorage</text>
+</g>
+<!-- DiamondLoupeFacet.facets&#45;&gt;LibDiamond.diamondStorage -->
+<g id="edge1" class="edge" data-name="DiamondLoupeFacet.facets-&gt;LibDiamond.diamondStorage">
+
+<path fill="none" stroke="white" stroke-width="2" d="M148.54,-245.55C170.37,-241.65 199.48,-234.72 223.06,-223 252.13,-208.55 280.59,-184.69 299.91,-166.6" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="302.53,-168.93 307.35,-159.49 297.7,-163.87 302.53,-168.93" style=""/>
+</g>
+<!-- DiamondLoupeFacet.facetFunctionSelectors -->
+<g id="node2" class="node" pointer-events="visible" data-name="DiamondLoupeFacet.facetFunctionSelectors">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="115.53" cy="-196" rx="99.56" ry="18" style=""/>
+<text text-anchor="middle" x="115.53" y="-191.8" font-family="Times,serif" font-size="14.00" style="">facetFunctionSelectors</text>
+</g>
+<!-- DiamondLoupeFacet.facetFunctionSelectors&#45;&gt;LibDiamond.diamondStorage -->
+<g id="edge2" class="edge" data-name="DiamondLoupeFacet.facetFunctionSelectors-&gt;LibDiamond.diamondStorage">
+
+<path fill="none" stroke="white" stroke-width="2" d="M174.61,-181.41C190.34,-177.43 207.36,-173.08 223.06,-169 236.67,-165.46 251.29,-161.6 265.08,-157.93" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="266.18,-161.26 274.94,-155.3 264.38,-154.5 266.18,-161.26" style=""/>
+</g>
+<!-- DiamondLoupeFacet.facetAddresses -->
+<g id="node3" class="node" pointer-events="visible" data-name="DiamondLoupeFacet.facetAddresses">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="115.53" cy="-142" rx="69.47" ry="18" style=""/>
+<text text-anchor="middle" x="115.53" y="-137.8" font-family="Times,serif" font-size="14.00" style="">facetAddresses</text>
+</g>
+<!-- DiamondLoupeFacet.facetAddresses&#45;&gt;LibDiamond.diamondStorage -->
+<g id="edge3" class="edge" data-name="DiamondLoupeFacet.facetAddresses-&gt;LibDiamond.diamondStorage">
+
+<path fill="none" stroke="white" stroke-width="2" d="M185.17,-142C202.93,-142 222.25,-142 240.68,-142" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="240.82,-145.5 250.82,-142 240.82,-138.5 240.82,-145.5" style=""/>
+</g>
+<!-- DiamondLoupeFacet.facetAddress -->
+<g id="node4" class="node" pointer-events="visible" data-name="DiamondLoupeFacet.facetAddress">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="115.53" cy="-88" rx="61.39" ry="18" style=""/>
+<text text-anchor="middle" x="115.53" y="-83.8" font-family="Times,serif" font-size="14.00" style="">facetAddress</text>
+</g>
+<!-- DiamondLoupeFacet.facetAddress&#45;&gt;LibDiamond.diamondStorage -->
+<g id="edge4" class="edge" data-name="DiamondLoupeFacet.facetAddress-&gt;LibDiamond.diamondStorage">
+
+<path fill="none" stroke="white" stroke-width="2" d="M162.7,-99.57C181.45,-104.3 203.3,-109.86 223.06,-115 236.67,-118.54 251.29,-122.4 265.08,-126.07" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="264.38,-129.5 274.94,-128.7 266.18,-122.74 264.38,-129.5" style=""/>
+</g>
+<!-- DiamondLoupeFacet.supportsInterface -->
+<g id="node5" class="node" pointer-events="visible" data-name="DiamondLoupeFacet.supportsInterface">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="115.53" cy="-34" rx="78.14" ry="18" style=""/>
+<text text-anchor="middle" x="115.53" y="-29.8" font-family="Times,serif" font-size="14.00" style="">supportsInterface</text>
+</g>
+<!-- DiamondLoupeFacet.supportsInterface&#45;&gt;LibDiamond.diamondStorage -->
+<g id="edge5" class="edge" data-name="DiamondLoupeFacet.supportsInterface-&gt;LibDiamond.diamondStorage">
+
+<path fill="none" stroke="white" stroke-width="2" d="M178.13,-44.89C193.28,-48.83 209.13,-54.08 223.06,-61 252.13,-75.45 280.59,-99.31 299.91,-117.4" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="297.7,-120.13 307.35,-124.51 302.53,-115.07 297.7,-120.13" style=""/>
+</g>
+<!-- key -->
+<g id="node7" class="node" pointer-events="visible" data-name="key">
+
+<polygon fill="#edad56" stroke="transparent" stroke-width="3" points="180.53,-405 50.53,-405 50.53,-317 180.53,-317 180.53,-405" style=""/>
+<text text-anchor="start" x="100.17" y="-386.4" font-family="Times,serif" font-size="14.00" style="">Internal Call</text>
+<text text-anchor="start" x="96.28" y="-366.4" font-family="Times,serif" font-size="14.00" style="">External Call</text>
+<text text-anchor="start" x="73.73" y="-346.4" font-family="Times,serif" font-size="14.00" style="">Defined Contract</text>
+<text text-anchor="start" x="60.13" y="-326.4" font-family="Times,serif" font-size="14.00" style="">Undefined Contract</text>
+</g>
+<!-- key2 -->
+<g id="node8" class="node" pointer-events="visible" data-name="key2">
+
+<polygon fill="#edad56" stroke="transparent" stroke-width="3" points="352.39,-405 298.39,-405 298.39,-317 352.39,-317 352.39,-405" style=""/>
+<text text-anchor="start" x="315.39" y="-386.4" font-family="Times,serif" font-size="14.00" style="">   </text>
+<text text-anchor="start" x="315.39" y="-366.4" font-family="Times,serif" font-size="14.00" style="">   </text>
+<polygon fill="#445773" stroke="transparent" points="313.39,-341 313.39,-361 338.39,-361 338.39,-341 313.39,-341" style=""/>
+<text text-anchor="start" x="315.39" y="-346.4" font-family="Times,serif" font-size="14.00" style="">   </text>
+<polygon fill="none" stroke="#e8726d" points="315.39,-323 315.39,-339 336.39,-339 336.39,-323 315.39,-323" style=""/>
+</g>
+<!-- key&#45;&gt;key2 -->
+<g id="edge6" class="edge" data-name="key-&gt;key2">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M173.53,-391C231.75,-391 248.78,-391 302.33,-391" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="302.39,-394.5 312.39,-391 302.39,-387.5 302.39,-394.5" style=""/>
+</g>
+<!-- key&#45;&gt;key2 -->
+<g id="edge7" class="edge" data-name="key-&gt;key2">
+
+<path fill="none" stroke="white" stroke-width="2" d="M173.53,-371C231.75,-371 248.78,-371 302.33,-371" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="302.39,-374.5 312.39,-371 302.39,-367.5 302.39,-374.5" style=""/>
+</g>
+</g>
+</svg>

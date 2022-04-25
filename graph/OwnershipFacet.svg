@@ -1,0 +1,101 @@
+<?xml version="1.0" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="455pt" height="346pt" viewBox="0.00 0.00 454.78 346.00">
+<g id="graph0" class="graph" transform="translate(4,342) scale(1)" data-name="G">
+
+<polygon fill="#2e3e56" stroke="transparent" points="-4,4 -4,-342 450.78,-342 450.78,4 -4,4" style=""/>
+<g id="clust1" class="cluster" data-name="clusterOwnershipFacet">
+
+<path fill="#445773" stroke="#445773" d="M20,-8C20,-8 177.8,-8 177.8,-8 183.8,-8 189.8,-14 189.8,-20 189.8,-20 189.8,-127 189.8,-127 189.8,-133 183.8,-139 177.8,-139 177.8,-139 20,-139 20,-139 14,-139 8,-133 8,-127 8,-127 8,-20 8,-20 8,-14 14,-8 20,-8" style=""/>
+<text text-anchor="middle" x="98.9" y="-122.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">OwnershipFacet</text>
+</g>
+<g id="clust2" class="cluster" data-name="clusterLibDiamond">
+
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M221.8,-8C221.8,-8 426.78,-8 426.78,-8 432.78,-8 438.78,-14 438.78,-20 438.78,-20 438.78,-181 438.78,-181 438.78,-187 432.78,-193 426.78,-193 426.78,-193 221.8,-193 221.8,-193 215.8,-193 209.8,-187 209.8,-181 209.8,-181 209.8,-20 209.8,-20 209.8,-14 215.8,-8 221.8,-8" style=""/>
+<text text-anchor="middle" x="324.29" y="-176.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">LibDiamond</text>
+</g>
+<g id="clust3" class="cluster" data-name="cluster_01">
+
+<polygon fill="#2e3e56" stroke="black" points="25.9,-201 25.9,-330 359.29,-330 359.29,-201 25.9,-201" style=""/>
+<text text-anchor="middle" x="192.6" y="-313.4" font-family="Times,serif" font-size="14.00" style="">Legend</text>
+</g>
+<!-- OwnershipFacet.transferOwnership -->
+<g id="node1" class="node" pointer-events="visible" data-name="OwnershipFacet.transferOwnership">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="98.9" cy="-88" rx="82.81" ry="18" style=""/>
+<text text-anchor="middle" x="98.9" y="-83.8" font-family="Times,serif" font-size="14.00" style="">transferOwnership</text>
+</g>
+<!-- LibDiamond.enforceIsContractOwner -->
+<g id="node3" class="node" pointer-events="visible" data-name="LibDiamond.enforceIsContractOwner">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="324.29" cy="-142" rx="106.48" ry="18" style=""/>
+<text text-anchor="middle" x="324.29" y="-137.8" font-family="Times,serif" font-size="14.00" style="">enforceIsContractOwner</text>
+</g>
+<!-- OwnershipFacet.transferOwnership&#45;&gt;LibDiamond.enforceIsContractOwner -->
+<g id="edge1" class="edge" data-name="OwnershipFacet.transferOwnership-&gt;LibDiamond.enforceIsContractOwner">
+
+<path fill="none" stroke="white" stroke-width="2" d="M154.39,-101.47C172.06,-105.82 191.76,-110.64 209.8,-115 223.27,-118.26 237.64,-121.7 251.47,-125" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="250.89,-128.46 261.43,-127.37 252.51,-121.65 250.89,-128.46" style=""/>
+</g>
+<!-- LibDiamond.setContractOwner -->
+<g id="node4" class="node" pointer-events="visible" data-name="LibDiamond.setContractOwner">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="324.29" cy="-88" rx="81.09" ry="18" style=""/>
+<text text-anchor="middle" x="324.29" y="-83.8" font-family="Times,serif" font-size="14.00" style="">setContractOwner</text>
+</g>
+<!-- OwnershipFacet.transferOwnership&#45;&gt;LibDiamond.setContractOwner -->
+<g id="edge2" class="edge" data-name="OwnershipFacet.transferOwnership-&gt;LibDiamond.setContractOwner">
+
+<path fill="none" stroke="white" stroke-width="2" d="M181.82,-88C198.32,-88 215.75,-88 232.53,-88" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="232.88,-91.5 242.88,-88 232.88,-84.5 232.88,-91.5" style=""/>
+</g>
+<!-- OwnershipFacet.owner -->
+<g id="node2" class="node" pointer-events="visible" data-name="OwnershipFacet.owner">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="98.9" cy="-34" rx="35.34" ry="18" style=""/>
+<text text-anchor="middle" x="98.9" y="-29.8" font-family="Times,serif" font-size="14.00" style="">owner</text>
+</g>
+<!-- LibDiamond.contractOwner -->
+<g id="node5" class="node" pointer-events="visible" data-name="LibDiamond.contractOwner">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="324.29" cy="-34" rx="68.32" ry="18" style=""/>
+<text text-anchor="middle" x="324.29" y="-29.8" font-family="Times,serif" font-size="14.00" style="">contractOwner</text>
+</g>
+<!-- OwnershipFacet.owner&#45;&gt;LibDiamond.contractOwner -->
+<g id="edge3" class="edge" data-name="OwnershipFacet.owner-&gt;LibDiamond.contractOwner">
+
+<path fill="none" stroke="white" stroke-width="2" d="M134.32,-34C163.87,-34 207.57,-34 245.5,-34" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="245.52,-37.5 255.52,-34 245.52,-30.5 245.52,-37.5" style=""/>
+</g>
+<!-- key -->
+<g id="node6" class="node" pointer-events="visible" data-name="key">
+
+<polygon fill="#edad56" stroke="transparent" stroke-width="3" points="163.9,-297 33.9,-297 33.9,-209 163.9,-209 163.9,-297" style=""/>
+<text text-anchor="start" x="83.54" y="-278.4" font-family="Times,serif" font-size="14.00" style="">Internal Call</text>
+<text text-anchor="start" x="79.65" y="-258.4" font-family="Times,serif" font-size="14.00" style="">External Call</text>
+<text text-anchor="start" x="57.11" y="-238.4" font-family="Times,serif" font-size="14.00" style="">Defined Contract</text>
+<text text-anchor="start" x="43.5" y="-218.4" font-family="Times,serif" font-size="14.00" style="">Undefined Contract</text>
+</g>
+<!-- key2 -->
+<g id="node7" class="node" pointer-events="visible" data-name="key2">
+
+<polygon fill="#edad56" stroke="transparent" stroke-width="3" points="351.29,-297 297.29,-297 297.29,-209 351.29,-209 351.29,-297" style=""/>
+<text text-anchor="start" x="314.29" y="-278.4" font-family="Times,serif" font-size="14.00" style="">   </text>
+<text text-anchor="start" x="314.29" y="-258.4" font-family="Times,serif" font-size="14.00" style="">   </text>
+<polygon fill="#445773" stroke="transparent" points="312.29,-233 312.29,-253 337.29,-253 337.29,-233 312.29,-233" style=""/>
+<text text-anchor="start" x="314.29" y="-238.4" font-family="Times,serif" font-size="14.00" style="">   </text>
+<polygon fill="none" stroke="#e8726d" points="314.29,-215 314.29,-231 335.29,-231 335.29,-215 314.29,-215" style=""/>
+</g>
+<!-- key&#45;&gt;key2 -->
+<g id="edge4" class="edge" data-name="key-&gt;key2">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M156.9,-283C222.04,-283 240.8,-283 301.22,-283" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="301.29,-286.5 311.29,-283 301.29,-279.5 301.29,-286.5" style=""/>
+</g>
+<!-- key&#45;&gt;key2 -->
+<g id="edge5" class="edge" data-name="key-&gt;key2">
+
+<path fill="none" stroke="white" stroke-width="2" d="M156.9,-263C222.04,-263 240.8,-263 301.22,-263" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="301.29,-266.5 311.29,-263 301.29,-259.5 301.29,-266.5" style=""/>
+</g>
+</g>
+</svg>

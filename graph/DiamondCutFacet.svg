@@ -1,0 +1,83 @@
+<?xml version="1.0" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="419pt" height="292pt" viewBox="0.00 0.00 418.98 292.00">
+<g id="graph0" class="graph" transform="translate(4,288) scale(1)" data-name="G">
+
+<polygon fill="#2e3e56" stroke="transparent" points="-4,4 -4,-288 414.98,-288 414.98,4 -4,4" style=""/>
+<g id="clust1" class="cluster" data-name="clusterDiamondCutFacet">
+
+<path fill="#445773" stroke="#445773" d="M26.22,-35C26.22,-35 135.78,-35 135.78,-35 141.78,-35 147.78,-41 147.78,-47 147.78,-47 147.78,-100 147.78,-100 147.78,-106 141.78,-112 135.78,-112 135.78,-112 26.22,-112 26.22,-112 20.22,-112 14.22,-106 14.22,-100 14.22,-100 14.22,-47 14.22,-47 14.22,-41 20.22,-35 26.22,-35" style=""/>
+<text text-anchor="middle" x="81" y="-95.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">DiamondCutFacet</text>
+</g>
+<g id="clust2" class="cluster" data-name="clusterLibDiamond">
+
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M186,-8C186,-8 390.98,-8 390.98,-8 396.98,-8 402.98,-14 402.98,-20 402.98,-20 402.98,-127 402.98,-127 402.98,-133 396.98,-139 390.98,-139 390.98,-139 186,-139 186,-139 180,-139 174,-133 174,-127 174,-127 174,-20 174,-20 174,-14 180,-8 186,-8" style=""/>
+<text text-anchor="middle" x="288.49" y="-122.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">LibDiamond</text>
+</g>
+<g id="clust3" class="cluster" data-name="cluster_01">
+
+<polygon fill="#2e3e56" stroke="black" points="8,-147 8,-276 323.49,-276 323.49,-147 8,-147" style=""/>
+<text text-anchor="middle" x="165.74" y="-259.4" font-family="Times,serif" font-size="14.00" style="">Legend</text>
+</g>
+<!-- DiamondCutFacet.diamondCut -->
+<g id="node1" class="node" pointer-events="visible" data-name="DiamondCutFacet.diamondCut">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="81" cy="-61" rx="58.57" ry="18" style=""/>
+<text text-anchor="middle" x="81" y="-56.8" font-family="Times,serif" font-size="14.00" style="">diamondCut</text>
+</g>
+<!-- LibDiamond.enforceIsContractOwner -->
+<g id="node2" class="node" pointer-events="visible" data-name="LibDiamond.enforceIsContractOwner">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="288.49" cy="-88" rx="106.48" ry="18" style=""/>
+<text text-anchor="middle" x="288.49" y="-83.8" font-family="Times,serif" font-size="14.00" style="">enforceIsContractOwner</text>
+</g>
+<!-- DiamondCutFacet.diamondCut&#45;&gt;LibDiamond.enforceIsContractOwner -->
+<g id="edge1" class="edge" data-name="DiamondCutFacet.diamondCut-&gt;LibDiamond.enforceIsContractOwner">
+
+<path fill="none" stroke="white" stroke-width="2" d="M135.19,-67.99C153.09,-70.34 173.63,-73.04 193.72,-75.68" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="193.47,-79.18 203.84,-77.01 194.38,-72.24 193.47,-79.18" style=""/>
+</g>
+<!-- LibDiamond.diamondCut -->
+<g id="node3" class="node" pointer-events="visible" data-name="LibDiamond.diamondCut">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="288.49" cy="-34" rx="58.57" ry="18" style=""/>
+<text text-anchor="middle" x="288.49" y="-29.8" font-family="Times,serif" font-size="14.00" style="">diamondCut</text>
+</g>
+<!-- DiamondCutFacet.diamondCut&#45;&gt;LibDiamond.diamondCut -->
+<g id="edge2" class="edge" data-name="DiamondCutFacet.diamondCut-&gt;LibDiamond.diamondCut">
+
+<path fill="none" stroke="white" stroke-width="2" d="M135.19,-54.01C162.3,-50.45 195.47,-46.09 223.92,-42.35" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="224.71,-45.78 234.17,-41.01 223.8,-38.84 224.71,-45.78" style=""/>
+</g>
+<!-- key -->
+<g id="node4" class="node" pointer-events="visible" data-name="key">
+
+<polygon fill="#edad56" stroke="transparent" stroke-width="3" points="146,-243 16,-243 16,-155 146,-155 146,-243" style=""/>
+<text text-anchor="start" x="65.64" y="-224.4" font-family="Times,serif" font-size="14.00" style="">Internal Call</text>
+<text text-anchor="start" x="61.75" y="-204.4" font-family="Times,serif" font-size="14.00" style="">External Call</text>
+<text text-anchor="start" x="39.2" y="-184.4" font-family="Times,serif" font-size="14.00" style="">Defined Contract</text>
+<text text-anchor="start" x="25.6" y="-164.4" font-family="Times,serif" font-size="14.00" style="">Undefined Contract</text>
+</g>
+<!-- key2 -->
+<g id="node5" class="node" pointer-events="visible" data-name="key2">
+
+<polygon fill="#edad56" stroke="transparent" stroke-width="3" points="315.49,-243 261.49,-243 261.49,-155 315.49,-155 315.49,-243" style=""/>
+<text text-anchor="start" x="278.49" y="-224.4" font-family="Times,serif" font-size="14.00" style="">   </text>
+<text text-anchor="start" x="278.49" y="-204.4" font-family="Times,serif" font-size="14.00" style="">   </text>
+<polygon fill="#445773" stroke="transparent" points="276.49,-179 276.49,-199 301.49,-199 301.49,-179 276.49,-179" style=""/>
+<text text-anchor="start" x="278.49" y="-184.4" font-family="Times,serif" font-size="14.00" style="">   </text>
+<polygon fill="none" stroke="#e8726d" points="278.49,-161 278.49,-177 299.49,-177 299.49,-161 278.49,-161" style=""/>
+</g>
+<!-- key&#45;&gt;key2 -->
+<g id="edge3" class="edge" data-name="key-&gt;key2">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M139,-229C196.11,-229 212.89,-229 265.28,-229" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="265.49,-232.5 275.49,-229 265.49,-225.5 265.49,-232.5" style=""/>
+</g>
+<!-- key&#45;&gt;key2 -->
+<g id="edge4" class="edge" data-name="key-&gt;key2">
+
+<path fill="none" stroke="white" stroke-width="2" d="M139,-209C196.11,-209 212.89,-209 265.28,-209" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="265.49,-212.5 275.49,-209 265.49,-205.5 265.49,-212.5" style=""/>
+</g>
+</g>
+</svg>

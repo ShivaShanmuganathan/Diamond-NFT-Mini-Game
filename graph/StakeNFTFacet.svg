@@ -1,0 +1,158 @@
+<?xml version="1.0" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="416pt" height="686pt" viewBox="0.00 0.00 416.16 686.00">
+<g id="graph0" class="graph" transform="translate(4,682) scale(1)" data-name="G">
+
+<polygon fill="#2e3e56" stroke="transparent" points="-4,4 -4,-682 412.16,-682 412.16,4 -4,4" style=""/>
+<g id="clust1" class="cluster" data-name="clusterStakeNFTFacet">
+
+<path fill="#445773" stroke="#445773" d="M20,-348C20,-348 388.16,-348 388.16,-348 394.16,-348 400.16,-354 400.16,-360 400.16,-360 400.16,-521 400.16,-521 400.16,-527 394.16,-533 388.16,-533 388.16,-533 20,-533 20,-533 14,-533 8,-527 8,-521 8,-521 8,-360 8,-360 8,-354 14,-348 20,-348" style=""/>
+<text text-anchor="middle" x="204.08" y="-516.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">StakeNFTFacet</text>
+</g>
+<g id="clust2" class="cluster" data-name="clusterLibStakeStorage">
+
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M231.43,-263C231.43,-263 372.09,-263 372.09,-263 378.09,-263 384.09,-269 384.09,-275 384.09,-275 384.09,-328 384.09,-328 384.09,-334 378.09,-340 372.09,-340 372.09,-340 231.43,-340 231.43,-340 225.43,-340 219.43,-334 219.43,-328 219.43,-328 219.43,-275 219.43,-275 219.43,-269 225.43,-263 231.43,-263" style=""/>
+<text text-anchor="middle" x="301.76" y="-323.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">LibStakeStorage</text>
+</g>
+<g id="clust3" class="cluster" data-name="clusterLibDiamond">
+
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M231.43,-178C231.43,-178 372.09,-178 372.09,-178 378.09,-178 384.09,-184 384.09,-190 384.09,-190 384.09,-243 384.09,-243 384.09,-249 378.09,-255 372.09,-255 372.09,-255 231.43,-255 231.43,-255 225.43,-255 219.43,-249 219.43,-243 219.43,-243 219.43,-190 219.43,-190 219.43,-184 225.43,-178 231.43,-178" style=""/>
+<text text-anchor="middle" x="301.76" y="-238.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">LibDiamond</text>
+</g>
+<g id="clust4" class="cluster" data-name="clusterconsole">
+
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M278.76,-93C278.76,-93 324.76,-93 324.76,-93 330.76,-93 336.76,-99 336.76,-105 336.76,-105 336.76,-158 336.76,-158 336.76,-164 330.76,-170 324.76,-170 324.76,-170 278.76,-170 278.76,-170 272.76,-170 266.76,-164 266.76,-158 266.76,-158 266.76,-105 266.76,-105 266.76,-99 272.76,-93 278.76,-93" style=""/>
+<text text-anchor="middle" x="301.76" y="-153.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">console</text>
+</g>
+<g id="clust5" class="cluster" data-name="clusterfacet">
+
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M248.62,-8C248.62,-8 354.9,-8 354.9,-8 360.9,-8 366.9,-14 366.9,-20 366.9,-20 366.9,-73 366.9,-73 366.9,-79 360.9,-85 354.9,-85 354.9,-85 248.62,-85 248.62,-85 242.62,-85 236.62,-79 236.62,-73 236.62,-73 236.62,-20 236.62,-20 236.62,-14 242.62,-8 248.62,-8" style=""/>
+<text text-anchor="middle" x="301.76" y="-68.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">facet</text>
+</g>
+<g id="clust6" class="cluster" data-name="cluster_01">
+
+<polygon fill="#2e3e56" stroke="black" points="22.68,-541 22.68,-670 336.76,-670 336.76,-541 22.68,-541" style=""/>
+<text text-anchor="middle" x="179.72" y="-653.4" font-family="Times,serif" font-size="14.00" style="">Legend</text>
+</g>
+<!-- StakeNFTFacet.stakeCharacter -->
+<g id="node1" class="node" pointer-events="visible" data-name="StakeNFTFacet.stakeCharacter">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="95.68" cy="-374" rx="68.32" ry="18" style=""/>
+<text text-anchor="middle" x="95.68" y="-369.8" font-family="Times,serif" font-size="14.00" style="">stakeCharacter</text>
+</g>
+<!-- LibStakeStorage.diamondStorage -->
+<g id="node5" class="node" pointer-events="visible" data-name="LibStakeStorage.diamondStorage">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="301.76" cy="-289" rx="74.16" ry="18" style=""/>
+<text text-anchor="middle" x="301.76" y="-284.8" font-family="Times,serif" font-size="14.00" style="">diamondStorage</text>
+</g>
+<!-- StakeNFTFacet.stakeCharacter&#45;&gt;LibStakeStorage.diamondStorage -->
+<g id="edge1" class="edge" data-name="StakeNFTFacet.stakeCharacter-&gt;LibStakeStorage.diamondStorage">
+
+<path fill="none" stroke="white" stroke-width="2" d="M133.16,-358.8C166.95,-344.73 217.36,-323.74 254.06,-308.45" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="255.67,-311.57 263.56,-304.5 252.98,-305.11 255.67,-311.57" style=""/>
+</g>
+<!-- LibDiamond.diamondStorage -->
+<g id="node6" class="node" pointer-events="visible" data-name="LibDiamond.diamondStorage">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="301.76" cy="-204" rx="74.16" ry="18" style=""/>
+<text text-anchor="middle" x="301.76" y="-199.8" font-family="Times,serif" font-size="14.00" style="">diamondStorage</text>
+</g>
+<!-- StakeNFTFacet.stakeCharacter&#45;&gt;LibDiamond.diamondStorage -->
+<g id="edge2" class="edge" data-name="StakeNFTFacet.stakeCharacter-&gt;LibDiamond.diamondStorage">
+
+<path fill="none" stroke="white" stroke-width="2" d="M111.87,-356.35C132.82,-332.59 172.43,-289.78 211.35,-259 226.91,-246.7 245.4,-234.91 261.52,-225.43" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="263.29,-228.45 270.19,-220.41 259.79,-222.39 263.29,-228.45" style=""/>
+</g>
+<!-- console.log -->
+<g id="node7" class="node" pointer-events="visible" data-name="console.log">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="301.76" cy="-119" rx="27" ry="18" style=""/>
+<text text-anchor="middle" x="301.76" y="-114.8" font-family="Times,serif" font-size="14.00" style="">log</text>
+</g>
+<!-- StakeNFTFacet.stakeCharacter&#45;&gt;console.log -->
+<g id="edge3" class="edge" data-name="StakeNFTFacet.stakeCharacter-&gt;console.log">
+
+<path fill="none" stroke="white" stroke-width="2" d="M103.4,-356.05C118.15,-318.53 156.47,-230.61 211.35,-174 228.07,-156.76 251.26,-142.7 269.83,-133.11" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="271.41,-136.24 278.79,-128.64 268.28,-129.97 271.41,-136.24" style=""/>
+</g>
+<!-- facet.delegatecall -->
+<g id="node8" class="node" pointer-events="visible" data-name="facet.delegatecall">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="301.76" cy="-34" rx="57.29" ry="18" style=""/>
+<text text-anchor="middle" x="301.76" y="-29.8" font-family="Times,serif" font-size="14.00" style="">delegatecall</text>
+</g>
+<!-- StakeNFTFacet.stakeCharacter&#45;&gt;facet.delegatecall -->
+<g id="edge4" class="edge" data-name="StakeNFTFacet.stakeCharacter-&gt;facet.delegatecall">
+
+<path fill="none" stroke="white" stroke-width="2" d="M99.85,-355.95C109.12,-307.64 140.15,-173.37 211.35,-89 223.95,-74.08 241.66,-62.01 258.01,-53.02" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="259.68,-56.1 266.9,-48.35 256.42,-49.9 259.68,-56.1" style=""/>
+</g>
+<!-- StakeNFTFacet.unStakeCharacter -->
+<g id="node2" class="node" pointer-events="visible" data-name="StakeNFTFacet.unStakeCharacter">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="95.68" cy="-482" rx="79.85" ry="18" style=""/>
+<text text-anchor="middle" x="95.68" y="-477.8" font-family="Times,serif" font-size="14.00" style="">unStakeCharacter</text>
+</g>
+<!-- StakeNFTFacet.DynamicGameFacet -->
+<g id="node4" class="node" pointer-events="visible" data-name="StakeNFTFacet.DynamicGameFacet">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="301.76" cy="-482" rx="90.31" ry="18" style=""/>
+<text text-anchor="middle" x="301.76" y="-477.8" font-family="Times,serif" font-size="14.00" style="">DynamicGameFacet</text>
+</g>
+<!-- StakeNFTFacet.unStakeCharacter&#45;&gt;StakeNFTFacet.DynamicGameFacet -->
+<g id="edge6" class="edge" data-name="StakeNFTFacet.unStakeCharacter-&gt;StakeNFTFacet.DynamicGameFacet">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M175.58,-482C183.96,-482 192.57,-482 201.15,-482" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="201.2,-485.5 211.2,-482 201.2,-478.5 201.2,-485.5" style=""/>
+</g>
+<!-- StakeNFTFacet.unStakeCharacter&#45;&gt;LibStakeStorage.diamondStorage -->
+<g id="edge5" class="edge" data-name="StakeNFTFacet.unStakeCharacter-&gt;LibStakeStorage.diamondStorage">
+
+<path fill="none" stroke="white" stroke-width="2" d="M153.73,-469.62C161.73,-465.94 169.28,-461.18 175.35,-455 211.71,-418.02 179.29,-384.77 211.35,-344 222.66,-329.63 238.83,-318.08 254.32,-309.34" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="256.15,-312.33 263.32,-304.52 252.85,-306.16 256.15,-312.33" style=""/>
+</g>
+<!-- StakeNFTFacet.getStartTime -->
+<g id="node3" class="node" pointer-events="visible" data-name="StakeNFTFacet.getStartTime">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="95.68" cy="-428" rx="61.41" ry="18" style=""/>
+<text text-anchor="middle" x="95.68" y="-423.8" font-family="Times,serif" font-size="14.00" style="">getStartTime</text>
+</g>
+<!-- StakeNFTFacet.getStartTime&#45;&gt;LibStakeStorage.diamondStorage -->
+<g id="edge7" class="edge" data-name="StakeNFTFacet.getStartTime-&gt;LibStakeStorage.diamondStorage">
+
+<path fill="none" stroke="white" stroke-width="2" d="M145.08,-417.12C155.76,-413.22 166.52,-407.99 175.35,-401 198.86,-382.42 190.04,-365.06 211.35,-344 224.79,-330.72 242,-319.18 257.73,-310.14" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="259.74,-313.03 266.78,-305.12 256.34,-306.91 259.74,-313.03" style=""/>
+</g>
+<!-- key -->
+<g id="node9" class="node" pointer-events="visible" data-name="key">
+
+<polygon fill="#edad56" stroke="transparent" stroke-width="3" points="160.68,-637 30.68,-637 30.68,-549 160.68,-549 160.68,-637" style=""/>
+<text text-anchor="start" x="80.31" y="-618.4" font-family="Times,serif" font-size="14.00" style="">Internal Call</text>
+<text text-anchor="start" x="76.43" y="-598.4" font-family="Times,serif" font-size="14.00" style="">External Call</text>
+<text text-anchor="start" x="53.88" y="-578.4" font-family="Times,serif" font-size="14.00" style="">Defined Contract</text>
+<text text-anchor="start" x="40.28" y="-558.4" font-family="Times,serif" font-size="14.00" style="">Undefined Contract</text>
+</g>
+<!-- key2 -->
+<g id="node10" class="node" pointer-events="visible" data-name="key2">
+
+<polygon fill="#edad56" stroke="transparent" stroke-width="3" points="328.76,-637 274.76,-637 274.76,-549 328.76,-549 328.76,-637" style=""/>
+<text text-anchor="start" x="291.76" y="-618.4" font-family="Times,serif" font-size="14.00" style="">   </text>
+<text text-anchor="start" x="291.76" y="-598.4" font-family="Times,serif" font-size="14.00" style="">   </text>
+<polygon fill="#445773" stroke="transparent" points="289.76,-573 289.76,-593 314.76,-593 314.76,-573 289.76,-573" style=""/>
+<text text-anchor="start" x="291.76" y="-578.4" font-family="Times,serif" font-size="14.00" style="">   </text>
+<polygon fill="none" stroke="#e8726d" points="291.76,-555 291.76,-571 312.76,-571 312.76,-555 291.76,-555" style=""/>
+</g>
+<!-- key&#45;&gt;key2 -->
+<g id="edge8" class="edge" data-name="key-&gt;key2">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M153.68,-623C210.2,-623 226.81,-623 278.65,-623" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="278.76,-626.5 288.76,-623 278.76,-619.5 278.76,-626.5" style=""/>
+</g>
+<!-- key&#45;&gt;key2 -->
+<g id="edge9" class="edge" data-name="key-&gt;key2">
+
+<path fill="none" stroke="white" stroke-width="2" d="M153.68,-603C210.2,-603 226.81,-603 278.65,-603" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="278.76,-606.5 288.76,-603 278.76,-599.5 278.76,-606.5" style=""/>
+</g>
+</g>
+</svg>

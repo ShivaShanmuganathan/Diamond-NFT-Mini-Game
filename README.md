@@ -1,4 +1,4 @@
-# 💎 Fullstack Dynamic NFT Mini Game 🎮 Using Diamond Standard 💎
+# 💎 Fullstack Dynamic NFT Mini Game🎮  💎Using Diamond Standard
 
 ### [Play On 💎🎮](http://diamond-dapp.vercel.app/) ⏩ http://diamond-dapp.vercel.app/
 
@@ -20,6 +20,16 @@
 - `backend/contracts` ⏩ Smart Contract Code [Deployed @ Rinkeby Test Network]
 - `frontend` ⏩ Project's React frontend.
 - `backend/test` ⏩ Tests for Smart Contracts.
+
+## How Does Diamond Standard EIP 2535 Work ❓
+
+### EIP-2535 💎 Diamond Standard 
+
+A standard for organizing and upgrading a modular smart contract system.
+Multi-Facet Proxies for full control over your upgrades.
+
+Diamonds are a proxy pattern for Solidity development that allows a single gateway contract to proxy calls and storage to any number of other contracts. This provides a single interface for anyone to use your contracts, while allowing your feature set to grow into many contracts. The Diamond Standard also allows for replacing or extending functionality after your contracts are deployed.
+
 
 ## Run this project locally 🏃🏾‍♂️💨
 
@@ -117,7 +127,25 @@ PRIVATE_KEY=
 [Video Link ](https://www.loom.com/share/ef601829b2394f9db4989463d434c537)
 
 
-## 💎 Diamond Proxy Contract Address 💎
 
+
+## Diamond Contract
+
+### 💎 Diamond Proxy Contract Address 💎
 `0xA5518dEFdbF7B55bf073f42ef3DB7f39bcecA6FF`
 
+### Facet Addresses 🔮
+```
+DiamondCutFacet deployed: 0x8D28181b58e90fD7d04d18BAaf912c337FFB8de2
+DiamondInit deployed: 0xa5870539521127feED5AFF5d7963D9aE0b9eD8DF
+DiamondLoupeFacet deployed: 0x6A66b3401e92b92235C8Ec48A5e49535E360BAA0
+OwnershipFacet deployed: 0xFED68d75c01c1D786fFe1c8FE72b508b97a8FB15
+Deployed dynamicGameFacet to  0x10843144611428C4Ef2e921116f037027509358a
+stakeNFTFacet deployed to:  0x725081cc13fa55397d6ab952Df50dD1b4A7CDc20
+```
+### Graph Images To Better Understand How Contract 📊
+
+![Diamond](./graph/Diamond.svg)
+![ERC721Diamond](./graph/tokens.svg)
+![DynamicGameFacet](./graph/DynamicGameFacet.svg)
+![StakeNFTFacet](./graph/StakeNFTFacet.svg)

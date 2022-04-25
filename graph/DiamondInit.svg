@@ -1,0 +1,154 @@
+<?xml version="1.0" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="419pt" height="570pt" viewBox="0.00 0.00 418.98 570.00">
+<g id="graph0" class="graph" transform="translate(52.52817223260453,491.0627237069966) scale(0.8179020585577812)" data-name="G">
+
+<polygon fill="#2e3e56" stroke="transparent" points="-4,4 -4,-566 414.98,-566 414.98,4 -4,4" style=""/>
+<g id="clust1" class="cluster" data-name="clusterDiamondInit">
+
+<path fill="#445773" stroke="#445773" d="M58,-232C58,-232 371.68,-232 371.68,-232 377.68,-232 383.68,-238 383.68,-244 383.68,-244 383.68,-405 383.68,-405 383.68,-411 377.68,-417 371.68,-417 371.68,-417 58,-417 58,-417 52,-417 46,-411 46,-405 46,-405 46,-244 46,-244 46,-238 52,-232 58,-232" style=""/>
+<text text-anchor="middle" x="214.84" y="-400.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">DiamondInit</text>
+</g>
+<g id="clust2" class="cluster" data-name="clusterLibDiamond">
+
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M186,-93C186,-93 390.98,-93 390.98,-93 396.98,-93 402.98,-99 402.98,-105 402.98,-105 402.98,-212 402.98,-212 402.98,-218 396.98,-224 390.98,-224 390.98,-224 186,-224 186,-224 180,-224 174,-218 174,-212 174,-212 174,-105 174,-105 174,-99 180,-93 186,-93" style=""/>
+<text text-anchor="middle" x="288.49" y="-207.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">LibDiamond</text>
+</g>
+<g id="clust3" class="cluster" data-name="clusterLibAppStorage">
+
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M218.16,-8C218.16,-8 358.82,-8 358.82,-8 364.82,-8 370.82,-14 370.82,-20 370.82,-20 370.82,-73 370.82,-73 370.82,-79 364.82,-85 358.82,-85 358.82,-85 218.16,-85 218.16,-85 212.16,-85 206.16,-79 206.16,-73 206.16,-73 206.16,-20 206.16,-20 206.16,-14 212.16,-8 218.16,-8" style=""/>
+<text text-anchor="middle" x="288.49" y="-68.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">LibAppStorage</text>
+</g>
+<g id="clust4" class="cluster" data-name="cluster_01">
+
+<polygon fill="#2e3e56" stroke="black" points="8,-425 8,-554 323.49,-554 323.49,-425 8,-425" style=""/>
+<text text-anchor="middle" x="165.74" y="-537.4" font-family="Times,serif" font-size="14.00" style="">Legend</text>
+</g>
+<!-- DiamondInit.init -->
+<g id="node1" class="node" pointer-events="visible" data-name="DiamondInit.init">
+
+<ellipse fill="#ffbdb9" stroke="#ffbdb9" stroke-width="3" cx="81" cy="-258" rx="27" ry="18" style=""/>
+<text text-anchor="middle" x="81" y="-253.8" font-family="Times,serif" font-size="14.00" style="">init</text>
+</g>
+<!-- DiamondInit.type -->
+<g id="node2" class="node" pointer-events="visible" data-name="DiamondInit.type">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="288.49" cy="-258" rx="27.83" ry="18" style=""/>
+<text text-anchor="middle" x="288.49" y="-253.8" font-family="Times,serif" font-size="14.00" style="">type</text>
+</g>
+<!-- DiamondInit.init&#45;&gt;DiamondInit.type -->
+<g id="edge2" class="edge" data-name="DiamondInit.init-&gt;DiamondInit.type">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M100.96,-245.66C137.04,-235.94 215.74,-235.18 258.48,-243.38" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="257.75,-246.8 268.27,-245.59 259.29,-239.98 257.75,-246.8" style=""/>
+</g>
+<!-- DiamondInit.init&#45;&gt;DiamondInit.type -->
+<g id="edge3" class="edge" data-name="DiamondInit.init-&gt;DiamondInit.type">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M107.2,-253.39C143.38,-250.78 210.24,-250.56 251.58,-252.73" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="251.57,-256.23 261.76,-253.35 251.99,-249.25 251.57,-256.23" style=""/>
+</g>
+<!-- DiamondInit.init&#45;&gt;DiamondInit.type -->
+<g id="edge4" class="edge" data-name="DiamondInit.init-&gt;DiamondInit.type">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M107.2,-262.61C143.38,-265.22 210.24,-265.44 251.58,-263.27" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="251.99,-266.75 261.76,-262.65 251.57,-259.77 251.99,-266.75" style=""/>
+</g>
+<!-- DiamondInit.init&#45;&gt;DiamondInit.type -->
+<g id="edge5" class="edge" data-name="DiamondInit.init-&gt;DiamondInit.type">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M100.96,-270.34C137.04,-280.06 215.74,-280.82 258.48,-272.62" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="259.29,-276.02 268.27,-270.41 257.75,-269.2 259.29,-276.02" style=""/>
+</g>
+<!-- DiamondInit.BigBoss -->
+<g id="node3" class="node" pointer-events="visible" data-name="DiamondInit.BigBoss">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="288.49" cy="-312" rx="43.55" ry="18" style=""/>
+<text text-anchor="middle" x="288.49" y="-307.8" font-family="Times,serif" font-size="14.00" style="">BigBoss</text>
+</g>
+<!-- DiamondInit.init&#45;&gt;DiamondInit.BigBoss -->
+<g id="edge8" class="edge" data-name="DiamondInit.init-&gt;DiamondInit.BigBoss">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M105.73,-265.33C124.25,-270.97 150.67,-278.81 174,-285 195.52,-290.71 219.48,-296.5 239.82,-301.24" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="239.26,-304.7 249.79,-303.55 240.84,-297.88 239.26,-304.7" style=""/>
+</g>
+<!-- DiamondInit.CharacterAttributes -->
+<g id="node4" class="node" pointer-events="visible" data-name="DiamondInit.CharacterAttributes">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="288.49" cy="-366" rx="87.38" ry="18" style=""/>
+<text text-anchor="middle" x="288.49" y="-361.8" font-family="Times,serif" font-size="14.00" style="">CharacterAttributes</text>
+</g>
+<!-- DiamondInit.init&#45;&gt;DiamondInit.CharacterAttributes -->
+<g id="edge9" class="edge" data-name="DiamondInit.init-&gt;DiamondInit.CharacterAttributes">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M95.3,-273.65C111.84,-292.11 141.87,-322.37 174,-339 184.68,-344.53 196.51,-348.95 208.38,-352.47" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="207.77,-355.93 218.34,-355.22 209.64,-349.18 207.77,-355.93" style=""/>
+</g>
+<!-- LibDiamond.diamondStorage -->
+<g id="node5" class="node" pointer-events="visible" data-name="LibDiamond.diamondStorage">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="288.49" cy="-173" rx="74.16" ry="18" style=""/>
+<text text-anchor="middle" x="288.49" y="-168.8" font-family="Times,serif" font-size="14.00" style="">diamondStorage</text>
+</g>
+<!-- DiamondInit.init&#45;&gt;LibDiamond.diamondStorage -->
+<g id="edge1" class="edge" data-name="DiamondInit.init-&gt;LibDiamond.diamondStorage">
+
+<path fill="none" stroke="white" stroke-width="2" d="M104.38,-248.74C136.88,-235.3 197.88,-210.07 240.51,-192.43" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="241.94,-195.63 249.84,-188.57 239.27,-189.16 241.94,-195.63" style=""/>
+</g>
+<!-- LibDiamond.enforceIsContractOwner -->
+<g id="node6" class="node" pointer-events="visible" data-name="LibDiamond.enforceIsContractOwner">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="288.49" cy="-119" rx="106.48" ry="18" style=""/>
+<text text-anchor="middle" x="288.49" y="-114.8" font-family="Times,serif" font-size="14.00" style="">enforceIsContractOwner</text>
+</g>
+<!-- DiamondInit.init&#45;&gt;LibDiamond.enforceIsContractOwner -->
+<g id="edge7" class="edge" data-name="DiamondInit.init-&gt;LibDiamond.enforceIsContractOwner">
+
+<path fill="none" stroke="white" stroke-width="2" d="M91.12,-241.01C105.38,-216.13 135.37,-170.13 174,-146 181.63,-141.23 190.03,-137.31 198.71,-134.07" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="199.87,-137.38 208.2,-130.83 197.61,-130.75 199.87,-137.38" style=""/>
+</g>
+<!-- LibAppStorage.diamondStorage -->
+<g id="node7" class="node" pointer-events="visible" data-name="LibAppStorage.diamondStorage">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="288.49" cy="-34" rx="74.16" ry="18" style=""/>
+<text text-anchor="middle" x="288.49" y="-29.8" font-family="Times,serif" font-size="14.00" style="">diamondStorage</text>
+</g>
+<!-- DiamondInit.init&#45;&gt;LibAppStorage.diamondStorage -->
+<g id="edge6" class="edge" data-name="DiamondInit.init-&gt;LibAppStorage.diamondStorage">
+
+<path fill="none" stroke="white" stroke-width="2" d="M87.5,-240.42C98.75,-206.96 127.35,-133.5 174,-89 190.69,-73.08 212.85,-60.95 233.16,-52.19" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="234.74,-55.33 242.64,-48.28 232.07,-48.86 234.74,-55.33" style=""/>
+</g>
+<!-- key -->
+<g id="node8" class="node" pointer-events="visible" data-name="key">
+
+<polygon fill="#edad56" stroke="transparent" stroke-width="3" points="146,-521 16,-521 16,-433 146,-433 146,-521" style=""/>
+<text text-anchor="start" x="65.64" y="-502.4" font-family="Times,serif" font-size="14.00" style="">Internal Call</text>
+<text text-anchor="start" x="61.75" y="-482.4" font-family="Times,serif" font-size="14.00" style="">External Call</text>
+<text text-anchor="start" x="39.2" y="-462.4" font-family="Times,serif" font-size="14.00" style="">Defined Contract</text>
+<text text-anchor="start" x="25.6" y="-442.4" font-family="Times,serif" font-size="14.00" style="">Undefined Contract</text>
+</g>
+<!-- key2 -->
+<g id="node9" class="node" pointer-events="visible" data-name="key2">
+
+<polygon fill="#edad56" stroke="transparent" stroke-width="3" points="315.49,-521 261.49,-521 261.49,-433 315.49,-433 315.49,-521" style=""/>
+<text text-anchor="start" x="278.49" y="-502.4" font-family="Times,serif" font-size="14.00" style="">   </text>
+<text text-anchor="start" x="278.49" y="-482.4" font-family="Times,serif" font-size="14.00" style="">   </text>
+<polygon fill="#445773" stroke="transparent" points="276.49,-457 276.49,-477 301.49,-477 301.49,-457 276.49,-457" style=""/>
+<text text-anchor="start" x="278.49" y="-462.4" font-family="Times,serif" font-size="14.00" style="">   </text>
+<polygon fill="none" stroke="#e8726d" points="278.49,-439 278.49,-455 299.49,-455 299.49,-439 278.49,-439" style=""/>
+</g>
+<!-- key&#45;&gt;key2 -->
+<g id="edge10" class="edge" data-name="key-&gt;key2">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M139,-507C196.11,-507 212.89,-507 265.28,-507" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="265.49,-510.5 275.49,-507 265.49,-503.5 265.49,-510.5" style=""/>
+</g>
+<!-- key&#45;&gt;key2 -->
+<g id="edge11" class="edge" data-name="key-&gt;key2">
+
+<path fill="none" stroke="white" stroke-width="2" d="M139,-487C196.11,-487 212.89,-487 265.28,-487" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="265.49,-490.5 275.49,-487 265.49,-483.5 265.49,-490.5" style=""/>
+</g>
+</g>
+</svg>

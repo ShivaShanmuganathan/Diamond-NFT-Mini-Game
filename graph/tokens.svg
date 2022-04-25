@@ -1,0 +1,726 @@
+<?xml version="1.0" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1729pt" height="979pt" viewBox="0.00 0.00 1728.77 979.00">
+<g id="graph0" class="graph" transform="translate(179.02256236268272,848.0165971196221) scale(0.8179020585577811)" data-name="G">
+
+<polygon fill="#2e3e56" stroke="transparent" points="-4,4 -4,-975 1724.77,-975 1724.77,4 -4,4" style=""/>
+<g id="clust1" class="cluster" data-name="clusterERC721Diamond">
+
+<path fill="#445773" stroke="#445773" d="M20,-218C20,-218 1450.68,-218 1450.68,-218 1456.68,-218 1462.68,-224 1462.68,-230 1462.68,-230 1462.68,-781 1462.68,-781 1462.68,-787 1456.68,-793 1450.68,-793 1450.68,-793 20,-793 20,-793 14,-793 8,-787 8,-781 8,-781 8,-230 8,-230 8,-224 14,-218 20,-218" style=""/>
+<text text-anchor="middle" x="735.34" y="-776.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">ERC721Diamond</text>
+</g>
+<g id="clust2" class="cluster" data-name="clusterIERC721Enumerable">
+
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M260.43,-8C260.43,-8 408.57,-8 408.57,-8 414.57,-8 420.57,-14 420.57,-20 420.57,-20 420.57,-73 420.57,-73 420.57,-79 414.57,-85 408.57,-85 408.57,-85 260.43,-85 260.43,-85 254.43,-85 248.43,-79 248.43,-73 248.43,-73 248.43,-20 248.43,-20 248.43,-14 254.43,-8 260.43,-8" style=""/>
+<text text-anchor="middle" x="334.5" y="-68.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">IERC721Enumerable</text>
+</g>
+<g id="clust3" class="cluster" data-name="clusterLibERC721">
+
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M1494.68,-292C1494.68,-292 1700.77,-292 1700.77,-292 1706.77,-292 1712.77,-298 1712.77,-304 1712.77,-304 1712.77,-465 1712.77,-465 1712.77,-471 1706.77,-477 1700.77,-477 1700.77,-477 1494.68,-477 1494.68,-477 1488.68,-477 1482.68,-471 1482.68,-465 1482.68,-465 1482.68,-304 1482.68,-304 1482.68,-298 1488.68,-292 1494.68,-292" style=""/>
+<text text-anchor="middle" x="1597.72" y="-460.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">LibERC721</text>
+</g>
+<g id="clust4" class="cluster" data-name="clustertokenId">
+
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M1098.03,-801C1098.03,-801 1174.35,-801 1174.35,-801 1180.35,-801 1186.35,-807 1186.35,-813 1186.35,-813 1186.35,-866 1186.35,-866 1186.35,-872 1180.35,-878 1174.35,-878 1174.35,-878 1098.03,-878 1098.03,-878 1092.03,-878 1086.03,-872 1086.03,-866 1086.03,-866 1086.03,-813 1086.03,-813 1086.03,-807 1092.03,-801 1098.03,-801" style=""/>
+<text text-anchor="middle" x="1136.19" y="-861.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">tokenId</text>
+</g>
+<g id="clust5" class="cluster" data-name="clusterLibMeta">
+
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M771.27,-133C771.27,-133 871.17,-133 871.17,-133 877.17,-133 883.17,-139 883.17,-145 883.17,-145 883.17,-198 883.17,-198 883.17,-204 877.17,-210 871.17,-210 871.17,-210 771.27,-210 771.27,-210 765.27,-210 759.27,-204 759.27,-198 759.27,-198 759.27,-145 759.27,-145 759.27,-139 765.27,-133 771.27,-133" style=""/>
+<text text-anchor="middle" x="821.22" y="-193.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">LibMeta</text>
+</g>
+<g id="clust6" class="cluster" data-name="clusterconsole">
+
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M798.22,-886C798.22,-886 844.22,-886 844.22,-886 850.22,-886 856.22,-892 856.22,-898 856.22,-898 856.22,-951 856.22,-951 856.22,-957 850.22,-963 844.22,-963 844.22,-963 798.22,-963 798.22,-963 792.22,-963 786.22,-957 786.22,-951 786.22,-951 786.22,-898 786.22,-898 786.22,-892 792.22,-886 798.22,-886" style=""/>
+<text text-anchor="middle" x="821.22" y="-946.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">console</text>
+</g>
+<g id="clust7" class="cluster" data-name="clusterto">
+
+<path fill="#3b4b63" stroke="#e8726d" stroke-dasharray="5,2" d="M774.49,-801C774.49,-801 867.95,-801 867.95,-801 873.95,-801 879.95,-807 879.95,-813 879.95,-813 879.95,-866 879.95,-866 879.95,-872 873.95,-878 867.95,-878 867.95,-878 774.49,-878 774.49,-878 768.49,-878 762.49,-872 762.49,-866 762.49,-866 762.49,-813 762.49,-813 762.49,-807 768.49,-801 774.49,-801" style=""/>
+<text text-anchor="middle" x="821.22" y="-861.4" font-family="Times,serif" font-size="14.00" fill="#f0f0f0" style="">to</text>
+</g>
+<g id="clust8" class="cluster" data-name="cluster_01">
+
+<polygon fill="#2e3e56" stroke="black" points="45.22,-817 45.22,-946 369.5,-946 369.5,-817 45.22,-817" style=""/>
+<text text-anchor="middle" x="207.36" y="-929.4" font-family="Times,serif" font-size="14.00" style="">Legend</text>
+</g>
+<!-- ERC721Diamond.supportsInterface -->
+<g id="node1" class="node" pointer-events="visible" data-name="ERC721Diamond.supportsInterface">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="118.22" cy="-646" rx="78.14" ry="18" style=""/>
+<text text-anchor="middle" x="118.22" y="-641.8" font-family="Times,serif" font-size="14.00" style="">supportsInterface</text>
+</g>
+<!-- ERC721Diamond.type -->
+<g id="node30" class="node" pointer-events="visible" data-name="ERC721Diamond.type">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="334.5" cy="-646" rx="27.83" ry="18" style=""/>
+<text text-anchor="middle" x="334.5" y="-641.8" font-family="Times,serif" font-size="14.00" style="">type</text>
+</g>
+<!-- ERC721Diamond.supportsInterface&#45;&gt;ERC721Diamond.type -->
+<g id="edge1" class="edge" data-name="ERC721Diamond.supportsInterface-&gt;ERC721Diamond.type">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M133.28,-628.2C170.16,-608.01 269.83,-606.99 313.05,-625.15" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="311.57,-628.32 322.07,-629.74 314.74,-622.08 311.57,-628.32" style=""/>
+</g>
+<!-- ERC721Diamond.supportsInterface&#45;&gt;ERC721Diamond.type -->
+<g id="edge2" class="edge" data-name="ERC721Diamond.supportsInterface-&gt;ERC721Diamond.type">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M156.54,-630.2C198.41,-623.86 265.48,-624.29 303.9,-631.5" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="303.41,-634.98 313.93,-633.71 304.92,-628.14 303.41,-634.98" style=""/>
+</g>
+<!-- ERC721Diamond.supportsInterface&#45;&gt;ERC721Diamond.type -->
+<g id="edge3" class="edge" data-name="ERC721Diamond.supportsInterface-&gt;ERC721Diamond.type">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M191.17,-639.58C226.9,-638.88 268.51,-639.29 297.48,-640.8" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="297.35,-644.3 307.54,-641.41 297.77,-637.31 297.35,-644.3" style=""/>
+</g>
+<!-- ERC721Diamond.supportsInterface&#45;&gt;ERC721Diamond.type -->
+<g id="edge4" class="edge" data-name="ERC721Diamond.supportsInterface-&gt;ERC721Diamond.type">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M191.17,-652.42C226.9,-653.12 268.51,-652.71 297.48,-651.2" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="297.77,-654.69 307.54,-650.59 297.35,-647.7 297.77,-654.69" style=""/>
+</g>
+<!-- ERC721Diamond.supportsInterface&#45;&gt;ERC721Diamond.type -->
+<g id="edge5" class="edge" data-name="ERC721Diamond.supportsInterface-&gt;ERC721Diamond.type">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M156.54,-661.8C198.41,-668.14 265.48,-667.71 303.9,-660.5" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="304.92,-663.86 313.93,-658.29 303.41,-657.02 304.92,-663.86" style=""/>
+</g>
+<!-- ERC721Diamond.supportsInterface&#45;&gt;ERC721Diamond.type -->
+<g id="edge6" class="edge" data-name="ERC721Diamond.supportsInterface-&gt;ERC721Diamond.type">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M133.28,-663.8C170.16,-683.99 269.83,-685.01 313.05,-666.85" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="314.74,-669.92 322.07,-662.26 311.57,-663.68 314.74,-669.92" style=""/>
+</g>
+<!-- IERC721Enumerable.supportsInterface -->
+<g id="node35" class="node" pointer-events="visible" data-name="IERC721Enumerable.supportsInterface">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="334.5" cy="-34" rx="78.14" ry="18" style=""/>
+<text text-anchor="middle" x="334.5" y="-29.8" font-family="Times,serif" font-size="14.00" style="">supportsInterface</text>
+</g>
+<!-- ERC721Diamond.supportsInterface&#45;&gt;IERC721Enumerable.supportsInterface -->
+<g id="edge7" class="edge" data-name="ERC721Diamond.supportsInterface-&gt;IERC721Enumerable.supportsInterface">
+
+<path fill="none" stroke="white" stroke-width="2" d="M190.33,-639.05C201.89,-634.82 212.62,-628.47 220.43,-619 249.13,-584.2 237.04,-257.65 248.43,-214 263.43,-156.53 296.62,-95.11 316.83,-60.93" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="320.02,-62.42 322.16,-52.04 314.01,-58.82 320.02,-62.42" style=""/>
+</g>
+<!-- ERC721Diamond.totalSupply -->
+<g id="node2" class="node" pointer-events="visible" data-name="ERC721Diamond.totalSupply">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="334.5" cy="-592" rx="55.64" ry="18" style=""/>
+<text text-anchor="middle" x="334.5" y="-587.8" font-family="Times,serif" font-size="14.00" style="">totalSupply</text>
+</g>
+<!-- ERC721Diamond.tokenOfOwnerByIndex -->
+<g id="node3" class="node" pointer-events="visible" data-name="ERC721Diamond.tokenOfOwnerByIndex">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="118.22" cy="-244" rx="102.43" ry="18" style=""/>
+<text text-anchor="middle" x="118.22" y="-239.8" font-family="Times,serif" font-size="14.00" style="">tokenOfOwnerByIndex</text>
+</g>
+<!-- LibERC721._tokenOfOwnerByIndex -->
+<g id="node36" class="node" pointer-events="visible" data-name="LibERC721._tokenOfOwnerByIndex">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="1597.72" cy="-318" rx="107.09" ry="18" style=""/>
+<text text-anchor="middle" x="1597.72" y="-313.8" font-family="Times,serif" font-size="14.00" style="">_tokenOfOwnerByIndex</text>
+</g>
+<!-- ERC721Diamond.tokenOfOwnerByIndex&#45;&gt;LibERC721._tokenOfOwnerByIndex -->
+<g id="edge8" class="edge" data-name="ERC721Diamond.tokenOfOwnerByIndex-&gt;LibERC721._tokenOfOwnerByIndex">
+
+<path fill="none" stroke="white" stroke-width="2" d="M132.68,-225.77C153.86,-198.7 197.82,-148.73 248.43,-127 378.88,-71 424.98,-103 566.95,-103 566.95,-103 566.95,-103 1137.19,-103 1315.36,-103 1498.87,-237.23 1568.04,-293.57" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="1565.96,-296.39 1575.91,-300.04 1570.41,-290.98 1565.96,-296.39" style=""/>
+</g>
+<!-- ERC721Diamond.tokenByIndex -->
+<g id="node4" class="node" pointer-events="visible" data-name="ERC721Diamond.tokenByIndex">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="118.22" cy="-592" rx="66" ry="18" style=""/>
+<text text-anchor="middle" x="118.22" y="-587.8" font-family="Times,serif" font-size="14.00" style="">tokenByIndex</text>
+</g>
+<!-- ERC721Diamond.tokenByIndex&#45;&gt;ERC721Diamond.totalSupply -->
+<g id="edge9" class="edge" data-name="ERC721Diamond.tokenByIndex-&gt;ERC721Diamond.totalSupply">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M184.09,-592C210.85,-592 241.8,-592 268.57,-592" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="268.61,-595.5 278.61,-592 268.61,-588.5 268.61,-595.5" style=""/>
+</g>
+<!-- ERC721Diamond.balanceOf -->
+<g id="node5" class="node" pointer-events="visible" data-name="ERC721Diamond.balanceOf">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="1403.97" cy="-380" rx="50.92" ry="18" style=""/>
+<text text-anchor="middle" x="1403.97" y="-375.8" font-family="Times,serif" font-size="14.00" style="">balanceOf</text>
+</g>
+<!-- LibERC721._balanceOf -->
+<g id="node37" class="node" pointer-events="visible" data-name="LibERC721._balanceOf">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="1597.72" cy="-372" rx="55.58" ry="18" style=""/>
+<text text-anchor="middle" x="1597.72" y="-367.8" font-family="Times,serif" font-size="14.00" style="">_balanceOf</text>
+</g>
+<!-- ERC721Diamond.balanceOf&#45;&gt;LibERC721._balanceOf -->
+<g id="edge10" class="edge" data-name="ERC721Diamond.balanceOf-&gt;LibERC721._balanceOf">
+
+<path fill="none" stroke="white" stroke-width="2" d="M1454.35,-377.94C1478.05,-376.95 1506.75,-375.75 1532.16,-374.69" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="1532.6,-378.18 1542.45,-374.26 1532.31,-371.18 1532.6,-378.18" style=""/>
+</g>
+<!-- ERC721Diamond.ownerOf -->
+<g id="node6" class="node" pointer-events="visible" data-name="ERC721Diamond.ownerOf">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="1136.19" cy="-321" rx="45.22" ry="18" style=""/>
+<text text-anchor="middle" x="1136.19" y="-316.8" font-family="Times,serif" font-size="14.00" style="">ownerOf</text>
+</g>
+<!-- LibERC721._ownerOf -->
+<g id="node38" class="node" pointer-events="visible" data-name="LibERC721._ownerOf">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="1597.72" cy="-426" rx="50.38" ry="18" style=""/>
+<text text-anchor="middle" x="1597.72" y="-421.8" font-family="Times,serif" font-size="14.00" style="">_ownerOf</text>
+</g>
+<!-- ERC721Diamond.ownerOf&#45;&gt;LibERC721._ownerOf -->
+<g id="edge11" class="edge" data-name="ERC721Diamond.ownerOf-&gt;LibERC721._ownerOf">
+
+<path fill="none" stroke="white" stroke-width="2" d="M1181.17,-318.34C1220.04,-318.13 1276.7,-323.22 1317.26,-350 1342.26,-366.51 1327.6,-391.53 1353.26,-407 1410.61,-441.59 1489.89,-440.72 1542.19,-434.99" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="1542.76,-438.45 1552.28,-433.79 1541.93,-431.5 1542.76,-438.45" style=""/>
+</g>
+<!-- ERC721Diamond.tokenURI -->
+<g id="node7" class="node" pointer-events="visible" data-name="ERC721Diamond.tokenURI">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="821.22" cy="-742" rx="49.24" ry="18" style=""/>
+<text text-anchor="middle" x="821.22" y="-737.8" font-family="Times,serif" font-size="14.00" style="">tokenURI</text>
+</g>
+<!-- ERC721Diamond._baseURI -->
+<g id="node8" class="node" pointer-events="visible" data-name="ERC721Diamond._baseURI">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="1136.19" cy="-742" rx="49.81" ry="18" style=""/>
+<text text-anchor="middle" x="1136.19" y="-737.8" font-family="Times,serif" font-size="14.00" style="">_baseURI</text>
+</g>
+<!-- ERC721Diamond.tokenURI&#45;&gt;ERC721Diamond._baseURI -->
+<g id="edge13" class="edge" data-name="ERC721Diamond.tokenURI-&gt;ERC721Diamond._baseURI">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M870.44,-742C925.87,-742 1016.86,-742 1076.4,-742" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="1076.41,-745.5 1086.41,-742 1076.41,-738.5 1076.41,-745.5" style=""/>
+</g>
+<!-- ERC721Diamond._exists -->
+<g id="node16" class="node" pointer-events="visible" data-name="ERC721Diamond._exists">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="1136.19" cy="-634" rx="37.72" ry="18" style=""/>
+<text text-anchor="middle" x="1136.19" y="-629.8" font-family="Times,serif" font-size="14.00" style="">_exists</text>
+</g>
+<!-- ERC721Diamond.tokenURI&#45;&gt;ERC721Diamond._exists -->
+<g id="edge12" class="edge" data-name="ERC721Diamond.tokenURI-&gt;ERC721Diamond._exists">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M862.06,-731.74C879.66,-726.99 900.53,-721.06 919.13,-715 982.37,-694.38 1054.49,-666.42 1097.35,-649.33" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="1098.83,-652.51 1106.81,-645.54 1096.23,-646.01 1098.83,-652.51" style=""/>
+</g>
+<!-- tokenId.toString -->
+<g id="node39" class="node" pointer-events="visible" data-name="tokenId.toString">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="1136.19" cy="-827" rx="42.32" ry="18" style=""/>
+<text text-anchor="middle" x="1136.19" y="-822.8" font-family="Times,serif" font-size="14.00" style="">toString</text>
+</g>
+<!-- ERC721Diamond.tokenURI&#45;&gt;tokenId.toString -->
+<g id="edge14" class="edge" data-name="ERC721Diamond.tokenURI-&gt;tokenId.toString">
+
+<path fill="none" stroke="white" stroke-width="2" d="M851.36,-756.32C877.83,-768.78 918.27,-786.45 955.13,-797 997.97,-809.26 1048.08,-817.1 1084.54,-821.68" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="1084.57,-825.21 1094.92,-822.95 1085.41,-818.26 1084.57,-825.21" style=""/>
+</g>
+<!-- ERC721Diamond.approve -->
+<g id="node9" class="node" pointer-events="visible" data-name="ERC721Diamond.approve">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="567.95" cy="-299" rx="42.28" ry="18" style=""/>
+<text text-anchor="middle" x="567.95" y="-294.8" font-family="Times,serif" font-size="14.00" style="">approve</text>
+</g>
+<!-- ERC721Diamond.approve&#45;&gt;ERC721Diamond.ownerOf -->
+<g id="edge15" class="edge" data-name="ERC721Diamond.approve-&gt;ERC721Diamond.ownerOf">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M607.81,-292.87C631.69,-288.06 662.39,-279.96 687.32,-267 705.8,-257.39 703.74,-244.09 723.32,-237 764.24,-222.19 880.76,-216.47 919.13,-237 944.56,-250.61 930.9,-275.34 955.13,-291 992.35,-315.06 1042.64,-321.79 1080.61,-322.94" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="1080.91,-326.44 1090.98,-323.12 1081.04,-319.45 1080.91,-326.44" style=""/>
+</g>
+<!-- ERC721Diamond.isApprovedForAll -->
+<g id="node12" class="node" pointer-events="visible" data-name="ERC721Diamond.isApprovedForAll">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="821.22" cy="-412" rx="81.7" ry="18" style=""/>
+<text text-anchor="middle" x="821.22" y="-407.8" font-family="Times,serif" font-size="14.00" style="">isApprovedForAll</text>
+</g>
+<!-- ERC721Diamond.approve&#45;&gt;ERC721Diamond.isApprovedForAll -->
+<g id="edge17" class="edge" data-name="ERC721Diamond.approve-&gt;ERC721Diamond.isApprovedForAll">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M609.51,-302.21C633.45,-305.52 663.61,-312.27 687.32,-326 707.74,-337.82 704.38,-350.94 723.32,-365 737.63,-375.62 754.71,-384.85 770.52,-392.24" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="769.1,-395.44 779.65,-396.39 771.99,-389.07 769.1,-395.44" style=""/>
+</g>
+<!-- ERC721Diamond._approve -->
+<g id="node23" class="node" pointer-events="visible" data-name="ERC721Diamond._approve">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="821.22" cy="-264" rx="46.93" ry="18" style=""/>
+<text text-anchor="middle" x="821.22" y="-259.8" font-family="Times,serif" font-size="14.00" style="">_approve</text>
+</g>
+<!-- ERC721Diamond.approve&#45;&gt;ERC721Diamond._approve -->
+<g id="edge19" class="edge" data-name="ERC721Diamond.approve-&gt;ERC721Diamond._approve">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M608.21,-293.53C650.77,-287.6 718.98,-278.1 766.49,-271.48" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="767.18,-274.92 776.6,-270.08 766.21,-267.99 767.18,-274.92" style=""/>
+</g>
+<!-- LibMeta.msgSender -->
+<g id="node40" class="node" pointer-events="visible" data-name="LibMeta.msgSender">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="821.22" cy="-159" rx="53.9" ry="18" style=""/>
+<text text-anchor="middle" x="821.22" y="-154.8" font-family="Times,serif" font-size="14.00" style="">msgSender</text>
+</g>
+<!-- ERC721Diamond.approve&#45;&gt;LibMeta.msgSender -->
+<g id="edge16" class="edge" data-name="ERC721Diamond.approve-&gt;LibMeta.msgSender">
+
+<path fill="none" stroke="white" stroke-width="2" d="M602.76,-288.8C628.02,-283.69 662.36,-275.79 687.32,-258 710.51,-241.48 702.39,-224.31 723.32,-205 736.51,-192.83 752.87,-182.25 768.37,-174.15" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="769.98,-177.26 777.37,-169.67 766.85,-170.99 769.98,-177.26" style=""/>
+</g>
+<!-- ERC721Diamond.approve&#45;&gt;LibMeta.msgSender -->
+<g id="edge18" class="edge" data-name="ERC721Diamond.approve-&gt;LibMeta.msgSender">
+
+<path fill="none" stroke="white" stroke-width="2" d="M609.25,-302.99C633.68,-300.3 664.44,-292.31 687.32,-276 710.51,-259.48 702.39,-242.31 723.32,-223 742.56,-205.25 768.52,-190.91 788.73,-179.99" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="790.43,-183.05 797.57,-175.22 787.11,-176.89 790.43,-183.05" style=""/>
+</g>
+<!-- ERC721Diamond.getApproved -->
+<g id="node10" class="node" pointer-events="visible" data-name="ERC721Diamond.getApproved">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="821.22" cy="-688" rx="61.41" ry="18" style=""/>
+<text text-anchor="middle" x="821.22" y="-683.8" font-family="Times,serif" font-size="14.00" style="">getApproved</text>
+</g>
+<!-- ERC721Diamond.getApproved&#45;&gt;ERC721Diamond._exists -->
+<g id="edge20" class="edge" data-name="ERC721Diamond.getApproved-&gt;ERC721Diamond._exists">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M874.61,-678.96C934.89,-668.56 1032.9,-651.65 1089.98,-641.8" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="1090.89,-645.2 1100.14,-640.05 1089.69,-638.3 1090.89,-645.2" style=""/>
+</g>
+<!-- ERC721Diamond.setApprovalForAll -->
+<g id="node11" class="node" pointer-events="visible" data-name="ERC721Diamond.setApprovalForAll">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="118.22" cy="-298" rx="83.98" ry="18" style=""/>
+<text text-anchor="middle" x="118.22" y="-293.8" font-family="Times,serif" font-size="14.00" style="">setApprovalForAll</text>
+</g>
+<!-- ERC721Diamond.ApprovalForAll -->
+<g id="node31" class="node" pointer-events="visible" data-name="ERC721Diamond.ApprovalForAll">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="334.5" cy="-298" rx="73.03" ry="18" style=""/>
+<text text-anchor="middle" x="334.5" y="-293.8" font-family="Times,serif" font-size="14.00" style="">ApprovalForAll</text>
+</g>
+<!-- ERC721Diamond.setApprovalForAll&#45;&gt;ERC721Diamond.ApprovalForAll -->
+<g id="edge23" class="edge" data-name="ERC721Diamond.setApprovalForAll-&gt;ERC721Diamond.ApprovalForAll">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M202.37,-298C218.29,-298 234.96,-298 250.87,-298" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="251.2,-301.5 261.2,-298 251.2,-294.5 251.2,-301.5" style=""/>
+</g>
+<!-- ERC721Diamond.setApprovalForAll&#45;&gt;LibMeta.msgSender -->
+<g id="edge21" class="edge" data-name="ERC721Diamond.setApprovalForAll-&gt;LibMeta.msgSender">
+
+<path fill="none" stroke="white" stroke-width="2" d="M151.94,-281.51C173.71,-276.2 201.66,-269.65 220.43,-253 245.5,-230.77 221.39,-202.79 248.43,-183 413.84,-61.94 683.13,-108.47 782.14,-140.67" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="781.13,-144.02 791.73,-143.93 783.39,-137.39 781.13,-144.02" style=""/>
+</g>
+<!-- ERC721Diamond.setApprovalForAll&#45;&gt;LibMeta.msgSender -->
+<g id="edge22" class="edge" data-name="ERC721Diamond.setApprovalForAll-&gt;LibMeta.msgSender">
+
+<path fill="none" stroke="white" stroke-width="2" d="M189.4,-288.44C200.71,-284.44 211.59,-278.84 220.43,-271 245.5,-248.77 221.39,-220.79 248.43,-201 406.39,-85.39 659.09,-122.62 767.76,-146.09" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="767.29,-149.57 777.81,-148.31 768.8,-142.73 767.29,-149.57" style=""/>
+</g>
+<!-- ERC721Diamond.setApprovalForAll&#45;&gt;LibMeta.msgSender -->
+<g id="edge24" class="edge" data-name="ERC721Diamond.setApprovalForAll-&gt;LibMeta.msgSender">
+
+<path fill="none" stroke="white" stroke-width="2" d="M200.17,-301.95C207.53,-298.59 214.45,-294.31 220.43,-289 245.5,-266.77 221.39,-238.79 248.43,-219 401.84,-106.73 644.59,-138.6 758,-154.55" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="757.52,-158.02 767.91,-155.95 758.5,-151.09 757.52,-158.02" style=""/>
+</g>
+<!-- ERC721Diamond.transferFrom -->
+<g id="node13" class="node" pointer-events="visible" data-name="ERC721Diamond.transferFrom">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="334.5" cy="-392" rx="61.41" ry="18" style=""/>
+<text text-anchor="middle" x="334.5" y="-387.8" font-family="Times,serif" font-size="14.00" style="">transferFrom</text>
+</g>
+<!-- ERC721Diamond._isApprovedOrOwner -->
+<g id="node18" class="node" pointer-events="visible" data-name="ERC721Diamond._isApprovedOrOwner">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="567.95" cy="-597" rx="97.29" ry="18" style=""/>
+<text text-anchor="middle" x="567.95" y="-592.8" font-family="Times,serif" font-size="14.00" style="">_isApprovedOrOwner</text>
+</g>
+<!-- ERC721Diamond.transferFrom&#45;&gt;ERC721Diamond._isApprovedOrOwner -->
+<g id="edge25" class="edge" data-name="ERC721Diamond.transferFrom-&gt;ERC721Diamond._isApprovedOrOwner">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M390.06,-399.89C401.53,-403.92 412.55,-409.96 420.57,-419 464.98,-469.1 402.71,-518.24 448.57,-567 455.49,-574.35 463.93,-580.01 473.09,-584.35" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="471.88,-587.63 482.45,-588.26 474.57,-581.17 471.88,-587.63" style=""/>
+</g>
+<!-- ERC721Diamond._transfer -->
+<g id="node22" class="node" pointer-events="visible" data-name="ERC721Diamond._transfer">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="567.95" cy="-407" rx="45.21" ry="18" style=""/>
+<text text-anchor="middle" x="567.95" y="-402.8" font-family="Times,serif" font-size="14.00" style="">_transfer</text>
+</g>
+<!-- ERC721Diamond.transferFrom&#45;&gt;ERC721Diamond._transfer -->
+<g id="edge27" class="edge" data-name="ERC721Diamond.transferFrom-&gt;ERC721Diamond._transfer">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M394.8,-395.84C431.25,-398.21 477.59,-401.21 513,-403.5" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="512.94,-407.01 523.15,-404.16 513.4,-400.02 512.94,-407.01" style=""/>
+</g>
+<!-- ERC721Diamond.transferFrom&#45;&gt;LibMeta.msgSender -->
+<g id="edge26" class="edge" data-name="ERC721Diamond.transferFrom-&gt;LibMeta.msgSender">
+
+<path fill="none" stroke="white" stroke-width="2" d="M361.69,-375.65C379.86,-363.36 403.72,-345.22 420.57,-325 437.63,-304.54 427.07,-287.73 448.57,-272 535.6,-208.35 585.37,-264.09 687.32,-229 706.65,-222.35 752.14,-197.59 784.51,-179.4" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="786.27,-182.43 793.25,-174.47 782.83,-176.33 786.27,-182.43" style=""/>
+</g>
+<!-- ERC721Diamond.safeTransferFrom -->
+<g id="node14" class="node" pointer-events="visible" data-name="ERC721Diamond.safeTransferFrom">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="118.22" cy="-446" rx="80.43" ry="18" style=""/>
+<text text-anchor="middle" x="118.22" y="-441.8" font-family="Times,serif" font-size="14.00" style="">safeTransferFrom</text>
+</g>
+<!-- ERC721Diamond.safeTransferFrom&#45;&gt;ERC721Diamond.safeTransferFrom -->
+<g id="edge28" class="edge" data-name="ERC721Diamond.safeTransferFrom-&gt;ERC721Diamond.safeTransferFrom">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M80.57,-462.29C71.5,-472.39 84.04,-482 118.22,-482 140.64,-482 153.75,-477.86 157.55,-472.16" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="161,-471.55 155.86,-462.29 154.1,-472.74 161,-471.55" style=""/>
+</g>
+<!-- ERC721Diamond._safeTransfer -->
+<g id="node15" class="node" pointer-events="visible" data-name="ERC721Diamond._safeTransfer">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="334.5" cy="-446" rx="64.23" ry="18" style=""/>
+<text text-anchor="middle" x="334.5" y="-441.8" font-family="Times,serif" font-size="14.00" style="">_safeTransfer</text>
+</g>
+<!-- ERC721Diamond.safeTransferFrom&#45;&gt;ERC721Diamond._safeTransfer -->
+<g id="edge31" class="edge" data-name="ERC721Diamond.safeTransferFrom-&gt;ERC721Diamond._safeTransfer">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M198.7,-446C218.79,-446 240.26,-446 260.03,-446" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="260.2,-449.5 270.2,-446 260.2,-442.5 260.2,-449.5" style=""/>
+</g>
+<!-- ERC721Diamond.safeTransferFrom&#45;&gt;ERC721Diamond._isApprovedOrOwner -->
+<g id="edge29" class="edge" data-name="ERC721Diamond.safeTransferFrom-&gt;ERC721Diamond._isApprovedOrOwner">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M136.07,-463.89C159.04,-486.99 202.59,-526.44 248.43,-545 319.82,-573.91 344.6,-552.32 420.57,-565 446.05,-569.25 473.79,-575.02 498.21,-580.49" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="497.57,-583.94 508.09,-582.73 499.11,-577.11 497.57,-583.94" style=""/>
+</g>
+<!-- ERC721Diamond.safeTransferFrom&#45;&gt;LibMeta.msgSender -->
+<g id="edge30" class="edge" data-name="ERC721Diamond.safeTransferFrom-&gt;LibMeta.msgSender">
+
+<path fill="none" stroke="white" stroke-width="2" d="M136.32,-428.13C157.61,-405.35 194.32,-364.21 220.43,-325 235.42,-302.5 226.91,-287.35 248.43,-271 328.33,-210.31 627.75,-176.42 758.5,-164.24" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="759.11,-167.7 768.74,-163.3 758.47,-160.73 759.11,-167.7" style=""/>
+</g>
+<!-- ERC721Diamond._safeTransfer&#45;&gt;ERC721Diamond._transfer -->
+<g id="edge32" class="edge" data-name="ERC721Diamond._safeTransfer-&gt;ERC721Diamond._transfer">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M389.77,-436.86C427.87,-430.44 478.5,-421.9 515.87,-415.61" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="516.76,-419.01 526.04,-413.89 515.6,-412.1 516.76,-419.01" style=""/>
+</g>
+<!-- ERC721Diamond._checkOnERC721Received -->
+<g id="node24" class="node" pointer-events="visible" data-name="ERC721Diamond._checkOnERC721Received">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="567.95" cy="-540" rx="119.25" ry="18" style=""/>
+<text text-anchor="middle" x="567.95" y="-535.8" font-family="Times,serif" font-size="14.00" style="">_checkOnERC721Received</text>
+</g>
+<!-- ERC721Diamond._safeTransfer&#45;&gt;ERC721Diamond._checkOnERC721Received -->
+<g id="edge33" class="edge" data-name="ERC721Diamond._safeTransfer-&gt;ERC721Diamond._checkOnERC721Received">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M387.12,-456.48C398.83,-460.41 410.71,-465.75 420.57,-473 438.06,-485.85 430.57,-500.89 448.57,-513 455.22,-517.47 462.51,-521.22 470.1,-524.34" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="468.89,-527.63 479.48,-527.86 471.35,-521.07 468.89,-527.63" style=""/>
+</g>
+<!-- ERC721Diamond.exists -->
+<g id="node17" class="node" pointer-events="visible" data-name="ERC721Diamond.exists">
+
+<ellipse fill="#ff9797" stroke="#ff9797" stroke-width="3" cx="821.22" cy="-634" rx="33.07" ry="18" style=""/>
+<text text-anchor="middle" x="821.22" y="-629.8" font-family="Times,serif" font-size="14.00" style="">exists</text>
+</g>
+<!-- ERC721Diamond.exists&#45;&gt;ERC721Diamond._exists -->
+<g id="edge34" class="edge" data-name="ERC721Diamond.exists-&gt;ERC721Diamond._exists">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M854.54,-634C910.02,-634 1023.61,-634 1087.97,-634" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="1088.24,-637.5 1098.24,-634 1088.24,-630.5 1088.24,-637.5" style=""/>
+</g>
+<!-- ERC721Diamond._isApprovedOrOwner&#45;&gt;ERC721Diamond.ownerOf -->
+<g id="edge39" class="edge" data-name="ERC721Diamond._isApprovedOrOwner-&gt;ERC721Diamond.ownerOf">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M651.14,-587.59C664.43,-583.03 677.15,-576.45 687.32,-567 724.39,-532.56 683.83,-490.63 723.32,-459 791.59,-404.31 849.18,-491.53 919.13,-439 953.25,-413.38 921.76,-376.6 955.13,-350 990.58,-321.73 1042.72,-316.02 1081.77,-316.47" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="1081.82,-319.97 1091.91,-316.72 1082,-312.97 1081.82,-319.97" style=""/>
+</g>
+<!-- ERC721Diamond._isApprovedOrOwner&#45;&gt;ERC721Diamond.getApproved -->
+<g id="edge40" class="edge" data-name="ERC721Diamond._isApprovedOrOwner-&gt;ERC721Diamond.getApproved">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M605.58,-613.67C636.56,-627.4 682.32,-646.85 723.32,-661 736.47,-665.54 750.82,-669.87 764.35,-673.68" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="763.46,-677.06 774.03,-676.36 765.33,-670.32 763.46,-677.06" style=""/>
+</g>
+<!-- ERC721Diamond._isApprovedOrOwner&#45;&gt;ERC721Diamond.isApprovedForAll -->
+<g id="edge41" class="edge" data-name="ERC721Diamond._isApprovedOrOwner-&gt;ERC721Diamond.isApprovedForAll">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M651.74,-587.79C664.89,-583.21 677.4,-576.56 687.32,-567 728.33,-527.47 683.74,-484.96 723.32,-444 730.08,-437 738.4,-431.54 747.3,-427.26" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="748.92,-430.38 756.75,-423.23 746.17,-423.94 748.92,-430.38" style=""/>
+</g>
+<!-- ERC721Diamond._isApprovedOrOwner&#45;&gt;ERC721Diamond._exists -->
+<g id="edge38" class="edge" data-name="ERC721Diamond._isApprovedOrOwner-&gt;ERC721Diamond._exists">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M665.69,-597.28C736.07,-598.08 833.62,-600.45 919.13,-607 978.27,-611.53 1046.09,-620.65 1089.73,-627.03" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="1089.34,-630.51 1099.74,-628.51 1090.36,-623.59 1089.34,-630.51" style=""/>
+</g>
+<!-- ERC721Diamond._isApprovedOrOwner&#45;&gt;ERC721Diamond.exists -->
+<g id="edge37" class="edge" data-name="ERC721Diamond._isApprovedOrOwner-&gt;ERC721Diamond.exists">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M644.68,-608.15C688.74,-614.64 742.58,-622.57 778.92,-627.92" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="778.74,-631.43 789.15,-629.42 779.76,-624.5 778.74,-631.43" style=""/>
+</g>
+<!-- console.log -->
+<g id="node41" class="node" pointer-events="visible" data-name="console.log">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="821.22" cy="-912" rx="27" ry="18" style=""/>
+<text text-anchor="middle" x="821.22" y="-907.8" font-family="Times,serif" font-size="14.00" style="">log</text>
+</g>
+<!-- ERC721Diamond._isApprovedOrOwner&#45;&gt;console.log -->
+<g id="edge35" class="edge" data-name="ERC721Diamond._isApprovedOrOwner-&gt;console.log">
+
+<path fill="none" stroke="white" stroke-width="2" d="M574.81,-615.12C589.91,-664.46 635.24,-800.7 723.32,-873 741.6,-888.01 767.38,-895.52 787.75,-900.58" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="787,-904 797.55,-902.96 788.65,-897.2 787,-904" style=""/>
+</g>
+<!-- ERC721Diamond._isApprovedOrOwner&#45;&gt;console.log -->
+<g id="edge36" class="edge" data-name="ERC721Diamond._isApprovedOrOwner-&gt;console.log">
+
+<path fill="none" stroke="white" stroke-width="2" d="M572.53,-615.07C584.9,-666.78 630.24,-814.6 723.32,-891 740.83,-905.37 765.19,-912.87 785.11,-915.64" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="784.76,-919.12 795.07,-916.67 785.48,-912.16 784.76,-919.12" style=""/>
+</g>
+<!-- ERC721Diamond._safeMint -->
+<g id="node19" class="node" pointer-events="visible" data-name="ERC721Diamond._safeMint">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="334.5" cy="-500" rx="50.39" ry="18" style=""/>
+<text text-anchor="middle" x="334.5" y="-495.8" font-family="Times,serif" font-size="14.00" style="">_safeMint</text>
+</g>
+<!-- ERC721Diamond._safeMint&#45;&gt;ERC721Diamond._safeMint -->
+<g id="edge42" class="edge" data-name="ERC721Diamond._safeMint-&gt;ERC721Diamond._safeMint">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M300.18,-513.29C285.52,-524.4 296.96,-536 334.5,-536 362.96,-536 376.42,-529.34 374.88,-521.28" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="377.66,-519.14 368.82,-513.29 372.08,-523.37 377.66,-519.14" style=""/>
+</g>
+<!-- ERC721Diamond._mint -->
+<g id="node20" class="node" pointer-events="visible" data-name="ERC721Diamond._mint">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="567.95" cy="-486" rx="33.64" ry="18" style=""/>
+<text text-anchor="middle" x="567.95" y="-481.8" font-family="Times,serif" font-size="14.00" style="">_mint</text>
+</g>
+<!-- ERC721Diamond._safeMint&#45;&gt;ERC721Diamond._mint -->
+<g id="edge43" class="edge" data-name="ERC721Diamond._safeMint-&gt;ERC721Diamond._mint">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M384.3,-497.05C425.82,-494.54 484.84,-490.97 524.44,-488.57" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="524.8,-492.06 534.57,-487.96 524.38,-485.07 524.8,-492.06" style=""/>
+</g>
+<!-- ERC721Diamond._safeMint&#45;&gt;ERC721Diamond._checkOnERC721Received -->
+<g id="edge44" class="edge" data-name="ERC721Diamond._safeMint-&gt;ERC721Diamond._checkOnERC721Received">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M380.13,-507.71C408.1,-512.55 445.13,-518.95 478.84,-524.77" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="478.26,-528.22 488.71,-526.48 479.45,-521.33 478.26,-528.22" style=""/>
+</g>
+<!-- ERC721Diamond._mint&#45;&gt;ERC721Diamond._exists -->
+<g id="edge45" class="edge" data-name="ERC721Diamond._mint-&gt;ERC721Diamond._exists">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M599.6,-492.03C630.68,-497.98 680.2,-507.03 723.32,-513 809.97,-524.99 839.32,-497.18 919.13,-533 938.93,-541.89 936.64,-554.63 955.13,-566 998.76,-592.84 1054.7,-611.92 1092.57,-622.91" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="1091.69,-626.3 1102.27,-625.66 1093.6,-619.56 1091.69,-626.3" style=""/>
+</g>
+<!-- ERC721Diamond._beforeTokenTransfer -->
+<g id="node25" class="node" pointer-events="visible" data-name="ERC721Diamond._beforeTokenTransfer">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="821.22" cy="-486" rx="97.8" ry="18" style=""/>
+<text text-anchor="middle" x="821.22" y="-481.8" font-family="Times,serif" font-size="14.00" style="">_beforeTokenTransfer</text>
+</g>
+<!-- ERC721Diamond._mint&#45;&gt;ERC721Diamond._beforeTokenTransfer -->
+<g id="edge46" class="edge" data-name="ERC721Diamond._mint-&gt;ERC721Diamond._beforeTokenTransfer">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M601.54,-486C629.94,-486 672.77,-486 713.02,-486" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="713.19,-489.5 723.19,-486 713.19,-482.5 713.19,-489.5" style=""/>
+</g>
+<!-- ERC721Diamond.Transfer -->
+<g id="node32" class="node" pointer-events="visible" data-name="ERC721Diamond.Transfer">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="821.22" cy="-338" rx="43.99" ry="18" style=""/>
+<text text-anchor="middle" x="821.22" y="-333.8" font-family="Times,serif" font-size="14.00" style="">Transfer</text>
+</g>
+<!-- ERC721Diamond._mint&#45;&gt;ERC721Diamond.Transfer -->
+<g id="edge47" class="edge" data-name="ERC721Diamond._mint-&gt;ERC721Diamond.Transfer">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M598,-477.95C623.47,-469.86 660.52,-455.48 687.32,-434 708.41,-417.1 702.56,-402.29 723.32,-385 739.2,-371.78 759.44,-361.21 777.3,-353.47" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="779.05,-356.53 786.94,-349.46 776.36,-350.07 779.05,-356.53" style=""/>
+</g>
+<!-- ERC721Diamond._burn -->
+<g id="node21" class="node" pointer-events="visible" data-name="ERC721Diamond._burn">
+
+<ellipse fill="#f2c383" stroke="#f2c383" stroke-width="3" cx="567.95" cy="-353" rx="33.63" ry="18" style=""/>
+<text text-anchor="middle" x="567.95" y="-348.8" font-family="Times,serif" font-size="14.00" style="">_burn</text>
+</g>
+<!-- ERC721Diamond._burn&#45;&gt;ERC721Diamond.ownerOf -->
+<g id="edge48" class="edge" data-name="ERC721Diamond._burn-&gt;ERC721Diamond.ownerOf">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M599.99,-347.42C624.1,-342.74 658.21,-335.31 687.32,-326 703.83,-320.72 706.33,-314.4 723.32,-311 851.02,-285.46 1005.42,-301.31 1083.94,-312.59" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="1083.64,-316.08 1094.05,-314.08 1084.66,-309.16 1083.64,-316.08" style=""/>
+</g>
+<!-- ERC721Diamond._burn&#45;&gt;ERC721Diamond._approve -->
+<g id="edge50" class="edge" data-name="ERC721Diamond._burn-&gt;ERC721Diamond._approve">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M601.22,-349.78C625.83,-346.37 660.02,-339.51 687.32,-326 705.99,-316.76 705.11,-306.11 723.32,-296 738.07,-287.81 755.26,-281.28 771.03,-276.32" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="772.06,-279.66 780.63,-273.43 770.04,-272.96 772.06,-279.66" style=""/>
+</g>
+<!-- ERC721Diamond._burn&#45;&gt;ERC721Diamond._beforeTokenTransfer -->
+<g id="edge49" class="edge" data-name="ERC721Diamond._burn-&gt;ERC721Diamond._beforeTokenTransfer">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M601.63,-353.7C627.11,-355.73 662.25,-361.97 687.32,-380 712.26,-397.94 700.58,-418.35 723.32,-439 735.24,-449.83 750.11,-458.69 764.6,-465.68" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="763.48,-469.02 774.02,-470.01 766.4,-462.66 763.48,-469.02" style=""/>
+</g>
+<!-- ERC721Diamond._burn&#45;&gt;ERC721Diamond.Transfer -->
+<g id="edge51" class="edge" data-name="ERC721Diamond._burn-&gt;ERC721Diamond.Transfer">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M601.54,-351.05C643.65,-348.54 717.5,-344.13 767.61,-341.14" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="767.84,-344.63 777.61,-340.54 767.42,-337.65 767.84,-344.63" style=""/>
+</g>
+<!-- ERC721Diamond._transfer&#45;&gt;ERC721Diamond.ownerOf -->
+<g id="edge52" class="edge" data-name="ERC721Diamond._transfer-&gt;ERC721Diamond.ownerOf">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M610.49,-400.62C641.53,-395.97 685.03,-389.68 723.32,-385 810.15,-374.38 834.33,-386.5 919.13,-365 935.93,-360.74 938.45,-354.74 955.13,-350 996.84,-338.13 1045.47,-330.66 1081.67,-326.28" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="1082.48,-329.71 1092.01,-325.07 1081.67,-322.76 1082.48,-329.71" style=""/>
+</g>
+<!-- ERC721Diamond._transfer&#45;&gt;ERC721Diamond._approve -->
+<g id="edge54" class="edge" data-name="ERC721Diamond._transfer-&gt;ERC721Diamond._approve">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M613.25,-405.73C637.29,-403.02 666.29,-396.22 687.32,-380 714.71,-358.87 698.51,-335.1 723.32,-311 737.7,-297.04 757.01,-286.53 774.62,-279.03" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="776.22,-282.16 784.18,-275.17 773.6,-275.67 776.22,-282.16" style=""/>
+</g>
+<!-- ERC721Diamond._transfer&#45;&gt;ERC721Diamond._beforeTokenTransfer -->
+<g id="edge53" class="edge" data-name="ERC721Diamond._transfer-&gt;ERC721Diamond._beforeTokenTransfer">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M603.89,-417.98C644.51,-430.76 712.22,-452.04 761.08,-467.41" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="760.31,-470.83 770.9,-470.49 762.41,-464.15 760.31,-470.83" style=""/>
+</g>
+<!-- ERC721Diamond._transfer&#45;&gt;ERC721Diamond.Transfer -->
+<g id="edge55" class="edge" data-name="ERC721Diamond._transfer-&gt;ERC721Diamond.Transfer">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M608.61,-398.8C631.69,-393.82 661.28,-387.07 687.32,-380 717.76,-371.73 751.66,-361 777.6,-352.45" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="778.74,-355.76 787.13,-349.29 776.54,-349.11 778.74,-355.76" style=""/>
+</g>
+<!-- ERC721Diamond._approve&#45;&gt;ERC721Diamond.ownerOf -->
+<g id="edge57" class="edge" data-name="ERC721Diamond._approve-&gt;ERC721Diamond.ownerOf">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M862.57,-272.58C888.88,-278.08 923.99,-285.24 955.13,-291 998.24,-298.97 1047.34,-307.09 1083.37,-312.86" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="1083.21,-316.38 1093.64,-314.5 1084.31,-309.47 1083.21,-316.38" style=""/>
+</g>
+<!-- ERC721Diamond.Approval -->
+<g id="node33" class="node" pointer-events="visible" data-name="ERC721Diamond.Approval">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="1136.19" cy="-264" rx="47.52" ry="18" style=""/>
+<text text-anchor="middle" x="1136.19" y="-259.8" font-family="Times,serif" font-size="14.00" style="">Approval</text>
+</g>
+<!-- ERC721Diamond._approve&#45;&gt;ERC721Diamond.Approval -->
+<g id="edge56" class="edge" data-name="ERC721Diamond._approve-&gt;ERC721Diamond.Approval">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M868.4,-264C924.26,-264 1018.26,-264 1078.47,-264" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="1078.57,-267.5 1088.57,-264 1078.57,-260.5 1078.57,-267.5" style=""/>
+</g>
+<!-- ERC721Diamond.IERC721Receiver -->
+<g id="node34" class="node" pointer-events="visible" data-name="ERC721Diamond.IERC721Receiver">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="821.22" cy="-560" rx="81.66" ry="18" style=""/>
+<text text-anchor="middle" x="821.22" y="-555.8" font-family="Times,serif" font-size="14.00" style="">IERC721Receiver</text>
+</g>
+<!-- ERC721Diamond._checkOnERC721Received&#45;&gt;ERC721Diamond.IERC721Receiver -->
+<g id="edge59" class="edge" data-name="ERC721Diamond._checkOnERC721Received-&gt;ERC721Diamond.IERC721Receiver">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M674.05,-548.37C693.89,-549.94 714.43,-551.58 733.62,-553.11" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="733.57,-556.61 743.82,-553.92 734.13,-549.64 733.57,-556.61" style=""/>
+</g>
+<!-- ERC721Diamond._checkOnERC721Received&#45;&gt;LibMeta.msgSender -->
+<g id="edge60" class="edge" data-name="ERC721Diamond._checkOnERC721Received-&gt;LibMeta.msgSender">
+
+<path fill="none" stroke="white" stroke-width="2" d="M664.98,-529.44C673.37,-525.33 681.04,-519.97 687.32,-513 776.9,-413.54 649.17,-325.43 723.32,-214 734.91,-196.58 754,-184.07 772.19,-175.42" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="773.86,-178.51 781.57,-171.24 771.01,-172.11 773.86,-178.51" style=""/>
+</g>
+<!-- to.isContract -->
+<g id="node42" class="node" pointer-events="visible" data-name="to.isContract">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="821.22" cy="-827" rx="50.96" ry="18" style=""/>
+<text text-anchor="middle" x="821.22" y="-822.8" font-family="Times,serif" font-size="14.00" style="">isContract</text>
+</g>
+<!-- ERC721Diamond._checkOnERC721Received&#45;&gt;to.isContract -->
+<g id="edge58" class="edge" data-name="ERC721Diamond._checkOnERC721Received-&gt;to.isContract">
+
+<path fill="none" stroke="white" stroke-width="2" d="M660.78,-551.41C670.77,-555.9 679.96,-561.94 687.32,-570 756.2,-645.44 656.43,-719.8 723.32,-797 733.21,-808.41 747.34,-815.54 761.76,-819.98" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="761.18,-823.45 771.74,-822.65 762.98,-816.69 761.18,-823.45" style=""/>
+</g>
+<!-- ERC721Diamond._addTokenToOwnerEnumeration -->
+<g id="node26" class="node" pointer-events="visible" data-name="ERC721Diamond._addTokenToOwnerEnumeration">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="1136.19" cy="-539" rx="141.23" ry="18" style=""/>
+<text text-anchor="middle" x="1136.19" y="-534.8" font-family="Times,serif" font-size="14.00" style="">_addTokenToOwnerEnumeration</text>
+</g>
+<!-- ERC721Diamond._beforeTokenTransfer&#45;&gt;ERC721Diamond._addTokenToOwnerEnumeration -->
+<g id="edge64" class="edge" data-name="ERC721Diamond._beforeTokenTransfer-&gt;ERC721Diamond._addTokenToOwnerEnumeration">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M887.35,-499.34C908.89,-503.59 933,-508.18 955.13,-512 979.49,-516.21 1005.78,-520.37 1030.54,-524.11" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="1030.27,-527.61 1040.68,-525.63 1031.31,-520.69 1030.27,-527.61" style=""/>
+</g>
+<!-- ERC721Diamond._addTokenToAllTokensEnumeration -->
+<g id="node27" class="node" pointer-events="visible" data-name="ERC721Diamond._addTokenToAllTokensEnumeration">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="1136.19" cy="-431" rx="155.71" ry="18" style=""/>
+<text text-anchor="middle" x="1136.19" y="-426.8" font-family="Times,serif" font-size="14.00" style="">_addTokenToAllTokensEnumeration</text>
+</g>
+<!-- ERC721Diamond._beforeTokenTransfer&#45;&gt;ERC721Diamond._addTokenToAllTokensEnumeration -->
+<g id="edge61" class="edge" data-name="ERC721Diamond._beforeTokenTransfer-&gt;ERC721Diamond._addTokenToAllTokensEnumeration">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M884.28,-472.14C906.56,-467.37 931.92,-462.18 955.13,-458 977.99,-453.88 1002.57,-449.9 1025.99,-446.32" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="1026.59,-449.77 1035.95,-444.81 1025.54,-442.85 1026.59,-449.77" style=""/>
+</g>
+<!-- ERC721Diamond._removeTokenFromOwnerEnumeration -->
+<g id="node28" class="node" pointer-events="visible" data-name="ERC721Diamond._removeTokenFromOwnerEnumeration">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="1136.19" cy="-485" rx="166.65" ry="18" style=""/>
+<text text-anchor="middle" x="1136.19" y="-480.8" font-family="Times,serif" font-size="14.00" style="">_removeTokenFromOwnerEnumeration</text>
+</g>
+<!-- ERC721Diamond._beforeTokenTransfer&#45;&gt;ERC721Diamond._removeTokenFromOwnerEnumeration -->
+<g id="edge62" class="edge" data-name="ERC721Diamond._beforeTokenTransfer-&gt;ERC721Diamond._removeTokenFromOwnerEnumeration">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M919.53,-485.69C932.26,-485.65 945.6,-485.61 959.13,-485.56" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="959.53,-489.06 969.52,-485.53 959.51,-482.06 959.53,-489.06" style=""/>
+</g>
+<!-- ERC721Diamond._removeTokenFromAllTokensEnumeration -->
+<g id="node29" class="node" pointer-events="visible" data-name="ERC721Diamond._removeTokenFromAllTokensEnumeration">
+
+<ellipse fill="#edad56" stroke="#edad56" stroke-width="3" cx="1136.19" cy="-377" rx="181.13" ry="18" style=""/>
+<text text-anchor="middle" x="1136.19" y="-372.8" font-family="Times,serif" font-size="14.00" style="">_removeTokenFromAllTokensEnumeration</text>
+</g>
+<!-- ERC721Diamond._beforeTokenTransfer&#45;&gt;ERC721Diamond._removeTokenFromAllTokensEnumeration -->
+<g id="edge63" class="edge" data-name="ERC721Diamond._beforeTokenTransfer-&gt;ERC721Diamond._removeTokenFromAllTokensEnumeration">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M883.74,-472.14C896.17,-467.62 908.63,-461.7 919.13,-454 941.21,-437.8 931.75,-418.26 955.13,-404 963.34,-398.99 972.14,-394.79 981.28,-391.28" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="982.66,-394.5 990.91,-387.86 980.32,-387.9 982.66,-394.5" style=""/>
+</g>
+<!-- ERC721Diamond._addTokenToOwnerEnumeration&#45;&gt;ERC721Diamond.balanceOf -->
+<g id="edge65" class="edge" data-name="ERC721Diamond._addTokenToOwnerEnumeration-&gt;ERC721Diamond.balanceOf">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M1268.86,-532.6C1285.99,-528.02 1302.64,-521.41 1317.26,-512 1355.65,-487.29 1380.44,-438.59 1393.03,-407.75" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="1396.45,-408.63 1396.83,-398.04 1389.93,-406.08 1396.45,-408.63" style=""/>
+</g>
+<!-- ERC721Diamond._removeTokenFromOwnerEnumeration&#45;&gt;ERC721Diamond.balanceOf -->
+<g id="edge66" class="edge" data-name="ERC721Diamond._removeTokenFromOwnerEnumeration-&gt;ERC721Diamond.balanceOf">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M1270.18,-474.21C1286.48,-470.26 1302.55,-464.99 1317.26,-458 1343.1,-445.72 1366.68,-423.01 1382.54,-405.25" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="1385.36,-407.34 1389.26,-397.49 1380.07,-402.76 1385.36,-407.34" style=""/>
+</g>
+<!-- key -->
+<g id="node43" class="node" pointer-events="visible" data-name="key">
+
+<polygon fill="#edad56" stroke="transparent" stroke-width="3" points="183.22,-913 53.22,-913 53.22,-825 183.22,-825 183.22,-913" style=""/>
+<text text-anchor="start" x="102.85" y="-894.4" font-family="Times,serif" font-size="14.00" style="">Internal Call</text>
+<text text-anchor="start" x="98.96" y="-874.4" font-family="Times,serif" font-size="14.00" style="">External Call</text>
+<text text-anchor="start" x="76.42" y="-854.4" font-family="Times,serif" font-size="14.00" style="">Defined Contract</text>
+<text text-anchor="start" x="62.82" y="-834.4" font-family="Times,serif" font-size="14.00" style="">Undefined Contract</text>
+</g>
+<!-- key2 -->
+<g id="node44" class="node" pointer-events="visible" data-name="key2">
+
+<polygon fill="#edad56" stroke="transparent" stroke-width="3" points="361.5,-913 307.5,-913 307.5,-825 361.5,-825 361.5,-913" style=""/>
+<text text-anchor="start" x="324.5" y="-894.4" font-family="Times,serif" font-size="14.00" style="">   </text>
+<text text-anchor="start" x="324.5" y="-874.4" font-family="Times,serif" font-size="14.00" style="">   </text>
+<polygon fill="#445773" stroke="transparent" points="322.5,-849 322.5,-869 347.5,-869 347.5,-849 322.5,-849" style=""/>
+<text text-anchor="start" x="324.5" y="-854.4" font-family="Times,serif" font-size="14.00" style="">   </text>
+<polygon fill="none" stroke="#e8726d" points="324.5,-831 324.5,-847 345.5,-847 345.5,-831 324.5,-831" style=""/>
+</g>
+<!-- key&#45;&gt;key2 -->
+<g id="edge67" class="edge" data-name="key-&gt;key2">
+
+<path fill="none" stroke="#1bc6a6" stroke-width="2" d="M176.22,-899C237.26,-899 255.02,-899 311.33,-899" style=""/>
+<polygon fill="#1bc6a6" stroke="#1bc6a6" stroke-width="2" points="311.5,-902.5 321.5,-899 311.5,-895.5 311.5,-902.5" style=""/>
+</g>
+<!-- key&#45;&gt;key2 -->
+<g id="edge68" class="edge" data-name="key-&gt;key2">
+
+<path fill="none" stroke="white" stroke-width="2" d="M176.22,-879C237.26,-879 255.02,-879 311.33,-879" style=""/>
+<polygon fill="white" stroke="white" stroke-width="2" points="311.5,-882.5 321.5,-879 311.5,-875.5 311.5,-882.5" style=""/>
+</g>
+</g>
+</svg>
