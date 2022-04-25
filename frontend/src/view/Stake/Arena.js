@@ -189,7 +189,7 @@ const Arena = ({ characterNFT, setCharacterNFT, setStakeCharacter, stakeCharacte
 
                 let tokenID = (await gameContract.nftHolders(account))[stakeCharacter];
                 let startTime = (await gameContract.getStartTime(tokenID, DYNAMIC_GAME_FACET_ADDRESS)).toNumber();
-                if(startTime === '0'){
+                if(startTime === 0){
                     setStakeState('')
                     setStartingTime(0);
                 }
