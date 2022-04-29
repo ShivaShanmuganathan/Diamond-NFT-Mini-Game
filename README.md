@@ -145,7 +145,14 @@ stakeNFTFacet deployed to:  0x725081cc13fa55397d6ab952Df50dD1b4A7CDc20
 ```
 ### Graph Images To Better Understand How Contract 📊
 
+## Diamond Graph
 ![Diamond](./graph/Diamond.svg)
+
+## ERC721Diamond Graph
 ![ERC721Diamond](./graph/tokens.svg)
+
+## DynamicGameFacet Graph
 ![DynamicGameFacet](./graph/DynamicGameFacet.svg)
+
+## StakeNFTFacet Graph
 ![StakeNFTFacet](./graph/StakeNFTFacet.svg)
