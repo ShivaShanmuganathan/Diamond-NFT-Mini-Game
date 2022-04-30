@@ -81,7 +81,8 @@ abstract contract ERC721Diamond is Context, ERC165, IERC721Enumerable {
         );
         
 
-        _approve(to, tokenId);
+        LibERC721._approve(to, tokenId);
+        emit Approval(ownerOf(tokenId), to, tokenId);
     }
 
     function getApproved(uint256 tokenId) public view virtual override returns (address) {
@@ -110,7 +111,8 @@ abstract contract ERC721Diamond is Context, ERC165, IERC721Enumerable {
         //solhint-disable-next-line max-line-length
         require(_isApprovedOrOwner(LibMeta.msgSender(), tokenId), "ERC721: transfer caller is not owner nor approved");
 
-        _transfer(from, to, tokenId);
+        LibERC721._transfer(from, to, tokenId);
+        emit Transfer(from, to, tokenId);
     }
 
     function safeTransferFrom(
@@ -128,18 +130,19 @@ abstract contract ERC721Diamond is Context, ERC165, IERC721Enumerable {
         bytes memory _data
     ) public virtual override {
         require(_isApprovedOrOwner(LibMeta.msgSender(), tokenId), "ERC721: transfer caller is not owner nor approved");
-        _safeTransfer(from, to, tokenId, _data);
+        LibERC721._safeTransfer(from, to, tokenId, _data);
+        emit Transfer(from, to, tokenId);
     }
 
-    function _safeTransfer(
-        address from,
-        address to,
-        uint256 tokenId,
-        bytes memory _data
-    ) internal virtual {
-        _transfer(from, to, tokenId);
-        require(_checkOnERC721Received(from, to, tokenId, _data), "ERC721: transfer to non ERC721Receiver implementer");
-    }
+    // function _safeTransfer(
+    //     address from,
+    //     address to,
+    //     uint256 tokenId,
+    //     bytes memory _data
+    // ) internal virtual {
+    //     _transfer(from, to, tokenId);
+    //     require(_checkOnERC721Received(from, to, tokenId, _data), "ERC721: transfer to non ERC721Receiver implementer");
+    // }
 
     function _exists(uint256 tokenId) internal view virtual returns (bool) {
         // console.log("owner address: ",s._owners[tokenId]);
@@ -174,7 +177,7 @@ abstract contract ERC721Diamond is Context, ERC165, IERC721Enumerable {
     ) internal virtual {
         _mint(to, tokenId);
         require(
-            _checkOnERC721Received(address(0), to, tokenId, _data),
+            LibERC721._checkOnERC721Received(address(0), to, tokenId, _data),
             "ERC721: transfer to non ERC721Receiver implementer"
         );
     }
@@ -183,7 +186,7 @@ abstract contract ERC721Diamond is Context, ERC165, IERC721Enumerable {
         require(to != address(0), "ERC721: mint to the zero address");
         require(!_exists(tokenId), "ERC721: token already minted");
 
-        _beforeTokenTransfer(address(0), to, tokenId);
+        LibERC721._beforeTokenTransfer(address(0), to, tokenId);
 
         s._balances[to] += 1;
         s._owners[tokenId] = to;
@@ -194,9 +197,9 @@ abstract contract ERC721Diamond is Context, ERC165, IERC721Enumerable {
     function _burn(uint256 tokenId) internal virtual {
         address owner = ownerOf(tokenId);
 
-        _beforeTokenTransfer(owner, address(0), tokenId);
+        LibERC721._beforeTokenTransfer(owner, address(0), tokenId);
 
-        _approve(address(0), tokenId);
+        LibERC721._approve(address(0), tokenId);
 
         s._balances[owner] -= 1;
         delete s._owners[tokenId];
@@ -204,108 +207,108 @@ abstract contract ERC721Diamond is Context, ERC165, IERC721Enumerable {
         emit Transfer(owner, address(0), tokenId);
     }
 
-    function _transfer(
-        address from,
-        address to,
-        uint256 tokenId
-    ) internal virtual {
-        require(ownerOf(tokenId) == from, "ERC721: transfer of token that is not own");
-        require(to != address(0), "ERC721: transfer to the zero address");
+    // function _transfer(
+    //     address from,
+    //     address to,
+    //     uint256 tokenId
+    // ) internal virtual {
+    //     require(ownerOf(tokenId) == from, "ERC721: transfer of token that is not own");
+    //     require(to != address(0), "ERC721: transfer to the zero address");
 
-        _beforeTokenTransfer(from, to, tokenId);
+    //     _beforeTokenTransfer(from, to, tokenId);
 
-        _approve(address(0), tokenId);
+    //     _approve(address(0), tokenId);
 
-        s._balances[from] -= 1;
-        s._balances[to] += 1;
-        s._owners[tokenId] = to;
+    //     s._balances[from] -= 1;
+    //     s._balances[to] += 1;
+    //     s._owners[tokenId] = to;
 
-        emit Transfer(from, to, tokenId);
-    }
-
-
-    function _approve(address to, uint256 tokenId) internal virtual {
-        s._tokenApprovals[tokenId] = to;
-        emit Approval(ownerOf(tokenId), to, tokenId);
-    }
-
-    function _checkOnERC721Received(
-        address from,
-        address to,
-        uint256 tokenId,
-        bytes memory _data
-    ) private returns (bool) {
-        if (to.isContract()) {
-            try IERC721Receiver(to).onERC721Received(LibMeta.msgSender(), from, tokenId, _data) returns (bytes4 retval) {
-                return retval == IERC721Receiver.onERC721Received.selector;
-            } catch (bytes memory reason) {
-                if (reason.length == 0) {
-                    revert("ERC721: transfer to non ERC721Receiver implementer");
-                } else {
-                    assembly {
-                        revert(add(32, reason), mload(reason))
-                    }
-                }
-            }
-        } else {
-            return true;
-        }
-    }
+    //     emit Transfer(from, to, tokenId);
+    // }
 
 
-    function _beforeTokenTransfer(
-        address from,
-        address to,
-        uint256 tokenId
-    ) internal virtual {
-        if (from == address(0)) {
-            _addTokenToAllTokensEnumeration(tokenId);
-        } else if (from != to) {
-            _removeTokenFromOwnerEnumeration(from, tokenId);
-        }
-        if (to == address(0)) {
-            _removeTokenFromAllTokensEnumeration(tokenId);
-        } else if (to != from) {
-            _addTokenToOwnerEnumeration(to, tokenId);
-        }
-    }
+    // function _approve(address to, uint256 tokenId) internal virtual {
+    //     s._tokenApprovals[tokenId] = to;
+    //     emit Approval(ownerOf(tokenId), to, tokenId);
+    // }
 
-    function _addTokenToOwnerEnumeration(address to, uint256 tokenId) private {
-        uint256 length = balanceOf(to);
-        s._ownedTokens[to][length] = tokenId;
-        s._ownedTokensIndex[tokenId] = length;
-    }
+    // function _checkOnERC721Received(
+    //     address from,
+    //     address to,
+    //     uint256 tokenId,
+    //     bytes memory _data
+    // ) private returns (bool) {
+    //     if (to.isContract()) {
+    //         try IERC721Receiver(to).onERC721Received(LibMeta.msgSender(), from, tokenId, _data) returns (bytes4 retval) {
+    //             return retval == IERC721Receiver.onERC721Received.selector;
+    //         } catch (bytes memory reason) {
+    //             if (reason.length == 0) {
+    //                 revert("ERC721: transfer to non ERC721Receiver implementer");
+    //             } else {
+    //                 assembly {
+    //                     revert(add(32, reason), mload(reason))
+    //                 }
+    //             }
+    //         }
+    //     } else {
+    //         return true;
+    //     }
+    // }
 
-    function _addTokenToAllTokensEnumeration(uint256 tokenId) private {
-        s._allTokensIndex[tokenId] = s._allTokens.length;
-        s._allTokens.push(tokenId);
-    }
 
-    function _removeTokenFromOwnerEnumeration(address from, uint256 tokenId) private {
-        uint256 lastTokenIndex = balanceOf(from) - 1;
-        uint256 tokenIndex = s._ownedTokensIndex[tokenId];
+    // function _beforeTokenTransfer(
+    //     address from,
+    //     address to,
+    //     uint256 tokenId
+    // ) internal virtual {
+    //     if (from == address(0)) {
+    //         _addTokenToAllTokensEnumeration(tokenId);
+    //     } else if (from != to) {
+    //         _removeTokenFromOwnerEnumeration(from, tokenId);
+    //     }
+    //     if (to == address(0)) {
+    //         _removeTokenFromAllTokensEnumeration(tokenId);
+    //     } else if (to != from) {
+    //         _addTokenToOwnerEnumeration(to, tokenId);
+    //     }
+    // }
 
-        if (tokenIndex != lastTokenIndex) {
-            uint256 lastTokenId = s._ownedTokens[from][lastTokenIndex];
+    // function _addTokenToOwnerEnumeration(address to, uint256 tokenId) private {
+    //     uint256 length = balanceOf(to);
+    //     s._ownedTokens[to][length] = tokenId;
+    //     s._ownedTokensIndex[tokenId] = length;
+    // }
 
-            s._ownedTokens[from][tokenIndex] = lastTokenId;
-            s._ownedTokensIndex[lastTokenId] = tokenIndex;
-        }
+    // function _addTokenToAllTokensEnumeration(uint256 tokenId) private {
+    //     s._allTokensIndex[tokenId] = s._allTokens.length;
+    //     s._allTokens.push(tokenId);
+    // }
 
-        delete s._ownedTokensIndex[tokenId];
-        delete s._ownedTokens[from][lastTokenIndex];
-    }
+    // function _removeTokenFromOwnerEnumeration(address from, uint256 tokenId) private {
+    //     uint256 lastTokenIndex = balanceOf(from) - 1;
+    //     uint256 tokenIndex = s._ownedTokensIndex[tokenId];
 
-    function _removeTokenFromAllTokensEnumeration(uint256 tokenId) private {
-        uint256 lastTokenIndex = s._allTokens.length - 1;
-        uint256 tokenIndex = s._allTokensIndex[tokenId];
+    //     if (tokenIndex != lastTokenIndex) {
+    //         uint256 lastTokenId = s._ownedTokens[from][lastTokenIndex];
 
-        uint256 lastTokenId = s._allTokens[lastTokenIndex];
+    //         s._ownedTokens[from][tokenIndex] = lastTokenId;
+    //         s._ownedTokensIndex[lastTokenId] = tokenIndex;
+    //     }
 
-        s._allTokens[tokenIndex] = lastTokenId;
-        s._allTokensIndex[lastTokenId] = tokenIndex;
+    //     delete s._ownedTokensIndex[tokenId];
+    //     delete s._ownedTokens[from][lastTokenIndex];
+    // }
 
-        delete s._allTokensIndex[tokenId];
-        s._allTokens.pop();
-    }
+    // function _removeTokenFromAllTokensEnumeration(uint256 tokenId) private {
+    //     uint256 lastTokenIndex = s._allTokens.length - 1;
+    //     uint256 tokenIndex = s._allTokensIndex[tokenId];
+
+    //     uint256 lastTokenId = s._allTokens[lastTokenIndex];
+
+    //     s._allTokens[tokenIndex] = lastTokenId;
+    //     s._allTokensIndex[lastTokenId] = tokenIndex;
+
+    //     delete s._allTokensIndex[tokenId];
+    //     s._allTokens.pop();
+    // }
 }

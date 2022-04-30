@@ -63,7 +63,7 @@ contract DynamicGameFacet is ERC721Diamond {
       
     });
 
-    console.log("Minted NFT w/ tokenId %s and characterIndex %s", newItemId, _characterIndex);  
+    // console.log("Minted NFT w/ tokenId %s and characterIndex %s", newItemId, _characterIndex);  
 
     s.nftHolders[msg.sender].push(newItemId);
     s.totalTokens = newItemId;
@@ -119,8 +119,8 @@ contract DynamicGameFacet is ERC721Diamond {
     require(s._owners[tokenID] == msg.sender, "Not NFT Owner");
     CharacterAttributes storage player = s.nftHolderAttributes[tokenID];
 
-    console.log("\nPlayer w/ character %s about to attack. Has %s HP and %s AD", player.name, player.hp, player.attackDamage);
-    console.log("Boss %s has %s HP and %s AD", s.bigBoss.name, s.bigBoss.hp, s.bigBoss.attackDamage);
+    // console.log("\nPlayer w/ character %s about to attack. Has %s HP and %s AD", player.name, player.hp, player.attackDamage);
+    // console.log("Boss %s has %s HP and %s AD", s.bigBoss.name, s.bigBoss.hp, s.bigBoss.attackDamage);
     // Make sure the player has more than 0 HP.
     require (
       player.hp > 0,
@@ -148,8 +148,8 @@ contract DynamicGameFacet is ERC721Diamond {
     }
 
     // Console for ease.
-    console.log("%s attacked Boss. Boss hp: %s\n", player.name, s.bigBoss.hp);
-    console.log("Boss attacked %s. %s hp: %s\n", player.name, player.name ,player.hp);
+    // console.log("%s attacked Boss. Boss hp: %s\n", player.name, s.bigBoss.hp);
+    // console.log("Boss attacked %s. %s hp: %s\n", player.name, player.name ,player.hp);
     emit AttackComplete(s.bigBoss.hp, player.hp);
   }
 

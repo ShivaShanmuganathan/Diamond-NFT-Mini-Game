@@ -6,7 +6,7 @@ const WalletConnect = () => {
     return (
         <Flex flexDirection='column' alignItems='center' className="container-n">
             <Text fontSize="24px" mb={10} color="#e2e2e2" bold>👋 Connect Your Wallet!</Text>
-            <Text color="#e2e2e2">(Connect with Rinkeby Network)</Text>
+            <Text color="#e2e2e2">(Connect with Matic Test Network)</Text>
             <lottie-player
                 autoplay
                 loop

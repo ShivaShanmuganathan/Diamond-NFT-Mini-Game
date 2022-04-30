@@ -48,7 +48,7 @@ describe('DiamondTest', async function () {
       addresses.push(address)
     }
 
-    assert.equal(addresses.length, 3)
+    assert.equal(addresses.length, 4)
   })
 
   it('facets should have the right function selectors -- call to facetFunctionSelectors function', async () => {
@@ -86,24 +86,24 @@ describe('DiamondTest', async function () {
 
   describe('Deploy DynamicGameFacet & Test Constructor Args()', function () { 
 
-    it('should add dynamic game facet', async () => {
+    // it('should add dynamic game facet', async () => {
 
-      const DynamicGameFacet = await ethers.getContractFactory('DynamicGameFacet')
-      const dynamicGameFacet = await DynamicGameFacet.deploy()
+    //   const DynamicGameFacet = await ethers.getContractFactory('DynamicGameFacet')
+    //   const dynamicGameFacet = await DynamicGameFacet.deploy()
   
-      // let facetB = await FacetB.deployed();
-      let selectors = getSelectors(dynamicGameFacet);
-      selectors = selectors.remove(['supportsInterface'])
-      let addresses = [];
-      addresses.push(dynamicGameFacet.address);
+    //   // let facetB = await FacetB.deployed();
+    //   let selectors = getSelectors(dynamicGameFacet);
+    //   selectors = selectors.remove(['supportsInterface'])
+    //   let addresses = [];
+    //   addresses.push(dynamicGameFacet.address);
       
-      await diamondCutFacet.diamondCut([[dynamicGameFacet.address, FacetCutAction.Add, selectors]], ethers.constants.AddressZero, '0x');
+    //   await diamondCutFacet.diamondCut([[dynamicGameFacet.address, FacetCutAction.Add, selectors]], ethers.constants.AddressZero, '0x');
   
-      // let diamondLoupeFacet = await DiamondLoupeFacet.at(diamond.address);
-      result = await diamondLoupeFacet.facetFunctionSelectors(addresses[0]);
-      assert.sameMembers(result, selectors)
+    //   // let diamondLoupeFacet = await DiamondLoupeFacet.at(diamond.address);
+    //   result = await diamondLoupeFacet.facetFunctionSelectors(addresses[0]);
+    //   assert.sameMembers(result, selectors)
   
-    })
+    // })
   
     it('should check dynamic game facet constructor args', async () => { 
   
@@ -426,7 +426,7 @@ describe('DiamondTest', async function () {
       // const stakeNFTFacet = await ethers.getContractAt('StakeNFTFacet', diamondAddress)
       console.log("Address of Token Owner", owner.address)
       const tokenID = (await dynamicGameFacet.nftHolders(owner.address))[5];
-      await dynamicGameFacet.approve(stakeNFTFacet.address, tokenID);      
+      // await dynamicGameFacet.approve(diamondAddress, tokenID);      
       await stakeNFTFacet.connect(owner).stakeCharacter(tokenID, dynamicGameFacet.address)
     })
 
@@ -434,7 +434,7 @@ describe('DiamondTest', async function () {
       // const stakeNFTFacet = await ethers.getContractAt('StakeNFTFacet', diamondAddress)
       console.log("Address of Token Owner", owner.address)
       const tokenID = (await dynamicGameFacet.nftHolders(owner.address))[0];
-      await dynamicGameFacet.approve(stakeNFTFacet.address, tokenID);      
+      // await dynamicGameFacet.approve(stakeNFTFacet.address, tokenID);      
       await stakeNFTFacet.connect(owner).stakeCharacter(tokenID, dynamicGameFacet.address)
     })
 

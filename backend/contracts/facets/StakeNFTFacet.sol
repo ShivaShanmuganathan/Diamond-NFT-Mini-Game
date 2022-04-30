@@ -8,7 +8,7 @@ import "../libraries/LibDiamond.sol";
 import "../libraries/LibStakeStorage.sol";
 
 // Structs imported from DiamondStorage
-// import "../libraries/LibStakeStorage.sol";
+import {LibERC721} from "../libraries/LibERC721.sol";
 
 import "../libraries/LibAppStorage.sol";
 
@@ -16,7 +16,7 @@ import "../libraries/LibAppStorage.sol";
 import {CharacterAttributes, BigBoss} from "../libraries/LibAppStorage.sol";
 
 // Hardhat Console Debugging Easy
-import "hardhat/console.sol";
+// import "hardhat/console.sol";
 
 import "./DynamicGameFacet.sol";
 
@@ -28,6 +28,8 @@ import "./DynamicGameFacet.sol";
 /// @dev All function calls are currently implemented without side effects
 contract StakeNFTFacet {
     AppStorage internal s;
+
+    bytes4 constant ERC721_RECEIVED = 0xf0b9e5ba;
 
 
     // Events to show that a Minting & Attacking action has been completed 
@@ -64,8 +66,9 @@ contract StakeNFTFacet {
 
         console.log("Address of THIS CONTRACT", address(this));
 
-        (bool success, bytes memory data) = facet.delegatecall(abi.encodeWithSignature("transferFrom(address,address,uint256)", msg.sender, address(this), tokenID));
-        require(success, "transfer failed"); 
+        // (bool success, ) = facet.delegatecall(abi.encodeWithSignature("transferFrom(address,address,uint256)", msg.sender, address(this), tokenID));
+        // require(success, "transfer failed"); 
+        LibERC721._safeTransfer(msg.sender, address(this), tokenID, "");
 
         emit AssetStaked(tokenID, staked_asset.startTime);
 
@@ -125,6 +128,26 @@ contract StakeNFTFacet {
         return staked_asset.startTime;
         
     }
+
+
+    // function onERC721Received(address _from, uint256 _tokenId, bytes calldata _data) public returns(bytes4) {
+    //     return ERC721_RECEIVED;
+    // }
+
+    function onERC721Received(
+		address,
+		address,
+		uint256,
+		bytes calldata
+	) external view returns (bytes4) {
+		if (msg.sender != address(this)) {
+			revert("Error.InvalidToken");
+		}
+		return
+			bytes4(
+				keccak256('onERC721Received(address,address,uint256,bytes)')
+			);
+	}
 
 
   
