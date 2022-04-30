@@ -393,7 +393,7 @@ describe('DiamondTest', async function () {
 
   describe('Test StakeNFTFacet Facet()', function () { 
 
-    it('should deploy StakeNFTFacet & add functions to facets', async () => {
+    it('should deploy StakeNFTFacet & add functions to diamond', async () => {
       const StakeNFTFacet = await ethers.getContractFactory('StakeNFTFacet')
       const stakeNFTFacet = await StakeNFTFacet.deploy()
       await stakeNFTFacet.deployed()
@@ -412,6 +412,28 @@ describe('DiamondTest', async function () {
       }
       result = await diamondLoupeFacet.facetFunctionSelectors(stakeNFTFacet.address)
       console.log("Stake NFT Facet Address: ", stakeNFTFacet.address)
+      assert.sameMembers(result, selectors)
+    })
+
+    it('should deploy NFTReceiverFacet & add functions to diamond', async () => {
+      const NFTReceiverFacet = await ethers.getContractFactory('NFTReceiverFacet')
+      const nftReceiverFacet = await NFTReceiverFacet.deploy()
+      await nftReceiverFacet.deployed()
+      addresses.push(nftReceiverFacet.address)
+      const selectors = getSelectors(nftReceiverFacet)
+      tx = await diamondCutFacet.diamondCut(
+        [{
+          facetAddress: nftReceiverFacet.address,
+          action: FacetCutAction.Add,
+          functionSelectors: selectors
+        }],
+        ethers.constants.AddressZero, '0x', { gasLimit: 800000 })
+      receipt = await tx.wait()
+      if (!receipt.status) {
+        throw Error(`Diamond upgrade failed: ${tx.hash}`)
+      }
+      result = await diamondLoupeFacet.facetFunctionSelectors(nftReceiverFacet.address)
+      console.log("NFT Receiver Facet Address: ", nftReceiverFacet.address)
       assert.sameMembers(result, selectors)
     })
 

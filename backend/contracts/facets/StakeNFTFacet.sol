@@ -29,9 +29,6 @@ import "./DynamicGameFacet.sol";
 contract StakeNFTFacet {
     AppStorage internal s;
 
-    bytes4 constant ERC721_RECEIVED = 0xf0b9e5ba;
-
-
     // Events to show that a Minting & Attacking action has been completed 
     event AssetStaked(uint tokenId, uint stakeStartTime);
     event AssetUnstaked(uint tokenId, uint newPlayerHp, uint stakeStartTime, uint stakeEndTime);
@@ -46,8 +43,7 @@ contract StakeNFTFacet {
     function stakeCharacter(uint tokenID, address contractAddress) external {
         
         LibStakeStorage.StakeStorage storage lss = LibStakeStorage.diamondStorage();
-        // Get the state of the player's NFT.
-        // uint256 nftTokenIdOfPlayer = s.nftHolders[msg.sender][_index];
+        
         require(s._owners[tokenID] == msg.sender, "Not NFT Owner");        
         LibStakeStorage.StakeInfo storage staked_asset = lss.stakingInfo[contractAddress][tokenID];
 
@@ -57,17 +53,9 @@ contract StakeNFTFacet {
 
         staked_asset.startTime = block.timestamp;
         staked_asset.staker = msg.sender;
-        
-
-        LibDiamond.DiamondStorage storage ds = LibDiamond.diamondStorage();
-        bytes4 functionSelector = bytes4(keccak256("transferFrom(address,address,uint256)"));
-        // get facet address of function 
-        address facet = ds.facetAddressAndSelectorPosition[functionSelector].facetAddress; 
 
         console.log("Address of THIS CONTRACT", address(this));
 
-        // (bool success, ) = facet.delegatecall(abi.encodeWithSignature("transferFrom(address,address,uint256)", msg.sender, address(this), tokenID));
-        // require(success, "transfer failed"); 
         LibERC721._safeTransfer(msg.sender, address(this), tokenID, "");
 
         emit AssetStaked(tokenID, staked_asset.startTime);
@@ -80,8 +68,7 @@ contract StakeNFTFacet {
     /// Health of Hero is increased due to staking  
     function unStakeCharacter(uint tokenID, address contractAddress) external {
         LibStakeStorage.StakeStorage storage lss = LibStakeStorage.diamondStorage();
-        // Get the state of the player's NFT.
-        // uint256 nftTokenIdOfPlayer = s.nftHolders[msg.sender][_index];
+        
         
         LibStakeStorage.StakeInfo storage staked_asset = lss.stakingInfo[contractAddress][tokenID];
         require(staked_asset.startTime != 0, "NFT Is Not Staked.");
@@ -100,22 +87,7 @@ contract StakeNFTFacet {
         staked_asset.startTime = 0;
         
         DynamicGameFacet(address(this)).transferFrom(address(this), msg.sender, tokenID);
-        // LibDiamond.DiamondStorage storage ds = LibDiamond.diamondStorage();
-        // bytes4 functionSelector = bytes4(keccak256("transferFrom(address,address,uint256)"));
         
-        // address facet = ds.facetAddressAndSelectorPosition[functionSelector].facetAddress; 
-
-        // console.log("Address of THIS CONTRACT", address(this));
-        // console.log("USER Address ", msg.sender);
-
-
-        // (bool approval_success, bytes memory approval_data) = facet.delegatecall(abi.encodeWithSignature("approve(address,uint256)", msg.sender, tokenID));
-        // require(approval_success, "approval failed"); 
-
-        // (bool success, bytes memory data) = facet.delegatecall(abi.encodeWithSignature("transferFrom(address,address,uint256)", address(this), msg.sender, tokenID));
-        
-        // require(success, "transfer failed"); 
-
         emit AssetUnstaked(tokenID, player.hp, staked_asset.startTime, block.timestamp);
 
     }
@@ -129,25 +101,7 @@ contract StakeNFTFacet {
         
     }
 
-
-    // function onERC721Received(address _from, uint256 _tokenId, bytes calldata _data) public returns(bytes4) {
-    //     return ERC721_RECEIVED;
-    // }
-
-    function onERC721Received(
-		address,
-		address,
-		uint256,
-		bytes calldata
-	) external view returns (bytes4) {
-		if (msg.sender != address(this)) {
-			revert("Error.InvalidToken");
-		}
-		return
-			bytes4(
-				keccak256('onERC721Received(address,address,uint256,bytes)')
-			);
-	}
+    
 
 
   
