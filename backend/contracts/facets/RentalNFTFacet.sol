@@ -84,7 +84,7 @@ contract RentalNFTFacet is ReentrancyGuard{
         
     }
 
-    function rentMarketItem(
+    function rentNFT(
         uint tokenID,
         uint rentalDuration
     ) external payable nonReentrant{
@@ -141,7 +141,7 @@ contract RentalNFTFacet is ReentrancyGuard{
     }
 
 
-    function rentalStatus(uint tokenID) external view returns(LibRentalStorage.RentalInfo memory){
+    function fetchNFTRentalStatus(uint tokenID) external view returns(LibRentalStorage.RentalInfo memory){
 
         LibRentalStorage.RentalMarketData storage rss = LibRentalStorage.diamondStorage();
         LibRentalStorage.RentalInfo storage rental_asset = rss.Rental[tokenID];

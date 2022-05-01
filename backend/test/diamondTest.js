@@ -628,7 +628,7 @@ describe('DiamondTest', async function () {
       const listingPrice = ethers.utils.parseUnits('0.01', 'ether') * 10;
       // console.log(Number(listingPrice))
       console.log("Owner Of TokenID ", Number(tokenID), " before renting is ", await dynamicGameFacet.ownerOf(tokenID));
-      await rentalNFTFacet.connect(addr2).rentMarketItem(tokenID, rentalDuration, { value: (listingPrice).toString() });
+      await rentalNFTFacet.connect(addr2).rentNFT(tokenID, rentalDuration, { value: (listingPrice).toString() });
       console.log("Owner Of TokenID ", Number(tokenID), " after renting is ", await dynamicGameFacet.ownerOf(tokenID));
 
     })
@@ -640,7 +640,7 @@ describe('DiamondTest', async function () {
       const listingPrice = ethers.utils.parseUnits('0.05', 'ether') * 25;
       // console.log(Number(listingPrice))
       console.log("Owner Of TokenID ", Number(tokenID), " before renting is ", await dynamicGameFacet.ownerOf(tokenID));
-      await rentalNFTFacet.connect(addr2).rentMarketItem(tokenID, rentalDuration, { value: (listingPrice).toString() });
+      await rentalNFTFacet.connect(addr2).rentNFT(tokenID, rentalDuration, { value: (listingPrice).toString() });
       console.log("Owner Of TokenID ", Number(tokenID), " after renting is ", await dynamicGameFacet.ownerOf(tokenID));
 
     })
@@ -754,7 +754,7 @@ describe('DiamondTest', async function () {
     it('Should check rental status of NFT', async () => {
 
       const tokenID = (await dynamicGameFacet.nftHolders(addr1.address))[0];
-      let rentalTxn = await rentalNFTFacet.connect(addr1).rentalStatus(tokenID);
+      let rentalTxn = await rentalNFTFacet.connect(addr1).fetchNFTRentalStatus(tokenID);
       let result = transformRentalData(rentalTxn);
       console.log("rental price",result.price);
       console.log("rental expiresAt",result.expiresAt);
@@ -786,7 +786,7 @@ describe('DiamondTest', async function () {
     it('Should check rental status of NFT', async () => {
 
       const tokenID = (await dynamicGameFacet.nftHolders(addr1.address))[0];
-      let rentalTxn = await rentalNFTFacet.connect(addr1).rentalStatus(tokenID);
+      let rentalTxn = await rentalNFTFacet.connect(addr1).fetchNFTRentalStatus(tokenID);
       let result = transformRentalData(rentalTxn);
       console.log("rental price",result.price);
       console.log("rental expiresAt",result.expiresAt);
