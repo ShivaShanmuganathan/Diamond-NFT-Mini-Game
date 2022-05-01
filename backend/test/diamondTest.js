@@ -621,6 +621,48 @@ describe('DiamondTest', async function () {
 
     })
 
+    it('Should check fetchMarketItems', async () => {
+
+      // const tokenID = (await dynamicGameFacet.nftHolders(addr1.address))[0];
+      let rentalTxn = await rentalNFTFacet.connect(addr1).fetchMarketItems();
+      for(let i = 0; i < rentalTxn.length; i++){
+
+        let result = transformRentalData(rentalTxn[i]);
+        console.log("market item no.", i+1);
+        console.log("rental price",result.price);
+        console.log("rental expiresAt",result.expiresAt);
+        console.log("rental maxRental",result.maxRental);
+        console.log("rental seller",result.seller);
+        console.log("rental renter",result.renter);
+        console.log("rental isRented",result.isRented);
+        console.log();
+
+      }
+      
+
+    });
+
+    it('Should check fetchMyListedNFTs', async () => {
+
+      // const tokenID = (await dynamicGameFacet.nftHolders(addr1.address))[0];
+      let rentalTxn = await rentalNFTFacet.connect(owner).fetchMyListedNFTs();
+      for(let i = 0; i < rentalTxn.length; i++){
+
+        let result = transformRentalData(rentalTxn[i]);
+        console.log("rental item no.", i+1);
+        console.log("rental price",result.price);
+        console.log("rental expiresAt",result.expiresAt);
+        console.log("rental maxRental",result.maxRental);
+        console.log("rental seller",result.seller);
+        console.log("rental renter",result.renter);
+        console.log("rental isRented",result.isRented);
+        console.log();
+
+      }
+      
+
+    });
+
     it('Should test renting NFT index 5 for 10 days', async () => {
       
       const tokenID = (await dynamicGameFacet.nftHolders(owner.address))[5];
@@ -632,6 +674,27 @@ describe('DiamondTest', async function () {
       console.log("Owner Of TokenID ", Number(tokenID), " after renting is ", await dynamicGameFacet.ownerOf(tokenID));
 
     })
+
+    it('Should check fetchMarketItems', async () => {
+
+      // const tokenID = (await dynamicGameFacet.nftHolders(addr1.address))[0];
+      let rentalTxn = await rentalNFTFacet.connect(addr1).fetchMarketItems();
+      for(let i = 0; i < rentalTxn.length; i++){
+
+        let result = transformRentalData(rentalTxn[i]);
+        console.log("market item no.", i+1);
+        console.log("rental price",result.price);
+        console.log("rental expiresAt",result.expiresAt);
+        console.log("rental maxRental",result.maxRental);
+        console.log("rental seller",result.seller);
+        console.log("rental renter",result.renter);
+        console.log("rental isRented",result.isRented);
+        console.log();
+
+      }
+      
+
+    });
 
     it('Should test renting NFT index 17 for 25 days', async () => {
       
@@ -794,6 +857,50 @@ describe('DiamondTest', async function () {
       console.log("rental seller",result.seller);
       console.log("rental renter",result.renter);
       console.log("rental isRented",result.isRented);
+
+    });
+
+    it('Should check fetchMarketItems', async () => {
+
+      // const tokenID = (await dynamicGameFacet.nftHolders(addr1.address))[0];
+      let rentalTxn = await rentalNFTFacet.connect(addr1).fetchMarketItems();
+      for(let i = 0; i < rentalTxn.length; i++){
+
+        let result = transformRentalData(rentalTxn[i]);
+        console.log("market item no.", i+1);
+        console.log("rental price",result.price);
+        console.log("rental expiresAt",result.expiresAt);
+        console.log("rental maxRental",result.maxRental);
+        console.log("rental seller",result.seller);
+        console.log("rental renter",result.renter);
+        console.log("rental isRented",result.isRented);
+        console.log();
+
+      }
+      
+
+    });
+
+    
+
+    it('Should check fetchMyListedNFTs', async () => {
+
+      // const tokenID = (await dynamicGameFacet.nftHolders(addr1.address))[0];
+      let rentalTxn = await rentalNFTFacet.connect(owner).fetchMyListedNFTs();
+      for(let i = 0; i < rentalTxn.length; i++){
+
+        let result = transformRentalData(rentalTxn[i]);
+        console.log("rental item no.", i+1);
+        console.log("rental price",result.price);
+        console.log("rental expiresAt",result.expiresAt);
+        console.log("rental maxRental",result.maxRental);
+        console.log("rental seller",result.seller);
+        console.log("rental renter",result.renter);
+        console.log("rental isRented",result.isRented);
+        console.log();
+
+      }
+      
 
     });
     

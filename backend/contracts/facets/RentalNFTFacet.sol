@@ -58,6 +58,7 @@ contract RentalNFTFacet is ReentrancyGuard{
         // CharacterAttributes memory player = s.nftHolderAttributes[tokenID];
         // require(player.hp < player.maxHp, "Player Already Has Enough Hp");
         require(maxRental > 0, "Request Denied");
+        require(price > 0, "Request Denied");
 
         rental_asset.price = price;
         rental_asset.expiresAt = 0;
@@ -140,7 +141,6 @@ contract RentalNFTFacet is ReentrancyGuard{
         
     }
 
-
     function fetchNFTRentalStatus(uint tokenID) external view returns(LibRentalStorage.RentalInfo memory){
 
         LibRentalStorage.RentalMarketData storage rss = LibRentalStorage.diamondStorage();
@@ -149,11 +149,133 @@ contract RentalNFTFacet is ReentrancyGuard{
 
     }
 
+    // Returns all items listed for rent in marketplace
+    function fetchMarketItems() external view returns(LibRentalStorage.RentalInfo[] memory){
+
+        uint totalItemCount = s.totalTokens;
+        uint itemCount = 0;
+        uint currentIndex = 0;
+        LibRentalStorage.RentalMarketData storage rss = LibRentalStorage.diamondStorage();
+        
+
+        for (uint i = 0; i < totalItemCount; i++) {
+            if (rss.Rental[i + 1].price > 0 && rss.Rental[i + 1].expiresAt == 0) {
+                itemCount += 1;
+            }
+        }
+
+        LibRentalStorage.RentalInfo[] memory marketItems = new LibRentalStorage.RentalInfo[](itemCount);
+
+        for (uint i = 0; i < totalItemCount; i++) {
+
+            if (rss.Rental[i + 1].price > 0 && rss.Rental[i + 1].expiresAt == 0) {
+
+                marketItems[currentIndex] = rss.Rental[i + 1];
+                currentIndex += 1;
+                
+            }
+        }
+
+        return marketItems;
+
+    }
+
+    // Returns only items that a user has listed in marketplace
+    function fetchMyListedNFTs() external view returns(LibRentalStorage.RentalInfo[] memory){
+
+        uint totalItemCount = s.totalTokens;
+        uint itemCount = 0;
+        uint currentIndex = 0;
+        LibRentalStorage.RentalMarketData storage rss = LibRentalStorage.diamondStorage();
+        
+
+        for (uint i = 0; i < totalItemCount; i++) {
+            if (rss.Rental[i + 1].seller == msg.sender) {
+                itemCount += 1;
+            }
+        }
+
+        LibRentalStorage.RentalInfo[] memory marketItems = new LibRentalStorage.RentalInfo[](itemCount);
+
+        for (uint i = 0; i < totalItemCount; i++) {
+
+            if (rss.Rental[i + 1].seller == msg.sender) {
+
+                marketItems[currentIndex] = rss.Rental[i + 1];
+                currentIndex += 1;
+                
+            }
+        }
+
+        return marketItems;
 
 
+    }
 
 
+    // Returns only items that a user has rented from marketplace
+    function fetchRentedNFTs() external view returns(LibRentalStorage.RentalInfo[] memory){
 
+        uint totalItemCount = s.totalTokens;
+        uint itemCount = 0;
+        uint currentIndex = 0;
+        LibRentalStorage.RentalMarketData storage rss = LibRentalStorage.diamondStorage();
+        
+
+        for (uint i = 0; i < totalItemCount; i++) {
+            if (rss.Rental[i + 1].renter == msg.sender) {
+                itemCount += 1;
+            }
+        }
+
+        LibRentalStorage.RentalInfo[] memory marketItems = new LibRentalStorage.RentalInfo[](itemCount);
+
+        for (uint i = 0; i < totalItemCount; i++) {
+
+            if (rss.Rental[i + 1].renter == msg.sender) {
+
+                marketItems[currentIndex] = rss.Rental[i + 1];
+                currentIndex += 1;
+                
+            }
+        }
+
+        return marketItems;
+
+
+    }
+    
+    // Returns only items that are due to be claimed
+    function fetchItemsClaimable() external view returns(LibRentalStorage.RentalInfo[] memory){
+
+        uint totalItemCount = s.totalTokens;
+        uint itemCount = 0;
+        uint currentIndex = 0;
+        LibRentalStorage.RentalMarketData storage rss = LibRentalStorage.diamondStorage();
+        
+
+        for (uint i = 0; i < totalItemCount; i++) {
+            if (rss.Rental[i + 1].isRented == true && rss.Rental[i + 1].expiresAt <= block.timestamp) {
+                itemCount += 1;
+            }
+        }
+
+        LibRentalStorage.RentalInfo[] memory marketItems = new LibRentalStorage.RentalInfo[](itemCount);
+
+        for (uint i = 0; i < totalItemCount; i++) {
+
+            if (rss.Rental[i + 1].isRented == true && rss.Rental[i + 1].expiresAt <= block.timestamp) {
+
+                marketItems[currentIndex] = rss.Rental[i + 1];
+                currentIndex += 1;
+                
+            }
+        }
+
+        return marketItems;
+
+
+    }
 
 
 }

@@ -74,6 +74,7 @@ contract DiamondInit {
 
         s._tokenIds += 1;
         s.fee = 0.01 ether;
+        s._status = AppConstants._NOT_ENTERED;
 
     }
     
