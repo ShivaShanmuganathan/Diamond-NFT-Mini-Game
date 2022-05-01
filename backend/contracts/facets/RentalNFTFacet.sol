@@ -29,7 +29,7 @@ import "../libraries/LibERC721.sol";
 /// @author Shiva Shanmuganathan
 /// @notice You can use this contract for implementing a simple NFT based game to change NFT Metadata
 /// @dev All function calls are currently implemented without side effects
-contract RentalNFTFacet {
+contract RentalNFTFacet is ReentrancyGuard{
     AppStorage internal s;
 
     event AssetListed(uint tokenId, uint rentMaxTime, uint price, address owner);
@@ -87,7 +87,7 @@ contract RentalNFTFacet {
     function rentMarketItem(
         uint tokenID,
         uint rentalDuration
-    ) external payable {
+    ) external payable nonReentrant{
 
             LibRentalStorage.RentalMarketData storage rss = LibRentalStorage.diamondStorage();
         
@@ -107,7 +107,7 @@ contract RentalNFTFacet {
             
     }
 
-    function finishRenting(uint tokenID) external {
+    function finishRenting(uint tokenID) external nonReentrant{
 
         LibRentalStorage.RentalMarketData storage rss = LibRentalStorage.diamondStorage();
         

@@ -4,8 +4,8 @@ pragma solidity ^0.8.0;
 
 library AppConstants{
     uint256 constant isTestMode = 1;
-    uint256 constant publicPrice = isTestMode == 1 ? 1000000000000000 : 1000000000000000000; // 1 AVAX
-    uint256 constant dayInSeconds = isTestMode == 1 ? 1 : 86400;
+    uint256 constant publicPrice = 1000000000000000; 
+    uint256 constant dayInSeconds = 86400;
     uint256 constant _NOT_ENTERED = 1;
     uint256 constant _ENTERED = 2;
 }
@@ -86,14 +86,14 @@ library LibAppStorage {
     }
 }
 
-// interface ReentrancyGuard{
-//     modifier nonReentrant() {
-//         require(LibAppStorage.diamondStorage()._status != AppConstants._ENTERED, "ReentrancyGuard: reentrant call");
+interface ReentrancyGuard{
+    modifier nonReentrant() {
+        require(LibAppStorage.diamondStorage()._status != AppConstants._ENTERED, "ReentrancyGuard: reentrant call");
 
-//         LibAppStorage.diamondStorage()._status = AppConstants._ENTERED;
+        LibAppStorage.diamondStorage()._status = AppConstants._ENTERED;
 
-//         _;
+        _;
 
-//         LibAppStorage.diamondStorage()._status = AppConstants._NOT_ENTERED;
-//     }
-// }
+        LibAppStorage.diamondStorage()._status = AppConstants._NOT_ENTERED;
+    }
+}
