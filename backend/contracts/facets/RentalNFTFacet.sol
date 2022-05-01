@@ -102,7 +102,7 @@ contract RentalNFTFacet is ReentrancyGuard{
             LibERC721._safeTransfer(address(this), msg.sender, tokenID, "");
 
             rental_asset.renter = msg.sender;
-            rental_asset.expiresAt = block.timestamp + (rentalDuration * 86400);
+            rental_asset.expiresAt = block.timestamp + (rentalDuration * AppConstants.dayInSeconds);
             rental_asset.isRented = true;            
             
     }
@@ -139,6 +139,19 @@ contract RentalNFTFacet is ReentrancyGuard{
         delete rss.Rental[tokenID];
         
     }
+
+
+    function rentalStatus(uint tokenID) external view returns(LibRentalStorage.RentalInfo memory){
+
+        LibRentalStorage.RentalMarketData storage rss = LibRentalStorage.diamondStorage();
+        LibRentalStorage.RentalInfo storage rental_asset = rss.Rental[tokenID];
+        return rental_asset;
+
+    }
+
+
+
+
 
 
 

@@ -13,6 +13,18 @@ const { assert, expect } = require('chai')
 
 
 
+const transformRentalData = (rentalData) => {
+  return {
+    
+    price: rentalData.price.toString(),
+    expiresAt: rentalData.expiresAt.toString(),
+    maxRental: rentalData.maxRental.toString(),
+    seller: rentalData.seller.toString(),
+    renter: rentalData.renter.toString(),
+    isRented: rentalData.isRented.toString()    
+  };
+};
+
 const transformCharacterData = (characterData) => {
   return {
     name: characterData.name,
@@ -739,6 +751,20 @@ describe('DiamondTest', async function () {
 
     // })
 
+    it('Should check rental status of NFT', async () => {
+
+      const tokenID = (await dynamicGameFacet.nftHolders(addr1.address))[0];
+      let rentalTxn = await rentalNFTFacet.connect(addr1).rentalStatus(tokenID);
+      let result = transformRentalData(rentalTxn);
+      console.log("rental price",result.price);
+      console.log("rental expiresAt",result.expiresAt);
+      console.log("rental maxRental",result.maxRental);
+      console.log("rental seller",result.seller);
+      console.log("rental renter",result.renter);
+      console.log("rental isRented",result.isRented);
+
+    });
+
     it("Increase Time By 15 Days", async function() {
     
       await ethers.provider.send('evm_increaseTime', [86400*15]);
@@ -756,6 +782,21 @@ describe('DiamondTest', async function () {
       console.log("Owner Of TokenID ", Number(tokenID), " after finish renting is ", await dynamicGameFacet.ownerOf(tokenID));
 
     })
+
+    it('Should check rental status of NFT', async () => {
+
+      const tokenID = (await dynamicGameFacet.nftHolders(addr1.address))[0];
+      let rentalTxn = await rentalNFTFacet.connect(addr1).rentalStatus(tokenID);
+      let result = transformRentalData(rentalTxn);
+      console.log("rental price",result.price);
+      console.log("rental expiresAt",result.expiresAt);
+      console.log("rental maxRental",result.maxRental);
+      console.log("rental seller",result.seller);
+      console.log("rental renter",result.renter);
+      console.log("rental isRented",result.isRented);
+
+    });
+    
 
 
   });  
