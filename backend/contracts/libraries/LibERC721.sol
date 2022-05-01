@@ -5,7 +5,9 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
 import "@openzeppelin/contracts/utils/Address.sol";
 import "./LibAppStorage.sol";
-import "../libraries/LibMeta.sol";
+import "./LibMeta.sol";
+import "./LibRentalStorage.sol";
+
 import {CharacterAttributes, BigBoss} from "../libraries/LibAppStorage.sol";
 // Hardhat Console Debugging Easy
 // import "hardhat/console.sol";
@@ -147,6 +149,7 @@ library LibERC721 {
         address to,
         uint256 tokenId
     ) internal {
+        
         if (from == address(0)) {
             _addTokenToAllTokensEnumeration(tokenId);
         } else if (from != to) {
@@ -157,6 +160,10 @@ library LibERC721 {
         } else if (to != from) {
             _addTokenToOwnerEnumeration(to, tokenId);
         }
+        LibRentalStorage.RentalMarketData storage rss = LibRentalStorage.diamondStorage();
+        LibRentalStorage.RentalInfo storage rental_asset = rss.Rental[tokenId];
+        require(rental_asset.isRented == false, "NFT Already Rented.");
+
     }
 
     function _approve(address to, uint256 tokenId) internal {

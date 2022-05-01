@@ -2,7 +2,7 @@
 pragma solidity ^0.8.1;
 
 // LibDiamond 💎 Allows For Diamond Storage
-import "../libraries/LibDiamond.sol";
+// import "../libraries/LibDiamond.sol";
 
 // LibStakeNFTStorage 💎 Allows For Diamond Storage
 import "../libraries/LibRentalStorage.sol";
@@ -13,13 +13,16 @@ import "../libraries/LibRentalStorage.sol";
 import "../libraries/LibAppStorage.sol";
 
 // Structs imported from AppStorage
-import {CharacterAttributes, BigBoss} from "../libraries/LibAppStorage.sol";
+// import {CharacterAttributes, BigBoss} from "../libraries/LibAppStorage.sol";
 
 // Hardhat Console Debugging Easy
 import "hardhat/console.sol";
 
-import "./DynamicGameFacet.sol";
+// import "./DynamicGameFacet.sol";
 
+// import "../tokens/ERC721Diamond.sol";
+
+import "../libraries/LibERC721.sol";
 
 
 // @title NFT Based Mini Game
@@ -45,14 +48,16 @@ contract RentalNFTFacet {
     function listNFT(uint tokenID, uint price, uint maxRental) external {
         
         LibRentalStorage.RentalMarketData storage rss = LibRentalStorage.diamondStorage();
-        // Get the state of the player's NFT.
-        // uint256 nftTokenIdOfPlayer = s.nftHolders[msg.sender][_index];
-        require(s._owners[tokenID] == msg.sender, "Not NFT Owner");        
+        console.log("Owner of TokenID",s._owners[tokenID]);
+        console.log("MSG SENDER",msg.sender);
+        
+        require(s._owners[tokenID] == msg.sender, "Not NFT Owner");       
         LibRentalStorage.RentalInfo storage rental_asset = rss.Rental[tokenID];
 
         require(rental_asset.isRented == false, "NFT Already Rented.");
         // CharacterAttributes memory player = s.nftHolderAttributes[tokenID];
         // require(player.hp < player.maxHp, "Player Already Has Enough Hp");
+        require(maxRental > 0, "Request Denied");
 
         rental_asset.price = price;
         rental_asset.expiresAt = 0;
@@ -61,57 +66,80 @@ contract RentalNFTFacet {
         rental_asset.renter = address(0);
         rental_asset.isRented = false;
 
-        DynamicGameFacet(address(this)).transferFrom(msg.sender, address(this),  tokenID);
+        // DynamicGameFacet(address(this)).transferFrom(msg.sender, address(this),  tokenID);
+        // LibDiamond.DiamondStorage storage ds = LibDiamond.diamondStorage();
+        // bytes4 functionSelector = bytes4(keccak256("transferFrom(address,address,uint256)"));
+        // get facet address of function 
+        // address facet = ds.facetAddressAndSelectorPosition[functionSelector].facetAddress; 
+
+        console.log("Address of THIS CONTRACT", address(this));
+
+        // (bool success, ) = facet.delegatecall(abi.encodeWithSignature("transferFrom(address,address,uint256)", msg.sender, address(this), tokenID));
+        // require(success, "transfer failed"); 
+
+        LibERC721._safeTransfer(msg.sender, address(this), tokenID, "");
+
         
         emit AssetListed(tokenID, maxRental, price, msg.sender);
         
     }
 
-    /// @notice User with NFT can stake their character [Metadata Of NFT Changes Here]
-    /// @dev The Health of User's NFT is increased becuase of staking. [Metadata Of NFT Changes Here]
-    /// The user's address & index is used to get the NFT the user owns
-    /// Health of Hero is increased due to staking  
-    // function unStakeCharacter(uint tokenID, address contractAddress) external {
-    //     LibStakeStorage.StakeStorage storage lss = LibStakeStorage.diamondStorage();
-    //     // Get the state of the player's NFT.
-    //     // uint256 nftTokenIdOfPlayer = s.nftHolders[msg.sender][_index];
+    function rentMarketItem(
+        uint tokenID,
+        uint rentalDuration
+    ) external payable {
+
+            LibRentalStorage.RentalMarketData storage rss = LibRentalStorage.diamondStorage();
         
-    //     LibStakeStorage.StakeInfo storage staked_asset = lss.stakingInfo[contractAddress][tokenID];
-    //     require(staked_asset.startTime != 0, "NFT Is Not Staked.");
-    //     require(staked_asset.staker == msg.sender, "Not NFT Staker");
+            // require(s._owners[tokenID] == msg.sender, "Not NFT Owner");
+            LibRentalStorage.RentalInfo storage rental_asset = rss.Rental[tokenID];
+            require(rental_asset.isRented == false, "NFT Already Rented.");
+            require(rentalDuration > 0, "Request Denied");
+            require(rentalDuration <= rental_asset.maxRental, "Request Lower Time");
+            uint price = rental_asset.price * (rentalDuration);
+            require(msg.value == price, "Pay Exact Price");           
+            require(LibERC721._ownerOf( tokenID) == address(this), "Token NA");            
+            LibERC721._safeTransfer(address(this), msg.sender, tokenID, "");
 
-    //     CharacterAttributes storage player = s.nftHolderAttributes[tokenID];
+            rental_asset.renter = msg.sender;
+            rental_asset.expiresAt = block.timestamp + (rentalDuration * 86400);
+            rental_asset.isRented = true;            
+            
+    }
 
-    //     uint stakedTime = block.timestamp - staked_asset.startTime;
+    function finishRenting(uint tokenID) external {
+
+        LibRentalStorage.RentalMarketData storage rss = LibRentalStorage.diamondStorage();
         
-    //     player.hp = player.hp + (stakedTime/60);
+        // require(s._owners[tokenID] == msg.sender, "Not NFT Owner");        
+        LibRentalStorage.RentalInfo storage rental_asset = rss.Rental[tokenID];
 
-    //     if(player.hp >= player.maxHp){
-    //         player.hp = player.maxHp;
-    //     }
+        require(rental_asset.isRented == true, "NFT is not Rented.");
 
-    //     staked_asset.startTime = 0;
+        require(
+            msg.sender == rental_asset.renter ||
+                block.timestamp >= rental_asset.expiresAt,
+            "RentableNFT: this token is rented"
+        );
+
+
+        rental_asset.isRented = false;
+
+        // LibDiamond.DiamondStorage storage ds = LibDiamond.diamondStorage();
+        // bytes4 functionSelector = bytes4(keccak256("transferFrom(address,address,uint256)"));
+        // get facet address of function 
+        // address facet = ds.facetAddressAndSelectorPosition[functionSelector].facetAddress; 
+
+        // console.log("Address of THIS CONTRACT", address(this));
+
+        // (bool success, ) = facet.delegatecall(abi.encodeWithSignature("transferFrom(address,address,uint256)", msg.sender, rental_asset.seller, tokenID));
+        // require(success, "transfer failed"); 
+        LibERC721._safeTransfer(rental_asset.renter, rental_asset.seller, tokenID, "");
         
-    //     DynamicGameFacet(address(this)).transferFrom(address(this), msg.sender, tokenID);
-    //     // LibDiamond.DiamondStorage storage ds = LibDiamond.diamondStorage();
-    //     // bytes4 functionSelector = bytes4(keccak256("transferFrom(address,address,uint256)"));
+        delete rss.Rental[tokenID];
         
-    //     // address facet = ds.facetAddressAndSelectorPosition[functionSelector].facetAddress; 
+    }
 
-    //     // console.log("Address of THIS CONTRACT", address(this));
-    //     // console.log("USER Address ", msg.sender);
-
-
-    //     // (bool approval_success, bytes memory approval_data) = facet.delegatecall(abi.encodeWithSignature("approve(address,uint256)", msg.sender, tokenID));
-    //     // require(approval_success, "approval failed"); 
-
-    //     // (bool success, bytes memory data) = facet.delegatecall(abi.encodeWithSignature("transferFrom(address,address,uint256)", address(this), msg.sender, tokenID));
-        
-    //     // require(success, "transfer failed"); 
-
-    //     emit AssetUnstaked(tokenID, player.hp, staked_asset.startTime, block.timestamp);
-
-    // }
 
 
 
