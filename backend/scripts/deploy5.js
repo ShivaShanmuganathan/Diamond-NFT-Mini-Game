@@ -6,28 +6,28 @@ const { assert, expect } = require('chai')
 
 const { getSelectors, FacetCutAction } = require('./libraries/diamond.js')
 
-async function deployDynamicGameFacet () {
+async function deployRentalFacet () {
     // diamondAddress = await deployDiamond()
     
     diamondAddress = "0x0B306BF915C4d645ff596e518fAf3F9669b97016";
     console.log("diamondAddress", diamondAddress);
 
-    const DynamicGameFacet = await ethers.getContractFactory('DynamicGameFacet')
-    const dynamicGameFacet = await DynamicGameFacet.deploy()
+    const RentalNFTFacet = await ethers.getContractFactory('RentalNFTFacet')
+    const rentalNFTFacet = await RentalNFTFacet.deploy()
+    await rentalNFTFacet.deployed()
 
-    console.log('Deployed dynamicGameFacet to ', dynamicGameFacet.address)
-
+    console.log("rentalNFTFacet deployed to: ",rentalNFTFacet.address);
+    
     let addresses = [];
-    addresses.push(dynamicGameFacet.address)
-    let selectors = getSelectors(dynamicGameFacet)
-    selectors = selectors.remove(['supportsInterface'])
+    addresses.push(rentalNFTFacet.address)
+    const selectors = getSelectors(rentalNFTFacet)
 
     const diamondCutFacet = await ethers.getContractAt('IDiamondCut', diamondAddress)
     const diamondLoupeFacet = await ethers.getContractAt('DiamondLoupeFacet', diamondAddress)
 
     tx = await diamondCutFacet.diamondCut(
     [{
-        facetAddress: dynamicGameFacet.address,
+        facetAddress: rentalNFTFacet.address,
         action: FacetCutAction.Add,
         functionSelectors: selectors
     }],
@@ -36,17 +36,17 @@ async function deployDynamicGameFacet () {
     if (!receipt.status) {
     throw Error(`Diamond upgrade failed: ${tx.hash}`)
     }
-    result = await diamondLoupeFacet.facetFunctionSelectors(dynamicGameFacet.address)
+    result = await diamondLoupeFacet.facetFunctionSelectors(rentalNFTFacet.address)
     assert.sameMembers(result, selectors)
-    console.log("dynamicGameFacet Added To Diamond");
-    return dynamicGameFacet.address;
+    console.log("rentalNFTFacet Added To Diamond");
+    return rentalNFTFacet.address;
 
 }
 
 // We recommend this pattern to be able to use async/await every where
 // and properly handle errors.
 if (require.main === module) {
-    deployDynamicGameFacet()
+    deployRentalFacet()
     .then(() => process.exit(0))
     .catch(error => {
       console.error(error)
@@ -54,4 +54,4 @@ if (require.main === module) {
     })
 }
 
-exports.deployDynamicGameFacet = deployDynamicGameFacet
+exports.deployRentalFacet = deployRentalFacet

@@ -143,11 +143,11 @@ function genSignature(name, inputs, type) {
     mumbai: {
       url: process.env.STAGING_ALCHEMY_KEY,
       accounts: [process.env.PRIVATE_KEY],
-    }
+    },
 
-    // localhost: {
-    //   chainId: 31337
-    // }  
+    localhost: {
+      chainId: 31337
+    }  
     
   },
 

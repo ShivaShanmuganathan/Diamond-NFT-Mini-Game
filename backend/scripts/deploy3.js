@@ -6,28 +6,28 @@ const { assert, expect } = require('chai')
 
 const { getSelectors, FacetCutAction } = require('./libraries/diamond.js')
 
-async function deployStakeFacet () {
+async function deployReceiverFacet () {
     // diamondAddress = await deployDiamond()
     
-    diamondAddress = "0xCe29944309A1aFD75a67E85f83FAa045b421629F";
+    diamondAddress = "0x0B306BF915C4d645ff596e518fAf3F9669b97016";
     console.log("diamondAddress", diamondAddress);
 
-    const StakeNFTFacet = await ethers.getContractFactory('StakeNFTFacet')
-    const stakeNFTFacet = await StakeNFTFacet.deploy()
-    await stakeNFTFacet.deployed()
+    const NFTReceiverFacet = await ethers.getContractFactory('NFTReceiverFacet')
+    const nftReceiverFacet = await NFTReceiverFacet.deploy()
+    await nftReceiverFacet.deployed()
 
-    console.log("stakeNFTFacet deployed to: ",stakeNFTFacet.address);
+    console.log("nftReceiverFacet deployed to: ",nftReceiverFacet.address);
     
     let addresses = [];
-    addresses.push(stakeNFTFacet.address)
-    const selectors = getSelectors(stakeNFTFacet)
+    addresses.push(nftReceiverFacet.address)
+    const selectors = getSelectors(nftReceiverFacet)
 
     const diamondCutFacet = await ethers.getContractAt('IDiamondCut', diamondAddress)
     const diamondLoupeFacet = await ethers.getContractAt('DiamondLoupeFacet', diamondAddress)
 
     tx = await diamondCutFacet.diamondCut(
     [{
-        facetAddress: stakeNFTFacet.address,
+        facetAddress: nftReceiverFacet.address,
         action: FacetCutAction.Add,
         functionSelectors: selectors
     }],
@@ -36,17 +36,17 @@ async function deployStakeFacet () {
     if (!receipt.status) {
     throw Error(`Diamond upgrade failed: ${tx.hash}`)
     }
-    result = await diamondLoupeFacet.facetFunctionSelectors(stakeNFTFacet.address)
+    result = await diamondLoupeFacet.facetFunctionSelectors(nftReceiverFacet.address)
     assert.sameMembers(result, selectors)
-    console.log("stakeNFTFacet Added To Diamond");
-    return stakeNFTFacet.address;
+    console.log("nftReceiverFacet Added To Diamond");
+    return nftReceiverFacet.address;
 
 }
 
 // We recommend this pattern to be able to use async/await every where
 // and properly handle errors.
 if (require.main === module) {
-  deployStakeFacet()
+    deployReceiverFacet()
     .then(() => process.exit(0))
     .catch(error => {
       console.error(error)
@@ -54,4 +54,4 @@ if (require.main === module) {
     })
 }
 
-exports.deployStakeFacet = deployStakeFacet
+exports.deployReceiverFacet = deployReceiverFacet

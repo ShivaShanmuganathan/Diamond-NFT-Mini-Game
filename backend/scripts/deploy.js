@@ -94,22 +94,22 @@ async function deployDiamond () {
   }
   console.log('Completed diamond cut')
 
-  const DynamicGameFacet = await ethers.getContractFactory('DynamicGameFacet')
-  const dynamicGameFacet = await DynamicGameFacet.deploy()
+  // const DynamicGameFacet = await ethers.getContractFactory('DynamicGameFacet')
+  // const dynamicGameFacet = await DynamicGameFacet.deploy()
 
-  console.log('Deployed dynamicGameFacet to ', dynamicGameFacet.address)
+  // console.log('Deployed dynamicGameFacet to ', dynamicGameFacet.address)
 
 
-  let selectors = getSelectors(dynamicGameFacet);
-  selectors = selectors.remove(['supportsInterface'])
-  let addresses = [];
-  addresses.push(dynamicGameFacet.address);
+  // let selectors = getSelectors(dynamicGameFacet);
+  // selectors = selectors.remove(['supportsInterface'])
+  // let addresses = [];
+  // addresses.push(dynamicGameFacet.address);
 
-  await diamondCut.diamondCut([[dynamicGameFacet.address, FacetCutAction.Add, selectors]], ethers.constants.AddressZero, '0x');
-  console.log('Added dynamicGameFacet to Diamond ', dynamicGameFacet.address)
+  // await diamondCut.diamondCut([[dynamicGameFacet.address, FacetCutAction.Add, selectors]], ethers.constants.AddressZero, '0x');
+  // console.log('Added dynamicGameFacet to Diamond ', dynamicGameFacet.address)
 
-  const diamondLoupeFacet = await ethers.getContractAt('DiamondLoupeFacet', diamond.address);
-  result = await diamondLoupeFacet.facetFunctionSelectors(addresses[0]);
+  // const diamondLoupeFacet = await ethers.getContractAt('DiamondLoupeFacet', diamond.address);
+  // result = await diamondLoupeFacet.facetFunctionSelectors(addresses[0]);
 
   return diamond.address
 }
