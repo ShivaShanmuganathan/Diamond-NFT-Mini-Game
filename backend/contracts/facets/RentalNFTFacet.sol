@@ -2,7 +2,7 @@
 pragma solidity ^0.8.1;
 
 // LibDiamond 💎 Allows For Diamond Storage
-// import "../libraries/LibDiamond.sol";
+import "../libraries/LibDiamond.sol";
 
 // LibStakeNFTStorage 💎 Allows For Diamond Storage
 import "../libraries/LibRentalStorage.sol";
@@ -45,6 +45,7 @@ contract RentalNFTFacet is ReentrancyGuard{
     /// @dev The Health of User's NFT is increased becuase of staking. [Metadata Of NFT Changes Here]
     /// The user's address & index is used to get the NFT the user owns
     /// Health of Hero is increased due to staking  
+    
     function listNFT(uint tokenID, uint price, uint maxRental) external {
         
         LibRentalStorage.RentalMarketData storage rss = LibRentalStorage.diamondStorage();
@@ -99,7 +100,8 @@ contract RentalNFTFacet is ReentrancyGuard{
             require(rentalDuration <= rental_asset.maxRental, "Request Lower Time");
             uint price = rental_asset.price * (rentalDuration);
             require(msg.value == price, "Pay Exact Price");           
-            require(LibERC721._ownerOf( tokenID) == address(this), "Token NA");            
+            require(LibERC721._ownerOf( tokenID) == address(this), "Token NA");
+            rental_asset.seller.transfer(msg.value);
             LibERC721._safeTransfer(address(this), msg.sender, tokenID, "");
 
             rental_asset.renter = msg.sender;

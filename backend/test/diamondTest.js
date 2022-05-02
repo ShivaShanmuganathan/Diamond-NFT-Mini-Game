@@ -189,7 +189,7 @@ describe('DiamondTest', async function () {
     it('Should Mint Characters', async function () {
         
         for (let i = 0; i < 16; i++) {
-          await expect(dynamicGameFacet.connect(owner).mintCharacterNFT(i, {value: ethers.utils.parseEther("0.01")})).to.not.be.reverted; 
+          await expect(dynamicGameFacet.connect(owner).mintCharacterNFT(i, {value: ethers.utils.parseEther("0.1")})).to.not.be.reverted; 
         }
 
     });
@@ -696,11 +696,16 @@ describe('DiamondTest', async function () {
       
       const tokenID = (await dynamicGameFacet.nftHolders(owner.address))[5];
       const rentalDuration = 10;
-      const listingPrice = ethers.utils.parseUnits('0.01', 'ether') * 10;
-      // console.log(Number(listingPrice))
+      const rentalPrice = ethers.utils.parseUnits('0.01', 'ether') * 10;
+      const balanceBefore = await ethers.provider.getBalance(owner.address);
+
       console.log("Owner Of TokenID ", Number(tokenID), " before renting is ", await dynamicGameFacet.ownerOf(tokenID));
-      await rentalNFTFacet.connect(addr2).rentNFT(tokenID, rentalDuration, { value: (listingPrice).toString() });
+      await rentalNFTFacet.connect(addr2).rentNFT(tokenID, rentalDuration, { value: (rentalPrice).toString() });
       console.log("Owner Of TokenID ", Number(tokenID), " after renting is ", await dynamicGameFacet.ownerOf(tokenID));
+
+      const balanceAfter = await ethers.provider.getBalance(owner.address);
+      expect(balanceAfter.gt(balanceBefore), 'Balance is not higher').to.be.true;
+  
 
     })
 
@@ -729,12 +734,15 @@ describe('DiamondTest', async function () {
       
       const tokenID = (await dynamicGameFacet.nftHolders(addr1.address))[0];
       const rentalDuration = 25;
-      const listingPrice = ethers.utils.parseUnits('0.05', 'ether') * 25;
-      // console.log(Number(listingPrice))
+      const rentalPrice = ethers.utils.parseUnits('0.05', 'ether') * 25;
+      const balanceBefore = await ethers.provider.getBalance(addr1.address);
+
       console.log("Owner Of TokenID ", Number(tokenID), " before renting is ", await dynamicGameFacet.ownerOf(tokenID));
-      await rentalNFTFacet.connect(addr2).rentNFT(tokenID, rentalDuration, { value: (listingPrice).toString() });
+      await rentalNFTFacet.connect(addr2).rentNFT(tokenID, rentalDuration, { value: (rentalPrice).toString() });
       console.log("Owner Of TokenID ", Number(tokenID), " after renting is ", await dynamicGameFacet.ownerOf(tokenID));
 
+      const balanceAfter = await ethers.provider.getBalance(addr1.address);
+      expect(balanceAfter.gt(balanceBefore), 'Balance is not higher').to.be.true;
     })
 
     it('Should check fetchRentedNFTs', async () => {
@@ -809,8 +817,6 @@ describe('DiamondTest', async function () {
       
 
     });
-
-    
 
     it('Should test finish renting NFT index 5 after 10 days', async () => {
       
@@ -928,7 +934,6 @@ describe('DiamondTest', async function () {
 
     });
 
-
     it('Should check fetchMyListedNFTs', async () => {
 
       // const tokenID = (await dynamicGameFacet.nftHolders(addr1.address))[0];
@@ -950,6 +955,11 @@ describe('DiamondTest', async function () {
 
     });
 
-  });  
+
+  });
+
+
+
+
 
 })
