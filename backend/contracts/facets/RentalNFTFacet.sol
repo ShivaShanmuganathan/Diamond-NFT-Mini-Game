@@ -13,7 +13,7 @@ import "../libraries/LibRentalStorage.sol";
 import "../libraries/LibAppStorage.sol";
 
 // Structs imported from AppStorage
-// import {CharacterAttributes, BigBoss} from "../libraries/LibAppStorage.sol";
+import {CharacterAttributes} from "../libraries/LibAppStorage.sol";
 
 // Hardhat Console Debugging Easy
 import "hardhat/console.sol";
@@ -212,6 +212,40 @@ contract RentalNFTFacet is ReentrancyGuard{
 
     }
 
+    // Returns only items that a user has not listed in marketplace
+    function fetchMyUnListedNFTs() external view returns(CharacterAttributes[] memory){
+
+        uint[] memory nftArray = s.nftHolders[msg.sender];
+        uint itemCount = 0;
+        uint currentIndex = 0;
+
+        if(nftArray.length == 0){
+            CharacterAttributes[] memory emptyStruct;
+            return emptyStruct;
+        }
+
+        LibRentalStorage.RentalMarketData storage rss = LibRentalStorage.diamondStorage();
+
+        for (uint i; i < nftArray.length; i++) {
+            if (rss.Rental[nftArray[i]].seller != msg.sender) {
+                itemCount += 1;
+            }
+        }
+
+        CharacterAttributes[] memory charArray = new CharacterAttributes[](itemCount);
+
+        for (uint i; i < nftArray.length; i++) {
+
+            if (rss.Rental[nftArray[i]].seller != msg.sender) {
+
+                charArray[currentIndex] = s.nftHolderAttributes[nftArray[i]];
+                currentIndex += 1;
+            }
+        }
+
+        return charArray;
+
+    }
 
     // Returns only items that a user has rented from marketplace
     function fetchRentedNFTs() external view returns(LibRentalStorage.RentalInfo[] memory){

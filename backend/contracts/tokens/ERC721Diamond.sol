@@ -155,8 +155,8 @@ abstract contract ERC721Diamond is Context, ERC165, IERC721Enumerable {
 
     function _isApprovedOrOwner(address spender, uint256 tokenId) internal view virtual returns (bool) {
         // console.log("Checkpoint Reached");
-        console.log(tokenId);
-        console.log(exists(tokenId));
+        // console.log(tokenId);
+        // console.log(exists(tokenId));
         require(_exists(tokenId), "ERC721: operator query for nonexistent token");
         // console.log("Checkpoint Reached 2");
         address owner = ownerOf(tokenId);
