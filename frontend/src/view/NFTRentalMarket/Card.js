@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Flex, Text } from "crox-new-uikit";
 import { AnimateKeyframes } from 'react-simple-animate';
 import { Icon } from '@iconify/react';
-import { Button } from "../../../components/CommonComponents";
+import { Button } from "../../components/CommonComponents";
 import { ethers } from 'ethers';
 
 function Card(props) {
