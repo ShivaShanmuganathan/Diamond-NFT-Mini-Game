@@ -215,7 +215,7 @@ contract RentalNFTFacet is ReentrancyGuard{
     }
 
     // Returns only items that a user has not listed in marketplace
-    function fetchMyUnListedNFTs() external view returns(CharacterAttributes[] memory){
+    function fetchMyUnListedNFTs() external view returns(CharacterAttributes[] memory, uint[] memory){
 
         uint[] memory nftArray = s.nftHolders[msg.sender];
         uint itemCount = 0;
@@ -223,7 +223,8 @@ contract RentalNFTFacet is ReentrancyGuard{
 
         if(nftArray.length == 0){
             CharacterAttributes[] memory emptyStruct;
-            return emptyStruct;
+            uint[] memory emptyArray;
+            return (emptyStruct, emptyArray);
         }
 
         LibRentalStorage.RentalMarketData storage rss = LibRentalStorage.diamondStorage();
@@ -235,17 +236,20 @@ contract RentalNFTFacet is ReentrancyGuard{
         }
 
         CharacterAttributes[] memory charArray = new CharacterAttributes[](itemCount);
+        uint[] memory tokenArray = new uint[](itemCount);
+
 
         for (uint i; i < nftArray.length; i++) {
 
             if (rss.Rental[nftArray[i]].seller != msg.sender) {
 
                 charArray[currentIndex] = s.nftHolderAttributes[nftArray[i]];
+                tokenArray[currentIndex] = nftArray[i];
                 currentIndex += 1;
             }
         }
 
-        return charArray;
+        return (charArray, tokenArray);
 
     }
 
