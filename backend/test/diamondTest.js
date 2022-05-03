@@ -634,7 +634,7 @@ describe('DiamondTest', async function () {
     it('Should check fetchMarketItems', async () => {
 
       // const tokenID = (await dynamicGameFacet.nftHolders(addr1.address))[0];
-      let rentalTxn = await rentalNFTFacet.connect(addr1).fetchMarketItems();
+      let [charTxn, rentalTxn, tokenTxn] = await rentalNFTFacet.connect(addr1).fetchMarketItems();
       for(let i = 0; i < rentalTxn.length; i++){
 
         let result = transformRentalData(rentalTxn[i]);
@@ -713,7 +713,7 @@ describe('DiamondTest', async function () {
     it('Should check fetchMarketItems', async () => {
 
       // const tokenID = (await dynamicGameFacet.nftHolders(addr1.address))[0];
-      let rentalTxn = await rentalNFTFacet.connect(addr1).fetchMarketItems();
+      let [charTxn, rentalTxn, tokenTxn] = await rentalNFTFacet.connect(addr1).fetchMarketItems();
       for(let i = 0; i < rentalTxn.length; i++){
 
         let result = transformRentalData(rentalTxn[i]);
@@ -917,7 +917,7 @@ describe('DiamondTest', async function () {
     it('Should check fetchMarketItems', async () => {
 
       // const tokenID = (await dynamicGameFacet.nftHolders(addr1.address))[0];
-      let rentalTxn = await rentalNFTFacet.connect(addr1).fetchMarketItems();
+      let [charTxn, rentalTxn, tokenTxn] = await rentalNFTFacet.connect(addr1).fetchMarketItems();
       for(let i = 0; i < rentalTxn.length; i++){
 
         let result = transformRentalData(rentalTxn[i]);
