@@ -33,10 +33,10 @@ function Sidebar(props) {
 
                         <SubMenu title="NFT Rental Market" icon={<Icon icon="emojione:department-store" fontSize='20px' />} className="react-slidedown pro-inner-list-item">
                             <MenuItem icon={<Icon icon="emojione:department-store" fontSize='20px' />} onClick={() => { navigate("/rentalnfts") }}>Rental Market</MenuItem>
-                            <MenuItem icon={<Icon icon="emojione:admission-tickets" fontSize='20px' />} onClick={() => { navigate("/nftbattle") }}>My Listings</MenuItem>
+                            <MenuItem icon={<Icon icon="emojione:admission-tickets" fontSize='20px' />} onClick={() => { navigate("/listnfts") }}>My Listings</MenuItem>
                             <MenuItem icon={<Icon icon="twemoji:framed-picture" fontSize='20px' />} onClick={() => { navigate("/mynfts") }}>My NFTs</MenuItem>
-                            <MenuItem icon={<Icon icon="twemoji:money-with-wings" fontSize='20px' />} onClick={() => { navigate("/nftbattle") }}>Rented NFTs</MenuItem>
-                            <MenuItem icon={<Icon icon="twemoji:hourglass-done" fontSize='20px' />} onClick={() => { navigate("/nftstake") }}>Claimable NFTs</MenuItem>
+                            <MenuItem icon={<Icon icon="twemoji:money-with-wings" fontSize='20px' />} onClick={() => { navigate("/myrentals") }}>Rented NFTs</MenuItem>
+                            <MenuItem icon={<Icon icon="twemoji:hourglass-done" fontSize='20px' />} onClick={() => { navigate("/claimables") }}>Claimable NFTs</MenuItem>
                         </SubMenu>
 
 

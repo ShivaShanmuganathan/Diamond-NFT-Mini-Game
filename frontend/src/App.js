@@ -14,6 +14,9 @@ import { NFTCharacter, NFTBattle } from "./view/NFTGame";
 import { NFTStake } from "./view/Stake";
 import { MyNFTs } from "./view/MyNFTs";
 import { RentalNFTs } from "./view/NFTRentalMarket";
+import { ListedNFTs } from "./view/MyListings";
+import { MyRentals } from "./view/RentalNFTs";
+import { Claimables } from "./view/ClaimNFTs";
 import GlobalStyle from './assets/style/css/GlobalStyle'
 // import './assets/style/css/globals.css';
 import { Flex } from "crox-new-uikit";
@@ -39,6 +42,10 @@ function App() {
                 <Route path="/nftstake" element={<NFTStake collapse={collapse} />} />
                 <Route path="/mynfts" element={<MyNFTs collapse={collapse} />} />
                 <Route path="/rentalnfts" element={<RentalNFTs collapse={collapse} />} />
+                <Route path="/listnfts" element={<ListedNFTs collapse={collapse} />} />
+                <Route path="/myrentals" element={<MyRentals collapse={collapse} />} />
+                <Route path="/claimables" element={<Claimables collapse={collapse} />} />
+                
               </Routes>
             </Suspense>
           </Flex>
