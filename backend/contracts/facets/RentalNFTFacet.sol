@@ -292,7 +292,7 @@ contract RentalNFTFacet is ReentrancyGuard{
     }
 
     // Returns only items that a user has rented from marketplace
-    function fetchRentedNFTs() external view returns(LibRentalStorage.RentalInfo[] memory){
+    function fetchRentedNFTs() external view returns(CharacterAttributes[] memory, LibRentalStorage.RentalInfo[] memory, uint[] memory){
 
         uint totalItemCount = s.totalTokens;
         uint itemCount = 0;
@@ -306,19 +306,30 @@ contract RentalNFTFacet is ReentrancyGuard{
             }
         }
 
+        if(itemCount == 0){
+            CharacterAttributes[] memory emptyStruct;
+            LibRentalStorage.RentalInfo[] memory emptyItems;
+            uint[] memory emptyArray;
+            return (emptyStruct, emptyItems, emptyArray);
+        }
+
+        CharacterAttributes[] memory charArray = new CharacterAttributes[](itemCount);
         LibRentalStorage.RentalInfo[] memory marketItems = new LibRentalStorage.RentalInfo[](itemCount);
+        uint[] memory tokenArray = new uint[](itemCount);
 
         for (uint i = 0; i < totalItemCount; i++) {
 
             if (rss.Rental[i + 1].renter == msg.sender) {
 
+                charArray[currentIndex] = s.nftHolderAttributes[i+1];
                 marketItems[currentIndex] = rss.Rental[i + 1];
+                tokenArray[currentIndex] = i+1;
                 currentIndex += 1;
                 
             }
         }
 
-        return marketItems;
+        return (charArray, marketItems, tokenArray);
 
 
     }
