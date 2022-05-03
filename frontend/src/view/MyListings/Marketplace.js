@@ -50,8 +50,8 @@ const Marketplace = () => {
         );
         setGameContract(gameContract);
 
-        const [txn, rentalArray ,tokenArray] = await gameContract.fetchMarketItems();
-        console.log("MarketItem Information",await gameContract.fetchMarketItems());
+        const [txn, rentalArray ,tokenArray] = await gameContract.fetchMyListedNFTs();
+        console.log("MarketItem Information",await gameContract.fetchMyListedNFTs());
         if (txn[0]) {
             console.log('User has character NFT');
             // setCharacterNFT(txn)
@@ -203,7 +203,7 @@ const Marketplace = () => {
                                     </Flex>
 
                                     
-                                    <TextField
+                                    {/* <TextField
                                         label="Rental Duration"
                                         defaultValue="5"
                                         variant="filled"
@@ -214,9 +214,9 @@ const Marketplace = () => {
                                         }}
                                         className="inputField"
                                         onChange={e => updateFormInput({ ...formInput, rentalDuration: e.target.value })}
-                                    />
+                                    /> */}
 
-                                    <button className="wrapper8" onClick={() => rentNFT(tokens[i], (ethers.utils.formatEther((renft[i].price).toString(), 'ether')))}>Rent NFT</button>
+                                    {/* <button className="wrapper8" onClick={() => rentNFT(tokens[i], (ethers.utils.formatEther((renft[i].price).toString(), 'ether')))}>Rent NFT</button> */}
 
                                 </div>
 
