@@ -655,7 +655,7 @@ describe('DiamondTest', async function () {
     it('Should check fetchMyListedNFTs', async () => {
 
       // const tokenID = (await dynamicGameFacet.nftHolders(addr1.address))[0];
-      let rentalTxn = await rentalNFTFacet.connect(owner).fetchMyListedNFTs();
+      let [charTxn, rentalTxn, tokenTxn] = await rentalNFTFacet.connect(owner).fetchMyListedNFTs();
       for(let i = 0; i < rentalTxn.length; i++){
 
         let result = transformRentalData(rentalTxn[i]);
@@ -938,7 +938,7 @@ describe('DiamondTest', async function () {
     it('Should check fetchMyListedNFTs', async () => {
 
       // const tokenID = (await dynamicGameFacet.nftHolders(addr1.address))[0];
-      let rentalTxn = await rentalNFTFacet.connect(owner).fetchMyListedNFTs();
+      let [charTxn, rentalTxn, tokenTxn] = await rentalNFTFacet.connect(owner).fetchMyListedNFTs();
       for(let i = 0; i < rentalTxn.length; i++){
 
         let result = transformRentalData(rentalTxn[i]);

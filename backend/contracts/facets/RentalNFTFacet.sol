@@ -183,33 +183,54 @@ contract RentalNFTFacet is ReentrancyGuard{
     }
 
     // Returns only items that a user has listed in marketplace
-    function fetchMyListedNFTs() external view returns(LibRentalStorage.RentalInfo[] memory){
+    function fetchMyListedNFTs() external view returns(CharacterAttributes[] memory, LibRentalStorage.RentalInfo[] memory, uint[] memory){
 
-        uint totalItemCount = s.totalTokens;
+        uint[] memory nftArray = s.nftHolders[msg.sender];
         uint itemCount = 0;
         uint currentIndex = 0;
+
         LibRentalStorage.RentalMarketData storage rss = LibRentalStorage.diamondStorage();
+
+        if(nftArray.length == 0){
+            CharacterAttributes[] memory emptyStruct;
+            LibRentalStorage.RentalInfo[] memory emptyItems;
+            uint[] memory emptyArray;
+            return (emptyStruct, emptyItems, emptyArray);
+        }
         
 
-        for (uint i = 0; i < totalItemCount; i++) {
-            if (rss.Rental[i + 1].seller == msg.sender) {
+        for (uint i = 0; i < nftArray.length; i++) {
+            if (rss.Rental[nftArray[i]].seller == msg.sender) {
                 itemCount += 1;
             }
         }
 
+        if(itemCount == 0){
+            CharacterAttributes[] memory emptyStruct;
+            LibRentalStorage.RentalInfo[] memory emptyItems;
+            uint[] memory emptyArray;
+            return (emptyStruct, emptyItems, emptyArray);
+        }
+
+
+
+        CharacterAttributes[] memory charArray = new CharacterAttributes[](itemCount);
         LibRentalStorage.RentalInfo[] memory marketItems = new LibRentalStorage.RentalInfo[](itemCount);
+        uint[] memory tokenArray = new uint[](itemCount);
 
-        for (uint i = 0; i < totalItemCount; i++) {
+        for (uint i = 0; i < nftArray.length; i++) {
 
-            if (rss.Rental[i + 1].seller == msg.sender) {
+            if (rss.Rental[nftArray[i]].seller == msg.sender) {
 
-                marketItems[currentIndex] = rss.Rental[i + 1];
+                charArray[currentIndex] = s.nftHolderAttributes[nftArray[i]];
+                marketItems[currentIndex] = rss.Rental[nftArray[i]];
+                tokenArray[currentIndex] = nftArray[i];
                 currentIndex += 1;
                 
             }
         }
 
-        return marketItems;
+        return (charArray, marketItems, tokenArray);
 
 
     }
@@ -233,6 +254,12 @@ contract RentalNFTFacet is ReentrancyGuard{
             if (rss.Rental[nftArray[i]].seller != msg.sender) {
                 itemCount += 1;
             }
+        }
+
+        if(itemCount == 0){
+            CharacterAttributes[] memory emptyStruct;
+            uint[] memory emptyArray;
+            return (emptyStruct, emptyArray);
         }
 
         CharacterAttributes[] memory charArray = new CharacterAttributes[](itemCount);
