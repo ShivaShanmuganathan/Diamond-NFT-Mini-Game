@@ -335,7 +335,7 @@ contract RentalNFTFacet is ReentrancyGuard{
     }
     
     // Returns only items that are due to be claimed
-    function fetchItemsClaimable() external view returns(LibRentalStorage.RentalInfo[] memory){
+    function fetchItemsClaimable() external view returns(CharacterAttributes[] memory, LibRentalStorage.RentalInfo[] memory, uint[] memory){
 
         uint totalItemCount = s.totalTokens;
         uint itemCount = 0;
@@ -349,19 +349,30 @@ contract RentalNFTFacet is ReentrancyGuard{
             }
         }
 
+        if(itemCount == 0){
+            CharacterAttributes[] memory emptyStruct;
+            LibRentalStorage.RentalInfo[] memory emptyItems;
+            uint[] memory emptyArray;
+            return (emptyStruct, emptyItems, emptyArray);
+        }
+
+        CharacterAttributes[] memory charArray = new CharacterAttributes[](itemCount);
         LibRentalStorage.RentalInfo[] memory marketItems = new LibRentalStorage.RentalInfo[](itemCount);
+        uint[] memory tokenArray = new uint[](itemCount);
 
         for (uint i = 0; i < totalItemCount; i++) {
 
             if (rss.Rental[i + 1].isRented == true && rss.Rental[i + 1].expiresAt <= block.timestamp) {
 
+                charArray[currentIndex] = s.nftHolderAttributes[i+1];
                 marketItems[currentIndex] = rss.Rental[i + 1];
+                tokenArray[currentIndex] = i+1;
                 currentIndex += 1;
                 
             }
         }
 
-        return marketItems;
+        return (charArray, marketItems, tokenArray);
 
 
     }
