@@ -26,7 +26,7 @@ const Marketplace = () => {
     const [tokens, setTokens] = useState([])
     const [renft, setRenft] = useState([])
     const [loadingState, setLoadingState] = useState('not-loaded')
-    const [formInput, updateFormInput] = useState({ rentalDuration: ''})
+    // const [formInput, updateFormInput] = useState({ rentalDuration: ''})
     const isMobile = useMediaQuery("(max-width: 600px)");
 
     useEffect(() => {
@@ -50,8 +50,8 @@ const Marketplace = () => {
         );
         setGameContract(gameContract);
 
-        const [txn, rentalArray ,tokenArray] = await gameContract.fetchMarketItems();
-        console.log("MarketItem Information",await gameContract.fetchMarketItems());
+        const [txn, rentalArray ,tokenArray] = await gameContract.fetchItemsClaimable();
+        console.log("MarketItem Information",await gameContract.fetchItemsClaimable());
         if (txn[0]) {
             console.log('User has character NFT');
             // setCharacterNFT(txn)
@@ -110,28 +110,28 @@ const Marketplace = () => {
         setLoadingState('loaded')
     }
 
-    async function rentNFT(tokenID, price) {
+    async function claimNFTs(tokenID) {
         
-        const rentalDuration = parseInt(formInput.rentalDuration);
-        const rentalPrice = parseFloat(price) * rentalDuration;
-        const finalRentalPrice = (ethers.utils.parseUnits(rentalPrice.toString(), 'ether'));
+        // const rentalDuration = parseInt(formInput.rentalDuration);
+        // const rentalPrice = parseFloat(price) * rentalDuration;
+        // const finalRentalPrice = (ethers.utils.parseUnits(rentalPrice.toString(), 'ether'));
 
-        console.log("rentalDuration", rentalDuration);
-        console.log("type of rentalDuration", typeof(rentalDuration));
-        console.log();
-        console.log("rentalPrice", finalRentalPrice);
-        console.log("type of rentalPrice", typeof(finalRentalPrice));
+        // console.log("rentalDuration", rentalDuration);
+        // console.log("type of rentalDuration", typeof(rentalDuration));
+        // console.log();
+        // console.log("rentalPrice", finalRentalPrice);
+        // console.log("type of rentalPrice", typeof(finalRentalPrice));
 
         
-        console.log("Rental Price", rentalPrice)
+        // console.log("Rental Price", rentalPrice)
         console.log("Checkpoint 1 Reached!")
         
-        if (!rentalPrice || !rentalDuration || tokenID==0) return
+        if (tokenID==0) return
 
         console.log("Checkpoint 2 Reached!")
-        console.log("Selected TokenID", tokenID)
-        console.log("Rental Price", rentalPrice)
-        console.log("rentalDuration", rentalDuration)
+        // console.log("Selected TokenID", tokenID)
+        // console.log("Rental Price", rentalPrice)
+        // console.log("rentalDuration", rentalDuration)
         console.log();
 
         let overrides = {
@@ -147,15 +147,15 @@ const Marketplace = () => {
           // nonce: 234,
       
           // The amount to send with the transaction (i.e. msg.value)
-          value: finalRentalPrice,
+        //   value: finalRentalPrice,
       
           // The chain ID (or network ID) to use
           //chainId: 4
       
       };
 
-        const listTxn = await gameContract.rentNFT(tokenID, rentalDuration, overrides);
-        await listTxn.wait();
+        const claimTxn = await gameContract.finishRenting(tokenID, overrides);
+        await claimTxn.wait();
 
         loadNFTs()
     }
@@ -203,7 +203,7 @@ const Marketplace = () => {
                                     </Flex>
 
                                     
-                                    <TextField
+                                    {/* <TextField
                                         label="Rental Duration"
                                         defaultValue="5"
                                         variant="filled"
@@ -214,9 +214,9 @@ const Marketplace = () => {
                                         }}
                                         className="inputField"
                                         onChange={e => updateFormInput({ ...formInput, rentalDuration: e.target.value })}
-                                    />
+                                    /> */}
 
-                                    <button className="wrapper8" onClick={() => rentNFT(tokens[i], (ethers.utils.formatEther((renft[i].price).toString(), 'ether')))}>Rent NFT</button>
+                                    <button className="wrapper8" onClick={() => claimNFTs(tokens[i])}>Claim NFT</button>
 
                                 </div>
 
