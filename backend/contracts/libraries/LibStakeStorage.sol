@@ -10,7 +10,7 @@ library LibStakeStorage {
         // This struct contains a mapping from TokenID to struct.
         struct StakeStorage {
             // mapping of nftAddress to token id to StakeInfo   
-            mapping(address => mapping(uint256 => StakeInfo)) stakingInfo;
+            mapping(uint256 => StakeInfo) stakingInfo;
         }
 
         // Returns the struct from a specified position in contract storage

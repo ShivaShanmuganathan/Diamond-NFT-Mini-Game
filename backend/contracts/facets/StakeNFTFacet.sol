@@ -40,12 +40,12 @@ contract StakeNFTFacet {
     /// @dev The Health of User's NFT is increased becuase of staking. [Metadata Of NFT Changes Here]
     /// The user's address & index is used to get the NFT the user owns
     /// Health of Hero is increased due to staking  
-    function stakeCharacter(uint tokenID, address contractAddress) external {
+    function stakeCharacter(uint tokenID) external {
         
         LibStakeStorage.StakeStorage storage lss = LibStakeStorage.diamondStorage();
         
         require(s._owners[tokenID] == msg.sender, "Not NFT Owner");        
-        LibStakeStorage.StakeInfo storage staked_asset = lss.stakingInfo[contractAddress][tokenID];
+        LibStakeStorage.StakeInfo storage staked_asset = lss.stakingInfo[tokenID];
 
         require(staked_asset.startTime == 0, "NFT Already Staked.");
         CharacterAttributes memory player = s.nftHolderAttributes[tokenID];
@@ -66,11 +66,11 @@ contract StakeNFTFacet {
     /// @dev The Health of User's NFT is increased becuase of staking. [Metadata Of NFT Changes Here]
     /// The user's address & index is used to get the NFT the user owns
     /// Health of Hero is increased due to staking  
-    function unStakeCharacter(uint tokenID, address contractAddress) external {
+    function unStakeCharacter(uint tokenID) external {
         LibStakeStorage.StakeStorage storage lss = LibStakeStorage.diamondStorage();
         
         
-        LibStakeStorage.StakeInfo storage staked_asset = lss.stakingInfo[contractAddress][tokenID];
+        LibStakeStorage.StakeInfo storage staked_asset = lss.stakingInfo[tokenID];
         require(staked_asset.startTime != 0, "NFT Is Not Staked.");
         require(staked_asset.staker == msg.sender, "Not NFT Staker");
 
@@ -85,6 +85,7 @@ contract StakeNFTFacet {
         }
 
         staked_asset.startTime = 0;
+        staked_asset.staker = address(0);
         
         DynamicGameFacet(address(this)).transferFrom(address(this), msg.sender, tokenID);
         
@@ -93,15 +94,69 @@ contract StakeNFTFacet {
     }
 
 
-    function getStartTime(uint tokenID, address contractAddress) external view returns(uint256){
+    function getStartTime(uint tokenID) external view returns(uint256){
         
         LibStakeStorage.StakeStorage storage lss = LibStakeStorage.diamondStorage();        
-        LibStakeStorage.StakeInfo memory staked_asset = lss.stakingInfo[contractAddress][tokenID];
+        LibStakeStorage.StakeInfo memory staked_asset = lss.stakingInfo[tokenID];
         return staked_asset.startTime;
         
     }
 
-    
+    function fetchAssets() external view returns(uint[] memory, CharacterAttributes[] memory) {
+        
+        LibStakeStorage.StakeStorage storage lss = LibStakeStorage.diamondStorage();
+        uint256 staked_length = LibERC721._balanceOf(address(this));
+        uint256[] memory user_tokens = LibERC721.fetchUserNFTs(msg.sender);
+        uint256 userCount = user_tokens.length;
+        uint256 stakeCount;
+        uint256 indexCount;
+        
+
+        for(uint i; i < staked_length; i++){
+
+           if(lss.stakingInfo[s._ownedTokens[address(this)][i]].staker == msg.sender){
+               stakeCount += 1;
+           }
+            
+        }
+
+        uint256[] memory staked_tokens = new uint256[](stakeCount);
+
+        for(uint i; i < staked_length; i++){
+
+           if(lss.stakingInfo[s._ownedTokens[address(this)][i]].staker == msg.sender){
+               
+               staked_tokens[indexCount] = s._ownedTokens[address(this)][i];
+               indexCount += 1;
+
+           }
+            
+        }
+
+        uint256[] memory val = new uint256[](stakeCount + userCount);
+
+        for(uint i; i < stakeCount; i++){
+            val[i] = staked_tokens[i];
+        }
+
+        indexCount = 0;
+        for(uint i = stakeCount; i < stakeCount + userCount; i++){
+            val[i] = user_tokens[indexCount];
+            indexCount += 1;
+        }
+
+        CharacterAttributes[] memory charArray = new CharacterAttributes[](stakeCount + userCount);
+
+        for(uint i; i<stakeCount + userCount; i++){
+
+            charArray[i] = s.nftHolderAttributes[val[i]];
+
+        }
+
+        return (val, charArray);
+
+    }
+
 
 
   
