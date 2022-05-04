@@ -105,7 +105,7 @@ contract RentalNFTFacet is ReentrancyGuard{
             LibERC721._safeTransfer(address(this), msg.sender, tokenID, "");
 
             rental_asset.renter = msg.sender;
-            rental_asset.expiresAt = block.timestamp + (rentalDuration * AppConstants.dayInSeconds);
+            rental_asset.expiresAt = block.timestamp + (rentalDuration * AppConstants.minutesInSeconds);
             rental_asset.isRented = true;            
             
     }
@@ -154,14 +154,16 @@ contract RentalNFTFacet is ReentrancyGuard{
     // Returns all items listed for rent in marketplace
     function fetchMarketItems() external view returns(CharacterAttributes[] memory, LibRentalStorage.RentalInfo[] memory, uint[] memory){
 
-        uint totalItemCount = s.totalTokens;
+        uint totalItemCount = LibERC721._balanceOf(address(this));
         uint itemCount = 0;
         uint currentIndex = 0;
         LibRentalStorage.RentalMarketData storage rss = LibRentalStorage.diamondStorage();
         
 
         for (uint i = 0; i < totalItemCount; i++) {
-            if (rss.Rental[i + 1].price > 0 && rss.Rental[i + 1].expiresAt == 0) {
+            uint tokenID = s._ownedTokens[address(this)][i];
+
+            if ( (rss.Rental[tokenID].seller != address(0)) && (rss.Rental[tokenID].expiresAt == 0) ) {
                 itemCount += 1;
             }
         }
@@ -179,11 +181,14 @@ contract RentalNFTFacet is ReentrancyGuard{
 
         for (uint i = 0; i < totalItemCount; i++) {
 
-            if (rss.Rental[i + 1].price > 0 && rss.Rental[i + 1].expiresAt == 0) {
+            uint tokenID = s._ownedTokens[address(this)][i];
 
-                charArray[currentIndex] = s.nftHolderAttributes[i+1];
-                marketItems[currentIndex] = rss.Rental[i + 1];
-                tokenArray[currentIndex] = i+1;
+            if ( (rss.Rental[tokenID].seller != address(0)) && (rss.Rental[tokenID].expiresAt == 0) ) 
+            {
+
+                charArray[currentIndex] = s.nftHolderAttributes[tokenID];
+                marketItems[currentIndex] = rss.Rental[tokenID];
+                tokenArray[currentIndex] = tokenID;
                 currentIndex += 1;
                 
             }
@@ -196,22 +201,16 @@ contract RentalNFTFacet is ReentrancyGuard{
     // Returns only items that a user has listed in marketplace
     function fetchMyListedNFTs() external view returns(CharacterAttributes[] memory, LibRentalStorage.RentalInfo[] memory, uint[] memory){
 
-        uint[] memory nftArray = s.nftHolders[msg.sender];
+        uint totalItemCount = LibERC721._balanceOf(address(this));
         uint itemCount = 0;
         uint currentIndex = 0;
-
         LibRentalStorage.RentalMarketData storage rss = LibRentalStorage.diamondStorage();
-
-        if(nftArray.length == 0){
-            CharacterAttributes[] memory emptyStruct;
-            LibRentalStorage.RentalInfo[] memory emptyItems;
-            uint[] memory emptyArray;
-            return (emptyStruct, emptyItems, emptyArray);
-        }
         
 
-        for (uint i = 0; i < nftArray.length; i++) {
-            if (rss.Rental[nftArray[i]].seller == msg.sender) {
+        for (uint i = 0; i < totalItemCount; i++) {
+            uint tokenID = s._ownedTokens[address(this)][i];
+
+            if ( rss.Rental[tokenID].seller == msg.sender ) {
                 itemCount += 1;
             }
         }
@@ -223,19 +222,20 @@ contract RentalNFTFacet is ReentrancyGuard{
             return (emptyStruct, emptyItems, emptyArray);
         }
 
-
-
         CharacterAttributes[] memory charArray = new CharacterAttributes[](itemCount);
         LibRentalStorage.RentalInfo[] memory marketItems = new LibRentalStorage.RentalInfo[](itemCount);
         uint[] memory tokenArray = new uint[](itemCount);
 
-        for (uint i = 0; i < nftArray.length; i++) {
+        for (uint i = 0; i < totalItemCount; i++) {
 
-            if (rss.Rental[nftArray[i]].seller == msg.sender) {
+            uint tokenID = s._ownedTokens[address(this)][i];
 
-                charArray[currentIndex] = s.nftHolderAttributes[nftArray[i]];
-                marketItems[currentIndex] = rss.Rental[nftArray[i]];
-                tokenArray[currentIndex] = nftArray[i];
+            if ( (rss.Rental[tokenID].seller == msg.sender) ) 
+            {
+
+                charArray[currentIndex] = s.nftHolderAttributes[tokenID];
+                marketItems[currentIndex] = rss.Rental[tokenID];
+                tokenArray[currentIndex] = tokenID;
                 currentIndex += 1;
                 
             }
@@ -249,7 +249,7 @@ contract RentalNFTFacet is ReentrancyGuard{
     // Returns only items that a user has not listed in marketplace
     function fetchMyUnListedNFTs() external view returns(CharacterAttributes[] memory, uint[] memory){
 
-        uint[] memory nftArray = s.nftHolders[msg.sender];
+        uint[] memory nftArray = LibERC721.fetchUserNFTs(msg.sender);
         uint itemCount = 0;
         uint currentIndex = 0;
 
@@ -262,7 +262,7 @@ contract RentalNFTFacet is ReentrancyGuard{
         LibRentalStorage.RentalMarketData storage rss = LibRentalStorage.diamondStorage();
 
         for (uint i; i < nftArray.length; i++) {
-            if (rss.Rental[nftArray[i]].seller != msg.sender) {
+            if ( (rss.Rental[nftArray[i]].seller != msg.sender) && (rss.Rental[nftArray[i]].isRented == false) ) {
                 itemCount += 1;
             }
         }
@@ -279,7 +279,7 @@ contract RentalNFTFacet is ReentrancyGuard{
 
         for (uint i; i < nftArray.length; i++) {
 
-            if (rss.Rental[nftArray[i]].seller != msg.sender) {
+            if ( (rss.Rental[nftArray[i]].seller != msg.sender) && (rss.Rental[nftArray[i]].isRented == false) ) {
 
                 charArray[currentIndex] = s.nftHolderAttributes[nftArray[i]];
                 tokenArray[currentIndex] = nftArray[i];
@@ -294,14 +294,21 @@ contract RentalNFTFacet is ReentrancyGuard{
     // Returns only items that a user has rented from marketplace
     function fetchRentedNFTs() external view returns(CharacterAttributes[] memory, LibRentalStorage.RentalInfo[] memory, uint[] memory){
 
-        uint totalItemCount = s.totalTokens;
+        uint[] memory nftArray = LibERC721.fetchUserNFTs(msg.sender);
         uint itemCount = 0;
         uint currentIndex = 0;
-        LibRentalStorage.RentalMarketData storage rss = LibRentalStorage.diamondStorage();
-        
 
-        for (uint i = 0; i < totalItemCount; i++) {
-            if (rss.Rental[i + 1].renter == msg.sender) {
+        if(nftArray.length == 0){
+            CharacterAttributes[] memory emptyStruct;
+            LibRentalStorage.RentalInfo[] memory emptyItems;
+            uint[] memory emptyArray;
+            return (emptyStruct, emptyItems, emptyArray);
+        }
+
+        LibRentalStorage.RentalMarketData storage rss = LibRentalStorage.diamondStorage();
+
+        for (uint i; i < nftArray.length; i++) {
+            if (rss.Rental[nftArray[i]].renter == msg.sender) {
                 itemCount += 1;
             }
         }
@@ -317,20 +324,19 @@ contract RentalNFTFacet is ReentrancyGuard{
         LibRentalStorage.RentalInfo[] memory marketItems = new LibRentalStorage.RentalInfo[](itemCount);
         uint[] memory tokenArray = new uint[](itemCount);
 
-        for (uint i = 0; i < totalItemCount; i++) {
 
-            if (rss.Rental[i + 1].renter == msg.sender) {
+        for (uint i; i < nftArray.length; i++) {
 
-                charArray[currentIndex] = s.nftHolderAttributes[i+1];
-                marketItems[currentIndex] = rss.Rental[i + 1];
-                tokenArray[currentIndex] = i+1;
+            if (rss.Rental[nftArray[i]].renter == msg.sender) { 
+
+                charArray[currentIndex] = s.nftHolderAttributes[nftArray[i]];
+                marketItems[currentIndex] = rss.Rental[nftArray[i]];
+                tokenArray[currentIndex] = nftArray[i];
                 currentIndex += 1;
-                
             }
         }
 
         return (charArray, marketItems, tokenArray);
-
 
     }
     
@@ -376,6 +382,5 @@ contract RentalNFTFacet is ReentrancyGuard{
 
 
     }
-
 
 }
