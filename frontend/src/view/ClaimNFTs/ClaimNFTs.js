@@ -28,9 +28,10 @@ function Claimables(props) {
                 signer
             );
 
-            const txn = await gameContract.checkIfUserHasNFT();
+            const [txn, rentalTxn, tokenTxn] = await gameContract.fetchItemsClaimable();
             if (txn[0]) {
                 console.log('User has character NFT');
+                console.log(transformCharacterData(txn[0]))
                 setCharacterNFT(txn)
             } else {
                 console.log('No Character NFT Found');
