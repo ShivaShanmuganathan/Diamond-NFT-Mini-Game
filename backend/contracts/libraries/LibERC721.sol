@@ -80,6 +80,22 @@ library LibERC721 {
 
     }
 
+    function fetchUserNFTs(address user) internal view returns(uint256[] memory) {
+        
+        uint256 length = _balanceOf(user);
+        uint256[] memory val = new uint256[](length);
+        AppStorage storage s = LibAppStorage.diamondStorage();
+        for(uint i; i < length; i++){
+
+           val[i] = s._ownedTokens[user][i];
+            
+        }
+        
+
+        return val;
+
+    }
+
     function getNFTHolderAttributes(uint256 tokenID) internal view returns(CharacterAttributes memory) {
         
         AppStorage storage s = LibAppStorage.diamondStorage();
@@ -141,7 +157,7 @@ library LibERC721 {
         s._balances[to] += 1;
         s._owners[tokenId] = to;
 
-        // emit Transfer(from, to, tokenId);
+        
     }
 
     function _beforeTokenTransfer(

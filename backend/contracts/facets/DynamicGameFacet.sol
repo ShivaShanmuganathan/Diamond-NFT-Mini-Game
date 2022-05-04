@@ -162,7 +162,7 @@ contract DynamicGameFacet is ERC721Diamond {
   //// The tokenId is then used to get the attributes of NFT 
   function checkIfUserHasNFT() public view returns (CharacterAttributes[] memory) {
     
-    uint[] memory nftArray = s.nftHolders[msg.sender];
+    uint[] memory nftArray = LibERC721.fetchUserNFTs(msg.sender);
 
     if(nftArray.length == 0){
       CharacterAttributes[] memory emptyStruct;
@@ -216,7 +216,7 @@ contract DynamicGameFacet is ERC721Diamond {
   /// @return val is an array of tokenIDs owner by the user
   function nftHolders(address user) external view returns(uint256[] memory val) {
 
-    return LibERC721.getNFTHolders(user);
+    return LibERC721.fetchUserNFTs(user);
 
   }
 
