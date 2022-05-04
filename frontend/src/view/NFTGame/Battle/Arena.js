@@ -20,7 +20,7 @@ const Arena = ({ characterNFT, setCharacterNFT, setAttackCharacter, attackCharac
     const [gameContract, setGameContract] = useState(null);
     const [boss, setBoss] = useState(null);
     const [attackState, setAttackState] = useState('');
-    const [stakeState, setStakeState] = useState('');
+    const [rentalState, setRentalState] = useState('');
     const isMobile = useMediaQuery("(max-width: 600px)");
     const [animation, setAnimation] = useState(true)
     const { account } = useWeb3React();
@@ -70,13 +70,13 @@ const Arena = ({ characterNFT, setCharacterNFT, setAttackCharacter, attackCharac
             const fetchData = async () => {
 
                 let tokenID = (await gameContract.nftHolders(account))[attackCharacter];
-                let startTime = (await gameContract.getStartTime(tokenID, DYNAMIC_GAME_FACET_ADDRESS)).toNumber();
-                if(startTime === 0){
-                    setStakeState('')
+                let rental_status = (await gameContract.fetchNFTRentalStatus(tokenID)).isRented;
+                if(rental_status === false){
+                    setRentalState('')
                     // setStartingTime(0);
                 }
                 else {
-                    setStakeState('staked')
+                    setRentalState('rented')
                     // setStartingTime(startTime);
                 }
 
@@ -124,15 +124,25 @@ const Arena = ({ characterNFT, setCharacterNFT, setAttackCharacter, attackCharac
 
     const increase = async() => {
         setAttackCharacter(attackCharacter + 1)
-        let tokenID = (await gameContract.nftHolders(account))[attackCharacter + 1];
-        let startTime = (await gameContract.getStartTime(tokenID, DYNAMIC_GAME_FACET_ADDRESS)).toNumber();
-        if(startTime === 0){
-            setStakeState('')
+        // let tokenID = (await gameContract.nftHolders(account))[attackCharacter + 1];
+        // let startTime = (await gameContract.getStartTime(tokenID, DYNAMIC_GAME_FACET_ADDRESS)).toNumber();
+        // if(startTime === 0){
+        //     setStakeState('')
             
+        // }
+        // else {
+        //     setStakeState('staked')
+      
+        // }
+        let tokenID = (await gameContract.nftHolders(account))[attackCharacter + 1];
+        let rental_status = (await gameContract.fetchNFTRentalStatus(tokenID)).isRented;
+        if(rental_status === false){
+            setRentalState('')
+            // setStartingTime(0);
         }
         else {
-            setStakeState('staked')
-      
+            setRentalState('rented')
+            // setStartingTime(startTime);
         }
     }
 
@@ -141,15 +151,25 @@ const Arena = ({ characterNFT, setCharacterNFT, setAttackCharacter, attackCharac
         if (attackCharacter > 0) {
             
             setAttackCharacter(attackCharacter - 1)
-            let tokenID = (await gameContract.nftHolders(account))[attackCharacter - 1];
-            let startTime = (await gameContract.getStartTime(tokenID, DYNAMIC_GAME_FACET_ADDRESS)).toNumber();
-            if(startTime === 0){
-                setStakeState('')
+            // let tokenID = (await gameContract.nftHolders(account))[attackCharacter - 1];
+            // let startTime = (await gameContract.getStartTime(tokenID, DYNAMIC_GAME_FACET_ADDRESS)).toNumber();
+            // if(startTime === 0){
+            //     setStakeState('')
       
+            // }
+            // else {
+            //     setStakeState('staked')
+      
+            // }
+            let tokenID = (await gameContract.nftHolders(account))[attackCharacter - 1];
+            let rental_status = (await gameContract.fetchNFTRentalStatus(tokenID)).isRented;
+            if(rental_status === false){
+                setRentalState('')
+                // setStartingTime(0);
             }
             else {
-                setStakeState('staked')
-      
+                setRentalState('rented')
+                // setStartingTime(startTime);
             }
 
     }}
@@ -183,7 +203,7 @@ const Arena = ({ characterNFT, setCharacterNFT, setAttackCharacter, attackCharac
             )}
             {characterNFT && (
                 <Flex flexDirection='column' alignItems='center'>
-                    <CharacterCard character={characterNFT} animation={animation} stakeState={stakeState}/>
+                    <CharacterCard character={characterNFT} animation={animation} rentalState={rentalState}/>
                     <Flex alignItems='center' mt='10px'>
                         <Icon icon="emojione-v1:growing-heart" />
                         <Text fontSize="14px" ml='5px' mr='30px' bold>{`${characterNFT.hp.toNumber()}/${characterNFT.maxHp.toNumber()}`}</Text>

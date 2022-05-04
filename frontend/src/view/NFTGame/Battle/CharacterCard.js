@@ -7,7 +7,7 @@ import useWave from 'use-wave'
 import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
-const CharacterCard = ({ character, animation , stakeState}) => {
+const CharacterCard = ({ character, animation, rentalState}) => {
     const wave = useWave({
         color: 'black',
     })
@@ -34,7 +34,7 @@ const CharacterCard = ({ character, animation , stakeState}) => {
                                     <Text fontSize="36px" mb='20px' className="bossName" bold>{character.name}</Text>
                                     <Flex flexDirection='column' className="gameCard CharacterCard__img" alignItems='center'>
                                     {/* <Flex className="m-20" alignItems='right'><Icon icon="flat-color-icons:lock" width="15" height="15" /></Flex> */}
-                                    {stakeState === 'staked' && <Icon icon="fxemoji:lock" color="#ff4655" style={{ fontSize: '24px' }} className="card_icon" />}
+                                    {rentalState === 'rented' && <Icon icon="emojione:stopwatch" color="#ff4655" style={{ fontSize: '25px', right: '35px', top: '10px' }} className="card_icon" />}
                                         <AnimateKeyframes
                                             play
                                             pause={animation}
