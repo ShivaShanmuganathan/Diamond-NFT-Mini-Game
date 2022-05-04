@@ -29,8 +29,8 @@ function Stake(props) {
                 signer
             );
 
-            const txn = await gameContract.checkIfUserHasNFT();
-            console.log("Respond for checkIfUserHasNFT", txn);
+            const [tokens, txn] = await gameContract.fetchAssets();
+            console.log("Respond for fetchAssets", txn);
             if (txn[0]) {
                 console.log('User has character NFT');
                 if (txn[stakeCharacter]) {

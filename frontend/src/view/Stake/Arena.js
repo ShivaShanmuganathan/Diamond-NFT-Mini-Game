@@ -17,6 +17,7 @@ const Arena = ({ characterNFT, setCharacterNFT, setStakeCharacter, stakeCharacte
     const [gameContract, setGameContract] = useState(null);
     const [stakeState, setStakeState] = useState('');
     const [startingTime, setStartingTime] = useState(0);
+    const [rentalState, setRentalState] = useState('');
     const isMobile = useMediaQuery("(max-width: 600px)");
     const [animation, setAnimation] = useState(true)
     const { account } = useWeb3React()
@@ -28,7 +29,8 @@ const Arena = ({ characterNFT, setCharacterNFT, setStakeCharacter, stakeCharacte
                 setStakeState('staking');
                 console.log('Staking NFT...')
 
-                const tokenIDTxn = (await gameContract.nftHolders(account))[stakeCharacter];
+                const [tokenIDsTxn, charTxn] = (await gameContract.fetchAssets());
+                const tokenIDTxn = tokenIDsTxn[stakeCharacter];
                 // await tokenIDTxn.wait();
                 console.log('Staking NFT PART 2...')
                 console.log('tokenID', tokenIDTxn.toString());
@@ -63,15 +65,15 @@ const Arena = ({ characterNFT, setCharacterNFT, setStakeCharacter, stakeCharacte
                 // console.log('result from the facet call',startTimeTxn.toString());
                 // console.log("index of character on owner",stakeCharacter);
                 // console.log("list of tokensIDs ",await gameContract.nftHolders(account));
-                let tokenID = (await gameContract.nftHolders(account))[stakeCharacter];
+                let tokenID = tokenIDsTxn[stakeCharacter];
 
                 // let approveTxn = await gameContract.approve(NFTGAME_CONTRACT_ADDRESS, tokenIDTxn.toString());
                 // await approveTxn.wait();
 
-                const stakeTxn = await gameContract.stakeCharacter(tokenID, DYNAMIC_GAME_FACET_ADDRESS, overrides);
+                const stakeTxn = await gameContract.stakeCharacter(tokenID, overrides);
                 await stakeTxn.wait();
 
-                let startTime = (await gameContract.getStartTime(tokenID, DYNAMIC_GAME_FACET_ADDRESS)).toNumber();
+                let startTime = (await gameContract.getStartTime(tokenID)).toNumber();
                 // console.log('Staking NFT 4...')
 
                 // console.log('stakeTxn:', stakeTxn);
@@ -105,7 +107,8 @@ const Arena = ({ characterNFT, setCharacterNFT, setStakeCharacter, stakeCharacte
                 setStakeState('staking');
                 console.log('unStaking NFT...')
 
-                const tokenIDTxn = (await gameContract.nftHolders(account))[stakeCharacter];
+                const [tokenIDsTxn, charTxn] = (await gameContract.fetchAssets());
+                const tokenIDTxn = tokenIDsTxn[stakeCharacter];
                 // await tokenIDTxn.wait();
                 console.log('unStaking NFT PART 2...')
                 console.log('tokenID', tokenIDTxn.toString());
@@ -145,9 +148,9 @@ const Arena = ({ characterNFT, setCharacterNFT, setStakeCharacter, stakeCharacte
                 // console.log('result from the facet call',startTimeTxn.toString());
                 // console.log("index of character on owner",stakeCharacter);
                 // console.log("list of tokensIDs ",await gameContract.nftHolders(account));
-                let tokenID = (await gameContract.nftHolders(account))[stakeCharacter];
+                let tokenID = tokenIDsTxn[stakeCharacter];
 
-                const stakeTxn = await gameContract.unStakeCharacter(tokenID, DYNAMIC_GAME_FACET_ADDRESS, overrides);
+                const stakeTxn = await gameContract.unStakeCharacter(tokenID, overrides);
                 await stakeTxn.wait();
                 // console.log('Staking NFT 4...')
 
@@ -189,8 +192,21 @@ const Arena = ({ characterNFT, setCharacterNFT, setStakeCharacter, stakeCharacte
 
             const fetchData = async () => {
 
-                let tokenID = (await gameContract.nftHolders(account))[stakeCharacter];
-                let startTime = (await gameContract.getStartTime(tokenID, DYNAMIC_GAME_FACET_ADDRESS)).toNumber();
+                // let tokenID = (await gameContract.nftHolders(account))[stakeCharacter];
+                const [tokenIDsTxn, charTxn] = (await gameContract.fetchAssets());
+                const tokenID = tokenIDsTxn[stakeCharacter];
+                let rental_status = (await gameContract.fetchNFTRentalStatus(tokenID)).isRented;
+                if(rental_status === false){
+                    setRentalState('')
+                    
+                }
+                else {
+                    setRentalState('rented')
+                    
+                }
+
+
+                let startTime = (await gameContract.getStartTime(tokenID)).toNumber();
                 if(startTime === 0){
                     setStakeState('')
                     setStartingTime(0);
@@ -199,6 +215,8 @@ const Arena = ({ characterNFT, setCharacterNFT, setStakeCharacter, stakeCharacte
                     setStakeState('staked')
                     setStartingTime(startTime);
                 }
+
+
 
             }
 
@@ -245,8 +263,19 @@ const Arena = ({ characterNFT, setCharacterNFT, setStakeCharacter, stakeCharacte
         setStakeCharacter(stakeCharacter + 1)
         console.log("stakeCharacter ID", stakeCharacter + 1)
         // const tokenID = stakeCharacter;
-        let tokenID = (await gameContract.nftHolders(account))[stakeCharacter + 1];
-        let startTime = (await gameContract.getStartTime(tokenID, DYNAMIC_GAME_FACET_ADDRESS)).toNumber();
+        // let tokenID = (await gameContract.nftHolders(account))[stakeCharacter + 1];
+        const [tokenIDsTxn, charTxn] = (await gameContract.fetchAssets());
+        let tokenID = tokenIDsTxn[stakeCharacter + 1];
+        let startTime = (await gameContract.getStartTime(tokenID)).toNumber();
+        let rental_status = (await gameContract.fetchNFTRentalStatus(tokenID)).isRented;
+        if(rental_status === false){
+            setRentalState('')
+            
+        }
+        else {
+            setRentalState('rented')
+            
+        }
         console.log("INCREASE CLICKED");
         console.log('TokenID: ', tokenID.toString());
         console.log('address of contract', DYNAMIC_GAME_FACET_ADDRESS);
@@ -270,8 +299,19 @@ const Arena = ({ characterNFT, setCharacterNFT, setStakeCharacter, stakeCharacte
             setStakeCharacter(stakeCharacter - 1)
             console.log("stakeCharacter ID", stakeCharacter - 1)
             // const tokenID = stakeCharacter;
-            const tokenID = (await gameContract.nftHolders(account))[stakeCharacter - 1];
-            const startTime = (await gameContract.getStartTime(tokenID, DYNAMIC_GAME_FACET_ADDRESS)).toNumber();
+            const [tokenIDsTxn, charTxn] = (await gameContract.fetchAssets());
+            const tokenID = tokenIDsTxn[stakeCharacter - 1];
+            let rental_status = (await gameContract.fetchNFTRentalStatus(tokenID)).isRented;
+            if(rental_status === false){
+                setRentalState('')
+                
+            }
+            else {
+                setRentalState('rented')
+                
+            }
+            // const tokenID = (await gameContract.nftHolders(account))[stakeCharacter - 1];
+            const startTime = (await gameContract.getStartTime(tokenID)).toNumber();
             console.log("INCREASE CLICKED");
             console.log('TokenID: ', tokenID.toString());
             console.log('address of contract', DYNAMIC_GAME_FACET_ADDRESS);
@@ -373,7 +413,7 @@ const Arena = ({ characterNFT, setCharacterNFT, setStakeCharacter, stakeCharacte
 
             {characterNFT && (
                 <Flex flexDirection='column' alignItems='center'>
-                    <CharacterCard character={characterNFT} animation={animation} />
+                    <CharacterCard character={characterNFT} animation={animation} rentalState={rentalState}/>
                     <Flex alignItems='center' mt='10px'>
                         <Icon icon="emojione-v1:growing-heart" />
                         <Text fontSize="14px" ml='5px' mr='30px' bold>{`${characterNFT.hp.toNumber()}/${characterNFT.maxHp.toNumber()}`}</Text>                        

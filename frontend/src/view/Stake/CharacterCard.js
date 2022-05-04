@@ -3,10 +3,11 @@ import _ from "lodash";
 import { AnimateKeyframes } from 'react-simple-animate';
 import { Flex, Text } from "crox-new-uikit";
 import useWave from 'use-wave'
+import { Icon } from '@iconify/react';
 import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
-const CharacterCard = ({ character, animation }) => {
+const CharacterCard = ({ character, animation, rentalState}) => {
     const wave = useWave({
         color: 'black',
     })
@@ -32,6 +33,7 @@ const CharacterCard = ({ character, animation }) => {
                                 <Flex flexDirection='column' className="CharacterCard" ref={wave} alignItems='center' justifyContent='center'>
                                     <Text fontSize="36px" mb='20px' className="bossName" bold>{character.name}</Text>
                                     <Flex flexDirection='column' className="gameCard CharacterCard__img" alignItems='center'>
+                                    {rentalState === 'rented' && <Icon icon="fluent:clock-dismiss-20-regular" color="#ff4655" style={{ fontSize: '30px', right: '35px', top: '10px' }} className="card_icon" />}
                                         <AnimateKeyframes
                                             play
                                             pause={animation}
