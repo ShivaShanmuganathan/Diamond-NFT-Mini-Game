@@ -100,6 +100,9 @@ const Marketplace = () => {
             
         } else {
             console.log('No Character NFT Found');
+            setNfts([])
+            setTokens([])
+            setRenft([])
         }
         
         
@@ -230,6 +233,23 @@ const Marketplace = () => {
                        
                     </Flex>
                 )}
+
+                {
+                    nfts.length == 0 && (
+                        <div>
+                        <h1 className="default">No Assets Found</h1>
+                        <lottie-player
+                            autoplay
+                            loop
+                            mode="normal"
+                            src="https://assets2.lottiefiles.com/packages/lf20_aBYmBC.json"
+                            style={{ width: "320px" }}
+                        >
+
+                        </lottie-player>
+                        </div>
+                    )
+                }
             </ScrollArea>
         </Flex>
     );

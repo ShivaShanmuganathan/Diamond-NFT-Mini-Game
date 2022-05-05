@@ -78,6 +78,8 @@ function MyNFTs(props) {
             
         } else {
             console.log('No Character NFT Found');
+            setNfts([])
+            setTokens([])
         }
         
         
@@ -139,38 +141,23 @@ function MyNFTs(props) {
         loadNFTs()
     }
 
-    // useEffect(() => {
-    //     const fetchNFTMetadata = async () => {
-    //         console.log('Checking for Character NFT on address:', account);
+    
+    // if (loadingState === 'loaded' && !nfts.length) return (
+    //     (
+    //         <div>
+    //         <h1 className="default">No Assets Found</h1>
+    //         <lottie-player
+    //             autoplay
+    //             loop
+    //             mode="normal"
+    //             src="https://assets2.lottiefiles.com/packages/lf20_aBYmBC.json"
+    //             style={{ width: "320px" }}
+    //         >
 
-    //         const provider = new ethers.providers.Web3Provider(window.ethereum);
-    //         const signer = provider.getSigner();
-    //         const gameContract = new ethers.Contract(
-    //             NFTGAME_CONTRACT_ADDRESS,
-    //             myEpicGame.abi,
-    //             signer
-    //         );
-
-    //         const txn = await gameContract.checkIfUserHasNFT();
-    //         console.log("Respond for checkIfUserHasNFT", txn);
-    //         if (txn[0]) {
-    //             console.log('User has character NFT');
-    //             if (txn[stakeCharacter]) {
-    //                 setCharacterNFT(txn[stakeCharacter])
-    //             } else {
-    //                 setStakeCharacter(stakeCharacter - 1)
-    //             }
-    //         } else {
-    //             console.log('No Character NFT Found');
-    //         }
-    //     }
-
-    //     if (account) {
-    //         fetchNFTMetadata();
-    //     }
-    // }, [account])
-
-    if (loadingState === 'loaded' && !nfts.length) return (<h1 className="default">No assets to claim</h1>)
+    //         </lottie-player>
+    //         </div>
+    //     )
+    // )
     return (
 
       <Flex className='card_group'>
@@ -250,6 +237,22 @@ function MyNFTs(props) {
                  
               </Flex>
           )}
+          {
+                    nfts.length == 0 && (
+                        <div>
+                        <h1 className="default">No Assets Found</h1>
+                        <lottie-player
+                            autoplay
+                            loop
+                            mode="normal"
+                            src="https://assets2.lottiefiles.com/packages/lf20_aBYmBC.json"
+                            style={{ width: "320px" }}
+                        >
+
+                        </lottie-player>
+                        </div>
+                    )
+            }
       </ScrollArea>
       </Flex>
 
