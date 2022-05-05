@@ -203,7 +203,7 @@ const Marketplace = () => {
                                         <Icon icon="cryptocurrency:matic" style="color:#ff4655;" />
                                         <Text fontSize="14px" ml='5px' mr='30px' bold>{(ethers.utils.formatEther((renft[i].price).toString(), 'ether'))}</Text>
                                         <Icon icon="flat-color-icons:alarm-clock" />
-                                        <Text fontSize="14px" ml='5px' bold>{(renft[i].maxRental).toString()} Days</Text>
+                                        <Text fontSize="14px" ml='5px' bold>{(renft[i].maxRental).toString()} Mins</Text>
                                     </Flex>
 
                                     

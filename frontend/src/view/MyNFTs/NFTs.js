@@ -196,8 +196,8 @@ function MyNFTs(props) {
 
                               <Flex alignItems='center' mb='10px'>
                               <TextField
-                                  label="Rental Price Per Day"
-                                  defaultValue="0.01"
+                                  label="Rental Price Per Minute"
+                                  defaultValue="0.001"
                                   variant="filled"
                                   type="number"
                                   sx={{ input: { color: 'white' } }}
@@ -211,7 +211,7 @@ function MyNFTs(props) {
                               </Flex>
 
                               <TextField
-                                  label="Maximum Rental Days"
+                                  label="Maximum Rental Mins"
                                   defaultValue="5"
                                   variant="filled"
                                   type="number"

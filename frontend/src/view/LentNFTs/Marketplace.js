@@ -201,8 +201,8 @@ const Marketplace = () => {
                                     <Flex alignItems='center' mt='10px' mb='10px'>
                                         <Icon icon="cryptocurrency:matic" style="color:#ff4655;" />
                                         <Text fontSize="14px" ml='5px' mr='30px' bold>{(ethers.utils.formatEther((renft[i].price).toString(), 'ether'))}</Text>
-                                        <Icon icon="flat-color-icons:alarm-clock" />
-                                        <Text fontSize="14px" ml='5px' bold>{(renft[i].maxRental).toString()} Days</Text>
+                                        <Icon icon="flat-color-icons:expired" />
+                                        <Text fontSize="14px" ml='5px' bold>{Math.floor((renft[i].expiresAt - (Math.floor(Date.now() / 1000)))/60).toString()} Mins</Text>
                                     </Flex>
 
                                     
