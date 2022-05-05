@@ -28,7 +28,7 @@ function ListedNFTs(props) {
                 signer
             );
 
-            const txn = await gameContract.checkIfUserHasNFT();
+            const [txn, rentalArray ,tokenArray] = await gameContract.fetchMyListedNFTs();
             if (txn[0]) {
                 console.log('User has character NFT');
                 setCharacterNFT(txn)
