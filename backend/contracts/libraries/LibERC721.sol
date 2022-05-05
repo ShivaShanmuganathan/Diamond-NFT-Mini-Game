@@ -52,49 +52,22 @@ library LibERC721 {
         }
     }
 
-    function isReserved(uint256 tokenId) internal pure returns(uint16){
-        uint256 x = (tokenId - 1) % 100;
-        uint256 y = (tokenId - 1 - x) / 100;
-        if((x >= 11 && x < 21 && y >= 13 && y < 20 )
-            || (x >= 10 && x < 25 && y >= 43 && y < 49 )
-            || (x >= 14 && x < 19 && y >= 67 && y < 82 )
-            || (x >= 3 && x < 18 && y >= 90 && y < 96 )
-            || (x >= 32 && x < 38 && y >= 7 && y < 19 )
-            || (x >= 89 && x < 95 && y >= 14 && y < 36 )
-            || (x >= 26 && x < 39 && y >= 83 && y < 89 )
-            || (x >= 46 && x < 59 && y >= 83 && y < 89 )
-            || (x >= 65 && x < 73 && y >= 13 && y < 20 )
-            || (x >= 63 && x < 70 && y >= 53 && y < 65 )
-            || (x >= 82 && x < 92 && y >= 85 && y < 95 )
-            || (x >= 92 && x < 97 && y >= 43 && y < 58 )){
-            return 1;
-        }
-        return 0;
-    }
 
-
-    function getNFTHolders(address user) internal view returns(uint256[] memory val) {
+    // function fetchUserNFTs(address user) internal view returns(uint256[] memory) {
         
-        AppStorage storage s = LibAppStorage.diamondStorage();
-        val = s.nftHolders[user];
+    //     uint256 length = _balanceOf(user);
+    //     uint256[] memory val = new uint256[](length);
+    //     AppStorage storage s = LibAppStorage.diamondStorage();
+    //     for(uint i; i < length; i++){
 
-    }
-
-    function fetchUserNFTs(address user) internal view returns(uint256[] memory) {
-        
-        uint256 length = _balanceOf(user);
-        uint256[] memory val = new uint256[](length);
-        AppStorage storage s = LibAppStorage.diamondStorage();
-        for(uint i; i < length; i++){
-
-           val[i] = s._ownedTokens[user][i];
+    //        val[i] = s._ownedTokens[user][i];
             
-        }
+    //     }
         
 
-        return val;
+    //     return val;
 
-    }
+    // }
 
     function getNFTHolderAttributes(uint256 tokenID) internal view returns(CharacterAttributes memory) {
         

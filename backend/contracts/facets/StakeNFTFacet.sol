@@ -106,7 +106,7 @@ contract StakeNFTFacet {
         
         LibStakeStorage.StakeStorage storage lss = LibStakeStorage.diamondStorage();
         uint256 staked_length = LibERC721._balanceOf(address(this));
-        uint256[] memory user_tokens = LibERC721.fetchUserNFTs(msg.sender);
+        uint256[] memory user_tokens = LibERC721._tokensOfOwner(msg.sender);
         uint256 userCount = user_tokens.length;
         uint256 stakeCount;
         uint256 indexCount;

@@ -272,7 +272,7 @@ contract RentalNFTFacet is ReentrancyGuard{
     // Returns only items that a user has not listed in marketplace
     function fetchMyUnListedNFTs() external view returns(CharacterAttributes[] memory, uint[] memory){
 
-        uint[] memory nftArray = LibERC721.fetchUserNFTs(msg.sender);
+        uint[] memory nftArray = LibERC721._tokensOfOwner(msg.sender);
         uint itemCount = 0;
         uint currentIndex = 0;
 
@@ -317,7 +317,7 @@ contract RentalNFTFacet is ReentrancyGuard{
     // Returns only items that a user has rented from marketplace
     function fetchRentedNFTs() external view returns(CharacterAttributes[] memory, LibRentalStorage.RentalInfo[] memory, uint[] memory){
 
-        uint[] memory nftArray = LibERC721.fetchUserNFTs(msg.sender);
+        uint[] memory nftArray = LibERC721._tokensOfOwner(msg.sender);
         uint itemCount = 0;
         uint currentIndex = 0;
 

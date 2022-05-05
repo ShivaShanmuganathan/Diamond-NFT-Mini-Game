@@ -65,7 +65,7 @@ contract DynamicGameFacet is ERC721Diamond {
 
     // console.log("Minted NFT w/ tokenId %s and characterIndex %s", newItemId, _characterIndex);  
 
-    s.nftHolders[msg.sender].push(newItemId);
+    // s.nftHolders[msg.sender].push(newItemId);
     s.totalTokens = newItemId;
     s._tokenIds += 1;
     
@@ -162,7 +162,7 @@ contract DynamicGameFacet is ERC721Diamond {
   //// The tokenId is then used to get the attributes of NFT 
   function checkIfUserHasNFT() public view returns (CharacterAttributes[] memory) {
     
-    uint[] memory nftArray = LibERC721.fetchUserNFTs(msg.sender);
+    uint[] memory nftArray = LibERC721._tokensOfOwner(msg.sender);
 
     if(nftArray.length == 0){
       CharacterAttributes[] memory emptyStruct;
@@ -216,7 +216,7 @@ contract DynamicGameFacet is ERC721Diamond {
   /// @return val is an array of tokenIDs owner by the user
   function nftHolders(address user) external view returns(uint256[] memory val) {
 
-    return LibERC721.fetchUserNFTs(user);
+    return LibERC721._tokensOfOwner(user);
 
   }
 
