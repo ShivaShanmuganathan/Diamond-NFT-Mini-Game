@@ -1070,7 +1070,7 @@
     },
     {
       "inputs": [],
-      "name": "fetchItemsClaimable",
+      "name": "fetchLentNFTs",
       "outputs": [
         {
           "components": [
