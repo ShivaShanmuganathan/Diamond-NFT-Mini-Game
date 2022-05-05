@@ -10,7 +10,7 @@ import myEpicGame from '../../utils/MyEpicGame.json';
 import awesomeGame from '../../utils/awesomeGame.json';
 import './marketplace.scss'
 
-function Claimables(props) {
+function LentNFTs(props) {
     const { collapse } = props
     const { account } = useWeb3React()
     const isMobile = useMediaQuery("(max-width: 600px)")
@@ -28,7 +28,7 @@ function Claimables(props) {
                 signer
             );
 
-            const [txn, rentalTxn, tokenTxn] = await gameContract.fetchItemsClaimable();
+            const [txn, rentalTxn, tokenTxn] = await gameContract.fetchLentNFTs();
             if (txn[0]) {
                 console.log('User has character NFT');
                 console.log(transformCharacterData(txn[0]))
@@ -59,4 +59,4 @@ function Claimables(props) {
     )
 }
 
-export default Claimables
+export default LentNFTs

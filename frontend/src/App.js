@@ -16,7 +16,7 @@ import { MyNFTs } from "./view/MyNFTs";
 import { RentalNFTs } from "./view/NFTRentalMarket";
 import { ListedNFTs } from "./view/MyListings";
 import { MyRentals } from "./view/RentalNFTs";
-import { Claimables } from "./view/ClaimNFTs";
+import { LentNFTs } from "./view/LentNFTs";
 import GlobalStyle from './assets/style/css/GlobalStyle'
 // import './assets/style/css/globals.css';
 import { Flex } from "crox-new-uikit";
@@ -44,7 +44,7 @@ function App() {
                 <Route path="/rentalnfts" element={<RentalNFTs collapse={collapse} />} />
                 <Route path="/listnfts" element={<ListedNFTs collapse={collapse} />} />
                 <Route path="/myrentals" element={<MyRentals collapse={collapse} />} />
-                <Route path="/claimables" element={<Claimables collapse={collapse} />} />
+                <Route path="/lentnfts" element={<LentNFTs collapse={collapse} />} />
                 
               </Routes>
             </Suspense>

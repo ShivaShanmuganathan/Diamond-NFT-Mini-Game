@@ -50,8 +50,8 @@ const Marketplace = () => {
         );
         setGameContract(gameContract);
 
-        const [txn, rentalArray ,tokenArray] = await gameContract.fetchItemsClaimable();
-        console.log("MarketItem Information",await gameContract.fetchItemsClaimable());
+        const [txn, rentalArray ,tokenArray] = await gameContract.fetchLentNFTs();
+        console.log("MarketItem Information",await gameContract.fetchLentNFTs());
         if (txn[0]) {
             console.log('User has character NFT');
             // setCharacterNFT(txn)
@@ -218,8 +218,10 @@ const Marketplace = () => {
                                         className="inputField"
                                         onChange={e => updateFormInput({ ...formInput, rentalDuration: e.target.value })}
                                     /> */}
-
-                                    <button className="wrapper8" onClick={() => claimNFTs(tokens[i])}>Claim NFT</button>
+                                    {
+                                        renft[i].expiresAt < (Math.floor(Date.now() / 1000)) && (<button className="wrapper8" onClick={() => claimNFTs(tokens[i])}>Claim NFT</button>)
+                                    }
+                                    
 
                                 </div>
 
