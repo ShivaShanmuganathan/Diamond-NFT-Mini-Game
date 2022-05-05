@@ -364,7 +364,50 @@ contract RentalNFTFacet is ReentrancyGuard{
     }
     
     // Returns only items that are due to be claimed
-    function fetchItemsClaimable() external view returns(CharacterAttributes[] memory, LibRentalStorage.RentalInfo[] memory, uint[] memory){
+    // function fetchItemsClaimable() external view returns(CharacterAttributes[] memory, LibRentalStorage.RentalInfo[] memory, uint[] memory){
+
+    //     uint totalItemCount = s.totalTokens;
+    //     uint itemCount = 0;
+    //     uint currentIndex = 0;
+    //     LibRentalStorage.RentalMarketData storage rss = LibRentalStorage.diamondStorage();
+        
+
+    //     for (uint i = 0; i < totalItemCount; i++) {
+    //         if (rss.Rental[i + 1].isRented == true && rss.Rental[i + 1].expiresAt <= block.timestamp) {
+    //             itemCount += 1;
+    //         }
+    //     }
+
+    //     if(itemCount == 0){
+    //         CharacterAttributes[] memory emptyStruct;
+    //         LibRentalStorage.RentalInfo[] memory emptyItems;
+    //         uint[] memory emptyArray;
+    //         return (emptyStruct, emptyItems, emptyArray);
+    //     }
+
+    //     CharacterAttributes[] memory charArray = new CharacterAttributes[](itemCount);
+    //     LibRentalStorage.RentalInfo[] memory marketItems = new LibRentalStorage.RentalInfo[](itemCount);
+    //     uint[] memory tokenArray = new uint[](itemCount);
+
+    //     for (uint i = 0; i < totalItemCount; i++) {
+
+    //         if (rss.Rental[i + 1].isRented == true && rss.Rental[i + 1].expiresAt <= block.timestamp) {
+
+    //             charArray[currentIndex] = s.nftHolderAttributes[i+1];
+    //             marketItems[currentIndex] = rss.Rental[i + 1];
+    //             tokenArray[currentIndex] = i+1;
+    //             currentIndex += 1;
+                
+    //         }
+    //     }
+
+    //     return (charArray, marketItems, tokenArray);
+
+
+    // }
+
+    // Returns only NFTs that are lent by the user
+    function fetchLentNFTs() external view returns(CharacterAttributes[] memory, LibRentalStorage.RentalInfo[] memory, uint[] memory){
 
         uint totalItemCount = s.totalTokens;
         uint itemCount = 0;
@@ -373,7 +416,7 @@ contract RentalNFTFacet is ReentrancyGuard{
         
 
         for (uint i = 0; i < totalItemCount; i++) {
-            if (rss.Rental[i + 1].isRented == true && rss.Rental[i + 1].expiresAt <= block.timestamp) {
+            if ((rss.Rental[i + 1].seller == msg.sender) && (rss.Rental[i + 1].isRented == true)) {
                 itemCount += 1;
             }
         }
@@ -391,7 +434,7 @@ contract RentalNFTFacet is ReentrancyGuard{
 
         for (uint i = 0; i < totalItemCount; i++) {
 
-            if (rss.Rental[i + 1].isRented == true && rss.Rental[i + 1].expiresAt <= block.timestamp) {
+            if ((rss.Rental[i + 1].seller == msg.sender) && (rss.Rental[i + 1].isRented == true)) {
 
                 charArray[currentIndex] = s.nftHolderAttributes[i+1];
                 marketItems[currentIndex] = rss.Rental[i + 1];
@@ -405,5 +448,6 @@ contract RentalNFTFacet is ReentrancyGuard{
 
 
     }
+    
 
 }

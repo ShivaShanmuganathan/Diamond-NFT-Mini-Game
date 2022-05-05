@@ -817,10 +817,10 @@ describe('DiamondTest', async function () {
       
     })
 
-    it('Should check fetchItemsClaimable', async () => {
+    it('Should check fetchLentNFTs', async () => {
 
       // const tokenID = (await dynamicGameFacet.nftHolders(addr1.address))[0];
-      let [charTxn, rentalTxn, tokenTxn] = await rentalNFTFacet.connect(addr1).fetchItemsClaimable();
+      let [charTxn, rentalTxn, tokenTxn] = await rentalNFTFacet.connect(owner).fetchLentNFTs();
       for(let i = 0; i < rentalTxn.length; i++){
 
         let result = transformRentalData(rentalTxn[i]);
@@ -889,10 +889,10 @@ describe('DiamondTest', async function () {
       
     })
 
-    it('Should check fetchItemsClaimable', async () => {
+    it('Should check fetchLentNFTs', async () => {
 
       
-      let [charTxn, rentalTxn, tokenTxn] = await rentalNFTFacet.connect(addr1).fetchItemsClaimable();
+      let [charTxn, rentalTxn, tokenTxn] = await rentalNFTFacet.connect(addr1).fetchLentNFTs();
       for(let i = 0; i < rentalTxn.length; i++){
 
         let result = transformRentalData(rentalTxn[i]);
