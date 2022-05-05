@@ -8,7 +8,6 @@ import ScrollArea from 'react-scrollbar'
 import useMediaQuery from "use-mediaquery";
 // import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Autoplay } from "swiper";
-import Card from './Card';
 import myEpicGame from '../../utils/MyEpicGame.json';
 import awesomeGame from '../../utils/awesomeGame.json';
 import { NFTGAME_CONTRACT_ADDRESS, transformCharacterData } from '../../utils/constants';

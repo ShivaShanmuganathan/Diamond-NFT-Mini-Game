@@ -4,7 +4,6 @@ import { ethers } from "ethers";
 import { Flex, Text } from "crox-new-uikit";
 import { Icon } from '@iconify/react';
 import useMediaQuery from "use-mediaquery";
-import Arena from "./Arena";
 import { WalletConnect } from "../../components/Gadget";
 import { NFTGAME_CONTRACT_ADDRESS, transformCharacterData } from "../../utils/constants";
 import myEpicGame from '../../utils/MyEpicGame.json'
