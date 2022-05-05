@@ -33,10 +33,12 @@ contract RentalNFTFacet is ReentrancyGuard{
     AppStorage internal s;
 
     event AssetListed(uint tokenId, uint rentMaxTime, uint price, address owner);
-    // Events to show that a Minting & Attacking action has been completed 
+    
     event AssetRented(uint tokenId, uint rentStartTime, uint rentEndTime, uint price, address renter);
 
     event AssetReturned(uint tokenId, uint rentEndTime, uint price, address renter);
+
+    event AssetUnListed(uint tokenId, address owner);
 
     // Data is passed in to the contract when it's first created initializing the characters.
     // We're going to actually pass these values in from from run.js.
@@ -84,6 +86,27 @@ contract RentalNFTFacet is ReentrancyGuard{
         
         emit AssetListed(tokenID, maxRental, price, msg.sender);
         
+    }
+
+    function cancelListing(uint tokenID) external nonReentrant{
+        
+        LibRentalStorage.RentalMarketData storage rss = LibRentalStorage.diamondStorage();
+        console.log("Owner of TokenID",s._owners[tokenID]);
+        console.log("MSG SENDER",msg.sender);
+        console.log("Address of THIS CONTRACT", address(this));
+        
+        require(s._owners[tokenID] == address(this), "Not NFT Owner");       
+
+        LibRentalStorage.RentalInfo storage rental_asset = rss.Rental[tokenID];
+
+        require(rental_asset.isRented == false, "NFT Already Rented.");
+        require(rental_asset.seller == msg.sender, "Not NFT Lister");
+        
+        LibERC721._safeTransfer(address(this), msg.sender, tokenID, "");
+        
+        delete rss.Rental[tokenID];
+        
+        emit AssetUnListed(tokenID, msg.sender);
     }
 
     function rentNFT(

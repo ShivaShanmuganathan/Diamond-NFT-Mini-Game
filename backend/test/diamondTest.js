@@ -810,7 +810,7 @@ describe('DiamondTest', async function () {
 
     it("Increase Time By 10 Days", async function() {
     
-      await ethers.provider.send('evm_increaseTime', [86400*10]);
+      await ethers.provider.send('evm_increaseTime', [60*10]);
       await ethers.provider.send('evm_mine');
       console.log("~~~~~~~~~~~~~~~~~~~~~~~ TIME INCREASED ~~~~~~~~~~~~~~~~~~~~~~~")
       console.log();
@@ -882,7 +882,7 @@ describe('DiamondTest', async function () {
 
     it("Increase Time By 15 Days", async function() {
     
-      await ethers.provider.send('evm_increaseTime', [86400*15]);
+      await ethers.provider.send('evm_increaseTime', [60*15]);
       await ethers.provider.send('evm_mine');
       console.log("~~~~~~~~~~~~~~~~~~~~~~~ TIME INCREASED ~~~~~~~~~~~~~~~~~~~~~~~")
       console.log();
@@ -968,6 +968,123 @@ describe('DiamondTest', async function () {
         console.log("rental seller",result.seller);
         console.log("rental renter",result.renter);
         console.log("rental isRented",result.isRented);
+        console.log();
+
+      }
+      
+
+    });
+
+    it('Should check cancelListing', async () => {
+
+      const tokenID = [12, 13, 14];
+      const rental_price = ethers.utils.parseUnits('0.05', 'ether')
+      const maxRental = 100;
+      console.log("tokenID for Listing", Number(tokenID));
+      
+      for(let i=0; i<tokenID.length; i++){
+        console.log("Owner Of TokenID ", Number(tokenID), " before listing is ", await dynamicGameFacet.ownerOf(tokenID[i]));
+        await rentalNFTFacet.connect(owner).listNFT(tokenID[i], rental_price, maxRental);
+        console.log("Owner Of TokenID ", Number(tokenID), " after listing is ", await dynamicGameFacet.ownerOf(tokenID[i]));
+      } 
+      console.log();     
+
+      console.log("Checking NFTs Listed in marketplace")
+      let [charTxn, rentalTxn, tokenTxn] = await rentalNFTFacet.connect(addr1).fetchMarketItems();
+      for(let i = 0; i < rentalTxn.length; i++){
+
+        let result = transformRentalData(rentalTxn[i]);
+        console.log("market item no.", tokenTxn[i].toString());
+        console.log("rental price",result.price);
+        console.log("rental expiresAt",result.expiresAt);
+        console.log("rental maxRental",result.maxRental);
+        console.log("rental seller",result.seller);
+        console.log("rental renter",result.renter);
+        console.log("rental isRented",result.isRented);
+        console.log();
+
+      }
+      console.log();
+
+      console.log("Checking NFTs Listed By User in marketplace")
+      let [charTxn1, rentalTxn1, tokenTxn1] = await rentalNFTFacet.connect(owner).fetchMyListedNFTs();
+      for(let i = 0; i < rentalTxn1.length; i++){
+
+        let result = transformRentalData(rentalTxn1[i]);
+        console.log("tokenID ", tokenTxn1[i].toString());
+        console.log("rental price",result.price);
+        console.log("rental expiresAt",result.expiresAt);
+        console.log("rental maxRental",result.maxRental);
+        console.log("rental seller",result.seller);
+        console.log("rental renter",result.renter);
+        console.log("rental isRented",result.isRented);
+        console.log();
+
+      }
+      console.log();
+
+
+      console.log("Cancelling NFTs Listed By User in marketplace")
+      for(let i = 0; i < rentalTxn1.length - 1; i++){
+        
+        await rentalNFTFacet.connect(owner).cancelListing(tokenTxn1[i]);        
+
+      }
+      console.log("Cancellation Complete")      
+      console.log();
+
+
+      console.log("Checking NFTs Listed in marketplace After Cancellation")
+      let [charTxn2, rentalTxn2, tokenTxn2] = await rentalNFTFacet.connect(addr1).fetchMarketItems();
+      for(let i = 0; i < rentalTxn2.length; i++){
+
+        let result = transformRentalData(rentalTxn2[i]);
+        console.log("market item no.", tokenTxn2[i].toString());
+        console.log("rental price",result.price);
+        console.log("rental expiresAt",result.expiresAt);
+        console.log("rental maxRental",result.maxRental);
+        console.log("rental seller",result.seller);
+        console.log("rental renter",result.renter);
+        console.log("rental isRented",result.isRented);
+        console.log();
+
+      }
+      console.log();
+
+      console.log("Checking NFTs Listed By User in marketplace After Cancellation")
+      let [charTxn3, rentalTxn3, tokenTxn3] = await rentalNFTFacet.connect(owner).fetchMyListedNFTs();
+      for(let i = 0; i < rentalTxn3.length; i++){
+
+        let result = transformRentalData(rentalTxn3[i]);
+        console.log("tokenID ", tokenTxn3[i].toString());
+        console.log("rental price",result.price);
+        console.log("rental expiresAt",result.expiresAt);
+        console.log("rental maxRental",result.maxRental);
+        console.log("rental seller",result.seller);
+        console.log("rental renter",result.renter);
+        console.log("rental isRented",result.isRented);
+        console.log();
+
+      }
+      console.log();
+
+
+
+    });
+
+    it('Should check fetchMyUnListedNFTs after cancellation', async () => {
+
+      // console.log("RETURN VALUE ",await rentalNFTFacet.connect(owner).fetchMyUnListedNFTs());
+      let [charTxn, tokenTxn] = await rentalNFTFacet.connect(owner).fetchMyUnListedNFTs();
+      for(let i = 0; i < charTxn.length; i++){
+
+        let result = transformCharacterData(charTxn[i]);
+        console.log("TokenID ",tokenTxn[i].toString());
+        console.log("character item no.", i+1);
+        console.log("character name ",result.name);
+        console.log("character HP: ",result.hp);
+        console.log("character attackDamage ",result.attackDamage);
+        console.log("character level ",result.levels);        
         console.log();
 
       }
