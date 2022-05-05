@@ -34,6 +34,7 @@ function ListedNFTs(props) {
                 setCharacterNFT(txn)
             } else {
                 console.log('No Character NFT Found');
+                setCharacterNFT([])
             }
         }
 

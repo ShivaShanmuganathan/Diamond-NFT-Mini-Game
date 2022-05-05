@@ -13,6 +13,7 @@ import myEpicGame from '../../utils/MyEpicGame.json';
 import awesomeGame from '../../utils/awesomeGame.json';
 import { NFTGAME_CONTRACT_ADDRESS, transformCharacterData } from '../../utils/constants';
 import "swiper/swiper.min.css";
+import * as LottiePlayer from "@lottiefiles/lottie-player";
 import "swiper/components/navigation/navigation.min.css";
 SwiperCore.use([Navigation, Autoplay]);
 import './marketplace.scss'
@@ -100,6 +101,9 @@ const Marketplace = () => {
             
         } else {
             console.log('No Character NFT Found');
+            setNfts([])
+            setTokens([])
+            setRenft([])
         }
         
         
@@ -110,29 +114,29 @@ const Marketplace = () => {
         setLoadingState('loaded')
     }
 
-    async function rentNFT(tokenID, price) {
+    async function cancelNFT(tokenID) {
         
-        const rentalDuration = parseInt(formInput.rentalDuration);
-        const rentalPrice = parseFloat(price) * rentalDuration;
-        const finalRentalPrice = (ethers.utils.parseUnits(rentalPrice.toString(), 'ether'));
+        // const rentalDuration = parseInt(formInput.rentalDuration);
+        // const rentalPrice = parseFloat(price) * rentalDuration;
+        // const finalRentalPrice = (ethers.utils.parseUnits(rentalPrice.toString(), 'ether'));
 
-        console.log("rentalDuration", rentalDuration);
-        console.log("type of rentalDuration", typeof(rentalDuration));
-        console.log();
-        console.log("rentalPrice", finalRentalPrice);
-        console.log("type of rentalPrice", typeof(finalRentalPrice));
+        // console.log("rentalDuration", rentalDuration);
+        // console.log("type of rentalDuration", typeof(rentalDuration));
+        // console.log();
+        // console.log("rentalPrice", finalRentalPrice);
+        // console.log("type of rentalPrice", typeof(finalRentalPrice));
 
         
-        console.log("Rental Price", rentalPrice)
-        console.log("Checkpoint 1 Reached!")
+        // console.log("Rental Price", rentalPrice)
+        // console.log("Checkpoint 1 Reached!")
         
-        if (!rentalPrice || !rentalDuration || tokenID==0) return
+        if (tokenID==0) return
 
-        console.log("Checkpoint 2 Reached!")
-        console.log("Selected TokenID", tokenID)
-        console.log("Rental Price", rentalPrice)
-        console.log("rentalDuration", rentalDuration)
-        console.log();
+        // console.log("Checkpoint 2 Reached!")
+        // console.log("Selected TokenID", tokenID)
+        // console.log("Rental Price", rentalPrice)
+        // console.log("rentalDuration", rentalDuration)
+        // console.log();
 
         let overrides = {
 
@@ -147,15 +151,15 @@ const Marketplace = () => {
           // nonce: 234,
       
           // The amount to send with the transaction (i.e. msg.value)
-          value: finalRentalPrice,
+        //   value: finalRentalPrice,
       
           // The chain ID (or network ID) to use
           //chainId: 4
       
       };
 
-        const listTxn = await gameContract.rentNFT(tokenID, rentalDuration, overrides);
-        await listTxn.wait();
+        const cancelTxn = await gameContract.cancelListing(tokenID, overrides);
+        await cancelTxn.wait();
 
         loadNFTs()
     }
@@ -216,7 +220,7 @@ const Marketplace = () => {
                                         onChange={e => updateFormInput({ ...formInput, rentalDuration: e.target.value })}
                                     /> */}
 
-                                    {/* <button className="wrapper8" onClick={() => rentNFT(tokens[i], (ethers.utils.formatEther((renft[i].price).toString(), 'ether')))}>Rent NFT</button> */}
+                                    <button className="wrapper8" onClick={() => cancelNFT(tokens[i], (ethers.utils.formatEther((renft[i].price).toString(), 'ether')))}>Cancel Listing</button>
 
                                 </div>
 
@@ -225,11 +229,26 @@ const Marketplace = () => {
                             ))
                             }
                         </div>
-
-                    
                        
                     </Flex>
                 )}
+
+                {
+                    nfts.length == 0 && (
+                        <div>
+                        <h1 className="default">No Assets Found</h1>
+                        <lottie-player
+                            autoplay
+                            loop
+                            mode="normal"
+                            src="https://assets2.lottiefiles.com/packages/lf20_aBYmBC.json"
+                            style={{ width: "320px" }}
+                        >
+
+                        </lottie-player>
+                        </div>
+                    )
+                }
             </ScrollArea>
         </Flex>
     );
