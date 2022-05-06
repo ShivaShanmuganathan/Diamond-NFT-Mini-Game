@@ -132,27 +132,37 @@ PRIVATE_KEY=
 ## Diamond Contract
 
 ### 💎 Diamond Proxy Contract Address 💎
-`0xA5518dEFdbF7B55bf073f42ef3DB7f39bcecA6FF`
+[🚀 0x791B0E7e61B094Eb6B7695d9ABc659F391071c43 🛸](https://mumbai.polygonscan.com/address/0x791B0E7e61B094Eb6B7695d9ABc659F391071c43#code)
 
-### Facet Addresses 🔮
-```
-DiamondCutFacet deployed: 0x8D28181b58e90fD7d04d18BAaf912c337FFB8de2
-DiamondInit deployed: 0xa5870539521127feED5AFF5d7963D9aE0b9eD8DF
-DiamondLoupeFacet deployed: 0x6A66b3401e92b92235C8Ec48A5e49535E360BAA0
-OwnershipFacet deployed: 0xFED68d75c01c1D786fFe1c8FE72b508b97a8FB15
-Deployed dynamicGameFacet to  0x10843144611428C4Ef2e921116f037027509358a
-stakeNFTFacet deployed to:  0x725081cc13fa55397d6ab952Df50dD1b4A7CDc20
-```
-### Graph Images To Better Understand How Contract 📊
 
-## Diamond Graph
+### Facet Addresses 🔮🌃
+
+[💎 DiamondCutFacet deployed 🎯 0xd76553C411ed3b0a4792cEB04b71aEa5bE99eC15 🎯](https://mumbai.polygonscan.com/address/0xd76553C411ed3b0a4792cEB04b71aEa5bE99eC15#code)
+
+[💎 DiamondInit deployed 🌠 0xd7842705839fF83570836705a4DDa434b821C944 🌠](https://mumbai.polygonscan.com/address/0xd7842705839fF83570836705a4DDa434b821C944#code)
+
+[💎 DiamondLoupeFacet deployed 🔍 0xA794afc756a9115D3f7896977BB7B6b1164B3273 🔍](https://mumbai.polygonscan.com/address/0xA794afc756a9115D3f7896977BB7B6b1164B3273#code)
+
+[💎 OwnershipFacet deployed 🏡 0xBB417f5335c149061cA18991eD51F0578c9cDB33 🏡](https://mumbai.polygonscan.com/address/0xBB417f5335c149061cA18991eD51F0578c9cDB33#code)
+
+[💎 dynamicGameFacet deployed 🎮 0xf1FeF4915c6D2a73144a6f95239B971197DEAD9e 🎮](https://mumbai.polygonscan.com/address/0xf1FeF4915c6D2a73144a6f95239B971197DEAD9e#code)
+
+[💎 nftReceiverFacet deployed 🛄 0x44243fC912be0827FD9A3e532F65e3450d15E513 🛄](https://mumbai.polygonscan.com/address/0x44243fC912be0827FD9A3e532F65e3450d15E513#code)
+
+[💎 stakeNFTFacet deployed 🥩 0xC16919F426f58dB947234Acb20C454C06053FB4B 🥩](https://mumbai.polygonscan.com/address/0xC16919F426f58dB947234Acb20C454C06053FB4B#code)
+
+[💎 rentalNFTFacet deployed 🛍 0xf53eAcceC787f532f5f25b778bde3910D5B8DA92 🛍](https://mumbai.polygonscan.com/address/0xf53eAcceC787f532f5f25b778bde3910D5B8DA92#code)
+
+## Graph Images To Better Understand How Contract Works📊
+
+### Diamond Graph
 ![Diamond](./graph/Diamond.svg)
 
-## ERC721Diamond Graph
+### ERC721Diamond Graph
 ![ERC721Diamond](./graph/tokens.svg)
 
-## DynamicGameFacet Graph
+### DynamicGameFacet Graph
 ![DynamicGameFacet](./graph/DynamicGameFacet.svg)
 
-## StakeNFTFacet Graph
+### StakeNFTFacet Graph
 ![StakeNFTFacet](./graph/StakeNFTFacet.svg)
