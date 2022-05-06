@@ -65,7 +65,7 @@ contract DynamicGameFacet is ERC721Diamond {
 
     // console.log("Minted NFT w/ tokenId %s and characterIndex %s", newItemId, _characterIndex);  
 
-    // s.nftHolders[msg.sender].push(newItemId);
+    
     s.totalTokens = newItemId;
     s._tokenIds += 1;
     

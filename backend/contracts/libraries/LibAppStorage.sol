@@ -66,9 +66,7 @@ struct AppStorage {
     mapping(uint256 => CharacterAttributes) nftHolderAttributes;
     // bigBoss is the Bad Guy that our Heroes Fight against
     BigBoss bigBoss;
-    // A mapping from an address => the NFTs tokenId. Gives me an ez way
-    // to store the owner of the NFT and reference it later.
-    // mapping(address => uint256[]) nftHolders;
+    
     // A fee to mint the Characterrs. 
     uint256 fee;
     uint256 _status;

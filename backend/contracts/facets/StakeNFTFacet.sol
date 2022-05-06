@@ -4,27 +4,26 @@ pragma solidity ^0.8.1;
 // LibDiamond 💎 Allows For Diamond Storage
 import "../libraries/LibDiamond.sol";
 
-// LibStakeNFTStorage 💎 Allows For Diamond Storage
+// LibStakeStorage 💎 Allows For Diamond Storage
 import "../libraries/LibStakeStorage.sol";
 
 // Structs imported from DiamondStorage
 import {LibERC721} from "../libraries/LibERC721.sol";
 
+// LibAppStorage 📱 Allows For App Storage
 import "../libraries/LibAppStorage.sol";
 
 // Structs imported from AppStorage
 import {CharacterAttributes, BigBoss} from "../libraries/LibAppStorage.sol";
 
-// Hardhat Console Debugging Easy
-// import "hardhat/console.sol";
-
+// Importing the NFT Mini Game Facet
 import "./DynamicGameFacet.sol";
 
 
 
-// @title NFT Based Mini Game
+// @title Staking Contract For NFT Mini Game
 /// @author Shiva Shanmuganathan
-/// @notice You can use this contract for implementing a simple NFT based game to change NFT Metadata
+/// @notice This contract can be used for implementing a simple staking & unstaking on NFT Mini Game to increase the charatcer's Health [NFT Metadata of character changes]
 /// @dev All function calls are currently implemented without side effects
 contract StakeNFTFacet {
     AppStorage internal s;
@@ -93,7 +92,9 @@ contract StakeNFTFacet {
 
     }
 
-
+    /// @notice User with Staked NFTs can call this function to know the time at which they staked their character
+    /// @dev Staking start time can be retreived using this function 
+    /// The tokenID of the NFT is used to get the staking start time
     function getStartTime(uint tokenID) external view returns(uint256){
         
         LibStakeStorage.StakeStorage storage lss = LibStakeStorage.diamondStorage();        
@@ -102,6 +103,9 @@ contract StakeNFTFacet {
         
     }
 
+    /// @notice This view function fetches staked & unstaked NFTs of the user
+    /// @dev This function returns 2 arrays -> first array contains tokenIDs of staked & unstaked NFTs; second array contains characterAttributes of staked & unstaked NFTs; 
+    /// The user's address is used to get the staked & unstaked NFTs
     function fetchAssets() external view returns(uint[] memory, CharacterAttributes[] memory) {
         
         LibStakeStorage.StakeStorage storage lss = LibStakeStorage.diamondStorage();

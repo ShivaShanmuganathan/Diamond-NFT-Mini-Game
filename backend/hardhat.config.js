@@ -87,7 +87,10 @@ function genSignature(name, inputs, type) {
   etherscan: {
     // Your API key for Etherscan
     // Obtain one at https://etherscan.io/
-    apiKey: process.env.ETHERSCAN_API_KEY
+    apiKey: {
+      polygonMumbai: '8SKY1A5M42K21J6CVE6FUARBV1B9BG9X61'
+    }
+    
     
   }
 };
