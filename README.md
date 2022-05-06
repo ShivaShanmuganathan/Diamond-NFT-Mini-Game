@@ -6,18 +6,24 @@
 
 ### Fullstack Dynamic NFT Mini Game 🎮 Using Diamond Standard 💎 
 
-- Player can connect to the mini game using Metamask on Rinkeby Network
+- Player can connect to the mini game using Metamask on Mumbai Network
 - Players can choose Valorant Heroes and mint them as an NFT
 - Use the minted Hero NFT to battle against Thanos in the dapp
 - Battling against Thanos changes the HP (On-Chain Metadata) of Hero NFT
 - Players can heal their heroes by staking their Hero NFT in the dapp
 - Staking NFTs increase the HP (On-Chain Metadata) of Hero NFT.
+- Players can lend and rent NFTs from the Collateral-Free NFT Rental Marketplace
+- Players can earn MATIC by lending their NFTs
+- Players can rent NFTs from the Rental Marketplace by paying MATIC to lender and specifying the rental duration. 
+
+   [The Rental Duration Needs To Be Less Than Maximum Rental Time]
+- Players can use the rented NFTs to battle with Thanos
 
 ## Project Demo GIF 🎥
 ![Demo](./Demo.gif)
 
 ## Directory Structure 📂
-- `backend/contracts` ⏩ Smart Contract Code [Deployed @ Rinkeby Test Network]
+- `backend/contracts` ⏩ Smart Contract Code [Deployed @ Mumbai Test Network]
 - `frontend` ⏩ Project's React frontend.
 - `backend/test` ⏩ Tests for Smart Contracts.
 
@@ -43,7 +49,7 @@ git clone https://github.com/ShivaShanmuganathan/diamond-dapp
 - `yarn install` Install Dependencies
 - `yarn start` Start the frontend in localhost 
 - Open `http://localhost:3000` <br />
-We can use the localhost frontend to interact with the smart contract on rinkeby
+We can use the localhost frontend to interact with the smart contract on Mumbai
 
 ### Backend 🔗
 
@@ -54,18 +60,18 @@ We can use the localhost frontend to interact with the smart contract on rinkeby
 - `npx hardhat test` Test the Smart Contract Locally
 - `npx hardhat run scripts/deploy.js` Deploy the Smart Contract Locally
 
-### If you want to deploy it on Rinkeby Network
+### If you want to deploy it on Mumbai Network
 
 1. open `hardhat.config.js` file and uncomment the below lines <br />
-    // rinkeby: { <br />
+    // mumbai: { <br />
     //   url: process.env.STAGING_ALCHEMY_KEY, <br />
     //   accounts: [process.env.PRIVATE_KEY], <br />
     // }, <br />
 2. change filename `.env.example` to `.env`
-3. Get Alchemy Key for Rinkeby Network from Alchemy, and assign it to `STAGING_ALCHEMY_KEY` in `.env`
+3. Get Alchemy Key for Mumbai Network from Alchemy, and assign it to `STAGING_ALCHEMY_KEY` in `.env`
 4. Get `PRIVATE_KEY` from MetaMask, and assign it to `PRIVATE_KEY` in `.env`
-5. RUN `npx hardhat run scripts/deploy.js --network rinkeby` to deploy Diamond Contract & DynamicGame Facet Contract to the Rinkeby Network. 
-6. RUN `npx hardhat run scripts/deploy2.js --network rinkeby` to deploy StakeNFTFacet Contract to the Rinkeby Network, and add it to the Diamond Contract. 
+5. RUN `npx hardhat run scripts/deploy.js --network mumbai` to deploy Diamond Contract & DynamicGame Facet Contract to the Mumbai Network. 
+6. RUN `npx hardhat run scripts/deploy2.js --network mumbai` to deploy StakeNFTFacet Contract to the Mumbai Network, and add it to the Diamond Contract. 
 
 
 ```
