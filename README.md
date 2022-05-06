@@ -49,7 +49,7 @@ git clone https://github.com/ShivaShanmuganathan/diamond-dapp
 - `yarn install` Install Dependencies
 - `yarn start` Start the frontend in localhost 
 - Open `http://localhost:3000` <br />
-We can use the localhost frontend to interact with the smart contract on Mumbai
+We can use the localhost frontend to interact with the smart contract on Mumbai Network
 
 ### Backend 🔗
 
@@ -62,22 +62,14 @@ We can use the localhost frontend to interact with the smart contract on Mumbai
 
 ### If you want to deploy it on Mumbai Network
 
-1. open `hardhat.config.js` file and uncomment the below lines <br />
-    // mumbai: { <br />
-    //   url: process.env.STAGING_ALCHEMY_KEY, <br />
-    //   accounts: [process.env.PRIVATE_KEY], <br />
-    // }, <br />
-2. change filename `.env.example` to `.env`
-3. Get Alchemy Key for Mumbai Network from Alchemy, and assign it to `STAGING_ALCHEMY_KEY` in `.env`
-4. Get `PRIVATE_KEY` from MetaMask, and assign it to `PRIVATE_KEY` in `.env`
-5. RUN `npx hardhat run scripts/deploy.js --network mumbai` to deploy Diamond Contract & DynamicGame Facet Contract to the Mumbai Network. 
-6. RUN `npx hardhat run scripts/deploy2.js --network mumbai` to deploy StakeNFTFacet Contract to the Mumbai Network, and add it to the Diamond Contract. 
-
-
-```
-STAGING_ALCHEMY_KEY=
-PRIVATE_KEY=
-```
+1. Change filename `.env.example` to `.env`
+2. Get Alchemy Key for Mumbai Network from Alchemy, and assign it to `STAGING_ALCHEMY_KEY` in `.env`
+3. Get `PRIVATE_KEY` of your wallet from MetaMask, and assign it to `PRIVATE_KEY` in `.env`
+4. RUN `npx hardhat run scripts/deploy.js --network mumbai` to deploy Diamond Contract, DiamondCutFacet, DiamondInit, DiamondLoupeFacet, and OwnershipFacet to the Mumbai Network. 
+5. RUN `npx hardhat run scripts/deploy2.js --network mumbai` to deploy dynamicGameFacet Contract to the Mumbai Network, and add it to the Diamond Contract. 
+6. RUN `npx hardhat run scripts/deploy3.js --network mumbai` to deploy nftReceiverFacet Contract to the Mumbai Network, and add it to the Diamond Contract. 
+7. RUN `npx hardhat run scripts/deploy4.js --network mumbai` to deploy StakeNFTFacet Contract to the Mumbai Network, and add it to the Diamond Contract. 
+8. RUN `npx hardhat run scripts/deploy5.js --network mumbai` to deploy StakeNFTFacet Contract to the Mumbai Network, and add it to the Diamond Contract. 
 
 ### How to make your own hero characters
 
