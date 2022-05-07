@@ -14,8 +14,11 @@
 - Staking NFTs increase the HP (On-Chain Metadata) of Hero NFT.
 - Players can lend and rent NFTs from the Collateral-Free NFT Rental Marketplace
 - Players can earn MATIC by lending their NFTs
-- Players can rent NFTs from the Rental Marketplace by specifying the rental duration, and paying rental amount as MATIC to Lender.
+- NFTs can be rented from the Rental Marketplace by specifying the rental duration and paying the rental amount in MATIC
 - Players can use the rented NFTs to battle with Thanos
+- Renters will not be able to transfer or stake the Rented NFTs
+- Lenders can claim back the Lent NFTs from the renter once the rental period expires
+
 
 ## Project Demo GIF 🎥
 ![Demo](./Demo.gif)
