@@ -15,7 +15,7 @@ function Sidebar(props) {
     collapse && !isMobile ? (document.body.style.overflow = 'hidden') : (document.body.style.overflow = 'auto');
 
     return (
-        <ProSidebar className='proSidebar' collapsed={collapse} toggled={toggle} breakPoint='md' image='/sidebar/valorant-bg2.jpg'>
+        <ProSidebar className='proSidebar' collapsed={collapse} toggled={toggle} breakPoint='md' image='/sidebar/valbg2.png'>
             <SidebarHeader className='proSidebar__header'>
                 <img src='/sidebar/logo2.png' alt='logo' className={!collapse ? 'proSidebar__header__logo' : 'proSidebar__header__logo img-size-75'} />
             </SidebarHeader>
