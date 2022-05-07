@@ -218,7 +218,11 @@ const Marketplace = () => {
                                         onChange={e => updateFormInput({ ...formInput, rentalDuration: e.target.value })}
                                     /> */}
 
-                                    <button className="wrapper8" onClick={() => finishRent(tokens[i])}>End Rent</button>
+                                    <button className="pushable" onClick={() => finishRent(tokens[i])}>
+                                        <span className="front">
+                                            End Rent
+                                        </span>
+                                    </button>
 
                                 </div>
 

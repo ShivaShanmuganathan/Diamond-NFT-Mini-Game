@@ -222,7 +222,11 @@ function MyNFTs(props) {
                                   onChange={e => updateFormInput({ ...formInput, maxRental: e.target.value })}
                               />
 
-                              <button className="wrapper8" onClick={() => listForRent(tokens[i])}>List NFT</button>
+                              <button className="pushable" onClick={() => listForRent(tokens[i])}>
+                                  <span className="front">
+                                    List NFT
+                                  </span>
+                                </button>
 
                           </div>
 

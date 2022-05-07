@@ -218,7 +218,11 @@ const Marketplace = () => {
                                         onChange={e => updateFormInput({ ...formInput, rentalDuration: e.target.value })}
                                     />
 
-                                    <button className="wrapper8" onClick={() => rentNFT(tokens[i], (ethers.utils.formatEther((renft[i].price).toString(), 'ether')))}>Rent NFT</button>
+                                    <button className="pushable" onClick={() => rentNFT(tokens[i], (ethers.utils.formatEther((renft[i].price).toString(), 'ether')))}>
+                                        <span className="front">
+                                        Rent NFT
+                                        </span>
+                                    </button>
 
                                 </div>
 

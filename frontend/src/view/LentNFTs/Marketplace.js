@@ -218,7 +218,11 @@ const Marketplace = () => {
                                         onChange={e => updateFormInput({ ...formInput, rentalDuration: e.target.value })}
                                     /> */}
                                     {
-                                        renft[i].expiresAt < (Math.floor(Date.now() / 1000)) && (<button className="wrapper8" onClick={() => claimNFTs(tokens[i])}>Claim NFT</button>)
+                                        renft[i].expiresAt < (Math.floor(Date.now() / 1000)) && (<button className="pushable" onClick={() => claimNFTs(tokens[i])}>
+                                            <span className="front">
+                                                Claim NFT
+                                            </span>                                            
+                                            </button>)
                                     }
                                     
 
