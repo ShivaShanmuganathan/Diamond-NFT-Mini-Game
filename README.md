@@ -133,6 +133,38 @@ We can use the localhost frontend to interact with the smart contract on Mumbai 
 ### 💎 Diamond Proxy Contract Address 💎
 [🚀 0x791B0E7e61B094Eb6B7695d9ABc659F391071c43 🛸](https://mumbai.polygonscan.com/address/0x791B0E7e61B094Eb6B7695d9ABc659F391071c43#code)
 
+### Contracts in Project Structure
+```
+backend/contracts
+├── Diamond.sol
+├── facets
+│   ├── DiamondCutFacet.sol
+│   ├── DiamondLoupeFacet.sol
+│   ├── DynamicGameFacet.sol
+│   ├── NFTReceiverFacet.sol
+│   ├── OwnershipFacet.sol
+│   ├── RentalNFTFacet.sol
+│   └── StakeNFTFacet.sol
+├── interfaces
+│   ├── IDiamondCut.sol
+│   ├── IDiamondLoupe.sol
+│   ├── IERC165.sol
+│   ├── IERC173.sol
+│   └── IERC721.sol
+├── libraries
+│   ├── Base64.sol
+│   ├── LibAppStorage.sol
+│   ├── LibDiamond.sol
+│   ├── LibERC721.sol
+│   ├── LibMeta.sol
+│   ├── LibRentalStorage.sol
+│   └── LibStakeStorage.sol
+├── tokens
+│   └── ERC721Diamond.sol
+└── upgradeInitializers
+    └── DiamondInit.sol
+```
+
 
 ### Facet Addresses 🔮🌃
 
@@ -151,6 +183,8 @@ We can use the localhost frontend to interact with the smart contract on Mumbai 
 [💎 stakeNFTFacet deployed 🥩 0xC16919F426f58dB947234Acb20C454C06053FB4B 🥩](https://mumbai.polygonscan.com/address/0xC16919F426f58dB947234Acb20C454C06053FB4B#code)
 
 [💎 rentalNFTFacet deployed 🛍 0xf53eAcceC787f532f5f25b778bde3910D5B8DA92 🛍](https://mumbai.polygonscan.com/address/0xf53eAcceC787f532f5f25b778bde3910D5B8DA92#code)
+
+
 
 ## Graph Images To Better Understand How Contract Works📊
 
