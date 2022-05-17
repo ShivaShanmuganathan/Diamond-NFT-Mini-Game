@@ -21,7 +21,7 @@
 
 
 ## Project Demo GIF 🎥
-![Demo](./Demo.gif)
+![Demo](./Diamond.gif)
 
 ## Directory Structure 📂
 - `backend/contracts` ⏩ Smart Contract Code [Deployed @ Mumbai Test Network]
@@ -121,9 +121,9 @@ We can use the localhost frontend to interact with the smart contract on Mumbai 
 ## Test Coverage Report 🛸
 ![testReport](./test-coverage-report.JPG)
 
-## [ Project Walkthrough Video 📽](https://www.loom.com/share/ef601829b2394f9db4989463d434c537) 
+## [ Project Walkthrough Video 📽](https://www.loom.com/share/56efd7906bc34d188a3e4b95fe96285d) 
 
-[Video Link ](https://www.loom.com/share/ef601829b2394f9db4989463d434c537)
+[Video Link ](https://www.loom.com/share/56efd7906bc34d188a3e4b95fe96285d)
 
 
 
